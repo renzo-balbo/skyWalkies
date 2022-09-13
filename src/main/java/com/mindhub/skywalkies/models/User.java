@@ -14,8 +14,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
+
+    private Avatar avatar;
+    private Cart cart;
+
     private String  firstName, lastName, email, password;
     private boolean verificated;
+
 
     public User() {
     }
