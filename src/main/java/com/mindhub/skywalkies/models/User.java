@@ -25,13 +25,31 @@ public class User {
     public User() {
     }
 
-    public User(long id, String firstName, String lastName, String email, String password, boolean verificated) {
+    public User(long id, Avatar avatar, Cart cart, String firstName, String lastName, String email, String password, boolean verificated) {
         this.id = id;
+        this.avatar = avatar;
+        this.cart = cart;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.verificated = verificated;
+        this.verificated = false;
+    }
+
+    public Avatar getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(Avatar avatar) {
+        this.avatar = avatar;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 
     public long getId() {
