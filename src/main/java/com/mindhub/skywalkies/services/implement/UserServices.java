@@ -27,6 +27,5 @@ public class UserServices implements UserService {
     public User findUserByemail(String email) {return userRespository.findByEmail(email);
 
     }
-
     public void  saveUser(User user){userRespository.save(user);}
 }
