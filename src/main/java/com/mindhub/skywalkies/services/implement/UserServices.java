@@ -14,11 +14,6 @@ public class UserServices implements UserService {
     UserRespository userRespository;
 
     @Override
-    public List<User> getAllusers() {
-        return null;
-    }
-
-    @Override
     public List<User> getAllUsers() {
         return userRespository.findAll();
     }
@@ -29,8 +24,9 @@ public class UserServices implements UserService {
     }
 
     @Override
-    public User findUserByemail(String email) {
-        return userRespository.findByEmail(email);
+    public User findUserByemail(String email) {return userRespository.findByEmail(email);
 
     }
+
+    public void  saveUser(User user){userRespository.save(user);}
 }
