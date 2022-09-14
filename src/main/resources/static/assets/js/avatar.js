@@ -67,6 +67,7 @@ createApp({
             let canvas = document.getElementById("myCanvas");
             let ctx = canvas.getContext("2d");
             ctx.clearRect(0,0, canvas.width, canvas.height);
+
             let headImg = new Image()
             headImg.src = "../assets/img/avatarCollection/head" + this.customAvatar.head + ".png";
 
@@ -84,8 +85,7 @@ createApp({
 
             let lineArt = new Image();
             lineArt.src = "../assets/img/avatarCollection/lineArtObligatory.png";
-
-
+            
             ctx.drawImage(bodyColor, 0, 0);
             ctx.drawImage(face, 0, 0);
             ctx.drawImage(shoes, 0, 0);
