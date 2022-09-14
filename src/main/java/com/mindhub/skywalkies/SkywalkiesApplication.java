@@ -49,12 +49,20 @@ public CommandLineRunner initData(ClientRespository clientRespository, ShoeRepos
 
 			//REPOSITORIES//
 			clientRespository.save(clientTest1);
+			clientRespository.save(clientTest2);
 			shoeRepository.save(shoeTest1);
 			shoeRepository.save(shoeTest2);
 			shoeRepository.save(shoeTest3);
 			shoeRepository.save(shoeTest4);
 			shoeRepository.save(shoeTest5);
 			shoeRepository.save(shoeTest6);
+			avatarRepository.save(avatarTest1);
+			avatarRepository.save(avatarTest2);
+			avatarRepository.save(avatarTest3);
+			avatarRepository.save(avatarTest4);
+			avatarRepository.save(avatarTest5);
+			avatarRepository.save(avatarTest6);
+
 
 			//REPOSITORIES//
 		};
