@@ -1,8 +1,10 @@
 package com.mindhub.skywalkies.controllers;
 
 import com.mindhub.skywalkies.dtos.ClientDTO;
+import com.mindhub.skywalkies.models.Avatar;
 import com.mindhub.skywalkies.models.Client;
 import com.mindhub.skywalkies.repositories.ClientRespository;
+import com.mindhub.skywalkies.services.AvatarService;
 import com.mindhub.skywalkies.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +26,8 @@ public class ClientController {
     PasswordEncoder passwordEncoder;
     @Autowired
     private ClientService clientService;
+    @Autowired
+    private AvatarService avatarService;
 
     @GetMapping("/clients")
     public List<ClientDTO> getClients() {
@@ -40,8 +44,10 @@ public class ClientController {
         if (clientService.findClientByEmail(email) != null) {
             return new ResponseEntity<>("Email already in use", HttpStatus.FORBIDDEN);
         }
+        Avatar avatar = new Avatar(1,1,1,1,1);
         Client client = new Client(firstName,lastName,email, passwordEncoder.encode(password));
         clientService.saveClient(client);
+        avatarService.saveAvatar(avatar);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
