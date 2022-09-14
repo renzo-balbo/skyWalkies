@@ -1,8 +1,8 @@
 package com.mindhub.skywalkies.dtos;
 
-import com.mindhub.skywalkies.models.User;
+import com.mindhub.skywalkies.models.Client;
 
-public class UserDTO {
+public class ClientDTO {
     private long id;
 
     private String  firstName, lastName, email, password;
@@ -10,17 +10,17 @@ public class UserDTO {
 
     private boolean verificated;
 
-    public UserDTO() {
+    public ClientDTO() {
     }
 
 
-    public UserDTO(User user) {
-        this.id = user.getId();
-        this.firstName = user.getFirstName();
-        this.lastName = user.getLastName();
-        this.email = user.getEmail();
-        this.password = user.getPassword();
-        this.verificated = user.isVerificated();
+    public ClientDTO(Client client) {
+        this.id = client.getId();
+        this.firstName = client.getFirstName();
+        this.lastName = client.getLastName();
+        this.email = client.getEmail();
+        this.password = client.getPassword();
+        this.verificated = client.isVerificated();
     }
 
     public long getId() {

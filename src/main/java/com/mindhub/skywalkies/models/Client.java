@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class User {
+public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
@@ -20,10 +20,10 @@ public class User {
     private boolean isVerificated;
 
 
-    public User() {
+    public Client() {
     }
 
-    public User(String firstName, String lastName, String email, String password) {
+    public Client(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
