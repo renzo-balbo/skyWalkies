@@ -2,10 +2,7 @@ package com.mindhub.skywalkies.models;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Client {
@@ -15,7 +12,8 @@ public class Client {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
-
+    @OneToOne(mappedBy = "client", fetch = FetchType.EAGER)
+    private Cart cart;
     private String  firstName, lastName, email, password;
     private boolean isVerificated;
 

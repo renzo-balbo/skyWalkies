@@ -12,13 +12,9 @@ public class Shoe {
   @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
   @GenericGenerator(name = "native", strategy = "native")
   private long id;
-  private String name;
   @ElementCollection
   @Column(name = "Colors")
   private List<Colors> colors = new ArrayList<>();
-  private int stock;
-  private double price;
-  private boolean activeShoe;
   @ElementCollection
   @Column(name = "Size")
   private List<Integer> sizes = new ArrayList<>();
@@ -26,8 +22,10 @@ public class Shoe {
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "cart_id")
   private Cart cart;
-
-
+  private int stock;
+  private double price;
+  private boolean activeShoe;
+  private String name;
 
   public Shoe() {
   }
