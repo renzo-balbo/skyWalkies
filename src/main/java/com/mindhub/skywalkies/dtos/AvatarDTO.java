@@ -5,11 +5,11 @@ import com.mindhub.skywalkies.models.Avatar;
 public class AvatarDTO {
 
     private long id;
-    private String head;
-    private String face;
-    private String bodyColor;
-    private String body;
-    private String shoes;
+    private Integer head;
+    private Integer face;
+    private Integer  bodyColor;
+    private Integer  body;
+    private Integer  shoes;
 
     public AvatarDTO(){}
 
@@ -26,23 +26,23 @@ public class AvatarDTO {
         return id;
     }
 
-    public String getHead() {
+    public Integer getHead() {
         return head;
     }
 
-    public String getFace() {
+    public Integer getFace() {
         return face;
     }
 
-    public String getBodyColor() {
+    public Integer getBodyColor() {
         return bodyColor;
     }
 
-    public String getBody() {
+    public Integer getBody() {
         return body;
     }
 
-    public String getShoes() {
+    public Integer getShoes() {
         return shoes;
     }
 }

@@ -12,16 +12,16 @@ public class Avatar {
     @GenericGenerator(name = "native", strategy = "native")
 
     private long id;
-    private String head;
-    private String face;
-    private String bodyColor;
-    private String body;
-    private String shoes;
+    private Integer head;
+    private Integer face;
+    private Integer  bodyColor;
+    private Integer  body;
+    private Integer  shoes;
 
     public Avatar() {
     }
 
-    public Avatar(String head, String face, String bodyColor, String body, String shoes) {
+    public Avatar(Integer  head, Integer  face, Integer  bodyColor, Integer  body, Integer  shoes) {
         this.head = head;
         this.face = face;
         this.bodyColor = bodyColor;
@@ -37,43 +37,43 @@ public class Avatar {
         this.id = id;
     }
 
-    public String getHead() {
+    public Integer getHead() {
         return head;
     }
 
-    public void setHead(String head) {
+    public void setHead(Integer head) {
         this.head = head;
     }
 
-    public String getFace() {
+    public Integer getFace() {
         return face;
     }
 
-    public void setFace(String face) {
+    public void setFace(Integer face) {
         this.face = face;
     }
 
-    public String getBodyColor() {
+    public Integer getBodyColor() {
         return bodyColor;
     }
 
-    public void setBodyColor(String bodyColor) {
+    public void setBodyColor(Integer bodyColor) {
         this.bodyColor = bodyColor;
     }
 
-    public String getBody() {
+    public Integer getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(Integer body) {
         this.body = body;
     }
 
-    public String getShoes() {
+    public Integer getShoes() {
         return shoes;
     }
 
-    public void setShoes(String shoes) {
+    public void setShoes(Integer shoes) {
         this.shoes = shoes;
     }
 }

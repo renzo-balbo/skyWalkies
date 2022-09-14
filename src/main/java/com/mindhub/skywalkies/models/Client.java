@@ -13,8 +13,10 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
+
     @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
     private Set<ClientCart> clientCarts = new HashSet<>();
+
 
     private String  firstName, lastName, email, password;
     private boolean isVerificated;
