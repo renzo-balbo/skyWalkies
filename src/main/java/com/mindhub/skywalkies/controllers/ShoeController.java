@@ -4,6 +4,7 @@ import com.mindhub.skywalkies.dtos.ShoeDTO;
 import com.mindhub.skywalkies.services.ShoeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,4 +20,5 @@ public class ShoeController {
   public List<ShoeDTO> getShoes() {
     return shoeService.allShoes().stream().map(ShoeDTO::new).collect(Collectors.toList());
   }
+
 }

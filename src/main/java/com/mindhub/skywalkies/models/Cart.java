@@ -15,8 +15,10 @@ public class Cart {
   private long id;
   @OneToMany(mappedBy = "cart", fetch = FetchType.EAGER)
   private Set<Shoe> shoes = new HashSet<>();
-  @OneToOne(mappedBy = "cart", fetch = FetchType.EAGER)
+  @OneToOne(cascade = CascadeType.ALL)
   private Client client;
+  @OneToMany(mappedBy = "cart", fetch = FetchType.EAGER)
+  private Set<ClientCart> clientCarts = new HashSet<>();
   private double totalAmount;
   private LocalDate localDate;
 
@@ -64,5 +66,13 @@ public class Cart {
 
   public void setLocalDate(LocalDate localDate) {
     this.localDate = localDate;
+  }
+
+  public Set<ClientCart> getClientCarts() {
+    return clientCarts;
+  }
+
+  public void setClientCarts(Set<ClientCart> clientCarts) {
+    this.clientCarts = clientCarts;
   }
 }

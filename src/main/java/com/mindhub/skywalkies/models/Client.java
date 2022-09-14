@@ -3,6 +3,8 @@ package com.mindhub.skywalkies.models;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Client {
@@ -11,9 +13,9 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
+    private Set<ClientCart> clientCarts = new HashSet<>();
 
-    @OneToOne(mappedBy = "client", fetch = FetchType.EAGER)
-    private Cart cart;
     private String  firstName, lastName, email, password;
     private boolean isVerificated;
 
@@ -71,5 +73,13 @@ public class Client {
 
     public void setVerificated(boolean verificated) {
         isVerificated = verificated;
+    }
+
+    public Set<ClientCart> getClientCarts() {
+        return clientCarts;
+    }
+
+    public void setClientCarts(Set<ClientCart> clientCarts) {
+        this.clientCarts = clientCarts;
     }
 }
