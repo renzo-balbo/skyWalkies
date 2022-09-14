@@ -1,6 +1,8 @@
 package com.mindhub.skywalkies.controllers;
 
+import com.mindhub.skywalkies.dtos.AvatarDTO;
 import com.mindhub.skywalkies.dtos.ClientDTO;
+import com.mindhub.skywalkies.models.Avatar;
 import com.mindhub.skywalkies.repositories.AvatarRepository;
 import com.mindhub.skywalkies.services.AvatarService;
 import com.mindhub.skywalkies.services.ClientService;
@@ -15,7 +17,7 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 @RestController
-@RequestMapping("/api")
+
 public class AvatarController {
 
     @Autowired
@@ -24,14 +26,14 @@ public class AvatarController {
     @Autowired
     private AvatarService avatarService;
 
-    @GetMapping("/avatars")
-    public List<ClientDTO> getClients(){
-        return clientService.getAllClients().stream().map(account -> new ClientDTO(account)).collect(toList());
+    @GetMapping("/api/avatars")
+    public List<AvatarDTO> getAvatars(){
+        return avatarService.getAllAvatars().stream().map(client -> new AvatarDTO(new Avatar())).collect(toList());
     }
 
-    @GetMapping("/avatars/{id}")
-    public ClientDTO getAccount(@PathVariable long id){
+    @GetMapping("/api/avatars/{id}")
+    public AvatarDTO getAvatar(@PathVariable long id){
 
-        return new ClientDTO(clientService.getClientById(id));
+        return new AvatarDTO(avatarService.getAvatarsById(id));
     }
 }

@@ -6,6 +6,8 @@ import com.mindhub.skywalkies.services.AvatarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AvatarServiceImplements implements AvatarService {
     @Autowired
@@ -19,6 +21,7 @@ public class AvatarServiceImplements implements AvatarService {
     @Override
     public Avatar getAvatarsById(long id){return avatarRepository.findById(id).get();}
 
-
+    @Override
+    public List<Avatar> getAllAvatars (){return avatarRepository.findAll();}
 
 }
