@@ -22,13 +22,13 @@ public class Shoe {
   public Shoe() {
   }
 
-  public Shoe(String name, String color, int stock, double price, SizeShoe sizeShoe, boolean activeShoe) {
+  public Shoe(String name, String color, int stock, double price, SizeShoe sizeShoe) {
     this.name = name;
     this.color = color;
     this.stock = stock;
     this.price = price;
     this.sizeShoe = sizeShoe;
-    this.activeShoe = activeShoe;
+    this.activeShoe = true;
   }
 
   public long getId() {
