@@ -6,10 +6,8 @@ import java.util.List;
 
 public interface ClientService {
 
-
-    List<Client> getAllUsers();
-
-    Client getUserById(long id);
-
-    Client findUserByemail(String email);
+    public List<Client> getAllClients();
+    public Client getClientById(long id);
+    public Client findClientByEmail(String email);
+    public void saveClient(Client client);
 }
