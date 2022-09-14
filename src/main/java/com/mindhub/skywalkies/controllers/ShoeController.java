@@ -37,7 +37,7 @@ public class ShoeController {
     if (shoeAddDTO.getName().isEmpty() || shoeAddDTO.getPrice() < 0 || shoeAddDTO.getSizes().isEmpty() || shoeAddDTO.getStock() < 0){
       return new ResponseEntity<>("Please complete all the fields", HttpStatus.FORBIDDEN);
     }
-    if (shoes.stream().map(name -> name.getName()) == shoeName){
+    if (shoes.stream().filter(shoe -> shoe.getName().equals(shoeName.getName())).count() > 0){
       return new ResponseEntity<>("That Shoe already added", HttpStatus.FORBIDDEN);
     }
     else{
