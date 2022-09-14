@@ -70,4 +70,11 @@ public class Avatar {
         this.body = body;
     }
 
+    public String getShoes() {
+        return shoes;
+    }
+
+    public void setShoes(String shoes) {
+        this.shoes = shoes;
+    }
 }
