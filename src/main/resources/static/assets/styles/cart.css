@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    height: 7vh;
+}
+
+main {
+    min-height: 80vh;
+}
+
+nav {
+    height: 100%;
+}
+
+li {
+    list-style: none;
+}
+
+/* para la imagen de prueba de logo */
+
+nav>img {
+    height: 75%;
+}
+
+/* -- */
+footer {
+    height: 13vh;
+}
+
+td>img{
+    width: 100%;
+}
+
+
+@media (min-width: 420px) {
+    td>img{
+        width: 70%;
+    }
+}
+
+@media (min-width: 500px) {
+    td>img{
+        width: 60%;
+    }
+}
+
+@media (min-width: 600px) {
+    td>img{
+        width: 50%;
+    }
+}
+
+
+@media (min-width: 769px) {
+    td>img{
+        width: 40%;
+    }
+}

@@ -14,6 +14,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/styles/cart.css">
+
 </head>
 
 <body>
@@ -140,8 +142,8 @@
     </header>
 
 
-    <main>
-        <div class="d-flex justify-content-center flex-wrap">
+    <main class="d-flex flex-column flex-lg-row justify-content-lg-around container align-items-center">
+        <div class="d-flex justify-content-center flex-wrap col-lg-7">
             <h2 class="text-center">Your Wardrobe</h2>
 
             <table class="table text-center m-1">
@@ -158,7 +160,7 @@
                 <tbody>
                     <tr scope="row">
                         <!-- <td>1</td> -->
-                        <td><img src="../assets/img/zapatilla_color_1.png" width="50%" alt=""></td>
+                        <td><img src="../assets/img/zapatilla_color_1.png" alt=""></td>
                         <td>Nombre Modelo</td>
                         <td>$500</td>
                         <td>1</td>
@@ -166,7 +168,7 @@
                     </tr>
                     <tr scope="row">
                         <!-- <td>1</td> -->
-                        <td><img src="../assets/img/zapatilla_color_1.png" width="50%" alt=""></td>
+                        <td><img src="../assets/img/zapatilla_color_1.png" alt=""></td>
                         <td>Nombre Modelo</td>
                         <td>$500</td>
                         <td>1</td>
@@ -174,7 +176,7 @@
                     </tr>
                     <tr scope="row">
                         <!-- <td>1</td> -->
-                        <td><img src="../assets/img/zapatilla_color_1.png" width="50%" alt=""></td>
+                        <td><img src="../assets/img/zapatilla_color_1.png" alt=""></td>
                         <td>Nombre Modelo</td>
                         <td>$500</td>
                         <td>1</td>
@@ -182,32 +184,41 @@
                     </tr>
                     <tr scope="row">
                         <!-- <td>1</td> -->
-                        <td><img src="../assets/img/zapatilla_color_1.png" width="50%" alt=""></td>
+                        <td><img src="../assets/img/zapatilla_color_1.png" alt=""></td>
                         <td>Nombre Modelo</td>
                         <td>$500</td>
                         <td>1</td>
                         <td>X</td>
                     </tr>
-
                 </tbody>
             </table>
+            <button class="btn btn-danger">Empty Wardrobe</button>
         </div>
-        <div class="d-flex flex-column m-4">
-            <h3>Your Buy:</h3>
+        <div class="d-flex flex-column m-4 m-lg-0 col-lg-4">
+            <h3 class="text-center">Your Buy:</h3>
             <h5>Subtotal:</h5>
             <h5>IVA:</h5>
             <h5>Total:</h5>
             <button class="btn btn-dark">Buy</button>
         </div>
-    </main>
 
-        <!-- JavaScript Bundle with Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    </main>
+    <footer class="d-flex align-items-center justify-content-center">
+        <ul>
+            <li>Sky Walkies &reg;</li>
+            <li>Register</li>
+            <li>Contact</li>
+        </ul>
+    </footer>
+
+
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
 
     <script src="https://unpkg.com/vue@3"></script>
-
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 
