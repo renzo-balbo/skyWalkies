@@ -2,10 +2,9 @@ package com.mindhub.skywalkies.models;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Shoe {
@@ -13,22 +12,33 @@ public class Shoe {
   @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
   @GenericGenerator(name = "native", strategy = "native")
   private long id;
-  private String name, color;
+  private String name;
+  @ElementCollection
+  @Column(name = "Colors")
+  private List<Colors> colors = new ArrayList<>();
   private int stock;
   private double price;
-  private SizeShoe sizeShoe;
   private boolean activeShoe;
+  @ElementCollection
+  @Column(name = "Size")
+  private List<Integer> sizes = new ArrayList<>();
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "cart_id")
+  private Cart cart;
+
+
 
   public Shoe() {
   }
 
-  public Shoe(String name, String color, int stock, double price, SizeShoe sizeShoe) {
+  public Shoe(String name, List<Colors> colors, int stock, double price, List<Integer> sizes) {
     this.name = name;
-    this.color = color;
+    this.colors = colors;
     this.stock = stock;
     this.price = price;
-    this.sizeShoe = sizeShoe;
     this.activeShoe = true;
+    this.sizes = sizes;
   }
 
   public long getId() {
@@ -43,12 +53,12 @@ public class Shoe {
     this.name = name;
   }
 
-  public String getColors() {
-    return color;
+  public List<Colors> getColors() {
+    return colors;
   }
 
-  public void setColors(String colors) {
-    this.color = colors;
+  public void setColors(List<Colors> colors) {
+    this.colors = colors;
   }
 
   public int getStock() {
@@ -67,19 +77,19 @@ public class Shoe {
     this.price = price;
   }
 
-  public SizeShoe getSizeShoe() {
-    return sizeShoe;
-  }
-
-  public void setSizeShoe(SizeShoe sizeShoe) {
-    this.sizeShoe = sizeShoe;
-  }
-
   public boolean isActiveShoe() {
     return activeShoe;
   }
 
   public void setActiveShoe(boolean activeShoe) {
     this.activeShoe = activeShoe;
+  }
+
+  public List<Integer> getSizes() {
+    return sizes;
+  }
+
+  public void setSizes(List<Integer> sizes) {
+    this.sizes = sizes;
   }
 }

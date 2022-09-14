@@ -1,14 +1,15 @@
 package com.mindhub.skywalkies.dtos;
 
+import com.mindhub.skywalkies.models.Colors;
 import com.mindhub.skywalkies.models.Shoe;
-import com.mindhub.skywalkies.models.SizeShoe;
-
+import java.util.List;
 public class ShoeDTO {
   private long id;
-  private String name,color;
+  private String name;
+  private List<Colors> colors;
+  private List<Integer> sizes;
   private int stock;
   private double price;
-  private SizeShoe sizeShoe;
   private boolean activeShoe;
 
   public ShoeDTO() {
@@ -16,10 +17,10 @@ public class ShoeDTO {
   public ShoeDTO(Shoe shoe) {
     this.id = shoe.getId();
     this.name = shoe.getName();
-    this.color = shoe.getColors();
+    this.colors = shoe.getColors();
+    this.sizes = shoe.getSizes();
     this.stock = shoe.getStock();
     this.price = shoe.getPrice();
-    this.sizeShoe = shoe.getSizeShoe();
     this.activeShoe = shoe.isActiveShoe();
   }
 
@@ -31,8 +32,12 @@ public class ShoeDTO {
     return name;
   }
 
-  public String getColor() {
-    return color;
+  public List<Colors> getColors() {
+    return colors;
+  }
+
+  public List<Integer> getSizes() {
+    return sizes;
   }
 
   public int getStock() {
@@ -41,10 +46,6 @@ public class ShoeDTO {
 
   public double getPrice() {
     return price;
-  }
-
-  public SizeShoe getSizeShoe() {
-    return sizeShoe;
   }
 
   public boolean isActiveShoe() {
