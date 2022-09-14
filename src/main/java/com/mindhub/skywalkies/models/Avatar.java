@@ -2,12 +2,10 @@ package com.mindhub.skywalkies.models;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
 public class Avatar {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
@@ -71,11 +69,4 @@ public class Avatar {
         this.body = body;
     }
 
-    public String getShoes() {
-        return shoes;
-    }
-
-    public void setShoes(String shoes) {
-        this.shoes = shoes;
-    }
 }

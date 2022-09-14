@@ -17,4 +17,6 @@ public class AvatarServiceImplements implements AvatarService {
     @Override
     public Avatar getAvatarsById (long id){return avatarRepository.findById(id).get();}
 
+
+
 }
