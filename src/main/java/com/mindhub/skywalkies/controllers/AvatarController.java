@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
@@ -28,7 +29,7 @@ public class AvatarController {
 
     @GetMapping("/api/avatars")
     public List<AvatarDTO> getAvatars(){
-        return avatarService.getAllAvatars().stream().map(client -> new AvatarDTO(new Avatar())).collect(toList());
+        return avatarService.getAllAvatars().stream().map(avatar -> new AvatarDTO(avatar)).collect(toList());
     }
 
     @GetMapping("/api/avatars/{id}")
