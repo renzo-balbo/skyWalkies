@@ -13,10 +13,13 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
-
     @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
     private Set<ClientCart> clientCarts = new HashSet<>();
-
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
+    private Set<Shoe> shoes = new HashSet<>();
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "avatar_id")
+    private Avatar avatar;
 
     private String  firstName, lastName, email, password;
     private boolean isVerificated;
@@ -31,6 +34,14 @@ public class Client {
         this.email = email;
         this.password = password;
         this.isVerificated = true;
+    }
+    public Client(String firstName, String lastName, String email, String password, Set<Shoe> shoes) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.isVerificated = true;
+        this.shoes = shoes;
     }
 
     public long getId() {
@@ -83,5 +94,13 @@ public class Client {
 
     public void setClientCarts(Set<ClientCart> clientCarts) {
         this.clientCarts = clientCarts;
+    }
+
+    public Set<Shoe> getShoes() {
+        return shoes;
+    }
+
+    public void setShoes(Set<Shoe> shoes) {
+        this.shoes = shoes;
     }
 }

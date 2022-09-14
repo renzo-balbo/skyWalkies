@@ -24,10 +24,9 @@ public class ClientCart {
     this.client = client;
   }
 
-  public void setId(long id) {
-    this.id = id;
+  public long getId() {
+    return id;
   }
-
   public Cart getCart() {
     return cart;
   }

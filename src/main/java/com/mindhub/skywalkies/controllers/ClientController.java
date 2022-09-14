@@ -45,7 +45,7 @@ public class ClientController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @RequestMapping("/clients/current")
+    @GetMapping("/clients/current")
     public ClientDTO getAll(Authentication authentication) {
         return  new ClientDTO(clientService.findClientByEmail(authentication.getName()));
     }

@@ -17,14 +17,10 @@ import java.util.stream.Collectors;
 @RequestMapping("/api")
 public class CartController {
     @Autowired
-    private CartRepository cartRepository;
-    @Autowired
-    private ClientRespository clientRespository;
-    @Autowired
     private CartService cartService;
 
-    @RequestMapping ("/carts")
-    public List<CartDTO> getAccounts(){
+    @GetMapping ("/carts")
+    public List<CartDTO> getCarts(){
         return cartService.getAllCarts().stream().map(CartDTO::new).collect(Collectors.toList());
     }
 

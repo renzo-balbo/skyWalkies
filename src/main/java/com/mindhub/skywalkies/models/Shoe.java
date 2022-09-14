@@ -22,6 +22,9 @@ public class Shoe {
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "cart_id")
   private Cart cart;
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "client_id")
+  private Client client;
   private int stock;
   private double price;
   private boolean activeShoe;
@@ -37,6 +40,15 @@ public class Shoe {
     this.price = price;
     this.activeShoe = true;
     this.sizes = sizes;
+  }
+  public Shoe(String name, List<Colors> colors, int stock, double price, List<Integer> sizes, Client client) {
+    this.name = name;
+    this.colors = colors;
+    this.stock = stock;
+    this.price = price;
+    this.activeShoe = true;
+    this.sizes = sizes;
+    this.client = client;
   }
 
   public long getId() {
@@ -89,5 +101,13 @@ public class Shoe {
 
   public void setSizes(List<Integer> sizes) {
     this.sizes = sizes;
+  }
+
+  public Client getClient() {
+    return client;
+  }
+
+  public void setClient(Client client) {
+    this.client = client;
   }
 }

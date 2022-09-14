@@ -36,4 +36,5 @@ public class AvatarController {
 
         return new AvatarDTO(avatarService.getAvatarsById(id));
     }
+
 }
