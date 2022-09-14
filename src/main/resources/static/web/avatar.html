@@ -19,7 +19,9 @@
 
         <p>Canvas to fill:</p>
 
-        <div class="d-flex flex-column gap-3 ms-5">
+
+            <div class="d-flex flex-column gap-3 ms-5" @change="">
+        
             <select name="avatarHeadSelector" id="avatarHeadSelector" v-model="customAvatar.head" style="width: 10rem;">
                 <option value="1">Afro Hair</option>
                 <option value="2">Long Blond Hair</option>
@@ -40,7 +42,7 @@
                 <option value="5">Green Shirt</option>
             </select>
 
-            <select name="avatarBodySelector" id="avatarBodySelector" v-model="customAvatar.bodyColor" style="width: 10rem;">
+            <select name="avatarBodyColorSelector" id="avatarBodyColorSelector" v-model="customAvatar.bodyColor" style="width: 10rem;">
                 <option value="1">Skin Color 1</option>
                 <option value="2">Skin Color 2</option>
                 <option value="3">Skin Color 3</option>
@@ -55,7 +57,7 @@
                 <option value="5">Mustache Face</option>
             </select>
 
-            <select name="avatarFaceSelector" id="avatarFaceSelector" v-model="customAvatar.shoes" style="width: 10rem;">
+            <select name="avatarShoeSelector" id="avatarShoeSelector" v-model="customAvatar.shoes" style="width: 10rem;">
                 <option value="1">Red & Yellow</option>
                 <option value="2">Blue</option>
                 <option value="3">Purple</option>
