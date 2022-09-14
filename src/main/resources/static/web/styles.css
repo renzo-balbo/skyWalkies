@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    height: 7vh;
+}
+
+main {
+    min-height: 80vh;
+}
+
+nav {
+    height: 100%;
+}
+
+li {
+    list-style: none;
+}
+
+/* para la imagen de prueba de logo */
+
+nav>img {
+    height: 75%;
+}
+
+/* -- */
+footer {
+    height: 13vh;
+}
+
+.widthZapaCarrusel {
+    width: 100px !important;
+}
+
+.list-group-item {
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+
+
+/* PRUEBA "CARRUSEL" */
+.horizontal-scroll-wrapper {
+    width: 100px;
+    min-height: 300px;
+    max-height: 320px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transform: rotate(-90deg);
+}
+
+.horizontal-scroll-wrapper>div {
+    width: 100px;
+    height: 100px;
+    transform: rotate(90deg);
+    transform-origin: center;
+}
+
+#scrollContainer{
+    max-height: 300px !important;
+}
