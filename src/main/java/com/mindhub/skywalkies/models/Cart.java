@@ -17,6 +17,10 @@ public class Cart {
   private Set<Shoe> shoes = new HashSet<>();
   @OneToOne(cascade = CascadeType.ALL)
   private Client client;
+
+  @ManyToOne
+  @JoinColumn(name = "shoe_id")
+  private Shoe shoe;
   @OneToMany(mappedBy = "cart", fetch = FetchType.EAGER)
   private Set<ClientCart> clientCarts = new HashSet<>();
   private double totalAmount;

@@ -4,7 +4,9 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Shoe {
@@ -19,9 +21,9 @@ public class Shoe {
   @Column(name = "Size")
   private List<Integer> sizes = new ArrayList<>();
 
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "cart_id")
-  private Cart cart;
+  @OneToMany(mappedBy="shoe", fetch=FetchType.EAGER)
+  private Set<Cart> cart = new HashSet<>();
+
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "client_id")
   private Client client;
