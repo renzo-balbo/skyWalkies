@@ -15,41 +15,20 @@ public class User {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
-    private Avatar avatar;
-    private Cart cart;
 
     private String  firstName, lastName, email, password;
-    private boolean verificated;
+    private boolean isVerificated;
 
 
     public User() {
     }
 
-    public User(long id, Avatar avatar, Cart cart, String firstName, String lastName, String email, String password, boolean verificated) {
-        this.id = id;
-        this.avatar = avatar;
-        this.cart = cart;
+    public User(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.verificated = false;
-    }
-
-    public Avatar getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(Avatar avatar) {
-        this.avatar = avatar;
-    }
-
-    public Cart getCart() {
-        return cart;
-    }
-
-    public void setCart(Cart cart) {
-        this.cart = cart;
+        this.isVerificated = true;
     }
 
     public long getId() {
@@ -89,10 +68,10 @@ public class User {
     }
 
     public boolean isVerificated() {
-        return verificated;
+        return isVerificated;
     }
 
     public void setVerificated(boolean verificated) {
-        this.verificated = verificated;
+        isVerificated = verificated;
     }
 }
