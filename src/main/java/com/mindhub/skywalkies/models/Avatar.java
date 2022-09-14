@@ -1,15 +1,17 @@
 package com.mindhub.skywalkies.models;
 
 import org.hibernate.annotations.GenericGenerator;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 @Entity
 public class Avatar {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
+
+    //@OneToOne(cascade = CascadeType.ALL)
+    //private Client client;
+
 
     private long id;
     private Integer head;
