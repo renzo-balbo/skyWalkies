@@ -42,10 +42,6 @@ public class Avatar {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public Integer getHead() {
         return head;
     }
