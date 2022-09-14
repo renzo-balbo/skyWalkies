@@ -63,6 +63,35 @@ footer {
     transform: rotate(-90deg);
 }
 
+.horizontal-scroll-wrapper-modal {
+  width: 100px;
+  height: 300px;
+  /* max-height: 320px; */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.horizontal-scroll-wrapper-modal>div {
+  width: 100px;
+  height: 100px;
+  transform: rotate(90deg);
+  transform-origin: center;
+}
+
+#scrollContainerModal{
+  transform: rotate(-90deg);
+  height: 100px; 
+}
+
+.modalSpawner{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  cursor: pointer;
+}
 
 
 
@@ -151,3 +180,33 @@ footer {
   
   
 /* -- */
+
+@media (min-width: 426px) {
+  .horizontal-scroll-wrapper-modal {
+    width: 100px;
+    height: 700px;
+    /* max-height: 320px; */
+    overflow-y: auto;
+    overflow-x: hidden;
+  }  
+}
+
+@media (min-width: 1024px) {
+  .horizontal-scroll-wrapper-modal {
+    width: 100px;
+    height: 1000px;
+    /* max-height: 320px; */
+    overflow-y: auto;
+    overflow-x: hidden;
+  }  
+}
+
+@media (min-width: 1400px) {
+  .horizontal-scroll-wrapper-modal {
+    width: 100px;
+    height: 1400px;
+    /* max-height: 320px; */
+    overflow-y: auto;
+    overflow-x: hidden;
+  }  
+}
