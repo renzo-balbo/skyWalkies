@@ -43,7 +43,6 @@ createApp({
     },
 
     updated(){
-        // this.drawCustomAvatar();
         console.log("updated")
     },
     methods: {
