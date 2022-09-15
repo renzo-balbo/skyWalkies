@@ -17,7 +17,7 @@ public class Client {
     public Client() {
     }
 
-    public Client(long id, String firstName, String lastName, String email, String password, boolean verificated) {
+    public Client(String firstName, String lastName, String email, String password, boolean verificated) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
