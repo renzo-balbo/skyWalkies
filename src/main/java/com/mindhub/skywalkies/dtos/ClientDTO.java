@@ -1,5 +1,6 @@
 package com.mindhub.skywalkies.dtos;
 
+import com.mindhub.skywalkies.models.Avatar;
 import com.mindhub.skywalkies.models.Client;
 import com.mindhub.skywalkies.models.Shoe;
 
@@ -12,6 +13,7 @@ public class ClientDTO {
 
     private Set<Shoe> shoes;
     private boolean verificated;
+    private Avatar avatar;
 
     public ClientDTO() {
     }
@@ -55,4 +57,5 @@ public class ClientDTO {
     public Set<Shoe> getShoes() {
         return shoes;
     }
+
 }

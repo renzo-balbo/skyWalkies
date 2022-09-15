@@ -17,9 +17,6 @@ public class Client {
     private Set<ClientCart> clientCarts = new HashSet<>();
     @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
     private Set<Shoe> shoes = new HashSet<>();
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "avatar_id")
-    private Avatar avatar;
 
     private String  firstName, lastName, email, password;
     private boolean isVerificated;
@@ -102,5 +99,9 @@ public class Client {
 
     public void setShoes(Set<Shoe> shoes) {
         this.shoes = shoes;
+    }
+    public void addShoe (Shoe shoe){
+        shoe.setClient(this);
+        shoes.add(shoe);
     }
 }

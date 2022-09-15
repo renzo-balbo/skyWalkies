@@ -11,8 +11,6 @@ public class Avatar {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
-    @OneToMany(mappedBy = "avatar", fetch = FetchType.EAGER)
-    private Set<Client> client = new HashSet<>();
     private Integer head;
     private Integer face;
     private Integer  bodyColor;
@@ -28,14 +26,6 @@ public class Avatar {
         this.bodyColor = bodyColor;
         this.body = body;
         this.shoes = shoes;
-    }
-    public Avatar(Integer  head, Integer  face, Integer  bodyColor, Integer  body, Integer  shoes, Set<Client> client) {
-        this.head = head;
-        this.face = face;
-        this.bodyColor = bodyColor;
-        this.body = body;
-        this.shoes = shoes;
-        this.client = client;
     }
 
     public long getId() {
@@ -80,13 +70,5 @@ public class Avatar {
 
     public void setShoes(Integer shoes) {
         this.shoes = shoes;
-    }
-
-    public Set<Client> getClient() {
-        return client;
-    }
-
-    public void setClient(Set<Client> client) {
-        this.client = client;
     }
 }

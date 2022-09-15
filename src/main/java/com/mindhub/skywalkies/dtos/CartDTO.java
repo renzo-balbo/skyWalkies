@@ -8,7 +8,6 @@ import java.util.Set;
 
 public class CartDTO {
   private long id;
-  private Set<Shoe> shoes;
   private Client client;
   private double totalAmount;
   private LocalDate localDate;
@@ -17,7 +16,6 @@ public class CartDTO {
 
   public CartDTO(Cart cart){
     this.id = cart.getId();
-    this.shoes = cart.getShoes();
     this.client = cart.getClient();
     this.totalAmount = cart.getTotalAmount();
     this.localDate = cart.getLocalDate();
@@ -25,10 +23,6 @@ public class CartDTO {
 
   public long getId() {
     return id;
-  }
-
-  public Set<Shoe> getShoes() {
-    return shoes;
   }
 
   public Client getClient() {

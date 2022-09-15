@@ -13,8 +13,6 @@ public class Cart {
   @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
   @GenericGenerator(name = "native", strategy = "native")
   private long id;
-  @OneToMany(mappedBy = "cart", fetch = FetchType.EAGER)
-  private Set<Shoe> shoes = new HashSet<>();
   @OneToOne(cascade = CascadeType.ALL)
   private Client client;
 
@@ -29,8 +27,7 @@ public class Cart {
   public Cart() {
   }
 
-  public Cart(Set<Shoe> shoes, Client client, double totalAmount, LocalDate localDate) {
-    this.shoes = shoes;
+  public Cart(Client client, double totalAmount, LocalDate localDate) {
     this.client = client;
     this.totalAmount = totalAmount;
     this.localDate = localDate;
@@ -38,14 +35,6 @@ public class Cart {
 
   public long getId() {
     return id;
-  }
-
-  public Set<Shoe> getShoes() {
-    return shoes;
-  }
-
-  public void setShoes(Set<Shoe> shoes) {
-    this.shoes = shoes;
   }
 
   public Client getClient() {
