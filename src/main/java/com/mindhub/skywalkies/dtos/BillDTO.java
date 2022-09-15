@@ -1,15 +1,15 @@
 package com.mindhub.skywalkies.dtos;
 
 import com.mindhub.skywalkies.models.Bill;
+import com.mindhub.skywalkies.models.CliOrd;
 import com.mindhub.skywalkies.models.Client;
-import com.mindhub.skywalkies.models.Order;
 
 import java.time.LocalDate;
 import java.util.Set;
 
 public class BillDTO {
   private long id;
-  private Set<Order> orders;
+  private Set<CliOrd> cliOrds;
   private Client client;
   private boolean payed;
   private LocalDate localDate;
@@ -21,7 +21,7 @@ public class BillDTO {
     this.id = bill.getId();
     this.client = bill.getClient();
     this.payed = bill.isPayed();
-    this.orders = bill.getOrders();
+    this.cliOrds = bill.getCliOrd();
     this.localDate = bill.getLocalDate();
     this.totalAmount = bill.getTotalAmount();
 
@@ -31,8 +31,8 @@ public class BillDTO {
     return id;
   }
 
-  public Set<Order> getOrders() {
-    return orders;
+  public Set<CliOrd> getCliOrd() {
+    return cliOrds;
   }
 
   public Client getClient() {

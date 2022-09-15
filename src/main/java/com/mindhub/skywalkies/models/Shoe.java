@@ -1,12 +1,9 @@
 package com.mindhub.skywalkies.models;
 
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 public class Shoe {
@@ -21,8 +18,8 @@ public class Shoe {
   @Column(name = "Size")
   private List<Integer> sizes = new ArrayList<>();
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "order_id")
-  private Order order;
+  @JoinColumn(name = "cliOrd_id")
+  private CliOrd cliOrd;
   private int stock;
   private double price;
   private boolean activeShoe;
@@ -92,11 +89,11 @@ public class Shoe {
     this.sizes = sizes;
   }
 
-  public Order getOrder() {
-    return order;
+  public CliOrd getCliOrd() {
+    return cliOrd;
   }
 
-  public void setOrder(Order order) {
-    this.order = order;
+  public void setCliOrd(CliOrd cliOrd) {
+    this.cliOrd = cliOrd;
   }
 }

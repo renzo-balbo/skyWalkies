@@ -14,7 +14,7 @@ public class Bill {
   @GenericGenerator(name = "native", strategy = "native")
   private long id;
   @OneToMany(mappedBy = "bill", fetch = FetchType.EAGER)
-  private Set<Order> orders = new HashSet<>();
+  private Set<CliOrd> cliOrds = new HashSet<>();
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "client_id")
   private Client client;
@@ -25,8 +25,8 @@ public class Bill {
   public Bill() {
   }
 
-  public Bill(Set<Order> orders, Client client, boolean payed, LocalDate localDate, double totalAmount) {
-    this.orders = orders;
+  public Bill(Set<CliOrd> cliOrds, Client client, boolean payed, LocalDate localDate, double totalAmount) {
+    this.cliOrds = cliOrds;
     this.client = client;
     this.payed = false;
     this.localDate = localDate;
@@ -37,12 +37,12 @@ public class Bill {
     return id;
   }
 
-  public Set<Order> getOrders() {
-    return orders;
+  public Set<CliOrd> getCliOrd() {
+    return cliOrds;
   }
 
-  public void setOrders(Set<Order> orders) {
-    this.orders = orders;
+  public void setCliOrd(Set<CliOrd> cliOrds) {
+    this.cliOrds = cliOrds;
   }
 
   public Client getClient() {

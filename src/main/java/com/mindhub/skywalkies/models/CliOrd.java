@@ -7,12 +7,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Order {
+public class CliOrd {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
   @GenericGenerator(name = "native", strategy = "native")
   private long id;
-  @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
+  @OneToMany(mappedBy = "cliOrd", fetch = FetchType.EAGER)
   private Set<Shoe> shoes = new HashSet<>();
 
   @ManyToOne(fetch = FetchType.EAGER)
@@ -20,10 +20,10 @@ public class Order {
   private Bill bill;
   private LocalDate localDate;
 
-  public Order() {
+  public CliOrd() {
   }
 
-  public Order(Set<Shoe> shoes, Bill bill, LocalDate localDate) {
+  public CliOrd(Set<Shoe> shoes, Bill bill, LocalDate localDate) {
     this.shoes = shoes;
     this.bill = bill;
     this.localDate = localDate;
@@ -52,7 +52,6 @@ public class Order {
   public Bill getBill() {
     return bill;
   }
-
   public void setBill(Bill bill) {
     this.bill = bill;
   }

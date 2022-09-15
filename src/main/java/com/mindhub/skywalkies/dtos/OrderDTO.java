@@ -1,7 +1,7 @@
 package com.mindhub.skywalkies.dtos;
 
 import com.mindhub.skywalkies.models.Bill;
-import com.mindhub.skywalkies.models.Order;
+import com.mindhub.skywalkies.models.CliOrd;
 import com.mindhub.skywalkies.models.Shoe;
 import java.time.LocalDate;
 import java.util.Set;
@@ -14,11 +14,11 @@ public class OrderDTO {
 
   public OrderDTO (){}
 
-  public OrderDTO (Order order){
-    this.id = order.getId();;
-    this.bill = order.getBill();
-    this.shoes = order.getShoes();
-    this.localDate = order.getLocalDate();
+  public OrderDTO (CliOrd cliOrd){
+    this.id = cliOrd.getId();;
+    this.bill = cliOrd.getBill();
+    this.shoes = cliOrd.getShoes();
+    this.localDate = cliOrd.getLocalDate();
   }
 
   public long getId() {

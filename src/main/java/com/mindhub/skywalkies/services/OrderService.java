@@ -1,11 +1,11 @@
 package com.mindhub.skywalkies.services;
 
-import com.mindhub.skywalkies.models.Order;
+import com.mindhub.skywalkies.models.CliOrd;
 
 import java.util.List;
 
 public interface OrderService {
-  public Order findById (Long id);
-  public List<Order> allOrder();
-  public void saveOrder(Order order);
+  public CliOrd findById (Long id);
+  public List<CliOrd> allOrder();
+  public void saveOrder(CliOrd cliOrd);
 }
