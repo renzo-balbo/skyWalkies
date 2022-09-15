@@ -1,46 +1,47 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 header {
-    height: 7vh;
+  height: 7vh;
 }
 
 main {
-    min-height: 80vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7) .1em, transparent .1em), linear-gradient(90deg, rgba(0, 0, 0, .7) .1em, transparent .1em);
-    background-size: 3em 3em;
+  min-height: 80vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7) .1em, transparent .1em), linear-gradient(90deg, rgba(0, 0, 0, .7) .1em, transparent .1em);
+  background-size: 3em 3em;
 }
 
 nav {
-    height: 100%;
+  height: 100%;
 }
 
 footer {
   height: 13vh;
 }
+
 li {
-    list-style: none;
+  list-style: none;
 }
 
 /* para la imagen de prueba de logo */
 
 nav>img {
-    height: 75%;
+  height: 75%;
 }
 
 /* -- */
 
 
 .widthZapaCarrusel {
-    width: 100px !important;
+  width: 100px !important;
 }
 
 .list-group-item {
-    border: none !important;
-    border-radius: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
 }
 
 
@@ -48,23 +49,23 @@ nav>img {
 /* PRUEBA "CARRUSEL" DE ZAPAS */
 
 .horizontal-scroll-wrapper {
-    width: 100px;
-    height: 300px;
-    /* max-height: 320px; */
-    overflow-y: auto;
-    overflow-x: hidden;
+  width: 100px;
+  height: 300px;
+  /* max-height: 320px; */
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .horizontal-scroll-wrapper>div {
-    width: 100px;
-    height: 100px;
-    transform: rotate(90deg);
-    transform-origin: center;
+  width: 100px;
+  height: 100px;
+  transform: rotate(90deg);
+  transform-origin: center;
 }
 
-#scrollContainer{
-    /* max-height: 300px !important; */
-    transform: rotate(-90deg);
+#scrollContainer {
+  /* max-height: 300px !important; */
+  transform: rotate(-90deg);
 }
 
 .horizontal-scroll-wrapper-modal {
@@ -82,12 +83,12 @@ nav>img {
   transform-origin: center;
 }
 
-#scrollContainerModal{
+#scrollContainerModal {
   transform: rotate(-90deg);
-  height: 100px; 
+  height: 100px;
 }
 
-.modalSpawner{
+.modalSpawner {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -96,15 +97,15 @@ nav>img {
   z-index: 1;
   cursor: pointer;
 }
-  
-  video{
-    width: 80%;
-    align-self: center;
-    justify-self: center;
-    z-index: 2;
+
+video {
+  width: 80%;
+  align-self: center;
+  justify-self: center;
+  z-index: 2;
 }
 
-.card{
+.card {
   border-radius: 0;
   box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
@@ -118,7 +119,7 @@ nav>img {
     /* max-height: 320px; */
     overflow-y: auto;
     overflow-x: hidden;
-  }  
+  }
 }
 
 @media (min-width: 1024px) {
@@ -128,21 +129,25 @@ nav>img {
     /* max-height: 320px; */
     overflow-y: auto;
     overflow-x: hidden;
-  }  
+  }
+
   /* .ocultar{
     display: none !important;
   } */
 
-  footer{
+  footer {
     height: 3vh;
   }
-  header{
+
+  header {
     height: 10vh;
   }
-  main{
+
+  main {
     background: none !important;
   }
-  .iconosLg{
+
+  .iconosLg {
     height: 100%;
     width: 4rem !important;
   }
@@ -155,12 +160,19 @@ nav>img {
     /* max-height: 320px; */
     overflow-y: auto;
     overflow-x: hidden;
-  }  
+  }
 }
 
 /* QUERIES PARA SLIDER */
 @media (min-width: 1000px) {
-  .slider{
+  .slider {
     display: none;
   }
 }
+
+/* .estanteZapatillasMobile {
+  width: 30%;
+  height: 15rem !important;
+  border-left: 16px solid rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.2) -7px 0px 60px 40px;
+} */
