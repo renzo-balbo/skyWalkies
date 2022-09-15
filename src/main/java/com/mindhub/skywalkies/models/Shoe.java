@@ -21,6 +21,9 @@ public class Shoe {
   @Column(name = "Size")
   private List<Integer> sizes = new ArrayList<>();
 
+  @OneToMany(mappedBy="shoe", fetch=FetchType.EAGER)
+  private Set<Cart> cart = new HashSet<>();
+
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "client_id")
   private Client client;
