@@ -1,4 +1,4 @@
 package com.mindhub.skywalkies.repositories;
 
-public class ProductRepository {
+public interface ProductRepository {
 }
