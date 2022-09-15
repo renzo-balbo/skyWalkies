@@ -26,10 +26,11 @@ public class Client {
         this.verificated = verificated;
     }
 
+
+
     public long getId() {
         return id;
     }
-
 
 
     public String getFirstName() {
