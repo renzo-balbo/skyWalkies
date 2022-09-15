@@ -1,6 +1,7 @@
 package com.mindhub.skywalkies.dtos;
 
 import com.mindhub.skywalkies.models.Colors;
+import com.mindhub.skywalkies.models.Order;
 import com.mindhub.skywalkies.models.Shoe;
 import java.util.List;
 public class ShoeDTO {
@@ -11,6 +12,7 @@ public class ShoeDTO {
   private int stock;
   private double price;
   private boolean activeShoe;
+  private Order order;
 
   public ShoeDTO() {
   }
@@ -22,6 +24,7 @@ public class ShoeDTO {
     this.stock = shoe.getStock();
     this.price = shoe.getPrice();
     this.activeShoe = shoe.isActiveShoe();
+    this.order = shoe.getOrder();
   }
 
   public long getId() {
@@ -50,5 +53,9 @@ public class ShoeDTO {
 
   public boolean isActiveShoe() {
     return activeShoe;
+  }
+
+  public Order getOrder() {
+    return order;
   }
 }

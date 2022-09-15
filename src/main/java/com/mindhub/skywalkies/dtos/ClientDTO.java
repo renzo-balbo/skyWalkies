@@ -10,8 +10,6 @@ public class ClientDTO {
     private long id;
 
     private String  firstName, lastName, email, password;
-
-    private Set<Shoe> shoes;
     private boolean verificated;
     private Avatar avatar;
 
@@ -26,7 +24,6 @@ public class ClientDTO {
         this.email = client.getEmail();
         this.password = client.getPassword();
         this.verificated = client.isVerificated();
-        this.shoes = client.getShoes();
     }
 
     public long getId() {
@@ -52,10 +49,6 @@ public class ClientDTO {
     }
     public boolean isVerificated() {
         return verificated;
-    }
-
-    public Set<Shoe> getShoes() {
-        return shoes;
     }
 
 }

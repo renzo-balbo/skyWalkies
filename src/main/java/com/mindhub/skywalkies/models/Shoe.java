@@ -20,13 +20,9 @@ public class Shoe {
   @ElementCollection
   @Column(name = "Size")
   private List<Integer> sizes = new ArrayList<>();
-
-  @OneToMany(mappedBy="shoe", fetch=FetchType.EAGER)
-  private Set<Cart> cart = new HashSet<>();
-
   @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "client_id")
-  private Client client;
+  @JoinColumn(name = "order_id")
+  private Order order;
   private int stock;
   private double price;
   private boolean activeShoe;
@@ -42,15 +38,6 @@ public class Shoe {
     this.price = price;
     this.activeShoe = true;
     this.sizes = sizes;
-  }
-  public Shoe(String name, List<Colors> colors, int stock, double price, List<Integer> sizes, Client client) {
-    this.name = name;
-    this.colors = colors;
-    this.stock = stock;
-    this.price = price;
-    this.activeShoe = true;
-    this.sizes = sizes;
-    this.client = client;
   }
 
   public long getId() {
@@ -105,11 +92,11 @@ public class Shoe {
     this.sizes = sizes;
   }
 
-  public Client getClient() {
-    return client;
+  public Order getOrder() {
+    return order;
   }
 
-  public void setClient(Client client) {
-    this.client = client;
+  public void setOrder(Order order) {
+    this.order = order;
   }
 }
