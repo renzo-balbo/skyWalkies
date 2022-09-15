@@ -4,8 +4,6 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            isDown:Boolean,
-            
         }
     },
     created() {
@@ -23,9 +21,12 @@ createApp({
 }).mount('#app')
 
 const slider = document.getElementById("slider");
+const scrollContainer = document.getElementsByClassName("sliderForGallery")
 let isDown = false;
 let startX;
 let scrollLeft;
+
+
 
 slider.addEventListener('mousedown', (e) => {
     isDown = true;
@@ -53,6 +54,7 @@ slider.addEventListener('mousemove', (e) => {
 window.addEventListener("wheel", (e) => {
     if (e.deltaY > 0) {
         slider.scrollLeft += 100
-    }else{
-     slider.scrollLeft -= 100}
-  });
+    } else {
+        slider.scrollLeft -= 100
+    }
+});
