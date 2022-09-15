@@ -18,6 +18,8 @@ public class SkywalkiesApplication {
 public CommandLineRunner initData() {
 		return (args) -> {
 
+
+
 		};
 	}
 
