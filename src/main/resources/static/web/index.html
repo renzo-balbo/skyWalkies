@@ -14,18 +14,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../assets/styles/styles.css">
     <link rel="stylesheet" href="../assets/styles/slider.css">
-    <link rel="shortcut icon" href="https://la.louisvuitton.com/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/img/skyWalkiesLogo.png" type="image/x-icon">
 </head>
 
 <body>
     <div id="app">
-        <header>
+        <header class=" sticky-top bg-white">
             <nav class="d-flex justify-content-between align-items-center">
                 <!-- OFF CANVAS LEFT PARA EL NAV -->
 
                 <button class="btn btn-solid" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-                    <i class="bi bi-grid-fill"></i>
+                    <i class="bi bi-grid-fill icono"></i>
                 </button>
                 <div class="offcanvas offcanvas-start " data-bs-scroll="true" tabindex="-1"
                     id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
@@ -49,7 +49,7 @@
 
                 <!-- ACA TERMINA EL OFF CANVAS DE  NAV -->
 
-                <img src="../assets/img/NIKE-LV-AFONE-HIGH-D.png" alt="">
+                <img src="../assets/img/skyWalkiesIsoLogo.png" height="100%" alt="">
 
                 <!-- OFF CANVAS RIGHT REGISTRO -->
 
@@ -146,18 +146,17 @@
 
         <main class="d-flex flex-wrap justify-content-center">
 
-            <!-- PRESENTACION DEL PRODUCTO -->
             <div class="d-lg-none">
-
-                <div class="ocultar">
+                <!-- PRESENTACION DEL PRODUCTO -->
+                <div class="ocultar mt-1">
                     <div class="d-flex flex-wrap justify-content-center">
-                        <h2>Nike newest collection...</h2>
-                        <div class="d-flex justify-content-center ms-5">
+                        <h1 class="card">Nike newest collection...</h1>
+                        <div class="d-flex justify-content-center ms-5 my-4">
                             <video src="../assets/vid/zapatillaRotando.webm" autoplay loop muted></video>
                         </div>
                     </div>
 
-                    <div class="d-flex flex-wrap justify-content-center">
+                    <div class="d-flex flex-wrap justify-content-center card mx-3">
                         <h2 class="text-center">"Air Force 1", by "placeholder"</h2>
                         <p class="m-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque voluptate
                             maiores
@@ -168,20 +167,19 @@
                 </div>
 
                 <!-- SECCION HANDCRAFTED  -->
-                <div class="ocultar">
-                    <div class="d-flex flex-wrap justify-content-center">
-                        <h2>Handcrafted</h2>
+                <div class="ocultar my-5">
+                    <div class="d-flex flex-wrap justify-content-center card mx-3">
+                        <h2 class="text-center">Handcrafted</h2>
                         <p class="m-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto labore
                             impedit,
                             sint
                             tenetur ipsa sed
                             delectus nobis perspiciatis odio praesentium.</p>
                     </div>
-
-                    <div class="d-flex justify-content-center ms-5">
+                    <div class="d-flex justify-content-center mt-3">
                         <!-- CAMBIAR VIDEO -->
                         <video autoplay muted loop width="300px">
-                            <source src="../assets/vid/zapatillaRotando.webm" type="video/mp4">
+                            <source src="../assets/vid/handcrafted/handcrafted_1.mp4" type="video/mp4">
                         </video>
                     </div>
                 </div>
@@ -189,7 +187,7 @@
 
                 <!-- SECCION GALERIA DE ZAPAS      -->
                 <div class="d-flex flex-wrap justify-content-center ocultar">
-                    <div class="d-flex justify-content-around align-items-center flex-wrap">
+                    <div class="d-flex justify-content-around align-items-center flex-wrap card">
                         <h2>Designs Gallery</h2>
 
                         <!-- CARRUSEL DE BOOTSTRAP, VER MAS TARDE -->
@@ -310,7 +308,9 @@
                         </div>
                     </div>
 
-                    <p class="m-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit repudiandae in totam
+                    <p class="m-3 card p-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit repudiandae
+                        in
+                        totam
                         rem
                         libero, error
                         iste voluptatibus facilis nostrum iusto cumque excepturi deleniti necessitatibus et! Eaque
@@ -318,50 +318,11 @@
                         eos labore hic debitis est, cupiditate harum doloribus voluptates.</p>
                 </div>
 
-
-
-                <!-- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active d-flex flex-wrap container">
-                    <img src="../assets/img/zapatilla_modelo_1.webp" width="50px" class="card-img-top col-2" alt="...">
-                    <img src="../assets/img/zapatilla_modelo_1.webp" width="50px" class="card-img-top col-2" alt="...">
-                    <img src="../assets/img/zapatilla_modelo_1.webp" width="50px" class="card-img-top col-2" alt="...">
-                    
-                    
-                    
-                </div>
-                <div class="carousel-item">
-                    <img src="../assets/img/zapatilla_modelo_1.webp" width="50px" class="card-img-top" alt="...">
-                    <img src="../assets/img/zapatilla_modelo_1.webp" width="50px" class="card-img-top" alt="...">
-                    <img src="../assets/img/zapatilla_modelo_1.webp" width="50px" class="card-img-top" alt="...">
-                    
-                    
-                </div>
-                <div class="carousel-item">
-                    <img src="../assets/img/zapatilla_modelo_1.webp" width="50px" class="card-img-top" alt="...">
-                    <img src="../assets/img/zapatilla_modelo_1.webp" width="50px" class="card-img-top" alt="...">
-                    <img src="../assets/img/zapatilla_modelo_1.webp" width="50px" class="card-img-top" alt="...">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div> -->
-
-
-
                 <!-- SECCION INSPIRACION -->
-                <div class="ocultar">
+                <div class="ocultar my-3">
 
-                    <div class="d-flex flex-wrap justify-content-center">
-                        <h2>Inspiration</h2>
+                    <div class="d-flex flex-wrap justify-content-center card mx-3">
+                        <h2 class="text-center">Inspiration</h2>
                         <p class="m-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore quam delectus
                             laboriosam
                             modi illum
@@ -378,30 +339,27 @@
 
 
                 <!-- SECCION EXPOSITION  -->
-                <div class="ocultar">
-
-                    <div class="d-flex flex-wrap justify-content-center">
-                        <h2>Exposition</h2>
+                <div class="ocultar my-2">
+                    <div class="d-flex flex-wrap justify-content-center card mx-3 mb-3">
+                        <h2 class="text-center">Exposition</h2>
                         <p class="m-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis atque hic placeat
                             exercitationem
                             blanditiis pariatur adipisci, repellendus aut provident. Quia.</p>
                     </div>
 
-                    <div class="d-flex justify-content-center ms-5">
+                    <div class="d-flex justify-content-center">
                         <!-- CAMBIAR VIDEO POR OBJETO 3D -->
                         <video autoplay muted loop width="300px">
-                            <source src="../assets/vid/zapatillaRotando.webm" type="video/mp4">
+                            <source src="../assets/vid/handcrafted/handcrafted_2.mp4" type="video/mp4">
                         </video>
                     </div>
                 </div>
 
 
                 <!-- SECCION NEWS  -->
-                <div class="ocultar">
-
-
-                    <div class="d-flex flex-wrap justify-content-center">
-                        <h2>News</h2>
+                <div class="ocultar my-4">
+                    <div class="d-flex flex-wrap justify-content-center card mx-3 mb-2">
+                        <h2 class="text-center">News</h2>
                         <p class="m-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod voluptates
                             accusamus et
                             aliquam
@@ -545,28 +503,66 @@
 
             <!-- EMPIEZA EL SLIDER -->
 
-<!-- AHI DEJE EL SLIDER COMO ESTABA CON EL CUADRICULADO ME FUI A COMER BAIIIIIIII <3 -->
+            <!-- AHI DEJE EL SLIDER COMO ESTABA CON EL CUADRICULADO ME FUI A COMER BAIIIIIIII <3 -->
 
             <div class='slider d-none d-lg-flex' id="slider">
-                <div class="bloques flex-column align-items-center justify-content-evenly">
-                    <div class="videoContainer">
+                <div class="bloques flex-wrap align-items-center justify-content-center" id="newCollection">
+                    <h2 class="col-12 text-center">Nike newest collection</h2>
+                    <div class="videoContainer d-flex align-items-center justify-content-center col-6">
                         <video autoplay loop src="../assets/vid/zapatillaRotando.webm"></video>
+                    </div>
+                    <div class="divs col-5">
+                        <h2 class="text-center">"Air Force 1", by "placeholder"</h2>
+                        <p class="m-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque voluptate
+                            maiores
+                            dolore
+                            omnis neque
+                            exercitationem odit soluta suscipit vel!</p>
                     </div>
 
                 </div>
 
-                <div class="bloques flex-column align-items-center justify-content-evenly">
+                <div class="bloques flex-wrap align-items-center justify-content-center" id="handcrafted">
+                    <h2 class="col-12 text-center">Handcrafted</h2>
+                    <div class="d-flex flex-wrap justify-content-center divs mx-3 col-6">
+                        <p class="m-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto labore
+                            impedit,
+                            sint
+                            tenetur ipsa sed
+                            delectus nobis perspiciatis odio praesentium.
+                        </p>
+                    </div>
+                    <div class="videoContainer d-flex align-items-center justify-content-center col-6">
+                        <video autoplay loop muted src="../assets/vid/handcrafted/handcrafted_1.mp4"></video>
+                    </div>
                 </div>
 
-                <div class="bloques">
-                    
+                <div class="bloques" id="gallery">
                     <div class="divs"></div>
-                    <div class="divs"></div>
+                    <div class="divs">
+                        <p>GALLERY</p>
+                    </div>
                     <div class="divs"></div>
                 </div>
-                <div class="bloques">
+                <div class="bloques" id="inspiration">
                     <div class="divs"></div>
+                    <div class="divs">
+                        <p>INSPIRATION</p>
+                    </div>
                     <div class="divs"></div>
+                </div>
+                <div class="bloques" id="exposition">
+                    <div class="divs"></div>
+                    <div class="divs">
+                        <p>EXPOSITION</p>
+                    </div>
+                    <div class="divs"></div>
+                </div>
+                <div class="bloques" id="news">
+                    <div class="divs"></div>
+                    <div class="divs">
+                        <p>NEWS</p>
+                    </div>
                     <div class="divs"></div>
                 </div>
             </div>
@@ -574,15 +570,30 @@
         </main>
 
 
-        <footer class="d-flex align-items-center justify-content-center">
-            <ul>
-                <li>Sky Walkies &reg;</li>
-                <li>Register</li>
-                <li>Contact</li>
+        <footer class="d-flex align-items-center justify-content-start">
+            <ul class="d-lg-flex justify-content-around align-items-center d-none" id="footerLg">
+                <li class="mt-4">
+                    <a href="#newCollection">Nike newest collection</a>
+                </li>
+                <li class="mt-4">
+                    <a href="#handcrafted">Handcrafted</a>
+                </li>
+                <li class="mt-4">
+                    <a href="#gallery">Gallery</a>
+                </li>
+                <li class="mt-4">
+                    <a href="#inspiration">Inspiration</a>
+                </li>
+                <li class="mt-4">
+                    <a href="#exposition">Exposition</a>
+                </li>
+                <li class="mt-4">
+                    <a href="#news">News</a>
+                </li>
+                <li class="mt-4">Sky Walkies &reg;</li>
             </ul>
         </footer>
     </div>
-
 
 
     <!-- JavaScript Bundle with Popper -->
