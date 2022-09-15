@@ -15,7 +15,7 @@ public class SkywalkiesApplication {
 		SpringApplication.run(SkywalkiesApplication.class, args);
 	}
 	@Bean
-public CommandLineRunner initData(ClientRespository clientRespository, ShoeRepository shoeRepository, AvatarRepository avatarRepository) {
+public CommandLineRunner initData() {
 		return (args) -> {
 
 		};
