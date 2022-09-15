@@ -10,12 +10,17 @@ header {
 
 main {
     min-height: 80vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7) .1em, transparent .1em), linear-gradient(90deg, rgba(0, 0, 0, .7) .1em, transparent .1em);
+    background-size: 3em 3em;
 }
 
 nav {
     height: 100%;
 }
 
+footer {
+  height: 13vh;
+}
 li {
     list-style: none;
 }
@@ -27,9 +32,7 @@ nav>img {
 }
 
 /* -- */
-footer {
-    height: 13vh;
-}
+
 
 .widthZapaCarrusel {
     width: 100px !important;
@@ -42,7 +45,8 @@ footer {
 
 
 
-/* PRUEBA "CARRUSEL" */
+/* PRUEBA "CARRUSEL" DE ZAPAS */
+
 .horizontal-scroll-wrapper {
     width: 100px;
     height: 300px;
@@ -97,7 +101,10 @@ footer {
     width: 80%;
     align-self: center;
     justify-self: center;
+    z-index: 2;
 }
+
+/* EMPIEZAN LAS MEDIA QUERIES */
 
 @media (min-width: 426px) {
   .horizontal-scroll-wrapper-modal {
@@ -117,15 +124,18 @@ footer {
     overflow-y: auto;
     overflow-x: hidden;
   }  
-  .ocultar{
+  /* .ocultar{
     display: none !important;
-  }
+  } */
 
   footer{
-    height: 5vh;
+    height: 3vh;
   }
   header{
     height: 10vh;
+  }
+  main{
+    background: none !important;
   }
 }
 
