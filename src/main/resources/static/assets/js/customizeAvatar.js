@@ -46,6 +46,7 @@ createApp({
         console.log("updated")
         this.drawCustomAvatar()
     },
+
     methods: {
         loadClientData() {
             this.clientAvatar = {
@@ -107,6 +108,13 @@ createApp({
             this.avatarArtLine.src="../assets/img/avatarCollection/lineArtObligatory.png";
         },
 
+        saveNewAvatar(){
+            axios.patch('/api/clients/current/avatar',{head:this.customAvatar.head, body:this.customAvatar.body, bodyColor:this.customAvatar.bodyColor, face:this.customAvatar.face,shoes:this.customAvatar.shoes})
+            .then(()=>{
+                console.log("Your avatar has been updated!")
+            })
+            .catch(error => console.log(error))
+        },
 
 
     },

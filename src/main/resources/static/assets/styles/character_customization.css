@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Tajawal';
 }
 
 header {
@@ -115,6 +118,55 @@ label{
     padding: .2rem;
 }
 
+#keepItButton{
+    border: 2px solid black !important;
+    background-color: white;
+    height: 4.5rem;
+    width: 9rem;
+    font-size: xx-large;
+    font-weight: 400;
+    padding: .5rem;
+    transition: 300ms;
+    border-radius: 5px;
+}
+
+#keepItButton:hover{
+    background-color: black;
+    color: white;
+    transform: scale(1.2);
+    text-decoration: underline;
+}
+
+.selectorContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    margin: .5rem;
+    /* SETEAR UN WIDTH PARA TODOS Y DARLE SCROLL HORIZONTAL PARA VER LAS OPCIONES*/
+}
+
+.avatarPartSelector{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: white;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+
+.avatarPartSelector>input{
+    display: none;
+}
+
+.avatarPartSelector:hover{
+    transform: scale(1.05);
+}
+
+label{
+    background-color: white;
+}
+
 
 
 
@@ -149,6 +201,7 @@ label{
     }
 
     main {
+        height: 87vh;
         width: 100%;
         background: none !important;
     }

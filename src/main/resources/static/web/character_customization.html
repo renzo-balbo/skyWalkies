@@ -146,27 +146,27 @@
 
         <main class="d-flex flex-wrap justify-content-center">
 
-            <div class="col-12 d-flex justify-content-evenly">
+            <div class="col-12 d-flex flex-wrap justify-content-evenly">
 
 
 
 
                 <!-- PERSONALIZAR EL AVATAR  -->
-                <div class="d-flex flex-wrap col-8 bg-danger m-3 justify-content-center">
+                <div class="d-flex flex-wrap col-8  justify-content-center">
 
-                    <h2 class="col-12 text-center mt-3">Select Your Style</h2>
+                    <h2 class="col-12 text-center fw-bold bg-white">Select Your Style</h2>
 
-                    <div class="bg-white d-flex flex-wrap justify-content-center">
+                    <div class="d-flex flex-wrap justify-content-center flex-column align-items-center">
                         <img src="../assets/img/avatarCollection/lineArtObligatory.png" alt="" class="d-none">
 
                         <!-- HEAD SELECTOR  -->
-                        <div class="d-flex flex-column">
+                        <div class="selectorContainer">
 
                             <label for="">Select the hairstyle that's suits you the best:</label>
 
-                            <div class="d-flex col-10 justify-content-start gap-4">
+                            <div class="d-flex col-10 justify-content-center gap-4">
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="head1Selector">
                                         <img src="../assets/img/avatarCollection/head1.png" alt="" height="100"
                                             width="100">
@@ -175,7 +175,7 @@
                                         v-model="customAvatar.head">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="head2Selector">
                                         <img src="../assets/img/avatarCollection/head2.png" alt="" height="100"
                                             width="100">
@@ -184,7 +184,7 @@
                                         v-model="customAvatar.head">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="head3Selector">
                                         <img src="../assets/img/avatarCollection/head3.png" alt="" height="100"
                                             width="100">
@@ -193,7 +193,7 @@
                                         v-model="customAvatar.head">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="head4Selector">
                                         <img src="../assets/img/avatarCollection/head4.png" alt="" height="100"
                                             width="100">
@@ -202,7 +202,7 @@
                                         v-model="customAvatar.head">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="head5Selector">
                                         <img src="../assets/img/avatarCollection/head5.png" alt="" height="100"
                                             width="100">
@@ -211,7 +211,7 @@
                                         v-model="customAvatar.head">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="head6Selector">
                                         <img src="../assets/img/avatarCollection/head6.png" alt="" height="100"
                                             width="100">
@@ -220,7 +220,7 @@
                                         v-model="customAvatar.head">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="head7Selector">
                                         <img src="../assets/img/avatarCollection/head7.png" alt="" height="100"
                                             width="100">
@@ -229,7 +229,7 @@
                                         v-model="customAvatar.head">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="head8Selector">
                                         <img src="../assets/img/avatarCollection/head8.png" alt="" height="100"
                                             width="100">
@@ -238,7 +238,7 @@
                                         v-model="customAvatar.head">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="head9Selector">
                                         <img src="../assets/img/avatarCollection/head9.png" alt="" height="100"
                                             width="100">
@@ -251,13 +251,13 @@
                         </div>
 
                         <!-- BODY SELECTOR  -->
-                        <div class="d-flex flex-column">
+                        <div class="selectorContainer">
                             <label for="">Pick an outfit for today:</label>
 
-                            <div class="d-flex col-10 justify-content-start gap-4">
+                            <div class="d-flex col-10 justify-content-center gap-4">
 
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="body1Selector">
                                         <img src="../assets/img/avatarCollection/body1.png" alt="" height="100"
                                             width="100">
@@ -266,7 +266,7 @@
                                         v-model="customAvatar.body">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="body2Selector">
                                         <img src="../assets/img/avatarCollection/body2.png" alt="" height="100"
                                             width="100">
@@ -275,7 +275,7 @@
                                         v-model="customAvatar.body">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="body3Selector">
                                         <img src="../assets/img/avatarCollection/body3.png" alt="" height="100"
                                             width="100">
@@ -284,7 +284,7 @@
                                         v-model="customAvatar.body">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="body4Selector">
                                         <img src="../assets/img/avatarCollection/body4.png" alt="" height="100"
                                             width="100">
@@ -293,7 +293,7 @@
                                         v-model="customAvatar.body">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="body5Selector">
                                         <img src="../assets/img/avatarCollection/body5.png" alt="" height="100"
                                             width="100">
@@ -306,13 +306,13 @@
                         </div>
 
                         <!-- BODY COLOR SELECTOR  -->
-                        <div class="d-flex flex-column">
+                        <div class="selectorContainer">
                             <label for="">Select a body color:</label>
 
-                            <div class="d-flex col-10 justify-content-start gap-4">
+                            <div class="d-flex col-10 justify-content-center gap-4">
 
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="bodyColor1Selector">
                                         <img src="../assets/img/avatarCollection/bodyColor1.png" alt="" height="100"
                                             width="100">
@@ -321,7 +321,7 @@
                                         value="1" v-model="customAvatar.bodyColor">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="bodyColor2Selector">
                                         <img src="../assets/img/avatarCollection/bodyColor2.png" alt="" height="100"
                                             width="100">
@@ -330,7 +330,7 @@
                                         value="2" v-model="customAvatar.bodyColor">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="bodyColor3Selector">
                                         <img src="../assets/img/avatarCollection/bodyColor3.png" alt="" height="100"
                                             width="100">
@@ -339,7 +339,7 @@
                                         value="3" v-model="customAvatar.bodyColor">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="bodyColor4Selector">
                                         <img src="../assets/img/avatarCollection/bodyColor4.png" alt="" height="100"
                                             width="100">
@@ -353,13 +353,13 @@
                         </div>
 
                         <!-- FACE SELECTOR  -->
-                        <div class="d-flex flex-column">
+                        <div class="selectorContainer">
                             <label for="">Let's change that face:</label>
 
-                            <div class="d-flex col-10 justify-content-start gap-4">
+                            <div class="d-flex col-10 justify-content-center gap-4">
 
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="face1Selector">
                                         <img src="../assets/img/avatarCollection/face1.png" alt="" height="100"
                                             width="100">
@@ -368,7 +368,7 @@
                                         v-model="customAvatar.face">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="face2Selector">
                                         <img src="../assets/img/avatarCollection/face2.png" alt="" height="100"
                                             width="100">
@@ -377,7 +377,7 @@
                                         v-model="customAvatar.face">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="face3Selector">
                                         <img src="../assets/img/avatarCollection/face3.png" alt="" height="100"
                                             width="100">
@@ -386,7 +386,7 @@
                                         v-model="customAvatar.face">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="face4Selector">
                                         <img src="../assets/img/avatarCollection/face4.png" alt="" height="100"
                                             width="100">
@@ -395,7 +395,7 @@
                                         v-model="customAvatar.face">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="face5Selector">
                                         <img src="../assets/img/avatarCollection/face5.png" alt="" height="100"
                                             width="100">
@@ -409,13 +409,13 @@
 
                         <!-- SHOES SELECTOR  -->
 
-                        <div class="d-flex flex-column">
+                        <div class="selectorContainer">
                             <label for="">Which pair are we Rocking today?</label>
 
-                            <div class="d-flex col-10 justify-content-start gap-4">
+                            <div class="d-flex col-10 justify-content-center gap-4">
 
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="shoes1Selector">
                                         <img src="../assets/img/avatarCollection/shoes1.png" alt="" height="100"
                                             width="100">
@@ -424,7 +424,7 @@
                                         v-model="customAvatar.shoes">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="shoes2Selector">
                                         <img src="../assets/img/avatarCollection/shoes2.png" alt="" height="100"
                                             width="100">
@@ -433,7 +433,7 @@
                                         v-model="customAvatar.shoes">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="shoes3Selector">
                                         <img src="../assets/img/avatarCollection/shoes3.png" alt="" height="100"
                                             width="100">
@@ -442,7 +442,7 @@
                                         v-model="customAvatar.shoes">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="shoes4Selector">
                                         <img src="../assets/img/avatarCollection/shoes4.png" alt="" height="100"
                                             width="100">
@@ -451,7 +451,7 @@
                                         v-model="customAvatar.shoes">
                                 </div>
 
-                                <div class="d-flex flex-wrap justify-content-center">
+                                <div class="avatarPartSelector">
                                     <label for="shoes5Selector">
                                         <img src="../assets/img/avatarCollection/shoes5.png" alt="" height="100"
                                             width="100">
@@ -462,7 +462,10 @@
 
                             </div>
 
+                            
                         </div>
+
+                        <button class="mt-5" id="keepItButton">Keep It!</button>
 
 
 
@@ -472,11 +475,10 @@
 
 
                     </div>
-                    <button @click="">Keep it!</button>
                 </div>
 
                 <!-- DISPLAY DEL AVATAR  -->
-                <div class="d-flex col-3  m-3 justify-content-center">
+                <div class="d-flex col-12 col-lg-3  m-3 justify-content-center">
                     <canvas id="myCanvas" width="400" height="680" style="border: 5px solid black;"></canvas>
                 </div>
 
@@ -485,29 +487,9 @@
         </main>
 
 
-        <!-- <footer class="d-flex align-items-center justify-content-start">
-            <ul class="d-lg-flex justify-content-around align-items-center d-none" id="footerLg">
-                <li class="mt-4">
-                    <a href="#newCollection">Nike newest collection</a>
-                </li>
-                <li class="mt-4">
-                    <a href="#handcrafted">Handcrafted</a>
-                </li>
-                <li class="mt-4">
-                    <a href="#gallery">Gallery</a>
-                </li>
-                <li class="mt-4">
-                    <a href="#inspiration">Inspiration</a>
-                </li>
-                <li class="mt-4">
-                    <a href="#exposition">Exposition</a>
-                </li>
-                <li class="mt-4">
-                    <a href="#news">News</a>
-                </li>
-                <li class="mt-4">Sky Walkies &reg;</li>
-            </ul>
-        </footer> -->
+        <footer class="d-flex align-items-center justify-content-center border-top">
+            <p class="mt-2">Sky Walkies &reg;</p>
+        </footer>
     </div>
 
 
