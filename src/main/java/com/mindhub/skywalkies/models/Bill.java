@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 @Entity
-
 public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
@@ -16,13 +15,13 @@ public class Bill {
     private long id;
 
     private LocalDateTime date;
-    private Boolean payed;
-    private Double totalAmount;
+    private boolean payed;
+    private double totalAmount;
 
     public Bill() {
     }
 
-    public Bill(LocalDateTime date, Boolean payed, Double totalAmount) {
+    public Bill(LocalDateTime date, boolean payed, double totalAmount) {
         this.date = date;
         this.payed = payed;
         this.totalAmount = totalAmount;
