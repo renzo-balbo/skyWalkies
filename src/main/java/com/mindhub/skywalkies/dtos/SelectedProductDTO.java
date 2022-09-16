@@ -12,4 +12,12 @@ public class SelectedProductDTO {
         this.productName = product.getName();
         this.quantity = quantity;
     }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
 }

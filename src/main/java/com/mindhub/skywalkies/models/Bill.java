@@ -22,7 +22,7 @@ public class Bill {
      @JoinColumn(name = "client_id")
      private Client client;
 
-    private long order_id;
+    private long client_order_id;
 
     private LocalDateTime date;
     private boolean payed;
@@ -52,11 +52,11 @@ public class Bill {
     }
 
     public long getOrder_id() {
-        return order_id;
+        return client_order_id;
     }
 
     public void setOrder_id(long order_id) {
-        this.order_id = order_id;
+        this.client_order_id = order_id;
     }
 
     public LocalDateTime getDate() {

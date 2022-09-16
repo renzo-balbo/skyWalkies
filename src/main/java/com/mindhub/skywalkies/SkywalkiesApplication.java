@@ -26,7 +26,7 @@ public class SkywalkiesApplication {
         return (args) -> {
 
             //PRODUCTOS//
-            Product product1= new Product("MIKExBALVOUITTON Air Adrix", "Red", "Sneaker", true, List.of(7,8,9,10,11), 12, 999);
+
             Product productShoe1  = new Product("LV_NIKE_LOW_SOTHEBYS", "Brown and withe", "Sneaker", true, List.of(8,9,10,11), 15, 299);
             Product productShoe2  = new Product("LV-NIKE-AFONE-HIGH-PLUS-A3", "Withe", "Sneaker", true, List.of(7,8,10,11), 15, 350);
             Product productShoe3  = new Product("LV-NIKE-AFONE-HIGH-PLUS-E", "Brown and withe", "Sneaker", true, List.of(8,9,10,11), 15, 299);
@@ -76,7 +76,7 @@ public class SkywalkiesApplication {
             //PRODUCTOS//
 
             //ORDENES//
-            Ordered_product ordered_product1= new Ordered_product(1,1,product1);
+            Ordered_product ordered_product1= new Ordered_product(1,1,productShoe1);
             //ORDENES//
 
             //BILLS//
@@ -99,7 +99,7 @@ public class SkywalkiesApplication {
 
 
 
-            productRepository.save(product1);
+            productRepository.save(productShoe1);
             productRepository.save(productShoe1);
             productRepository.save(productShoe2);
             productRepository.save(productShoe3);

@@ -1,11 +1,15 @@
 package com.mindhub.skywalkies.Controllers;
 
 import com.mindhub.skywalkies.Service.AvatarService;
+import com.mindhub.skywalkies.Service.BillService;
+import com.mindhub.skywalkies.Service.ClientService;
 import com.mindhub.skywalkies.Service.ProductService;
 import com.mindhub.skywalkies.dtos.AddProductDTO;
 import com.mindhub.skywalkies.dtos.AvatarDTO;
 import com.mindhub.skywalkies.dtos.ProductDTO;
+import com.mindhub.skywalkies.models.Client;
 import com.mindhub.skywalkies.models.Product;
+import org.apache.maven.artifact.repository.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.http.HttpStatus;
@@ -21,6 +25,11 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private ClientService clientService;
+
+    @Autowired
+    private BillService billService;
     @GetMapping("/products")
     public List<ProductDTO> getProducts(){
         return productService.getAllProducts().stream().map(ProductDTO::new).collect(Collectors.toList());
@@ -37,4 +46,6 @@ public class ProductController {
             return new ResponseEntity<>("Product loaded successfully", HttpStatus.CREATED);
         }
     }
+
+
 }
