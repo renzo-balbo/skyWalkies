@@ -28,7 +28,6 @@ public class SkywalkiesApplication {
         return (args) -> {
 
             //PRODUCTOS//
-            Product product1= new Product("MIKExBALVOUITTON Air Adrix", List.of(RED), "Sneaker", true, List.of(7,8,9,10,11), 12, 999);
             Product productShoe1  = new Product("LV_NIKE_LOW_SOTHEBYS",List.of(BROWN, WITHE), "Sneaker", true, List.of(8,9,10,11), 15, 299);
             Product productShoe2  = new Product("LV-NIKE-AFONE-HIGH-PLUS-A3", List.of(WITHE), "Sneaker", true, List.of(7,8,10,11), 15, 350);
             Product productShoe3  = new Product("LV-NIKE-AFONE-HIGH-PLUS-E", List.of(BROWN, WITHE), "Sneaker", true, List.of(8,9,10,11), 15, 299);
@@ -78,16 +77,17 @@ public class SkywalkiesApplication {
             //PRODUCTOS//
 
             //ORDENES//
-            Ordered_product ordered_product1= new Ordered_product(1,1,product1);
+            Ordered_product ordered_product1= new Ordered_product(1,1,productShoe1);
             //ORDENES//
 
             //BILLS//
             Bill bill1 = new Bill( LocalDateTime.now(), true, 992.23);
             //BILLS//
 
-            Avatar avatar1 = new Avatar(1,2,1,5,3);
+
             //CLIENTES//
-            Client client1 = new Client("renzo", "balbo", "renzobalbo@skywalkies.com.ar", passwordEncoder.encode("skywalkies"), true, bill1, avatar1);
+            Client client1 = new Client("renzo", "balbo", "renzobalbo@skywalkies.com.ar", passwordEncoder.encode("skywalkies"), true, bill1);
+            Avatar avatar1 = new Avatar(1,2,1,5,3,client1);
             //CLIENTES//
 
             Client_order order1 = new Client_order(ordered_product1);
@@ -101,7 +101,6 @@ public class SkywalkiesApplication {
 
 
 
-            productRepository.save(product1);
             productRepository.save(productShoe1);
             productRepository.save(productShoe2);
             productRepository.save(productShoe3);

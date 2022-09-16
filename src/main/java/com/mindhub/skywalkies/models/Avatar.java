@@ -3,6 +3,8 @@ package com.mindhub.skywalkies.models;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Avatar {
@@ -11,7 +13,8 @@ public class Avatar {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
-    @OneToOne(mappedBy = "avatar")
+    @OneToOne
+    @JoinColumn(name = "client_id", referencedColumnName = "id")
     private Client client;
 
     private Integer head,face,body,bodyColor,shoes;
@@ -19,13 +22,13 @@ public class Avatar {
     public Avatar() {
     }
 
-    public Avatar(Integer head, Integer face, Integer body, Integer bodyColor, Integer shoes) {
-        this.id = id;
+    public Avatar(Integer head, Integer face, Integer body, Integer bodyColor, Integer shoes, Client client) {
         this.head = head;
         this.face = face;
         this.body = body;
         this.bodyColor = bodyColor;
         this.shoes = shoes;
+        this.client = client;
     }
 
 
@@ -73,5 +76,13 @@ public class Avatar {
 
     public void setShoes(Integer shoes) {
         this.shoes = shoes;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }
