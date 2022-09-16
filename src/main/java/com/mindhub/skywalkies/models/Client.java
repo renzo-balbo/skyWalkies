@@ -2,17 +2,18 @@ package com.mindhub.skywalkies.models;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+@Entity
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
     private String firstName,lastName,email,password;
-    private boolean verificated;
+    private boolean isVerificated;
 
     public Client() {
     }
@@ -23,15 +24,13 @@ public class Client {
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.verificated = verificated;
+        this.isVerificated = true;
     }
-
 
 
     public long getId() {
         return id;
     }
-
 
     public String getFirstName() {
         return firstName;
@@ -65,12 +64,12 @@ public class Client {
         this.password = password;
     }
 
+
     public boolean isVerificated() {
-        return verificated;
+        return isVerificated;
     }
 
     public void setVerificated(boolean verificated) {
-        this.verificated = verificated;
+        isVerificated = verificated;
     }
-
 }

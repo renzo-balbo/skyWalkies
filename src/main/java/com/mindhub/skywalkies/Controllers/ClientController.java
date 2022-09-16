@@ -21,10 +21,12 @@ public class ClientController {
     private ClientRepository clientRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
+
     @Autowired
     private ClientService clientService;
 
-    @GetMapping("/clients")
+
+    @RequestMapping ("/clients")
     public List<ClientDTO> getClients() {
         return clientService.getAllClients().stream().map(ClientDTO::new).collect(Collectors.toList());
     }
@@ -34,16 +36,18 @@ public class ClientController {
             @RequestParam String firstName, @RequestParam String lastName,
             @RequestParam String email, @RequestParam String password) {
         if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty()) {
-            return new ResponseEntity<>("you must fill in the fields", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>(
+                    "you must fill in the fields", HttpStatus.FORBIDDEN);
         }
         if (clientService.findClientByEmail(email) != null) {
             return new ResponseEntity<>("Email already in use", HttpStatus.FORBIDDEN);
         }
-        Client client = new Client(firstName,lastName,email,passwordEncoder.encode(password),false);
+        Client client = new Client(firstName,lastName,email,passwordEncoder.encode(password), false);
         clientService.saveClient(client);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-    @RequestMapping("/clients/current")
+
+    @GetMapping("/clients/current")
     public ClientDTO getAll(Authentication authentication) {
         return  new ClientDTO(clientService.findClientByEmail(authentication.getName()));
     }

@@ -14,18 +14,18 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-
+@EnableWebSecurity
 @Configuration
 public class WebAuthentication extends GlobalAuthenticationConfigurerAdapter {
 
     @Autowired
-
     public ClientRepository clientRepository;
 
     @Override
     public void init(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(clientEmail -> {
-            Client client = (Client) clientRepository.findByEmail(clientEmail);
+            Client client = clientRepository.findByEmail(clientEmail);
+
             if (client != null) {
                 if (client.getEmail().contains("@skywalkies")) {
                     return new User(client.getEmail(), client.getPassword(),
@@ -36,12 +36,11 @@ public class WebAuthentication extends GlobalAuthenticationConfigurerAdapter {
             } else {
                 throw new UsernameNotFoundException("Unknown email: " + clientEmail);
             }
-
         });
-
     }
     @Bean
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 }
+

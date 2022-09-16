@@ -2,7 +2,6 @@ package com.mindhub.skywalkies.configurations;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -20,11 +19,11 @@ public class WebAuthorization extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-
                 .antMatchers("/h2-console").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/clients").permitAll()
-                .antMatchers("/static/assets/**","/static/assets/js/**", "/static/assets/styles/**", "/static/assets/img/**").permitAll()
+                .antMatchers("/assets/**", "/assets/js/**", "/assets/img/**,", "/assets/styles/**", "/assets/vid/**").permitAll()
                 .antMatchers("/web/**").permitAll();
+
         http.formLogin()
                 .usernameParameter("email")
                 .passwordParameter("password")
@@ -41,6 +40,7 @@ public class WebAuthorization extends WebSecurityConfigurerAdapter {
     private void clearAuthenticationAttributes(HttpServletRequest req) {
         HttpSession session = req.getSession(false);
         if (session != null) {
+
             session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
         }
     }

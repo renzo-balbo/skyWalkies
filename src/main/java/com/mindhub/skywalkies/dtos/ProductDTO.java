@@ -19,9 +19,6 @@ public class ProductDTO {
         this.color = product.getColor();
         this.stock = product.getStock();
         this.type = product.getType();
-
-
-
     }
 
     public String getName() {
