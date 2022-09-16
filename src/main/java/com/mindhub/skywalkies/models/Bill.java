@@ -15,7 +15,7 @@ public class Bill {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
-    @OneToMany(mappedBy = "bill", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "billId", fetch = FetchType.EAGER)
     private Set<Client_order> client_orders = new HashSet<>();
 
      @ManyToOne(fetch = FetchType.EAGER)
@@ -35,7 +35,6 @@ public class Bill {
         this.date = date;
         this.payed = payed;
         this.totalAmount = totalAmount;
-        this.client_orders = getClient_orders().stream().map(client_order -> new Client_order()).collect(Collectors.toSet());
     }
 
 
@@ -93,7 +92,7 @@ public class Bill {
     }
 
     public void addClient_order(Client_order client_order){
-        client_order.setBill(this);
+        client_order.setBillId(this);
         client_orders.add(client_order);
     }
 

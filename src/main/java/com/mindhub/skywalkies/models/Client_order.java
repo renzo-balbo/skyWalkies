@@ -1,7 +1,6 @@
 package com.mindhub.skywalkies.models;
 
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,16 +14,23 @@ public class Client_order {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "bill_id")
-    private Bill bill;
+    private Bill billId;
 
     @OneToMany(mappedBy = "client_order",fetch = FetchType.EAGER)
     private Set<Ordered_product> ordered_products = new HashSet<>();
+    @OneToMany(mappedBy = "client_order",fetch = FetchType.EAGER)
+    private Set<Client> clients = new HashSet<>();
 
     private long ordered_product_id;
 
     public Client_order() {
     }
 
+    public Client_order(Ordered_product ordered_product,Set<Client> clients) {
+        this.id = id;
+        this.ordered_product_id = ordered_product.getProduct_id();
+        this.clients = clients;
+    }
     public Client_order(Ordered_product ordered_product) {
         this.id = id;
         this.ordered_product_id = ordered_product.getProduct_id();
@@ -55,11 +61,19 @@ public class Client_order {
         ordered_products.add(ordered_product);
     }
 
-    public Bill getBill() {
-        return bill;
+    public Bill getBillId() {
+        return billId;
     }
 
-    public void setBill(Bill bill) {
-        this.bill = bill;
+    public void setBillId(Bill billId) {
+        this.billId = billId;
+    }
+
+    public Set<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(Set<Client> clients) {
+        this.clients = clients;
     }
 }

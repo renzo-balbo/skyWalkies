@@ -3,6 +3,8 @@ package com.mindhub.skywalkies.models;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.List;
 
 @Entity
 public class Product {
@@ -18,21 +20,24 @@ public class Product {
     private String name, color, type;
 
     private boolean active;
-
-    private int size;
+    @ElementCollection
+    @Column(name = "sizes")
+    private List<Integer> size;
 
     private int stock;
+    private double price;
 
     public Product() {
     }
 
-    public Product(String name, String color, String type, Boolean active, int size, int stock) {
+    public Product(String name, String color, String type, Boolean active, List<Integer> size, int stock, double price) {
         this.name = name;
         this.color = color;
         this.type = type;
         this.active = active;
         this.size = size;
         this.stock = stock;
+        this.price = price;
     }
 
     public long getId() {
@@ -72,11 +77,11 @@ public class Product {
         this.active = active;
     }
 
-    public int getSize() {
+    public List<Integer> getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(List<Integer> size) {
         this.size = size;
     }
 
@@ -102,5 +107,13 @@ public class Product {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

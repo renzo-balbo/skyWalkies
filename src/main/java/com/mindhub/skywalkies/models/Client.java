@@ -4,6 +4,7 @@ import com.mindhub.skywalkies.dtos.AvatarDTO;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,6 +21,9 @@ public class Client {
     @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "avatar_id", referencedColumnName = "id")
     private Avatar avatar;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "client_order_id")
+    private Client_order client_order;
 
 
     private String firstName,lastName,email,password;

@@ -5,9 +5,11 @@ import com.mindhub.skywalkies.models.Product;
 import java.util.List;
 
 public interface ProductService {
-    List<Product> getAllProducts();
+    public List<Product> getAllProducts();
 
-    Product getProductById(long id);
+    public Product getProductById(long id);
 
-    void saveProduct(Product product);
+
+    public void saveProduct(Product product);
+    public Product findByName(String name);
 }

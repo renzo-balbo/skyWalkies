@@ -20,7 +20,6 @@ public class Ordered_product {
     @JoinColumn( name = "client_order_id")
     private Client_order client_order;
 
-
     private long product_id;
     private int quantity;
 
