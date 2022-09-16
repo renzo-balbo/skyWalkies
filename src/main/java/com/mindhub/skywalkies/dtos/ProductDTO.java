@@ -1,13 +1,15 @@
 package com.mindhub.skywalkies.dtos;
 
 import com.mindhub.skywalkies.models.Product;
+import com.mindhub.skywalkies.models.ShoeColors;
 
 import java.util.List;
 
 public class ProductDTO {
     private long id;
 
-    private String name, color, type;
+    private String name,type;
+    private List<ShoeColors> shoeColors;
 
     private Boolean active;
 
@@ -22,9 +24,9 @@ public class ProductDTO {
     public ProductDTO(Product product) {
         this.id = product.getId();
         this.name = product.getName();
+        this.shoeColors = product.getShoeColors();
         this.active = product.getActive();
         this.sizes = product.getSize();
-        this.color = product.getColor();
         this.stock = product.getStock();
         this.type = product.getType();
         this.price = product.getPrice();
@@ -38,8 +40,8 @@ public class ProductDTO {
         return name;
     }
 
-    public String getColor() {
-        return color;
+    public List<ShoeColors> getShoeColors() {
+        return shoeColors;
     }
 
     public String getType() {

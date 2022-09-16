@@ -37,11 +37,11 @@ public class ProductController {
     @PostMapping("/products/add")
     public ResponseEntity<Object> addProduct(@RequestBody AddProductDTO AddProductDTO){
 //        Product productName = productService.findByName(AddProductDTO.getName());
-        if (AddProductDTO.getSizes().isEmpty() || AddProductDTO.getPrice() < 0 || AddProductDTO.getColors().isEmpty() || AddProductDTO.getType().isEmpty() || AddProductDTO.getName().isEmpty()){
+        if (AddProductDTO.getSizes().isEmpty() || AddProductDTO.getPrice() < 0 || AddProductDTO.getShoeColors().isEmpty() || AddProductDTO.getType().isEmpty() || AddProductDTO.getName().isEmpty()){
             return new ResponseEntity<>("Please fill all the fields", HttpStatus.FORBIDDEN);
         }
         else {
-            Product productPrueba1 = new Product(AddProductDTO.getName(), AddProductDTO.getColors(), AddProductDTO.getType(), AddProductDTO.getActive(),AddProductDTO.getSizes(), AddProductDTO.getStock(), AddProductDTO.getPrice());
+            Product productPrueba1 = new Product(AddProductDTO.getName(), AddProductDTO.getShoeColors(), AddProductDTO.getType(), AddProductDTO.getActive(),AddProductDTO.getSizes(), AddProductDTO.getStock(), AddProductDTO.getPrice());
             productService.saveProduct(productPrueba1);
             return new ResponseEntity<>("Product loaded successfully", HttpStatus.CREATED);
         }

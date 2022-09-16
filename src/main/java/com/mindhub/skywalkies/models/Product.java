@@ -16,13 +16,17 @@ public class Product {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ordered_product_id")
     private Ordered_product products;
-
-    private String name, color, type;
-
-    private boolean active;
     @ElementCollection
     @Column(name = "sizes")
     private List<Integer> size;
+    @ElementCollection
+    @Column(name = "colors")
+    private List<ShoeColors> shoeColors;
+
+    private String name,type;
+
+    private boolean active;
+
 
     private int stock;
     private double price;
@@ -30,9 +34,9 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, String color, String type, Boolean active, List<Integer> size, int stock, double price) {
+    public Product(String name, List<ShoeColors> shoeColors, String type, Boolean active, List<Integer> size, int stock, double price) {
         this.name = name;
-        this.color = color;
+        this.shoeColors = shoeColors;
         this.type = type;
         this.active = active;
         this.size = size;
@@ -53,12 +57,12 @@ public class Product {
         this.name = name;
     }
 
-    public String getColor() {
-        return color;
+    public List<ShoeColors> getShoeColors() {
+        return shoeColors;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setShoeColors(List<ShoeColors> shoeColors) {
+        this.shoeColors = shoeColors;
     }
 
     public String getType() {
