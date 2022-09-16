@@ -2,10 +2,7 @@ package com.mindhub.skywalkies.models;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Client_order {
@@ -13,6 +10,8 @@ public class Client_order {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
+
+
     private long ordered_product_id;
 
     public Client_order() {

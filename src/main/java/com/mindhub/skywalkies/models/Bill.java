@@ -2,10 +2,7 @@ package com.mindhub.skywalkies.models;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 @Entity
 public class Bill {
@@ -14,6 +11,12 @@ public class Bill {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
+
+     @ManyToOne(fetch = FetchType.EAGER)
+     @JoinColumn(name = "client_id")
+     private Client client;
+
+    private long order_id;
 
     private LocalDateTime date;
     private boolean payed;
@@ -28,12 +31,26 @@ public class Bill {
         this.totalAmount = totalAmount;
     }
 
+
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public long getOrder_id() {
+        return order_id;
+    }
+
+    public void setOrder_id(long order_id) {
+        this.order_id = order_id;
     }
 
     public LocalDateTime getDate() {
@@ -44,19 +61,21 @@ public class Bill {
         this.date = date;
     }
 
-    public Boolean getPayed() {
+    public boolean isPayed() {
         return payed;
     }
 
-    public void setPayed(Boolean payed) {
+    public void setPayed(boolean payed) {
         this.payed = payed;
     }
 
-    public Double getTotalAmount() {
+    public double getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(Double totalAmount) {
+    public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
     }
+
+
 }

@@ -2,10 +2,9 @@ package com.mindhub.skywalkies.models;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Ordered_product {
@@ -13,6 +12,11 @@ public class Ordered_product {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
+
+    @OneToMany(mappedBy = "products", fetch = FetchType.EAGER)
+    private Set<Product> product = new HashSet<>();
+
+    
     private long product_id;
     private int quantity;
 
