@@ -1,5 +1,7 @@
 package com.mindhub.skywalkies.dtos;
 
+import com.mindhub.skywalkies.models.Bill;
+
 import java.time.LocalDateTime;
 
 public class BillDTO {
@@ -16,6 +18,7 @@ public class BillDTO {
         this.payed = payed;
         this.totalAmount = totalAmount;
     }
+
 
     public LocalDateTime getDate() {
         return date;

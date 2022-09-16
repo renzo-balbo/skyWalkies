@@ -1,8 +1,10 @@
 package com.mindhub.skywalkies;
 
+import com.mindhub.skywalkies.models.Avatar;
 import com.mindhub.skywalkies.models.Client;
 
 
+import com.mindhub.skywalkies.repositories.AvatarRepository;
 import com.mindhub.skywalkies.repositories.ClientRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,10 +18,12 @@ public class SkywalkiesApplication {
         SpringApplication.run(SkywalkiesApplication.class, args);
     }
     @Bean
-    public CommandLineRunner initData(ClientRepository prueba) {
+    public CommandLineRunner initData(ClientRepository clientRepository, AvatarRepository avatarRepository) {
         return (args) -> {
             Client client1 = new Client("renzo", "balbo", "renzobalbo@skywalkies.com.ar","skywalkies", true);
-           prueba.save(client1);
+            Avatar avatar1 = new Avatar(1,1,1,1,1);
+            clientRepository.save(client1);
+            avatarRepository.save(avatar1);
 
         };
     }
