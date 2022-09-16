@@ -1,6 +1,7 @@
 package com.mindhub.skywalkies.dtos;
 
 
+import com.mindhub.skywalkies.models.Avatar;
 import com.mindhub.skywalkies.models.Bill;
 import com.mindhub.skywalkies.models.Client;
 
@@ -11,6 +12,8 @@ public class ClientDTO {
     private long id;
     private String firstName,lastName,email,password;
     private boolean verificated;
+    private Avatar avatar;
+
 
     private Set<BillDTO> bills;
     public ClientDTO() {
@@ -23,6 +26,7 @@ public class ClientDTO {
        this.email = client.getEmail();
        this.password = client.getPassword();
        this.verificated = client.isVerificated();
+       this.avatar = client.getAvatar();
        this.bills = client.getBills().stream().map(bill -> new BillDTO(bill)).collect(Collectors.toSet());
     }
 
@@ -52,5 +56,9 @@ public class ClientDTO {
 
     public Set<BillDTO> getBills() {
         return bills;
+    }
+
+    public Avatar getAvatar() {
+        return avatar;
     }
 }

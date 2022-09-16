@@ -6,18 +6,18 @@ import com.mindhub.skywalkies.models.Client_order;
 import com.mindhub.skywalkies.models.Ordered_product;
 
 import java.time.LocalDateTime;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class BillDTO {
     private long id;
-    private long client_id;
 
-    private long client_order;
 
     private LocalDateTime date;
     private Boolean payed;
     private Double totalAmount;
 
-
+    private Set<Client_order> client_orders;
 
 
     public BillDTO() {
@@ -28,8 +28,9 @@ public class BillDTO {
         this.date = bill.getDate();
         this.payed = bill.isPayed();
         this.totalAmount = bill.getTotalAmount();
-    }
+        this.client_orders = bill.getClient_orders().stream().map(client_order -> new Client_order()).collect(Collectors.toSet());
 
+    }
 
 
     public long getId() {
@@ -48,11 +49,7 @@ public class BillDTO {
         return totalAmount;
     }
 
-    public long getClient_id() {
-        return client_id;
-    }
-
-    public long getClient_order() {
-        return client_order;
+    public Set<Client_order> getClient_orders() {
+        return client_orders;
     }
 }

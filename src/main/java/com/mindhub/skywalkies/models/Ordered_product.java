@@ -16,7 +16,11 @@ public class Ordered_product {
     @OneToMany(mappedBy = "products", fetch = FetchType.EAGER)
     private Set<Product> product = new HashSet<>();
 
-    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn( name = "client_order_id")
+    private Client_order client_order;
+
+
     private long product_id;
     private int quantity;
 
@@ -48,5 +52,21 @@ public class Ordered_product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public Set<Product> getProduct() {
+        return product;
+    }
+
+    public void setProduct(Set<Product> product) {
+        this.product = product;
+    }
+
+    public Client_order getClient_order() {
+        return client_order;
+    }
+
+    public void setClient_order(Client_order client_order) {
+        this.client_order = client_order;
     }
 }

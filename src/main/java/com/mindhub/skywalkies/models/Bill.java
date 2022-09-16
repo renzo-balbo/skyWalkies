@@ -4,6 +4,10 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 @Entity
 public class Bill {
     @Id
@@ -11,6 +15,8 @@ public class Bill {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
+    @OneToMany(mappedBy = "bill", fetch = FetchType.EAGER)
+    private Set<Client_order> client_orders = new HashSet<>();
 
      @ManyToOne(fetch = FetchType.EAGER)
      @JoinColumn(name = "client_id")
@@ -29,6 +35,7 @@ public class Bill {
         this.date = date;
         this.payed = payed;
         this.totalAmount = totalAmount;
+        this.client_orders = getClient_orders().stream().map(client_order -> new Client_order()).collect(Collectors.toSet());
     }
 
 
@@ -77,5 +84,17 @@ public class Bill {
         this.totalAmount = totalAmount;
     }
 
+    public Set<Client_order> getClient_orders() {
+        return client_orders;
+    }
+
+    public void setClient_orders(Set<Client_order> client_orders) {
+        this.client_orders = client_orders;
+    }
+
+    public void addClient_order(Client_order client_order){
+        client_order.setBill(this);
+        client_orders.add(client_order);
+    }
 
 }

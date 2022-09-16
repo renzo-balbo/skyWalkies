@@ -1,7 +1,9 @@
 package com.mindhub.skywalkies.Controllers;
 
+import com.mindhub.skywalkies.Service.AvatarService;
 import com.mindhub.skywalkies.Service.ClientService;
 import com.mindhub.skywalkies.dtos.ClientDTO;
+import com.mindhub.skywalkies.models.Avatar;
 import com.mindhub.skywalkies.models.Bill;
 import com.mindhub.skywalkies.models.Client;
 import com.mindhub.skywalkies.repositories.ClientRepository;
@@ -22,12 +24,14 @@ public class ClientController {
     private ClientRepository clientRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private AvatarService avatarService;
 
     @Autowired
     private ClientService clientService;
 
 
-    @RequestMapping ("/clients")
+    @RequestMapping("/clients")
     public List<ClientDTO> getClients() {
         return clientService.getAllClients().stream().map(ClientDTO::new).collect(Collectors.toList());
     }
@@ -43,13 +47,16 @@ public class ClientController {
         if (clientService.findClientByEmail(email) != null) {
             return new ResponseEntity<>("Email already in use", HttpStatus.FORBIDDEN);
         }
-        Client client = new Client(firstName,lastName,email,passwordEncoder.encode(password), false, new Bill());
+        Avatar avatar = new Avatar(1, 1, 1, 1, 1);
+        Client client = new Client(firstName, lastName, email, passwordEncoder.encode(password), false, new Bill(), avatar);
         clientService.saveClient(client);
+        avatarService.saveAvatar(avatar);
+
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/clients/current")
     public ClientDTO getAll(Authentication authentication) {
-        return  new ClientDTO(clientService.findClientByEmail(authentication.getName()));
+        return new ClientDTO(clientService.findClientByEmail(authentication.getName()));
     }
 }

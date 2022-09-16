@@ -1,5 +1,6 @@
 package com.mindhub.skywalkies.models;
 
+import com.mindhub.skywalkies.dtos.AvatarDTO;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -15,6 +16,10 @@ public class Client {
 
     @OneToMany(mappedBy = "client",fetch = FetchType.EAGER)
     private Set<Bill> bills = new HashSet<>();
+
+    @OneToOne (cascade = CascadeType.ALL)
+    @JoinColumn(name = "avatar_id", referencedColumnName = "id")
+    private Avatar avatar;
 
 
     private String firstName,lastName,email,password;
@@ -32,6 +37,17 @@ public class Client {
         this.isVerificated = true;
         this.addBill(bill);
     }
+    public Client(String firstName, String lastName, String email, String password, boolean verificated, Bill bill, Avatar avatar) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.isVerificated = true;
+        this.addBill(bill);
+        this.avatar = avatar;
+    }
+
 
 
     public long getId() {
@@ -90,5 +106,12 @@ public class Client {
     public void addBill(Bill bill){
         bill.setClient(this);
         bills.add(bill);
+    }
+
+    public void setAvatar(Avatar avatar) {
+    }
+
+    public Avatar getAvatar() {
+        return avatar;
     }
 }
