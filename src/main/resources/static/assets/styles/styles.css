@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Tajawal';
 }
 
 header {
@@ -110,6 +113,11 @@ video {
   box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
+.sombra{
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+
+}
+
 /* EMPIEZAN LAS MEDIA QUERIES */
 
 @media (min-width: 426px) {
@@ -136,7 +144,7 @@ video {
   } */
 
   footer {
-    height: 3vh;
+    height: 5vh;
   }
 
   header {
@@ -152,7 +160,24 @@ video {
     width: 4rem !important;
   }
 }
+/* Acá estan los carrouseles de zapas mobile */
 
+.carouselZapas{
+  width: 18rem;
+  height: 7rem;
+  overflow-y: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.carouselZapas>a{
+  width: 100px;
+height: 50px;
+margin: 0 10px 0 0;
+padding: 0;
+display: inline-block;
+}
+
+/* ---- */
 @media (min-width: 1400px) {
   .horizontal-scroll-wrapper-modal {
     width: 100px;

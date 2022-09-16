@@ -4,18 +4,39 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            arrayZapatillas: [],
+            renderForModal: "",
         }
     },
     created() {
+        this.arrayZapatillas.push("NIKE-LV-LOW_04", "LV-NIKE-AFONE-HIGH-PLUS-A3")
+        
     },
     mounted() {
 
     },
     methods: {
+        changeRender(productName) {
+            this.renderForModal = productName;
+        },
+        nameFormater(productName) {
+            productName = productName.replace(/-/g, " ")
+            productName = productName.replace(/_/g, " ")
+            return productName;
+        },
+        moneyFormatter(numberToFormat) {
+            let formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            })
+            return formatter.format(numberToFormat)
+        },
+
 
 
     },
     computed: {
+
 
     },
 }).mount('#app')

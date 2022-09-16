@@ -8,13 +8,14 @@
     <title>Cart</title>
     <!-- la etiqueta "meta" de abajo nos ayuda a que ande el responsive xd -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- la etiqueta "meta" de abajo nos ayuda a que ande el responsive xd -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/assets/img/skyWalkiesLogo.png" type="image/x-icon">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../assets/styles/cliOrd.css">
+    <link rel="stylesheet" href="../assets/styles/backgroundStars.css">
+    <link rel="stylesheet" href="../assets/styles/cart.css">
 
 </head>
 
@@ -49,7 +50,7 @@
 
             <!-- ACA TERMINA EL OFF CANVAS DE  NAV -->
 
-            <img src="../assets/img/zapatilla_modelo_14.png" alt="">
+            <img src="../assets/img/skyWalkiesIsoLogo.png" alt="">
 
             <!-- OFF CANVAS RIGHT REGISTRO -->
 
@@ -140,71 +141,100 @@
         </nav>
 
     </header>
-
+    <div>
+    </div>
+    <!-- estrellas del fondo -->
+    <div id='stars' class="estrellas"></div>
+    <div id='stars2' class="estrellas"></div>
+    <div id='stars3' class="estrellas"></div>
+    <!-- ---- -->
+    
 
     <main class="d-flex flex-column flex-lg-row justify-content-lg-around container align-items-center">
         <div class="d-flex justify-content-center flex-wrap col-lg-7">
-            <h2 class="text-center">Your Wardrobe</h2>
 
-            <table class="table text-center m-1">
-                <thead>
-                    <tr>
-                        <!-- <th scope="col">#</th> -->
-                        <th scope="col">Picture</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Lot</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr scope="row">
-                        <!-- <td>1</td> -->
-                        <td><img src="../assets/img/zapatilla_color_1.png" alt=""></td>
-                        <td>Nombre Modelo</td>
-                        <td>$500</td>
-                        <td>1</td>
-                        <td>X</td>
-                    </tr>
-                    <tr scope="row">
-                        <!-- <td>1</td> -->
-                        <td><img src="../assets/img/zapatilla_color_1.png" alt=""></td>
-                        <td>Nombre Modelo</td>
-                        <td>$500</td>
-                        <td>1</td>
-                        <td>X</td>
-                    </tr>
-                    <tr scope="row">
-                        <!-- <td>1</td> -->
-                        <td><img src="../assets/img/zapatilla_color_1.png" alt=""></td>
-                        <td>Nombre Modelo</td>
-                        <td>$500</td>
-                        <td>1</td>
-                        <td>X</td>
-                    </tr>
-                    <tr scope="row">
-                        <!-- <td>1</td> -->
-                        <td><img src="../assets/img/zapatilla_color_1.png" alt=""></td>
-                        <td>Nombre Modelo</td>
-                        <td>$500</td>
-                        <td>1</td>
-                        <td>X</td>
-                    </tr>
-                </tbody>
-            </table>
-            <button class="btn btn-danger">Empty Wardrobe</button>
-        </div>
-        <div class="d-flex flex-column m-4 m-lg-0 col-lg-4">
-            <h3 class="text-center">Your Buy:</h3>
-            <h5>Subtotal:</h5>
-            <h5>IVA:</h5>
-            <h5>Total:</h5>
-            <button class="btn btn-dark">Buy</button>
-        </div>
 
+            <h1 class="text-center">Your Wardrobe</h1>
+
+            <div class="container overflow-auto alturaWardrobe d-lg-flex flex-lg-wrap justify-content-lg-around">
+                <div class="card d-flex my-5 my-lg-2 col-lg-5 sombra productInWardrobe">
+                    <div class="d-flex flex-column">
+                        <h3 class="p-1 text-center">Air Force Re Piola</h3>
+                        <img src="../assets/img//NIKE-LV-LOW_13.png" class="pb-4" alt="">
+                        <hr>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-around">
+                        <div>
+                            <h3 class="border">$1,099.00</h3>
+                            <p>2 units: $2,198.00</p>
+                        </div>
+                        <i class="bi bi-x-circle-fill"></i>
+                    </div>
+                </div>
+                <div class="card d-flex my-2 col-lg-5" >
+                    <div class="d-flex flex-column">
+                        <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-A3.png" alt="">
+                        <h2>Air Force Re Piola</h2>
+                        <hr>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-around">
+                        <div>
+                            <h3 class="border">$1,099.00</h3>
+                            <p>2 units: $2,198.00</p>
+                        </div>
+                        <i class="bi bi-x-circle-fill"></i>
+                    </div>
+                </div>
+                <div class="card d-flex my-2 col-lg-5" >
+                    <div class="d-flex flex-column">
+                        <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-A3.png" alt="">
+                        <h2>Air Force Re Piola</h2>
+                        <hr>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-around">
+                        <div>
+                            <h3 class="border">$1,099.00</h3>
+                            <p>2 units: $2,198.00</p>
+                        </div>
+                        <i class="bi bi-x-circle-fill"></i>
+                    </div>
+                </div>
+                <div class="card d-flex my-2 col-lg-5" >
+                    <div class="d-flex flex-column">
+                        <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-A3.png" alt="">
+                        <h2>Air Force Re Piola</h2>
+                        <hr>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-around">
+                        <div>
+                            <h3 class="border">$1,099.00</h3>
+                            <p>2 units: $2,198.00</p>
+                        </div>
+                        <i class="bi bi-x-circle-fill"></i>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="d-flex flex-column col-11 mt-3 m-lg-0 col-lg-4 prices">
+            <div class="d-flex justify-content-between">
+                <h5>Subtotal:</h5>
+                <h6>$4,436</h6>
+            </div>
+            <div class="d-flex justify-content-between">
+                <h5>IVA:</h5>
+                <h6>$923.16</h6>
+            </div>
+            <div class="d-flex justify-content-between">
+                <h3>Total:</h3>
+                <h3>$5,292.16</h3>
+            </div>
+            <button class="btn btn-dark">Proceed to pay</button>
+        </div>
     </main>
-    <footer class="d-flex align-items-center justify-content-center">
-        <ul>
+    <footer class="">
+        <ul class="d-flex justify-content-around">
             <li>Sky Walkies &reg;</li>
             <li>Register</li>
             <li>Contact</li>
@@ -213,13 +243,17 @@
 
 
 
+
+
+
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
 
-    <script src="https://unpkg.com/vue@3"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="../a"></script>
+        <script src="https://unpkg.com/vue@3"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 
 </html>
