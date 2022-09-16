@@ -2,6 +2,7 @@ package com.mindhub.skywalkies.Controllers;
 
 import com.mindhub.skywalkies.Service.ClientService;
 import com.mindhub.skywalkies.dtos.ClientDTO;
+import com.mindhub.skywalkies.models.Bill;
 import com.mindhub.skywalkies.models.Client;
 import com.mindhub.skywalkies.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class ClientController {
         if (clientService.findClientByEmail(email) != null) {
             return new ResponseEntity<>("Email already in use", HttpStatus.FORBIDDEN);
         }
-        Client client = new Client(firstName,lastName,email,passwordEncoder.encode(password), false);
+        Client client = new Client(firstName,lastName,email,passwordEncoder.encode(password), false, new Bill());
         clientService.saveClient(client);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
