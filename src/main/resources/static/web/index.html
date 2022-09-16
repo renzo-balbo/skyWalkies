@@ -191,8 +191,8 @@
                         <h2 class="card">Designs Gallery</h2>
 
                         <!-- CARRUSEL DE BOOTSTRAP, VER MAS TARDE -->
-                        <div class="d-flex flex-wrap ocultar justify-content-center">
-                            <div class="carouselZapas squares col-10 ">
+                        <div class="d-flex flex-wrap ocultar justify-content-center gap-3">
+                            <div class="carouselZapas squares col-10">
                                 <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                     <span class="modalSpawner"></span>
                                     <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
@@ -449,7 +449,7 @@
                 <div class="modal-dialog modal-fullscreen">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                            <h4 class="modal-title" id="staticBackdropLabel">Product Preview</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div
@@ -457,10 +457,10 @@
                             <div class="d-flex justify-content-center">
                                 <video :src="'../assets/vid/'+renderForModal+'.mp4'" autoplay loop muted style="width: 100%;"></video>
                             </div>
-                            <div class="d-flex flex-column">
+                            <div class="d-flex flex-column col-10">
                                 <h2>{{nameFormater(renderForModal)}}</h2>
-                                <h3>precio placeholder</h3>
-                                <h5>Stock:</h5>
+                                <h3>{{productToDisplay.price}}</h3>
+                                <h5>Stock: {{productToDisplay.stock}}</h5>
                                 <button class="btn btn-dark">Add to Cart</button>
                             </div>
                         </div>
@@ -477,48 +477,10 @@
                                 <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
                                     class="card-img-top widthZapaCarrusel" alt="..."> -->
 
-                                    <button v-for="zapatilla in arrayZapatillas" @click="changeRender(zapatilla)">
-                                        <img :src="'/assets/img/'+zapatilla+'.png'" style="width: 100px; height:70px" alt="">
+                                    <button v-for="product in productsArray" @click="changeRender(product.name)" class="mx-2">
+                                        <img :src="'/assets/img/'+product.name+'.png'" style="width: 100px; height:70px" alt="">
                                     </button>
                                     
-
-                                <!-- </button>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a> -->
                             </div>
 
                         </div>
@@ -578,6 +540,11 @@
 
                 <div class="bloques flex-wrap align-items-center justify-content-around gap-3" id="gallery">
                     <div class="col-12 d-flex align-items-center justify-content-center">
+                        <input type="radio" name="priceSorter" id="maxToMinSorter">
+                        <label for="maxToMinSorter">Order from Higher to Lower</label>
+                        <input type="radio" name="priceSorter" id="minToMaxSorter">
+                        <label for="minToMaxSorter">Order from Lower to Higher</label>
+
                         <h2 class="text-center fw-bolder bgTitles">Design Gallery</h2>
                     </div>
                     <div class=" d-flex align-items-center justify-content-around estanteZapatillas col-10">
@@ -749,8 +716,10 @@
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
+    
     <script src="../assets/js/index.js"></script>
-
+    
+    <script src="../assets/js/sliderVanilla.js"></script>
 
 </body>
 
