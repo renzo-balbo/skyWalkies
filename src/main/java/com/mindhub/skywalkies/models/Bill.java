@@ -14,6 +14,7 @@ public class Bill {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
+
     private LocalDateTime date;
     private boolean payed;
     private double totalAmount;

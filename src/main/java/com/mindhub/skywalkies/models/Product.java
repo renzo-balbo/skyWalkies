@@ -16,7 +16,7 @@ public class Product {
 
     private String name, color, type;
 
-    private Boolean active;
+    private boolean active;
 
     private int size;
 
