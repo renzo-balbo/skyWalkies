@@ -22,19 +22,17 @@ public class Bill {
      @JoinColumn(name = "client_id")
      private Client client;
 
-    private long client_order_id;
-
     private LocalDateTime date;
     private boolean payed;
-    private double totalAmount;
+    private double subTotal;
 
     public Bill() {
     }
 
-    public Bill(LocalDateTime date, boolean payed, double totalAmount) {
+    public Bill(LocalDateTime date, boolean payed, double subTotal) {
         this.date = date;
         this.payed = payed;
-        this.totalAmount = totalAmount;
+        this.subTotal = subTotal;
     }
 
 
@@ -51,13 +49,6 @@ public class Bill {
         this.client = client;
     }
 
-    public long getOrder_id() {
-        return client_order_id;
-    }
-
-    public void setOrder_id(long order_id) {
-        this.client_order_id = order_id;
-    }
 
     public LocalDateTime getDate() {
         return date;
@@ -75,12 +66,12 @@ public class Bill {
         this.payed = payed;
     }
 
-    public double getTotalAmount() {
-        return totalAmount;
+    public double getSubTotal() {
+        return subTotal;
     }
 
-    public void setTotalAmount(double totalAmount) {
-        this.totalAmount = totalAmount;
+    public void setSubTotal(double totalAmount) {
+        this.subTotal = totalAmount;
     }
 
     public Set<Client_order> getClient_orders() {
