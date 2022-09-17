@@ -1,6 +1,6 @@
 /* COMIENZA SLIDER */
 .slider {
-    display: flex;
+  display: flex;
   width: 100%;
   height: 85vh;
   overflow-x: hidden;
@@ -24,56 +24,100 @@
 
 /* BLOQUES DEL SLIDER */
 .bloques {
+  min-width: 120%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7) .1em, transparent .1em), linear-gradient(90deg, rgba(0, 0, 0, .7) .1em, transparent .1em);
+  background-size: 3em 3em;
+  display: flex;
+}
+
+.bloquesGallery {
+  min-width: 180%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7) .1em, transparent .1em), linear-gradient(90deg, rgba(0, 0, 0, .7) .1em, transparent .1em);
+  background-size: 3em 3em;
+  display: flex;
+}
+
+@media (min-width: 1200px) {
+  .bloquesGallery {
+    min-width: 160%;
+  }
+}
+@media (min-width: 1400px) {
+  .bloquesGallery {
+    min-width: 120%;
+  }
+}
+@media (min-width: 1900px) {
+  .bloquesGallery {
     min-width: 100%;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7) .1em, transparent .1em), linear-gradient(90deg, rgba(0, 0, 0, .7) .1em, transparent .1em);
-    background-size: 3em 3em;
-    display: flex;
+  }
 }
 
 /* TERMINA SLIDER */
 
 .divs {
-    width: 25rem;
-    height: 12rem;
-    background-color: white;
-    margin: 2rem;
-    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  width: 25rem;
+  height: 12rem;
+  background-color: white;
+  margin: 2rem;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
 .slider.active {
-    cursor: grabbing;
+  cursor: grabbing;
 }
-.videoContainer>video{
+
+.videoContainer>video {
   width: 60%;
   height: 55%;
 }
-#footerLg{
+
+#footerLg {
   width: 100%;
   height: 100%;
 }
-#footerLg>li>a{
+
+#footerLg>li>a {
   text-decoration: none;
   color: rgb(65, 63, 63);
   text-transform: uppercase;
   font-weight: bold;
 }
-#footerLg>li>a:hover{
+
+#footerLg>li>a:hover {
   color: black;
 }
-.estanteZapatillas{
+
+.estanteZapatillas {
   width: fit-content;
   height: 5rem;
   border-bottom: 15px ridge #FFFFFF;
   border-radius: 0px 0px 11px 11px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
 }
-.estanteZapatillas>div>img:hover{
+
+.estanteZapatillas>div>img:hover {
   transform: translateY(-15px);
   cursor: pointer;
 }
-.bgTitles{
+
+.bgTitles {
   background-color: #FFFFFF;
   border: 1px solid black;
   width: fit-content;
   padding: 1rem;
+}
+
+.input-group{
+  width: 15rem !important;
+}
+.input-group>input{
+margin-right: .6rem !important;
+}
+.filters{
+  background-color: #FFFFFF;
+  height: 5rem;
+  background-color: #FFFFFF;
+  border: 1px solid black;
+width: 40rem;
 }

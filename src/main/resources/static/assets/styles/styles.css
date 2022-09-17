@@ -39,7 +39,7 @@ nav>img {
 
 
 .widthZapaCarrusel {
-  width: 100px !important;
+  width: 6rem !important;
 }
 
 .list-group-item {
@@ -208,6 +208,13 @@ display: inline-block;
   .slider {
     display: none;
   }
+}
+
+@media (min-width:1400px) {
+  .widthZapaCarrusel {
+    width: 7rem !important;
+  }
+  
 }
 
 /* .estanteZapatillasMobile {
