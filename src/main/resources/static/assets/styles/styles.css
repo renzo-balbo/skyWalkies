@@ -113,6 +113,11 @@ nav>img {
   cursor: pointer;
 }
 
+.modalButtons{
+  border: none;
+  background-color: rgba(197, 19, 19, 0);
+}
+
 video {
   width: 80%;
   align-self: center;

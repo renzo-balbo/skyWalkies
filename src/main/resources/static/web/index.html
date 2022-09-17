@@ -82,16 +82,30 @@
 
                                         <form>
                                             <div class="mb-3">
+                                                <label for="newClientFirstName" class="form-label">First Name</label>
+                                                <input type="text" class="form-control" id="newClientFirstName"
+                                                    v-model="newClientFirstName">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="newClientLastName" class="form-label">Last Name</label>
+                                                <input type="text" class="form-control" id="newClientLastName"
+                                                    v-model="newClientLastName">
+                                            </div>
+
+                                            <div class="mb-3">
                                                 <label for="newClientEmail" class="form-label">Email address</label>
                                                 <input type="email" class="form-control" id="newClientEmail"
                                                     aria-describedby="emailHelp" v-model="newClientEmail">
                                                 <div id="emailHelp" class="form-text">We'll never share your email with
                                                     anyone else.</div>
                                             </div>
+
                                             <div class="mb-3">
                                                 <label for="exampleInputPassword1" class="form-label">Password</label>
                                                 <input type="password" class="form-control" id="">
                                             </div>
+
                                             <button type="submit" class="btn btn-dark">Submit</button>
                                         </form>
 
@@ -193,153 +207,30 @@
                         <!-- CARRUSEL DE BOOTSTRAP, VER MAS TARDE -->
                         <div class="d-flex flex-wrap ocultar justify-content-center gap-3">
                             <div class="carouselZapas squares col-10">
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <a v-for="product in upperShelf" href="#staticBackdrop" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop">
                                     <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
+                                    <img :src="'../assets/img/'+product.name+'.png'"
                                         class="card-img-top widthZapaCarrusel" alt="...">
 
                                 </a>
                             </div>
+
                             <div class="carouselZapas squares col-10 ">
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <a v-for="product in middleShelf" href="#staticBackdrop" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop">
                                     <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
+                                    <img :src="'../assets/img/'+product.name+'.png'"
                                         class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
                                 </a>
                             </div>
+
                             <div class="carouselZapas squares col-10 ">
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <a v-for="product in bottomShelf" href="#staticBackdrop" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop">
                                     <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
+                                    <img :src="'../assets/img/'+product.name+'.png'"
                                         class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
                                 </a>
                             </div>
                         </div>
@@ -469,8 +360,8 @@
                             <div class="carouselZapas d-flex col-10 ">
 
                                 <button v-for="product in productsArray" @click="changeRender(product.name)"
-                                    class="mx-2">
-                                    <img :src="'/assets/img/'+product.name+'.png'" style="width: 100px; height:70px"
+                                    class="mx-2 modalButtons">
+                                    <img :src="'/assets/img/'+product.name+'.png'" style="width: 100px;"
                                         alt="">
                                 </button>
 
@@ -536,7 +427,8 @@
                         <h2 class="text-center fw-bolder bgTitles">Design Gallery</h2>
                         <div class="d-flex align-items-center justify-content-around filters p-2">
                             <div class="input-group col-6">
-                                <input @change="priceSortedMaxToMin" type="radio" name="priceSorter" id="maxToMinSorter">
+                                <input @change="priceSortedMaxToMin" type="radio" name="priceSorter"
+                                    id="maxToMinSorter">
                                 <label for="maxToMinSorter">Order from Higher to Lower</label>
                             </div>
                             <div class="input-group col-6">
