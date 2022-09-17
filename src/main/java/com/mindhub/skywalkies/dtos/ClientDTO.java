@@ -26,7 +26,7 @@ public class ClientDTO {
        this.email = client.getEmail();
        this.password = client.getPassword();
        this.verificated = client.isVerificated();
-
+       this.avatar = client.getAvatar();
        this.bills = client.getBills().stream().map(bill -> new BillDTO(bill)).collect(Collectors.toSet());
     }
 

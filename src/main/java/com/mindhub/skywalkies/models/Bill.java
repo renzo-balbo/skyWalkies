@@ -34,6 +34,11 @@ public class Bill {
         this.payed = payed;
         this.subTotal = subTotal;
     }
+    public Bill(LocalDateTime date, boolean payed, double subTotal, Client client) {
+        this.date = date;
+        this.payed = payed;
+        this.subTotal = subTotal;
+    }
 
 
     public long getId() {

@@ -39,7 +39,7 @@ public class ClientController {
     @PostMapping("/clients")
     public ResponseEntity<Object> register(
             @RequestParam String firstName, @RequestParam String lastName,
-            @RequestParam String email, @RequestParam String password, @RequestParam String confirmPassword) {
+            @RequestParam String email, @RequestParam String password) {
         if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty()) {
             return new ResponseEntity<>(
                     "you must fill in the fields", HttpStatus.FORBIDDEN);
@@ -47,16 +47,12 @@ public class ClientController {
         if (clientService.findClientByEmail(email) != null) {
             return new ResponseEntity<>("Email already in use", HttpStatus.FORBIDDEN);
         }
-        if (!confirmPassword.equals(password)){
-            return new ResponseEntity<>("The passwords don't match.", HttpStatus.FORBIDDEN);
-        }
-
-        Client client = new Client(firstName, lastName, email, passwordEncoder.encode(password), false, new Bill());
-        Avatar avatar = new Avatar(1, 1, 1, 1, 1, client);
+        Avatar avatar = new Avatar(1, 1, 1, 1, 1);
+        Client client = new Client(firstName, lastName, email, passwordEncoder.encode(password), false, new Bill(), avatar);
         clientService.saveClient(client);
         avatarService.saveAvatar(avatar);
-
         return new ResponseEntity<>(HttpStatus.CREATED);
+
     }
 
     @GetMapping("/clients/current")

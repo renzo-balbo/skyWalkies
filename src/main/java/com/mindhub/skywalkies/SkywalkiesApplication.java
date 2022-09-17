@@ -78,30 +78,30 @@ public class SkywalkiesApplication {
 
 
 
+
             //BILLS//
             Bill bill1 = new Bill( LocalDateTime.now(), true, 992.23);
             //BILLS//
-
+            Avatar avatar1 = new Avatar(1,2,1,5,3);
+            //CLIENTES//
+            Client client1 = new Client("renzo", "balbo", "renzobalbo@skywalkies.com.ar", passwordEncoder.encode("skywalkies"), true, bill1, avatar1);
 
             //CLIENTES//
-            Client client1 = new Client("renzo", "balbo", "renzobalbo@skywalkies.com.ar", passwordEncoder.encode("skywalkies"), true, bill1);
-            Avatar avatar1 = new Avatar(1,2,1,5,3,client1);
-            //CLIENTES//
-
 
 
             //ORDENES//
-            Ordered_product ordered_product1= new Ordered_product(1,1,productShoe1 );
+            Ordered_product ordered_product1= new Ordered_product(1,1,productShoe1);
             //ORDENES//
-            Client_order order1 = new Client_order(ordered_product1);
+            Client_order order1 = new Client_order(ordered_product1, bill1.getId());
 
 
             clientRepository.save(client1);
             avatarRepository.save(avatar1);
             billRepository.save(bill1);
+
             ordered_productRepository.save(ordered_product1);
 
-
+            client_orderRepository.save(order1);
 
 
 

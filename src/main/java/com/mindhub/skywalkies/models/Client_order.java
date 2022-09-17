@@ -16,41 +16,20 @@ public class Client_order {
     @JoinColumn(name = "bill_id")
     private Bill billId;
 
-   // @OneToMany(mappedBy = "client_order",fetch = FetchType.EAGER)
-   // private Set<Ordered_product> ordered_products = new HashSet<>();
-
-    @OneToMany(mappedBy = "client_order", fetch = FetchType.EAGER)
-    private Set<Client_order> client_order = new HashSet<>();
-
-    private long ordered_product_id;
+  //   @OneToMany(mappedBy = "client_order",fetch = FetchType.EAGER)
+    // private Set<Ordered_product> ordered_products = new HashSet<>();
 
     public Client_order() {
     }
 
-    public Client_order(Ordered_product ordered_product) {
+    public Client_order(Ordered_product ordered_product, long Bill) {
         this.id = id;
-        this.ordered_product_id = ordered_product.getProduct_id();
-
-
+        this.billId = billId;
     }
 
     public long getId() {
         return id;
     }
-    public long getOrdered_product_id() {
-        return ordered_product_id;
-    }
-
-
-
-    public void setOrdered_product_id(long ordered_product_id) {
-        this.ordered_product_id = ordered_product_id;
-    }
-
-
-
-
-
 
     public Bill getBillId() {
         return billId;
@@ -61,6 +40,6 @@ public class Client_order {
     }
 
 
-
-
+    public void add(Client_order client_order) {
+    }
 }

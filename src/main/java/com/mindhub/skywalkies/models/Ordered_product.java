@@ -14,13 +14,12 @@ public class Ordered_product {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
-   // @OneToMany(mappedBy = "products", fetch = FetchType.EAGER)
-   // private Set<Product> product = new HashSet<>();
+    // @OneToMany(mappedBy = "products", fetch = FetchType.EAGER)
+    //private Set<Product> products = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_order_id")
-    private Client_order client_order;
-
+    private Client_order client_orders;
     private long product_id;
     private int quantity;
 
@@ -31,7 +30,6 @@ public class Ordered_product {
         this.id = id;
         this.product_id = product.getId();
         this.quantity = quantity;
-        //this.product = getProduct().stream().map(product1 -> new Product()).collect(Collectors.toSet());
 
     }
 
@@ -39,14 +37,6 @@ public class Ordered_product {
         return id;
     }
 
-
-    public long getProduct_id() {
-        return product_id;
-    }
-
-    public void setProduct_id(long product_id) {
-        this.product_id = product_id;
-    }
 
     public int getQuantity() {
         return quantity;
@@ -56,6 +46,16 @@ public class Ordered_product {
         this.quantity = quantity;
     }
 
-
-
+    public Client_order getClient_order() {
+        return client_orders;
     }
+
+    public void setClient_order(Client_order client_order) {
+        this.client_orders = client_order;
+    }
+
+    public long getProduct_id() {
+        return product_id;
+    }
+
+}

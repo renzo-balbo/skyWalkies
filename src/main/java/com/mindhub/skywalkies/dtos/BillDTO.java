@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 public class BillDTO {
     private long id;
 
-
     private LocalDateTime date;
     private boolean payed;
     private double subTotal;
@@ -29,9 +28,7 @@ public class BillDTO {
         this.payed = bill.isPayed();
         this.subTotal = bill.getSubTotal();
         this.client_orders = bill.getClient_orders().stream().map(client_order -> new Client_order()).collect(Collectors.toSet());
-
     }
-
 
     public long getId() {
         return id;

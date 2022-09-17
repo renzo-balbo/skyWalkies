@@ -15,18 +15,14 @@ public class Client {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
-    @OneToMany(mappedBy = "client",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
     private Set<Bill> bills = new HashSet<>();
 
-    //@OneToOne(mappedBy = "client")
-   // private Avatar avatar;
-
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "avatar_id", referencedColumnName = "id")
+    @JoinColumn(name = "client_id", referencedColumnName = "id")
     private Avatar avatar;
 
-
-    private String firstName,lastName,email,password;
+    private String firstName, lastName, email, password;
     private boolean isVerificated;
 
     public Client() {
@@ -41,6 +37,7 @@ public class Client {
         this.isVerificated = true;
         this.addBill(bill);
     }
+
     public Client(String firstName, String lastName, String email, String password, boolean verificated, Bill bill, Avatar avatar) {
         this.id = id;
         this.firstName = firstName;
@@ -48,10 +45,10 @@ public class Client {
         this.email = email;
         this.password = password;
         this.isVerificated = true;
+        this.avatar = avatar;
         this.addBill(bill);
 
     }
-
 
 
     public long getId() {
@@ -107,13 +104,21 @@ public class Client {
         this.bills = bills;
     }
 
-    public void addBill(Bill bill){
+    public void addBill(Bill bill) {
         bill.setClient(this);
         bills.add(bill);
     }
 
-    public void setAvatar(Avatar avatar) {
+    public Avatar getAvatar() {
+        return avatar;
     }
 
-
+    public void setAvatar(Avatar avatar) {
+        this.avatar = avatar;
+    }
 }
+
+
+
+
+
