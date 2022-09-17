@@ -13,9 +13,7 @@ public class Product {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ordered_product_id")
-    private Ordered_product products;
+
     @ElementCollection
     @Column(name = "sizes")
     private List<Integer> size;
@@ -97,13 +95,7 @@ public class Product {
         this.stock = stock;
     }
 
-    public Ordered_product getProducts() {
-        return products;
-    }
 
-    public void setProducts(Ordered_product products) {
-        this.products = products;
-    }
 
     public boolean isActive() {
         return active;

@@ -13,8 +13,11 @@ public class Avatar {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
-    @OneToOne
-    @JoinColumn(name = "client_id", referencedColumnName = "id")
+    //@OneToOne
+ //   @JoinColumn(name = "client_id", referencedColumnName = "id")
+  //  private Client client;
+
+    @OneToOne(mappedBy = "avatar")
     private Client client;
 
     private Integer head,face,body,bodyColor,shoes;
@@ -28,7 +31,7 @@ public class Avatar {
         this.body = body;
         this.bodyColor = bodyColor;
         this.shoes = shoes;
-        this.client = client;
+
     }
 
 
@@ -78,11 +81,5 @@ public class Avatar {
         this.shoes = shoes;
     }
 
-    public Client getClient() {
-        return client;
-    }
 
-    public void setClient(Client client) {
-        this.client = client;
-    }
 }

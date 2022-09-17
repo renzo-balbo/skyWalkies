@@ -19,6 +19,8 @@ public class Client_order {
    // @OneToMany(mappedBy = "client_order",fetch = FetchType.EAGER)
    // private Set<Ordered_product> ordered_products = new HashSet<>();
 
+    @OneToMany(mappedBy = "client_order", fetch = FetchType.EAGER)
+    private Set<Client_order> client_order = new HashSet<>();
 
     private long ordered_product_id;
 

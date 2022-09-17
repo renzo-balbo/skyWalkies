@@ -18,9 +18,12 @@ public class Client {
     @OneToMany(mappedBy = "client",fetch = FetchType.EAGER)
     private Set<Bill> bills = new HashSet<>();
 
-    @OneToOne(mappedBy = "client")
-    private Avatar avatar;
+    //@OneToOne(mappedBy = "client")
+   // private Avatar avatar;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "avatar_id", referencedColumnName = "id")
+    private Avatar avatar;
 
 
     private String firstName,lastName,email,password;
@@ -46,7 +49,7 @@ public class Client {
         this.password = password;
         this.isVerificated = true;
         this.addBill(bill);
-        this.avatar = avatar;
+
     }
 
 
@@ -112,7 +115,5 @@ public class Client {
     public void setAvatar(Avatar avatar) {
     }
 
-    public Avatar getAvatar() {
-        return avatar;
-    }
+
 }
