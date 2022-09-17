@@ -19,7 +19,7 @@ createApp({
             stockToDisplay: "",
             productToDisplay: {},
             shoeColors:[],
-            selectedColor:"",
+            selectedColor:[],
 
         }
     },

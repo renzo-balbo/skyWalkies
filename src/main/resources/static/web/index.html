@@ -445,7 +445,7 @@
                             <div class="col-12 d-flex flex-wrap justify-content-center">
 
                                 <div v-for="color in shoeColors" class="d-flex mx-2">
-                                    <input type="checkbox" @change="changeSelectedColors(color)"  v-model="selectedColor" :name="color" :id="color" :value="color">
+                                    <input type="checkbox" @change="changeSelectedColors(color)"  v-model="selectedColor" :id="color" :value="color">
                                     <label :for="color">{{color}}</label>
                                 </div>
 
