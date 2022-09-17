@@ -21,9 +21,6 @@ public class Client {
     @OneToOne(mappedBy = "client")
     private Avatar avatar;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "client_order_id")
-    private Client_order client_order;
 
 
     private String firstName,lastName,email,password;
@@ -33,6 +30,7 @@ public class Client {
     }
 
     public Client(String firstName, String lastName, String email, String password, boolean verificated, Bill bill) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -40,6 +38,17 @@ public class Client {
         this.isVerificated = true;
         this.addBill(bill);
     }
+    public Client(String firstName, String lastName, String email, String password, boolean verificated, Bill bill, Avatar avatar) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.isVerificated = true;
+        this.addBill(bill);
+        this.avatar = avatar;
+    }
+
 
 
     public long getId() {
@@ -102,8 +111,8 @@ public class Client {
 
     public void setAvatar(Avatar avatar) {
     }
+
     public Avatar getAvatar() {
         return avatar;
     }
-
 }

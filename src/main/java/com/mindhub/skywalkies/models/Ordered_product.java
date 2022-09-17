@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 public class Ordered_product {
@@ -16,9 +17,8 @@ public class Ordered_product {
     @OneToMany(mappedBy = "products", fetch = FetchType.EAGER)
     private Set<Product> product = new HashSet<>();
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn( name = "client_order_id")
-    private Client_order client_order;
+    //@OneToMany(mappedBy = "ordered_products",fetch = FetchType.EAGER)
+    //private Set<Client_order> client_order = new HashSet<>();
 
     private long product_id;
     private int quantity;
@@ -30,6 +30,8 @@ public class Ordered_product {
         this.id = id;
         this.product_id = product.getId();
         this.quantity = quantity;
+        this.product = getProduct().stream().map(product1 -> new Product()).collect(Collectors.toSet());
+
     }
 
     public long getId() {
@@ -61,11 +63,5 @@ public class Ordered_product {
         this.product = product;
     }
 
-    public Client_order getClient_order() {
-        return client_order;
-    }
 
-    public void setClient_order(Client_order client_order) {
-        this.client_order = client_order;
     }
-}

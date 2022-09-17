@@ -76,9 +76,7 @@ public class SkywalkiesApplication {
             Product productShoe46 = new Product("NIKE-LV-LOW_Z", List.of(WITHE, PINK), "Sneaker", true, List.of(8,9,10,11), 15, 170);
             //PRODUCTOS//
 
-            //ORDENES//
-            Ordered_product ordered_product1= new Ordered_product(1,1,productShoe1);
-            //ORDENES//
+
 
             //BILLS//
             Bill bill1 = new Bill( LocalDateTime.now(), true, 992.23);
@@ -90,6 +88,11 @@ public class SkywalkiesApplication {
             Avatar avatar1 = new Avatar(1,2,1,5,3,client1);
             //CLIENTES//
 
+
+
+            //ORDENES//
+            Ordered_product ordered_product1= new Ordered_product(1,1,productShoe1 );
+            //ORDENES//
             Client_order order1 = new Client_order(ordered_product1);
 
 
@@ -97,7 +100,8 @@ public class SkywalkiesApplication {
             avatarRepository.save(avatar1);
             billRepository.save(bill1);
             ordered_productRepository.save(ordered_product1);
-            order1.addOrderedProducts(ordered_product1);
+
+
 
 
 
@@ -151,7 +155,7 @@ public class SkywalkiesApplication {
 
 
 
-            bill1.addClient_order(order1);
+            //bill1.addClient_order(order1);
             client_orderRepository.save(order1);
 
 
