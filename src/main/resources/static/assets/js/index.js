@@ -4,6 +4,12 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            clientEmail:"",
+            clientPassword:"",
+            newClientFirstName:"",
+            newClientLastName:"",
+            newClientEmail:"",
+            newClientPassword:"",
             productsArray: [],
             upperShelf:[],
             middleShelf:[],
@@ -83,6 +89,41 @@ createApp({
 
         // },
 
+        login() {
+            axios.post("/api/logout")
+            .then(()=>{
+                axios.post("/api/login", `email=${this.clientEmail}&password=${this.clientPassword}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+                .then(response => {
+                    console.log(response)
+                    // window.location.href = ""
+                })
+                .catch(error => {
+                    swal("There was an error with your email or password. Please try again.",{
+                        dangerMode:true
+                    });
+                    console.log("Error:",error.response.status,"Code:",error.code)
+                })
+            })
+
+        },
+
+        signUp() {
+            axios.post('/api/clients', `firstName=${this.newClientFirstName}&lastName=${this.newClientLastName}&email=${this.newClientEmail}&password=${this.newClientPassword}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+            .then(response => console.log(response))
+            .catch(error =>{
+                console.log(error)
+                console.log("Error:",error.response.status,"Code:", error.code, error.response.data)
+                if(error.response.data == "This email belongs to an existing client"){
+                    swal(error.response.data,".",{
+                        dangerMode:true
+                    })
+                } else {
+                    swal("Please fill all the required fields.",{
+                        dangerMode:true
+                    });
+                }
+            })
+        },
 
 
 
