@@ -18,6 +18,7 @@ createApp({
             priceToDisplay: "",
             stockToDisplay: "",
             productToDisplay: {},
+            shoeColors:[]
 
         }
     },
@@ -55,9 +56,11 @@ createApp({
                     this.priceSortedMaxToMin()
                     this.priceSortedMinToMax()
                     this.shelvesFiller()
-                    console.log(this.upperShelf);
-                    console.log(this.middleShelf);
-                    console.log(this.bottomShelf);
+                    this.loadShoeColors(this.productsArray)
+                    console.log(this.shoeColors);
+                    // console.log(this.upperShelf);
+                    // console.log(this.middleShelf);
+                    // console.log(this.bottomShelf);
 
                 })
         },
@@ -71,7 +74,7 @@ createApp({
             this.upperShelf = this.upperShelf.sort((a,b)=>a.price-b.price)
             this.middleShelf = this.middleShelf.sort((a,b)=>a.price-b.price)
             this.bottomShelf = this.bottomShelf.sort((a,b)=>a.price-b.price)
-            console.log(this.upperShelf);
+            // console.log(this.upperShelf);
 
 
         },
@@ -82,6 +85,16 @@ createApp({
             this.bottomShelf = this.bottomShelf.sort((a,b)=>b.price-a.price)
 
         },
+
+        loadShoeColors(shoeArray){
+            this.shoeColors
+            shoeArray.forEach(shoe =>{
+                shoe.shoeColors.forEach(color=>{
+                    if(!this.shoeColors.includes(color)){
+                        this.shoeColors.push(color)
+                    }
+                })
+        })},
 
         // Esperar endpoints y hacer el addToCart
         // addToCart() {
