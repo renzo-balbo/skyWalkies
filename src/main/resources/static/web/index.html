@@ -434,21 +434,20 @@
                             <div class="input-group col-6">
                                 <input @change="priceSortedMaxToMin" type="radio" name="priceSorter"
                                     id="maxToMinSorter">
-                                <label for="maxToMinSorter">Order from Higher to Lower</label>
+                                <label for="maxToMinSorter">Order price from Higher to Lower</label>
                             </div>
                             <div class="input-group col-6">
                                 <input type="radio" name="priceSorter" id="minToMaxSorter">
-                                <label for="minToMaxSorter">Order from Lower to Higher</label>
+                                <label for="minToMaxSorter">Order price from Lower to Higher</label>
                             </div>
 
 
-                            <div class="input-group col-12">
+                            <div class="col-12 d-flex flex-wrap justify-content-center">
 
-                                <div v-for="color in shoeColors">
-                                    <input type="checkbox" name="priceSorter" id="minToMaxSorter">
-                                    <label for="minToMaxSorter">{{color}}</label>
+                                <div v-for="color in shoeColors" class="d-flex mx-2">
+                                    <input type="checkbox" @change="changeSelectedColors(color)"  v-model="selectedColor" :name="color" :id="color" :value="color">
+                                    <label :for="color">{{color}}</label>
                                 </div>
-
 
                             </div>
                         </div>

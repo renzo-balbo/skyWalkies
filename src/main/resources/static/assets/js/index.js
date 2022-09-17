@@ -18,7 +18,8 @@ createApp({
             priceToDisplay: "",
             stockToDisplay: "",
             productToDisplay: {},
-            shoeColors:[]
+            shoeColors:[],
+            selectedColor:"",
 
         }
     },
@@ -58,6 +59,7 @@ createApp({
                     this.shelvesFiller()
                     this.loadShoeColors(this.productsArray)
                     console.log(this.shoeColors);
+                    console.log(this.selectedColor)
                     // console.log(this.upperShelf);
                     // console.log(this.middleShelf);
                     // console.log(this.bottomShelf);
@@ -95,6 +97,17 @@ createApp({
                     }
                 })
         })},
+
+        filterByColor(){
+            if (this.selectedColor!=[]){
+                this.upperShelf = this.upperShelf.filter(shoe => shoe.color == this.selectedColor)
+            this.middleShelf = this.middleShelf.filter(shoe => shoe.color == this.selectedColor)
+            this.bottomShelf = this.bottomShelf.filter(shoe => shoe.color == this.selectedColor)}
+        },
+
+        changeSelectedColors(color){
+            this.selectedColor.toggle(color)
+        },
 
         // Esperar endpoints y hacer el addToCart
         // addToCart() {
