@@ -5,6 +5,9 @@ createApp({
     data() {
         return {
             productsArray: [],
+            upperShelf:[],
+            middleShelf:[],
+            bottomShelf:[],
             renderForModal: "",
             priceToDisplay: "",
             stockToDisplay: "",
@@ -45,16 +48,33 @@ createApp({
                     this.productsArray.forEach(product => product.price = this.moneyFormatter(product.price))
                     this.priceSortedMaxToMin()
                     this.priceSortedMinToMax()
+                    this.shelvesFiller()
+                    console.log(this.upperShelf);
+                    console.log(this.middleShelf);
+                    console.log(this.bottomShelf);
 
                 })
         },
+        shelvesFiller(){
+            this.upperShelf = this.productsArray.slice(0,14)
+            this.middleShelf = this.productsArray.slice(14,32)
+            this.bottomShelf = this.productsArray.slice(32,47)
+        },
         priceSortedMaxToMin(){
             this.productsArray = this.productsArray.sort((a,b)=>a.price-b.price)
-            console.log(this.productArray);
+            this.upperShelf = this.upperShelf.sort((a,b)=>a.price-b.price)
+            this.middleShelf = this.middleShelf.sort((a,b)=>a.price-b.price)
+            this.bottomShelf = this.bottomShelf.sort((a,b)=>a.price-b.price)
+            console.log(this.upperShelf);
+
+
         },
         priceSortedMinToMax(){
             this.productsArray = this.productsArray.sort((a,b)=>b.price-a.price)
-            console.log(this.productArray);
+            this.upperShelf = this.upperShelf.sort((a,b)=>b.price-a.price)
+            this.middleShelf = this.middleShelf.sort((a,b)=>b.price-a.price)
+            this.bottomShelf = this.bottomShelf.sort((a,b)=>b.price-a.price)
+
         },
 
         // Esperar endpoints y hacer el addToCart

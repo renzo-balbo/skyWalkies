@@ -455,7 +455,8 @@
                         <div
                             class="modal-body d-flex flex-column align-items-center flex-md-row justify-content-around">
                             <div class="d-flex justify-content-center">
-                                <video :src="'../assets/vid/'+renderForModal+'.mp4'" autoplay loop muted style="width: 100%;"></video>
+                                <video :src="'../assets/vid/'+renderForModal+'.mp4'" autoplay loop muted
+                                    style="width: 100%;"></video>
                             </div>
                             <div class="d-flex flex-column col-10">
                                 <h2>{{nameFormater(renderForModal)}}</h2>
@@ -467,20 +468,12 @@
                         <div class="modal-footer d-flex justify-content-center">
                             <div class="carouselZapas d-flex col-10 ">
 
-                                <!-- <span class="modalSpawner"></span>
-                                <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                    class="card-img-top widthZapaCarrusel" alt="...">
+                                <button v-for="product in productsArray" @click="changeRender(product.name)"
+                                    class="mx-2">
+                                    <img :src="'/assets/img/'+product.name+'.png'" style="width: 100px; height:70px"
+                                        alt="">
+                                </button>
 
-
-
-                                <span class="modalSpawner"></span>
-                                <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                    class="card-img-top widthZapaCarrusel" alt="..."> -->
-
-                                    <button v-for="product in productsArray" @click="changeRender(product.name)" class="mx-2">
-                                        <img :src="'/assets/img/'+product.name+'.png'" style="width: 100px; height:70px" alt="">
-                                    </button>
-                                    
                             </div>
 
                         </div>
@@ -538,118 +531,35 @@
                     </div>
                 </div>
 
-                <div class="bloques flex-wrap align-items-center justify-content-around gap-3" id="gallery">
-                    <div class="col-12 d-flex align-items-center justify-content-center">
-                        <input type="radio" name="priceSorter" id="maxToMinSorter">
-                        <label for="maxToMinSorter">Order from Higher to Lower</label>
-                        <input type="radio" name="priceSorter" id="minToMaxSorter">
-                        <label for="minToMaxSorter">Order from Lower to Higher</label>
-
+                <div class="bloquesGallery flex-column align-items-center justify-content-around gap-3" id="gallery">
+                    <div class="col-12 d-flex flex-column align-items-center justify-content-center gap-1">
                         <h2 class="text-center fw-bolder bgTitles">Design Gallery</h2>
+                        <div class="d-flex align-items-center justify-content-around filters p-2">
+                            <div class="input-group col-6">
+                                <input @change="priceSortedMaxToMin" type="radio" name="priceSorter" id="maxToMinSorter">
+                                <label for="maxToMinSorter">Order from Higher to Lower</label>
+                            </div>
+                            <div class="input-group col-6">
+                                <input type="radio" name="priceSorter" id="minToMaxSorter">
+                                <label for="minToMaxSorter">Order from Lower to Higher</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class=" d-flex align-items-center justify-content-around estanteZapatillas col-10">
-                        <div class="mx-2">
-                            <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-A3.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-E.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/LV_NIKE_LOW_SOTHEBYS.png" class="card-img-top widthZapaCarrusel"
-                                alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/NIKE-LV-AFONE-HIGH-D.png" class="card-img-top widthZapaCarrusel"
-                                alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/NIKE-LV-HIGH_03.png" class="card-img-top widthZapaCarrusel"
-                                alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/NIKE-LV-LOW_01.png" class="card-img-top widthZapaCarrusel"
-                                alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/NIKE-LV-LOW_25.png" class="card-img-top widthZapaCarrusel"
-                                alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/NIKE-LV-LOW_13.png" class="card-img-top widthZapaCarrusel"
+                    <div class="d-flex align-items-center justify-content-around estanteZapatillas col-10">
+                        <div v-for="product in upperShelf" class="mx-2">
+                            <img :src="'../assets/img/'+product.name+'.png'" class="card-img-top widthZapaCarrusel"
                                 alt="...">
                         </div>
                     </div>
                     <div class=" d-flex align-items-center justify-content-around estanteZapatillas col-12">
-                        <div class="mx-2">
-                            <img src="../assets/img/NIKE-LV-LOW_J.png" class="card-img-top widthZapaCarrusel" alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/NIKE-LV-LOW_Y.png" class="card-img-top widthZapaCarrusel" alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/NIKE-LV-LOW_tricolor.png" class="card-img-top widthZapaCarrusel"
+                        <div v-for="product in middleShelf" class="mx-2">
+                            <img :src="'../assets/img/'+product.name+'.png'" class="card-img-top widthZapaCarrusel"
                                 alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/NIKE-LV-LOW_27.png" class="card-img-top widthZapaCarrusel"
-                                alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/NIKE-LV-LOW_10.png" class="card-img-top widthZapaCarrusel"
-                                alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/NIKE-LV-LOW_P.png" class="card-img-top widthZapaCarrusel" alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/NIKE-LV-LOW_23.png" class="card-img-top widthZapaCarrusel"
-                                alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/NIKE-LV-LOW_K.png" class="card-img-top widthZapaCarrusel" alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-A3.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-E.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
                         </div>
                     </div>
                     <div class=" d-flex align-items-center justify-content-around estanteZapatillas col-10">
-                        <div class="mx-2">
-                            <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-A3.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-E.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/LV_NIKE_LOW_SOTHEBYS.png" class="card-img-top widthZapaCarrusel"
-                                alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/NIKE-LV-AFONE-HIGH-D.png" class="card-img-top widthZapaCarrusel"
-                                alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/NIKE-LV-HIGH_03.png" class="card-img-top widthZapaCarrusel"
-                                alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/NIKE-LV-LOW_01.png" class="card-img-top widthZapaCarrusel"
-                                alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/NIKE-LV-LOW_25.png" class="card-img-top widthZapaCarrusel"
-                                alt="...">
-                        </div>
-                        <div class="mx-2">
-                            <img src="../assets/img/NIKE-LV-LOW_13.png" class="card-img-top widthZapaCarrusel"
+                        <div v-for="product in bottomShelf" class="mx-2">
+                            <img :src="'../assets/img/'+product.name+'.png'" class="card-img-top widthZapaCarrusel"
                                 alt="...">
                         </div>
                     </div>
@@ -716,9 +626,9 @@
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-    
+
     <script src="../assets/js/index.js"></script>
-    
+
     <script src="../assets/js/sliderVanilla.js"></script>
 
 </body>

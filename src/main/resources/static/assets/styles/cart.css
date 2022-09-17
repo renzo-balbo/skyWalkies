@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Tajawal';
+
 }
 
 header {
@@ -87,9 +91,10 @@ body {
     height: 7rem;
 }
 
-.cardImageAndTitle{
+.cardImageAndTitle {
     height: 15rem
 }
+
 /*  */
 @media (min-width: 420px) {
     td>img {
