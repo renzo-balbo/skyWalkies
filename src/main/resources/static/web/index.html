@@ -207,31 +207,35 @@
                         <!-- CARRUSEL DE BOOTSTRAP, VER MAS TARDE -->
                         <div class="d-flex flex-wrap ocultar justify-content-center gap-3">
                             <div class="carouselZapas squares col-10">
-                                <a v-for="product in upperShelf" href="#staticBackdrop" data-bs-toggle="modal"
+
+                                <button class="noBGnoBorder mx-2" v-for="product in upperShelf"
+                                    @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop">
                                     <span class="modalSpawner"></span>
                                     <img :src="'../assets/img/'+product.name+'.png'"
                                         class="card-img-top widthZapaCarrusel" alt="...">
+                                </button>
 
-                                </a>
                             </div>
 
                             <div class="carouselZapas squares col-10 ">
-                                <a v-for="product in middleShelf" href="#staticBackdrop" data-bs-toggle="modal"
+                                <button class="noBGnoBorder mx-2" v-for="product in middleShelf"
+                                    @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop">
                                     <span class="modalSpawner"></span>
                                     <img :src="'../assets/img/'+product.name+'.png'"
                                         class="card-img-top widthZapaCarrusel" alt="...">
-                                </a>
+                                </button>
                             </div>
 
                             <div class="carouselZapas squares col-10 ">
-                                <a v-for="product in bottomShelf" href="#staticBackdrop" data-bs-toggle="modal"
+                                <button class="noBGnoBorder mx-2" v-for="product in bottomShelf"
+                                    @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop">
                                     <span class="modalSpawner"></span>
                                     <img :src="'../assets/img/'+product.name+'.png'"
                                         class="card-img-top widthZapaCarrusel" alt="...">
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -295,7 +299,7 @@
                             tempora dignissimos sed tempore, eius voluptas.</p>
                     </div>
 
-                    <div class="d-flex flex-column align-items-center justify-content-center">
+                    <div class="d-flex mt-5 flex-column align-items-center justify-content-center">
                         <div class="d-flex my-2 gap-2">
                             <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-E.png"
                                 class="card-img-top widthZapaCarrusel" alt="...">
@@ -339,30 +343,31 @@
                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-fullscreen">
                     <div class="modal-content">
+                        
                         <div class="modal-header">
                             <h4 class="modal-title" id="staticBackdropLabel">Product Preview</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div
-                            class="modal-body d-flex flex-column align-items-center flex-md-row justify-content-around">
-                            <div class="d-flex justify-content-center">
+
+                        <div class="modal-body d-flex flex-column align-items-center flex-md-row justify-content-around">
+                            <div class="d-flex justify-content-center col-md-6">
                                 <video :src="'../assets/vid/'+renderForModal+'.mp4'" autoplay loop muted
                                     style="width: 100%;"></video>
                             </div>
-                            <div class="d-flex flex-column col-10">
-                                <h2>{{nameFormater(renderForModal)}}</h2>
-                                <h3>{{productToDisplay.price}}</h3>
+                            <div class="d-flex flex-column col-10 col-md-5">
+                                <h2 class="fw-bolder">{{nameFormater(renderForModal)}}</h2>
+                                <h3 class="fw-bold">{{productToDisplay.price}}</h3>
                                 <h5>Stock: {{productToDisplay.stock}}</h5>
-                                <button class="btn btn-dark">Add to Cart</button>
+                                <button class="btn btn-dark col-md-6">Add to Cart</button>
                             </div>
                         </div>
-                        <div class="modal-footer d-flex justify-content-center">
-                            <div class="carouselZapas d-flex col-10 ">
 
+                        <div class="modal-footer d-flex justify-content-center container">
+
+                            <div class="carouselZapas d-flex col-10 col-md-12 ">
                                 <button v-for="product in productsArray" @click="changeRender(product.name)"
-                                    class="mx-2 modalButtons">
-                                    <img :src="'/assets/img/'+product.name+'.png'" style="width: 100px;"
-                                        alt="">
+                                    class="mx-2 noBGnoBorder">
+                                    <img :src="'/assets/img/'+product.name+'.png'" style="width: 100px;" alt="">
                                 </button>
 
                             </div>
@@ -438,31 +443,51 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-center justify-content-around estanteZapatillas col-10">
-                        <div v-for="product in upperShelf" class="mx-2">
+
+
+                        <button class="noBGnoBorder mx-2" v-for="product in upperShelf"
+                            @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">
                             <img :src="'../assets/img/'+product.name+'.png'" class="card-img-top widthZapaCarrusel"
                                 alt="...">
-                        </div>
+                        </button>
+
+
                     </div>
                     <div class=" d-flex align-items-center justify-content-around estanteZapatillas col-12">
-                        <div v-for="product in middleShelf" class="mx-2">
+
+                        <button class="noBGnoBorder mx-2" v-for="product in middleShelf"
+                            @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">
                             <img :src="'../assets/img/'+product.name+'.png'" class="card-img-top widthZapaCarrusel"
                                 alt="...">
-                        </div>
+                        </button>
+
                     </div>
                     <div class=" d-flex align-items-center justify-content-around estanteZapatillas col-10">
-                        <div v-for="product in bottomShelf" class="mx-2">
+                        
+                        <button class="noBGnoBorder mx-2" v-for="product in bottomShelf"
+                            @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">
                             <img :src="'../assets/img/'+product.name+'.png'" class="card-img-top widthZapaCarrusel"
                                 alt="...">
-                        </div>
+                        </button>
+
                     </div>
 
                 </div>
-                <div class="bloques" id="inspiration">
-                    <div class="divs"></div>
-                    <div class="divs">
-                        <p>INSPIRATION</p>
+                <div class="bloques flex-wrap align-items-center justify-content-center" id="inspiration">
+                    <div class="col-12 d-flex align-items-center justify-content-center">
+                        <h2 class="text-center fw-bolder bgTitles">Inspiration</h2>
                     </div>
-                    <div class="divs"></div>
+                    <div class="divs col-5 overflow-auto">
+                        <h2 class="text-center">"Air Force 1", by "placeholder"</h2>
+                        <p class="m-3 fw-light">Since the beginning of the text messages up to the inspiration messages and much more, explore the atelier de Skywalkies and discover the creative thinking and the colaboration that were implemented in order to make this vision a reallity.</p>
+                    </div>
+                    <div class="videoContainer d-flex align-items-center justify-content-center col-8">
+                        <video autoplay loop src="../assets/vid/zapatillaArmandose.webm"></video>
+                    </div>
+
                 </div>
                 <div class="bloques" id="exposition">
                     <div class="divs"></div>
