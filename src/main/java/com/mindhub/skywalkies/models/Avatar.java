@@ -1,5 +1,6 @@
 package com.mindhub.skywalkies.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -13,8 +14,8 @@ public class Avatar {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
-    @OneToOne
-    @JoinColumn(name = "client_id", referencedColumnName = "id")
+
+    @OneToOne(mappedBy = "avatar")
     private Client client;
 
     private Integer head,face,body,bodyColor,shoes;
@@ -22,13 +23,13 @@ public class Avatar {
     public Avatar() {
     }
 
-    public Avatar(Integer head, Integer face, Integer body, Integer bodyColor, Integer shoes, Client client) {
+    public Avatar(Integer head, Integer face, Integer body, Integer bodyColor, Integer shoes) {
         this.head = head;
         this.face = face;
         this.body = body;
         this.bodyColor = bodyColor;
         this.shoes = shoes;
-        this.client = client;
+
     }
 
 
@@ -77,7 +78,7 @@ public class Avatar {
     public void setShoes(Integer shoes) {
         this.shoes = shoes;
     }
-
+    @JsonIgnore
     public Client getClient() {
         return client;
     }

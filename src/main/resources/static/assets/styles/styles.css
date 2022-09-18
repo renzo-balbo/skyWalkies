@@ -113,6 +113,11 @@ nav>img {
   cursor: pointer;
 }
 
+.noBGnoBorder{
+  border: none;
+  background-color: rgba(197, 19, 19, 0);
+}
+
 video {
   width: 80%;
   align-self: center;
@@ -215,6 +220,14 @@ display: inline-block;
     width: 7rem !important;
   }
   
+}
+
+@media(min-width:1200px){
+  .carouselZapas{
+    width: 80vw;
+    height: 6rem;
+    /* overflow-x: hidden; */
+  }
 }
 
 /* .estanteZapatillasMobile {

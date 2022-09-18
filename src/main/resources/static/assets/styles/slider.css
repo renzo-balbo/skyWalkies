@@ -47,11 +47,6 @@
     min-width: 120%;
   }
 }
-@media (min-width: 1900px) {
-  .bloquesGallery {
-    min-width: 100%;
-  }
-}
 
 /* TERMINA SLIDER */
 

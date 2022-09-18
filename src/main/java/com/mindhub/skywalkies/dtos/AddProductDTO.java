@@ -20,7 +20,7 @@ public class AddProductDTO {
 
   public AddProductDTO(Product product) {
     this.name = product.getName();
-    this.active = product.getActive();
+    this.active = product.isActive();
     this.sizes = product.getSize();
     this.stock = product.getStock();
     this.type = product.getType();

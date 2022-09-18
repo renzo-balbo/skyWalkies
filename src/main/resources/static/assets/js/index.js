@@ -4,6 +4,12 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            clientEmail:"",
+            clientPassword:"",
+            newClientFirstName:"",
+            newClientLastName:"",
+            newClientEmail:"",
+            newClientPassword:"",
             productsArray: [],
             upperShelf:[],
             middleShelf:[],
@@ -12,6 +18,8 @@ createApp({
             priceToDisplay: "",
             stockToDisplay: "",
             productToDisplay: {},
+            shoeColors:[],
+            selectedColor:[],
 
         }
     },
@@ -49,9 +57,12 @@ createApp({
                     this.priceSortedMaxToMin()
                     this.priceSortedMinToMax()
                     this.shelvesFiller()
-                    console.log(this.upperShelf);
-                    console.log(this.middleShelf);
-                    console.log(this.bottomShelf);
+                    this.loadShoeColors(this.productsArray)
+                    console.log(this.shoeColors);
+                    console.log(this.selectedColor)
+                    // console.log(this.upperShelf);
+                    // console.log(this.middleShelf);
+                    // console.log(this.bottomShelf);
 
                 })
         },
@@ -65,7 +76,7 @@ createApp({
             this.upperShelf = this.upperShelf.sort((a,b)=>a.price-b.price)
             this.middleShelf = this.middleShelf.sort((a,b)=>a.price-b.price)
             this.bottomShelf = this.bottomShelf.sort((a,b)=>a.price-b.price)
-            console.log(this.upperShelf);
+            // console.log(this.upperShelf);
 
 
         },
@@ -77,12 +88,68 @@ createApp({
 
         },
 
+        loadShoeColors(shoeArray){
+            this.shoeColors
+            shoeArray.forEach(shoe =>{
+                shoe.shoeColors.forEach(color=>{
+                    if(!this.shoeColors.includes(color)){
+                        this.shoeColors.push(color)
+                    }
+                })
+        })},
+
+        filterByColor(){
+            if (this.selectedColor!=[]){
+                this.upperShelf = this.upperShelf.filter(shoe => shoe.color == this.selectedColor)
+            this.middleShelf = this.middleShelf.filter(shoe => shoe.color == this.selectedColor)
+            this.bottomShelf = this.bottomShelf.filter(shoe => shoe.color == this.selectedColor)}
+        },
+
+        changeSelectedColors(color){
+            this.selectedColor.toggle(color)
+        },
+
         // Esperar endpoints y hacer el addToCart
         // addToCart() {
         //     axios.post('/api/producsts/add', { name: this.renderForModal, color, type,active,stock,price,})
 
         // },
 
+        login() {
+            axios.post("/api/logout")
+            .then(()=>{
+                axios.post("/api/login", `email=${this.clientEmail}&password=${this.clientPassword}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+                .then(response => {
+                    console.log(response)
+                    // window.location.href = ""
+                })
+                .catch(error => {
+                    swal("There was an error with your email or password. Please try again.",{
+                        dangerMode:true
+                    });
+                    console.log("Error:",error.response.status,"Code:",error.code)
+                })
+            })
+
+        },
+
+        signUp() {
+            axios.post('/api/clients', `firstName=${this.newClientFirstName}&lastName=${this.newClientLastName}&email=${this.newClientEmail}&password=${this.newClientPassword}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+            .then(response => console.log(response))
+            .catch(error =>{
+                console.log(error)
+                console.log("Error:",error.response.status,"Code:", error.code, error.response.data)
+                if(error.response.data == "This email belongs to an existing client"){
+                    swal(error.response.data,".",{
+                        dangerMode:true
+                    })
+                } else {
+                    swal("Please fill all the required fields.",{
+                        dangerMode:true
+                    });
+                }
+            })
+        },
 
 
 

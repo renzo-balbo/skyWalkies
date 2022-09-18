@@ -1,5 +1,6 @@
 package com.mindhub.skywalkies.dtos;
 
+import com.mindhub.skywalkies.models.Ordered_product;
 import com.mindhub.skywalkies.models.Product;
 import com.mindhub.skywalkies.models.ShoeColors;
 
@@ -25,12 +26,13 @@ public class ProductDTO {
         this.id = product.getId();
         this.name = product.getName();
         this.shoeColors = product.getShoeColors();
-        this.active = product.getActive();
+        this.active = product.isActive();
         this.sizes = product.getSize();
         this.stock = product.getStock();
         this.type = product.getType();
         this.price = product.getPrice();
     }
+
 
     public long getId() {
         return id;

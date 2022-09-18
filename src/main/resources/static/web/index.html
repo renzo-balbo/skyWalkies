@@ -71,7 +71,7 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#flush-collapseOne" aria-expanded="false"
                                         aria-controls="flush-collapseOne">
-                                        REGISTRO
+                                        REGISTER
                                     </button>
                                 </h2>
                                 <div id="flush-collapseOne" class="accordion-collapse collapse"
@@ -82,16 +82,30 @@
 
                                         <form>
                                             <div class="mb-3">
-                                                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                                <input type="email" class="form-control" id=""
-                                                    aria-describedby="emailHelp">
+                                                <label for="newClientFirstName" class="form-label">First Name</label>
+                                                <input type="text" class="form-control" id="newClientFirstName"
+                                                    v-model="newClientFirstName">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="newClientLastName" class="form-label">Last Name</label>
+                                                <input type="text" class="form-control" id="newClientLastName"
+                                                    v-model="newClientLastName">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="newClientEmail" class="form-label">Email address</label>
+                                                <input type="email" class="form-control" id="newClientEmail"
+                                                    aria-describedby="emailHelp" v-model="newClientEmail">
                                                 <div id="emailHelp" class="form-text">We'll never share your email with
                                                     anyone else.</div>
                                             </div>
+
                                             <div class="mb-3">
                                                 <label for="exampleInputPassword1" class="form-label">Password</label>
                                                 <input type="password" class="form-control" id="">
                                             </div>
+
                                             <button type="submit" class="btn btn-dark">Submit</button>
                                         </form>
 
@@ -193,154 +207,35 @@
                         <!-- CARRUSEL DE BOOTSTRAP, VER MAS TARDE -->
                         <div class="d-flex flex-wrap ocultar justify-content-center gap-3">
                             <div class="carouselZapas squares col-10">
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
 
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <button class="noBGnoBorder mx-2" v-for="product in upperShelf"
+                                    @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop">
                                     <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
+                                    <img :src="'../assets/img/'+product.name+'.png'"
                                         class="card-img-top widthZapaCarrusel" alt="...">
+                                </button>
 
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
                             </div>
+
                             <div class="carouselZapas squares col-10 ">
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <button class="noBGnoBorder mx-2" v-for="product in middleShelf"
+                                    @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop">
                                     <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
+                                    <img :src="'../assets/img/'+product.name+'.png'"
                                         class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
+                                </button>
                             </div>
+
                             <div class="carouselZapas squares col-10 ">
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <button class="noBGnoBorder mx-2" v-for="product in bottomShelf"
+                                    @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop">
                                     <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
+                                    <img :src="'../assets/img/'+product.name+'.png'"
                                         class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
-                                <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    <span class="modalSpawner"></span>
-                                    <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-R.png"
-                                        class="card-img-top widthZapaCarrusel" alt="...">
-
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -404,7 +299,7 @@
                             tempora dignissimos sed tempore, eius voluptas.</p>
                     </div>
 
-                    <div class="d-flex flex-column align-items-center justify-content-center">
+                    <div class="d-flex mt-5 flex-column align-items-center justify-content-center">
                         <div class="d-flex my-2 gap-2">
                             <img src="../assets/img/LV-NIKE-AFONE-HIGH-PLUS-E.png"
                                 class="card-img-top widthZapaCarrusel" alt="...">
@@ -448,30 +343,31 @@
                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-fullscreen">
                     <div class="modal-content">
+                        
                         <div class="modal-header">
                             <h4 class="modal-title" id="staticBackdropLabel">Product Preview</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div
-                            class="modal-body d-flex flex-column align-items-center flex-md-row justify-content-around">
-                            <div class="d-flex justify-content-center">
+
+                        <div class="modal-body d-flex flex-column align-items-center flex-md-row justify-content-around">
+                            <div class="d-flex justify-content-center col-md-6">
                                 <video :src="'../assets/vid/'+renderForModal+'.mp4'" autoplay loop muted
                                     style="width: 100%;"></video>
                             </div>
-                            <div class="d-flex flex-column col-10">
-                                <h2>{{nameFormater(renderForModal)}}</h2>
-                                <h3>{{productToDisplay.price}}</h3>
+                            <div class="d-flex flex-column col-10 col-md-5">
+                                <h2 class="fw-bolder">{{nameFormater(renderForModal)}}</h2>
+                                <h3 class="fw-bold">{{productToDisplay.price}}</h3>
                                 <h5>Stock: {{productToDisplay.stock}}</h5>
-                                <button class="btn btn-dark">Add to Cart</button>
+                                <button class="btn btn-dark col-md-6">Add to Cart</button>
                             </div>
                         </div>
-                        <div class="modal-footer d-flex justify-content-center">
-                            <div class="carouselZapas d-flex col-10 ">
 
+                        <div class="modal-footer d-flex justify-content-center container">
+
+                            <div class="carouselZapas d-flex col-10 col-md-12 ">
                                 <button v-for="product in productsArray" @click="changeRender(product.name)"
-                                    class="mx-2">
-                                    <img :src="'/assets/img/'+product.name+'.png'" style="width: 100px; height:70px"
-                                        alt="">
+                                    class="mx-2 noBGnoBorder">
+                                    <img :src="'/assets/img/'+product.name+'.png'" style="width: 100px;" alt="">
                                 </button>
 
                             </div>
@@ -534,43 +430,74 @@
                 <div class="bloquesGallery flex-column align-items-center justify-content-around gap-3" id="gallery">
                     <div class="col-12 d-flex flex-column align-items-center justify-content-center gap-1">
                         <h2 class="text-center fw-bolder bgTitles">Design Gallery</h2>
-                        <div class="d-flex align-items-center justify-content-around filters p-2">
+                        <div class="d-flex align-items-center flex-wrap justify-content-around filters p-2">
                             <div class="input-group col-6">
-                                <input @change="priceSortedMaxToMin" type="radio" name="priceSorter" id="maxToMinSorter">
-                                <label for="maxToMinSorter">Order from Higher to Lower</label>
+                                <input @change="priceSortedMaxToMin" type="radio" name="priceSorter"
+                                    id="maxToMinSorter">
+                                <label for="maxToMinSorter">Order price from Higher to Lower</label>
                             </div>
                             <div class="input-group col-6">
                                 <input type="radio" name="priceSorter" id="minToMaxSorter">
-                                <label for="minToMaxSorter">Order from Lower to Higher</label>
+                                <label for="minToMaxSorter">Order price from Lower to Higher</label>
+                            </div>
+
+
+                            <div class="col-12 d-flex flex-wrap justify-content-center">
+
+                                <div v-for="color in shoeColors" class="d-flex mx-2">
+                                    <input type="checkbox" @change="changeSelectedColors(color)"  v-model="selectedColor" :id="color" :value="color">
+                                    <label :for="color">{{color}}</label>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                     <div class="d-flex align-items-center justify-content-around estanteZapatillas col-10">
-                        <div v-for="product in upperShelf" class="mx-2">
+
+
+                        <button class="noBGnoBorder mx-2" v-for="product in upperShelf"
+                            @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">
                             <img :src="'../assets/img/'+product.name+'.png'" class="card-img-top widthZapaCarrusel"
                                 alt="...">
-                        </div>
+                        </button>
+
+
                     </div>
                     <div class=" d-flex align-items-center justify-content-around estanteZapatillas col-12">
-                        <div v-for="product in middleShelf" class="mx-2">
+
+                        <button class="noBGnoBorder mx-2" v-for="product in middleShelf"
+                            @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">
                             <img :src="'../assets/img/'+product.name+'.png'" class="card-img-top widthZapaCarrusel"
                                 alt="...">
-                        </div>
+                        </button>
+
                     </div>
                     <div class=" d-flex align-items-center justify-content-around estanteZapatillas col-10">
-                        <div v-for="product in bottomShelf" class="mx-2">
+                        
+                        <button class="noBGnoBorder mx-2" v-for="product in bottomShelf"
+                            @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">
                             <img :src="'../assets/img/'+product.name+'.png'" class="card-img-top widthZapaCarrusel"
                                 alt="...">
-                        </div>
+                        </button>
+
                     </div>
 
                 </div>
-                <div class="bloques" id="inspiration">
-                    <div class="divs"></div>
-                    <div class="divs">
-                        <p>INSPIRATION</p>
+                <div class="bloques flex-wrap align-items-center justify-content-center" id="inspiration">
+                    <div class="col-12 d-flex align-items-center justify-content-center">
+                        <h2 class="text-center fw-bolder bgTitles">Inspiration</h2>
                     </div>
-                    <div class="divs"></div>
+                    <div class="divs col-5 overflow-auto">
+                        <h2 class="text-center">"Air Force 1", by "placeholder"</h2>
+                        <p class="m-3 fw-light">Since the beginning of the text messages up to the inspiration messages and much more, explore the atelier de Skywalkies and discover the creative thinking and the colaboration that were implemented in order to make this vision a reallity.</p>
+                    </div>
+                    <div class="videoContainer d-flex align-items-center justify-content-center col-8">
+                        <video autoplay loop src="../assets/vid/zapatillaArmandose.webm"></video>
+                    </div>
+
                 </div>
                 <div class="bloques" id="exposition">
                     <div class="divs"></div>

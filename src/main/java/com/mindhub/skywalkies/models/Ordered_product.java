@@ -1,10 +1,13 @@
 package com.mindhub.skywalkies.models;
 
+import com.mindhub.skywalkies.dtos.ProductDTO;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 public class Ordered_product {
@@ -13,29 +16,53 @@ public class Ordered_product {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
-    @OneToMany(mappedBy = "products", fetch = FetchType.EAGER)
-    private Set<Product> product = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn( name = "client_order_id")
+    @JoinColumn(name = "productt_id")
+    private Product products;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "client_order_id")
     private Client_order client_order;
 
+    private long clientt_order;
     private long product_id;
     private int quantity;
 
     public Ordered_product() {
     }
 
-    public Ordered_product(long product_id, int quantity, Product product) {
-        this.id = id;
-        this.product_id = product.getId();
+    public Ordered_product(long client_order, long product_id, int quantity, Product productt) {
+        this.clientt_order = client_order;
+        this.product_id = product_id;
         this.quantity = quantity;
+
     }
+
 
     public long getId() {
         return id;
     }
 
+    public void setProducts(Product products) {
+        this.products = products;
+    }
+
+    public Client_order getClient_order() {
+        return client_order;
+    }
+
+    public void setClient_order(Client_order client_order) {
+        this.client_order = client_order;
+    }
+
+    public long getClientt_order() {
+        return clientt_order;
+    }
+
+    public void setClientt_order(long clientt_order) {
+        this.clientt_order = clientt_order;
+    }
 
     public long getProduct_id() {
         return product_id;
@@ -53,19 +80,11 @@ public class Ordered_product {
         this.quantity = quantity;
     }
 
-    public Set<Product> getProduct() {
-        return product;
+
+    public Product getProducts() {
+        return products;
     }
 
-    public void setProduct(Set<Product> product) {
-        this.product = product;
-    }
 
-    public Client_order getClient_order() {
-        return client_order;
-    }
 
-    public void setClient_order(Client_order client_order) {
-        this.client_order = client_order;
-    }
 }

@@ -15,30 +15,38 @@ public class Client {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
-    @OneToMany(mappedBy = "client",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
     private Set<Bill> bills = new HashSet<>();
 
-    @OneToOne(mappedBy = "client")
+    @OneToOne(cascade = CascadeType.ALL)
     private Avatar avatar;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "client_order_id")
-    private Client_order client_order;
-
-
-    private String firstName,lastName,email,password;
+    private String firstName, lastName, email, password;
     private boolean isVerificated;
 
     public Client() {
     }
 
     public Client(String firstName, String lastName, String email, String password, boolean verificated, Bill bill) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.isVerificated = true;
         this.addBill(bill);
+    }
+
+    public Client(String firstName, String lastName, String email, String password, boolean verificated, Bill bill, Avatar avatar) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.isVerificated = true;
+        this.avatar = avatar;
+        this.addBill(bill);
+
     }
 
 
@@ -95,15 +103,21 @@ public class Client {
         this.bills = bills;
     }
 
-    public void addBill(Bill bill){
+    public void addBill(Bill bill) {
         bill.setClient(this);
         bills.add(bill);
     }
 
-    public void setAvatar(Avatar avatar) {
-    }
     public Avatar getAvatar() {
         return avatar;
     }
 
+    public void setAvatar(Avatar avatar) {
+        this.avatar = avatar;
+    }
 }
+
+
+
+
+

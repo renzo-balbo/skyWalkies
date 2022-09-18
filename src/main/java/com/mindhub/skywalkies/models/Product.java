@@ -4,7 +4,9 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Product {
@@ -13,9 +15,10 @@ public class Product {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ordered_product_id")
-    private Ordered_product products;
+   // @OneToMany(mappedBy = "product",fetch = FetchType.EAGER)
+    //private Set<Ordered_product> ordered_products = new HashSet<>();
+
+
     @ElementCollection
     @Column(name = "sizes")
     private List<Integer> size;
@@ -23,6 +26,7 @@ public class Product {
     @Column(name = "colors")
     private List<ShoeColors> shoeColors;
 
+    
     private String name,type;
 
     private boolean active;
@@ -49,12 +53,14 @@ public class Product {
     }
 
 
-    public String getName() {
-        return name;
+
+
+    public List<Integer> getSize() {
+        return size;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSize(List<Integer> size) {
+        this.size = size;
     }
 
     public List<ShoeColors> getShoeColors() {
@@ -65,44 +71,20 @@ public class Product {
         this.shoeColors = shoeColors;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getType() {
         return type;
     }
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
-
-    public List<Integer> getSize() {
-        return size;
-    }
-
-    public void setSize(List<Integer> size) {
-        this.size = size;
-    }
-
-    public int getStock() {
-        return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
-
-    public Ordered_product getProducts() {
-        return products;
-    }
-
-    public void setProducts(Ordered_product products) {
-        this.products = products;
     }
 
     public boolean isActive() {
@@ -113,11 +95,22 @@ public class Product {
         this.active = active;
     }
 
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
     public double getPrice() {
         return price;
     }
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public void add(Product product) {
     }
 }
