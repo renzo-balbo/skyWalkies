@@ -97,12 +97,14 @@
                                                 <label for="newClientEmail" class="form-label">Email address</label>
                                                 <input type="email" class="formInputs" id="newClientEmail"
                                                     aria-describedby="emailHelp" v-model="newClientEmail">
-                                                <div id="newClientEmail" class="form-text">We'll never share your email with
+                                                <div id="newClientEmail" class="form-text">We'll never share your email
+                                                    with
                                                     anyone else.</div>
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="newClientPassword" class="form-label" v-model="newClientPassword">Password</label>
+                                                <label for="newClientPassword" class="form-label"
+                                                    v-model="newClientPassword">Password</label>
                                                 <input type="password" class="formInputs" id="newClientPassword">
                                             </div>
 
@@ -131,14 +133,15 @@
                                         <form>
                                             <div class="mb-3">
                                                 <label for="clientEmail" class="form-label">Email address</label>
-                                                <input type="email" class="formInputs" id="clientEmail" v-model="clientEmail"
-                                                    aria-describedby="emailHelp">
+                                                <input type="email" class="formInputs" id="clientEmail"
+                                                    v-model="clientEmail" aria-describedby="emailHelp">
                                                 <div id="emailHelp" class="form-text">We'll never share your email with
                                                     anyone else.</div>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="clientPassword" class="form-label">Password</label>
-                                                <input type="password" class="formInputs" id="clientPassword" v-model="clientPassword">
+                                                <input type="password" class="formInputs" id="clientPassword"
+                                                    v-model="clientPassword">
                                             </div>
                                             <button type="submit" class="btn btn-dark">Submit</button>
                                         </form>
@@ -171,12 +174,13 @@
                     </div>
 
                     <div class="d-flex flex-wrap justify-content-center card mx-3">
-                        <h2 class="text-center">"Air Force 1", by "placeholder"</h2>
-                        <p class="m-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut eaque voluptate
-                            maiores
-                            dolore
-                            omnis neque
-                            exercitationem odit soluta suscipit vel!</p>
+                        <h2 class="text-center">"Air Force 1", by "Sky Walkies"</h2>
+                        <p class="m-3">Originally designed by Nike in 1982, the Sky Walkies "Airforce 1" marks the first
+                            time the shoe has been made outside of a Nike factory. An emblem of the street style
+                            community that sapwned it, Men's Artistic Director Renzo Balbo considered the Nike Air Force
+                            1 a cultural symbol in its own right. Now two icons join forces to create the mos authentic
+                            high-end sports shoe. Fasion transcends to become an art object symbol of the subculture
+                            with a bit of magic and innovation.</p>
                     </div>
                 </div>
 
@@ -184,11 +188,12 @@
                 <div class="ocultar my-5">
                     <div class="d-flex flex-wrap justify-content-center card mx-3">
                         <h2 class="text-center">Handcrafted</h2>
-                        <p class="m-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto labore
-                            impedit,
-                            sint
-                            tenetur ipsa sed
-                            delectus nobis perspiciatis odio praesentium.</p>
+                        <p class="m-3">Travel to Fiesso d'Artico and enter the Maison's atelier to discover the
+                            unrivaled craftsmanship the most authentic high-end sports shoe ever.</p>
+                        <h3 class="text-center">"A PATTERN TAKES SHAPE"</h3>
+                        <p class="m-3">A true craftsmanship is based on a skillful hand and precision. Patterns in
+                            luxury
+                            materials are cut, arranged and prepared for construction.</p>
                     </div>
                     <div class="d-flex justify-content-center mt-3">
                         <!-- CAMBIAR VIDEO -->
@@ -240,14 +245,10 @@
                         </div>
                     </div>
 
-                    <p class="m-3 card p-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit repudiandae
-                        in
-                        totam
-                        rem
-                        libero, error
-                        iste voluptatibus facilis nostrum iusto cumque excepturi deleniti necessitatibus et! Eaque
-                        consectetur
-                        eos labore hic debitis est, cupiditate harum doloribus voluptates.</p>
+                    <p class="m-3 card p-3">For Spring-Summer 2022/23, Renzo Balbo staged a collaboration between Sky
+                        Walkies and Nike, creating 47 bespoke "Air Force 1" editions. Each of them was expertly crafted,
+                        fusing the classic codes of the sneaker with the House's own insignials and materials, such as
+                        leather, cocodrile, synthetic leather and PVC among others.</p>
                 </div>
 
                 <!-- SECCION INSPIRACION -->
@@ -255,10 +256,8 @@
 
                     <div class="d-flex flex-wrap justify-content-center card mx-3">
                         <h2 class="text-center">Inspiration</h2>
-                        <p class="m-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore quam delectus
-                            laboriosam
-                            modi illum
-                            similique tempore tempora voluptate neque rerum!</p>
+                        <p class="m-3">Trip around the word. Explore Renzo Balbo's creative investigation through spaces
+                            and motifs inherent in his work.</p>
                     </div>
 
                     <div class="d-flex justify-content-center">
@@ -343,13 +342,14 @@
                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-fullscreen">
                     <div class="modal-content">
-                        
+
                         <div class="modal-header">
                             <h4 class="modal-title" id="staticBackdropLabel">Product Preview</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
 
-                        <div class="modal-body d-flex flex-column align-items-center flex-md-row justify-content-around">
+                        <div
+                            class="modal-body d-flex flex-column align-items-center flex-md-row justify-content-around">
                             <div class="d-flex justify-content-center col-md-6">
                                 <video :src="'../assets/vid/'+renderForModal+'.mp4'" autoplay loop muted
                                     style="width: 100%;"></video>
@@ -397,15 +397,13 @@
                         <video autoplay loop src="../assets/vid/zapatillaRotando.webm"></video>
                     </div>
                     <div class="divs col-5 overflow-auto">
-                        <h2 class="text-center">"Air Force 1", by "placeholder"</h2>
-                        <p class="m-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita illo velit
-                            corrupti voluptatum cum ex sapiente dolorem dicta beatae porro, atque iusto enim quam
-                            maxime, a tempore ipsum aspernatur blanditiis. Lorem ipsum, dolor sit amet consectetur
-                            adipisicing elit. Facilis, eligendi a. Quis assumenda doloribus adipisci nulla nihil
-                            corporis quod odit tempore facere labore aliquid autem reiciendis maiores, dolorum quam
-                            facilis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut quisquam tenetur
-                            corporis cum inventore facere voluptatibus ut fugit. Eveniet nulla officia asperiores dicta
-                            debitis magnam aliquid velit quod accusantium delectus. </p>
+                        <h2 class="text-center">"Air Force 1", by "Sky Walkies</h2>
+                        <p class="m-3">Originally designed by Nike in 1982, the Sky Walkies "Airforce 1" marks the first
+                            time the shoe has been made outside of a Nike factory. An emblem of the street style
+                            community that sapwned it, Men's Artistic Director Renzo Balbo considered the Nike Air Force
+                            1 a cultural symbol in its own right. Now two icons join forces to create the mos authentic
+                            high-end sports shoe. Fasion transcends to become an art object symbol of the subculture
+                            with a bit of magic and innovation.</p>
                     </div>
 
                 </div>
@@ -415,11 +413,13 @@
                         <h2 class="text-center fw-bolder bgTitles">Handcrafted</h2>
                     </div>
                     <div class="d-flex flex-wrap justify-content-center divs mx-3 col-6">
-                        <p class="m-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto labore
-                            impedit,
-                            sint
-                            tenetur ipsa sed
-                            delectus nobis perspiciatis odio praesentium.
+                        <p class="m-3">Travel to Fiesso d'Artico and enter the Maison's atelier to discover the
+                            unrivaled craftsmanship the most authentic high-end sports shoe ever.
+                        </p>
+                        <h3 class="text-center">"A PATTERN TAKES SHAPE"</h3>
+                        <p class="m-3">A true craftsmanship is based on a skillful hand and precision. Patterns in
+                            luxury
+                            materials are cut, arranged and prepared for construction.
                         </p>
                     </div>
                     <div class="videoContainer d-flex align-items-center justify-content-center col-6">
@@ -445,7 +445,8 @@
                             <div class="col-12 d-flex flex-wrap justify-content-center">
 
                                 <div v-for="color in shoeColors" class="d-flex mx-2">
-                                    <input type="checkbox" @change="changeSelectedColors(color)"  v-model="selectedColor" :id="color" :value="color">
+                                    <input type="checkbox" @change="changeSelectedColors(color)" v-model="selectedColor"
+                                        :id="color" :value="color">
                                     <label :for="color">{{color}}</label>
                                 </div>
 
@@ -475,7 +476,7 @@
 
                     </div>
                     <div class=" d-flex align-items-center justify-content-around estanteZapatillas col-10">
-                        
+
                         <button class="noBGnoBorder mx-2" v-for="product in bottomShelf"
                             @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop">
@@ -491,8 +492,10 @@
                         <h2 class="text-center fw-bolder bgTitles">Inspiration</h2>
                     </div>
                     <div class="divs col-5 overflow-auto">
-                        <h2 class="text-center">"Air Force 1", by "placeholder"</h2>
-                        <p class="m-3 fw-light">Since the beginning of the text messages up to the inspiration messages and much more, explore the atelier de Skywalkies and discover the creative thinking and the colaboration that were implemented in order to make this vision a reallity.</p>
+                        <p class="m-3 fw-light">For Spring-Summer 2022/23, Renzo Balbo staged a collaboration between
+                            Sky Walkies and Nike, creating 47 bespoke "Air Force 1" editions. Each of them was expertly
+                            crafted, fusing the classic codes of the sneaker with the House's own insignials and
+                            materials, such as leather, cocodrile, synthetic leather and PVC among others.</p>
                     </div>
                     <div class="videoContainer d-flex align-items-center justify-content-center col-8">
                         <video autoplay loop src="../assets/vid/zapatillaArmandose.webm"></video>
