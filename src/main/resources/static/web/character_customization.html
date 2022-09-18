@@ -12,6 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/styles/backgroundStars.css">
     <link rel="stylesheet" href="../assets/styles/character_customization.css">
 
     <link rel="shortcut icon" href="../assets/img/skyWalkiesLogo.png" type="image/x-icon">
@@ -142,8 +143,13 @@
             </nav>
 
         </header>
+        <!-- estrellas del fondo -->
 
+        <div id='stars' class="estrellas"></div>
+        <div id='stars2' class="estrellas"></div>
+        <div id='stars3' class="estrellas"></div>
 
+        <!-- ---- -->
         <main class="d-flex flex-wrap justify-content-center">
 
             <div class="col-12 d-flex flex-wrap justify-content-evenly">
@@ -156,15 +162,17 @@
 
                     <h2 class="col-12 text-center fw-bold bg-white">Select Your Style</h2>
 
-                    <div class="d-flex flex-wrap justify-content-center flex-column align-items-center">
+                    <div class="d-flex flex-wrap justify-content-center align-items-center">
+
                         <img src="../assets/img/avatarCollection/lineArtObligatory.png" alt="" class="d-none">
 
                         <!-- HEAD SELECTOR  -->
+
                         <div class="selectorContainer">
 
-                            <label for="">Select the hairstyle that's suits you the best:</label>
+                            <h5>Select the hairstyle that's suits you the best:</h5>
 
-                            <div class="d-flex col-10 justify-content-center gap-4">
+                            <div class="carrusel">
 
                                 <div class="avatarPartSelector">
                                     <label for="head1Selector">
@@ -248,14 +256,16 @@
                                 </div>
 
                             </div>
+
                         </div>
 
                         <!-- BODY SELECTOR  -->
+
                         <div class="selectorContainer">
-                            <label for="">Pick an outfit for today:</label>
 
-                            <div class="d-flex col-10 justify-content-center gap-4">
+                            <h5>Pick an outfit for today:</h5>
 
+                            <div class="carrusel">
 
                                 <div class="avatarPartSelector">
                                     <label for="body1Selector">
@@ -303,14 +313,16 @@
                                 </div>
 
                             </div>
+
                         </div>
 
                         <!-- BODY COLOR SELECTOR  -->
+
                         <div class="selectorContainer">
-                            <label for="">Select a body color:</label>
 
-                            <div class="d-flex col-10 justify-content-center gap-4">
+                            <h5>Select a body color:</h5>
 
+                            <div class="carrusel">
 
                                 <div class="avatarPartSelector">
                                     <label for="bodyColor1Selector">
@@ -348,16 +360,17 @@
                                         value="4" v-model="customAvatar.bodyColor">
                                 </div>
 
-
                             </div>
+
                         </div>
 
                         <!-- FACE SELECTOR  -->
+
                         <div class="selectorContainer">
-                            <label for="">Let's change that face:</label>
 
-                            <div class="d-flex col-10 justify-content-center gap-4">
+                            <h5>Let's change that face:</h5>
 
+                            <div class="carrusel">
 
                                 <div class="avatarPartSelector">
                                     <label for="face1Selector">
@@ -410,11 +423,10 @@
                         <!-- SHOES SELECTOR  -->
 
                         <div class="selectorContainer">
-                            <label for="">Which pair are we Rocking today?</label>
 
-                            <div class="d-flex col-10 justify-content-center gap-4">
+                            <h5>Which pair are we Rocking today?</h5>
 
-
+                            <div class="carrusel">
                                 <div class="avatarPartSelector">
                                     <label for="shoes1Selector">
                                         <img src="../assets/img/avatarCollection/shoes1.png" alt="" height="100"
@@ -459,26 +471,19 @@
                                     <input class="mt-2" name="shoesSelector" id="shoes5Selector" type="radio" value="5"
                                         v-model="customAvatar.shoes">
                                 </div>
-
                             </div>
 
-                            
                         </div>
 
                         <button class="mt-5" id="keepItButton">Keep It!</button>
 
-
-
-
-
-
-
-
                     </div>
+
                 </div>
 
                 <!-- DISPLAY DEL AVATAR  -->
-                <div class="d-flex col-12 col-lg-3  m-3 justify-content-center">
+
+                <div class="d-flex col-12 col-lg-3  m-3 justify-content-center contenedorCanvas">
                     <canvas id="myCanvas" width="400" height="680" style="border: 5px solid black;"></canvas>
                 </div>
 
@@ -488,7 +493,7 @@
 
 
         <footer class="d-flex align-items-center justify-content-center border-top">
-            <p class="mt-2">Sky Walkies &reg;</p>
+            <p class="">Sky Walkies &reg;</p>
         </footer>
     </div>
 
