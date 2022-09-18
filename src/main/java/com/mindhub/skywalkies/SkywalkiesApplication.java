@@ -96,7 +96,7 @@ public class SkywalkiesApplication {
             //ORDENES//
             Ordered_product ordered_product1= new Ordered_product(1,1,productShoe1);
             //ORDENES//
-            Client_order order1 = new Client_order(ordered_product1, bill1.getId());
+            Client_order order1 = new Client_order(ordered_product1, bill1);
 
 
             clientRepository.save(client1);

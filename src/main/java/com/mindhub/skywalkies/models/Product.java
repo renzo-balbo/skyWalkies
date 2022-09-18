@@ -13,6 +13,10 @@ public class Product {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ordered_product_id")
+    private Ordered_product ordered_product;
+
 
     @ElementCollection
     @Column(name = "sizes")
@@ -20,6 +24,9 @@ public class Product {
     @ElementCollection
     @Column(name = "colors")
     private List<ShoeColors> shoeColors;
+
+
+
 
     private String name,type;
 
@@ -111,5 +118,9 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public void setOrdered_product(Ordered_product ordered_product) {
+        this.ordered_product = ordered_product;
     }
 }

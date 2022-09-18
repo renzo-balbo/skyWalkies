@@ -16,13 +16,13 @@ public class Client_order {
     @JoinColumn(name = "bill_id")
     private Bill billId;
 
-  //   @OneToMany(mappedBy = "client_order",fetch = FetchType.EAGER)
+    //@OneToMany(mappedBy = "client_order",fetch = FetchType.EAGER)
     // private Set<Ordered_product> ordered_products = new HashSet<>();
 
     public Client_order() {
     }
 
-    public Client_order(Ordered_product ordered_product, long Bill) {
+    public Client_order(Ordered_product ordered_product, Bill Bill) {
         this.id = id;
         this.billId = billId;
     }
