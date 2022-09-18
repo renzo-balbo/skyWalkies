@@ -30,26 +30,24 @@ public class AvatarController {
         return avatarService.getAllAvatars().stream().map(AvatarDTO::new).collect(Collectors.toList());
     }
 
-    @RequestMapping("/accounts/{id}")
+    @RequestMapping("/avatar/{id}")
     public AvatarDTO getAvatar(@PathVariable long id) {
         return new AvatarDTO(avatarService.getAvatarById(id));
     }
 
     @PatchMapping("/client/avatar/current/")
     public ResponseEntity<Object> editAvatar(
-            @RequestParam int head, @RequestParam int face,
-            @RequestParam int body, @RequestParam int bodyColor,
-            @RequestParam int shoes, Authentication authentication) {
+            @RequestBody AvatarDTO avatarDTO, Authentication authentication) {
         Client client = clientService.findClientByEmail(authentication.getName());
         Avatar avatar = avatarService.getAvatarById(client.getId());
         if (!client.isVerificated()) {
             return new ResponseEntity<>("no jaja", HttpStatus.FORBIDDEN);
         }
-        avatar.setHead(head);
-        avatar.setFace(face);
-        avatar.setBody(body);
-        avatar.setBodyColor(bodyColor);
-        avatar.setShoes(shoes);
+        avatar.setHead(avatarDTO.getHead());
+        avatar.setFace(avatarDTO.getFace());
+        avatar.setBody(avatarDTO.getBody());
+        avatar.setBodyColor(avatarDTO.getBodyColor());
+        avatar.setShoes(avatarDTO.getShoes());
         avatarService.saveAvatar(avatar);
         return new ResponseEntity<>("si jaja", HttpStatus.ACCEPTED);
     }
