@@ -83,27 +83,27 @@
                                         <form>
                                             <div class="mb-3">
                                                 <label for="newClientFirstName" class="form-label">First Name</label>
-                                                <input type="text" class="form-control" id="newClientFirstName"
+                                                <input type="text" class="formInputs" id="newClientFirstName"
                                                     v-model="newClientFirstName">
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="newClientLastName" class="form-label">Last Name</label>
-                                                <input type="text" class="form-control" id="newClientLastName"
+                                                <input type="text" class="formInputs" id="newClientLastName"
                                                     v-model="newClientLastName">
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="newClientEmail" class="form-label">Email address</label>
-                                                <input type="email" class="form-control" id="newClientEmail"
+                                                <input type="email" class="formInputs" id="newClientEmail"
                                                     aria-describedby="emailHelp" v-model="newClientEmail">
-                                                <div id="emailHelp" class="form-text">We'll never share your email with
+                                                <div id="newClientEmail" class="form-text">We'll never share your email with
                                                     anyone else.</div>
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                                <input type="password" class="form-control" id="">
+                                                <label for="newClientPassword" class="form-label" v-model="newClientPassword">Password</label>
+                                                <input type="password" class="formInputs" id="newClientPassword">
                                             </div>
 
                                             <button type="submit" class="btn btn-dark">Submit</button>
@@ -130,15 +130,15 @@
 
                                         <form>
                                             <div class="mb-3">
-                                                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                                <input type="email" class="form-control" id=""
+                                                <label for="clientEmail" class="form-label">Email address</label>
+                                                <input type="email" class="formInputs" id="clientEmail" v-model="clientEmail"
                                                     aria-describedby="emailHelp">
                                                 <div id="emailHelp" class="form-text">We'll never share your email with
                                                     anyone else.</div>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                                <input type="password" class="form-control" id="">
+                                                <label for="clientPassword" class="form-label">Password</label>
+                                                <input type="password" class="formInputs" id="clientPassword" v-model="clientPassword">
                                             </div>
                                             <button type="submit" class="btn btn-dark">Submit</button>
                                         </form>
