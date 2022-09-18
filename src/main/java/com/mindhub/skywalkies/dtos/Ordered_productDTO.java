@@ -15,10 +15,10 @@ public class Ordered_productDTO {
     }
 
     public Ordered_productDTO(Ordered_product ordered_product) {
-        this.product_id = ordered_product.getProduct_id();
+        this.product_id = getProduct_id();
         this.client_order_id = ordered_product.getClientt_order();
         this.quantity = ordered_product.getQuantity();
-        this.products = getProductS().stream().map(productDTO -> new ProductDTO()).collect(Collectors.toSet());
+
     }
 
 
@@ -33,4 +33,5 @@ public class Ordered_productDTO {
     public Set<ProductDTO> getProductS() {
         return products;
     }
+
 }
