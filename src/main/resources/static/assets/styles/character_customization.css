@@ -21,11 +21,12 @@ nav {
 
 footer {
     height: 13vh;
-    background-color: white;
+    background-color: white !important;
 }
+footer>p{
+    height: 100%;
+    background-color: white !important;
 
-li {
-    list-style: none;
 }
 
 /* para la imagen de prueba de logo */
@@ -38,15 +39,17 @@ nav>img {
 
 
 /* Estilos de customizacion */
-label{
+label {
     border: 2px solid black;
     display: flex;
     justify-content: center;
     width: 80px;
     height: 110.38px;
     padding: .2rem;
+    background-color: white;
 }
-h5{
+
+h5 {
     background-color: white;
     padding: 1rem;
     text-align: center;
@@ -54,31 +57,34 @@ h5{
     font-size: smaller;
     margin-top: 1rem;
 }
-#keepItButton{
+
+#keepItButton {
     border: 2px solid black !important;
     background-color: white;
     font-weight: 400;
+    width: 7rem;
+    height: 3rem;
     padding: .5rem;
     transition: 300ms;
     border-radius: 5px;
     justify-self: center !important;
 }
 
-#keepItButton:hover{
+#keepItButton:hover {
     background-color: black;
-    color: white;
+    color: white !important;
     transform: scale(1.2);
     text-decoration: underline;
 }
 
-.selectorContainer{
+.selectorContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: .5rem;
-    /* SETEAR UN WIDTH PARA TODOS Y DARLE SCROLL HORIZONTAL PARA VER LAS OPCIONES*/
 }
-.contenedorCanvas{
+
+.contenedorCanvas {
     height: 21rem;
     width: fit-content;
     background-color: white;
@@ -86,7 +92,7 @@ h5{
 
 /* carrusel  */
 
-.carrusel{
+.carrusel {
     overflow-y: hidden;
     overflow-x: auto;
     white-space: nowrap;
@@ -94,69 +100,76 @@ h5{
     height: 9rem;
 
 }
-.carrusel>div{
+
+.carrusel>div {
     margin: 5px;
-padding: 0;
-display: inline-block;
+    padding: 0;
+    display: inline-block;
 
 }
+
 .carrusel::-webkit-scrollbar {
     height: 7px !important;
 }
+
 .carrusel::-webkit-scrollbar-track {
     background-color: #e4e4e4;
 }
+
 .carrusel::-webkit-scrollbar-thumb {
     background-color: black;
 }
 
 /* --- */
 
-.avatarPartSelector{
+.avatarPartSelector {
     background-color: white;
 }
 
-.avatarPartSelector>input{
+.avatarPartSelector>input {
     display: none;
 }
 
-.avatarPartSelector:hover{
+.avatarPartSelector:hover {
     transform: scale(1.05);
 }
 
-label{
-    background-color: white;
-}
-
-
-
-
-
-
 /* EMPIEZAN LAS MEDIA QUERIES */
 
-@media (min-width: 426px) {
-    .horizontal-scroll-wrapper-modal {
-        width: 100px;
-        height: 700px;
-        overflow-y: auto;
-        overflow-x: hidden;
+
+@media (min-width: 768px) {
+    .carrusel {
+        width: 20rem;
+    }
+
+    .contenedorCanvas {
+        height: 24rem;
+    }
+    h5{
+        font-size: large;
     }
 }
 
 @media (min-width: 1024px) {
 
-
-    footer {
-        height: 3vh;
+    .carrusel {
+        width: 27rem;
+        height: 10rem;
     }
 
+    label{
+        width: 6rem;
+        height: 8rem;    
+    }
     header {
         height: 10vh;
+        position:static;
     }
-
+    .contenedorCanvas {
+        height: 38rem;
+    }
     main {
-        height: 97vh;
+        height: 87vh !important;
         width: 100%;
         background: none !important;
     }
@@ -165,5 +178,10 @@ label{
         height: 100%;
         width: 4rem !important;
     }
+    html{
+        overflow: hidden;
+    }
+    h5{
+        font-size: larger;
+    }
 }
-
