@@ -52,9 +52,6 @@ public class Product {
         return id;
     }
 
-
-
-
     public List<Integer> getSize() {
         return size;
     }
@@ -109,6 +106,14 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Set<Ordered_product> getOrdered_products() {
+        return ordered_products;
+    }
+
+    public void setOrdered_products(Set<Ordered_product> ordered_products) {
+        this.ordered_products = ordered_products;
     }
 
     public void add(Product product) {

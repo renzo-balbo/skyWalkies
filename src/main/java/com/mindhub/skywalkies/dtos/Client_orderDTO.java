@@ -1,6 +1,7 @@
 package com.mindhub.skywalkies.dtos;
 
 import com.mindhub.skywalkies.models.Client_order;
+import com.mindhub.skywalkies.models.Ordered_product;
 
 import java.util.Set;
 import java.util.stream.Collectors;

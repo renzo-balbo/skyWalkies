@@ -60,6 +60,4 @@ public class Client_order {
         ordered_product.setClient_order(this);
         ordered_products.add(ordered_product);
     }
-
-
 }

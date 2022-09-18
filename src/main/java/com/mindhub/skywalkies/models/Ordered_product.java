@@ -38,12 +38,17 @@ public class Ordered_product {
 
     }
 
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 
     public long getId() {
         return id;
     }
-
-
 
     public Client_order getClient_order() {
         return client_order;
