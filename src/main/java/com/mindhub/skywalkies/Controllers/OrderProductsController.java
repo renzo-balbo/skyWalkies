@@ -19,6 +19,6 @@ public class OrderProductsController {
 
     @GetMapping("/orderProducts")
     public List<Ordered_productDTO> getOrderProductsDTO(){
-        return ordered_productService.getAllOrderProducts().stream().map(ordered_product -> new Ordered_productDTO()).collect(Collectors.toList());
+        return ordered_productService.getAllOrderProducts().stream().map(ordered_product -> new Ordered_productDTO(ordered_product)).collect(Collectors.toList());
     }
 }

@@ -99,9 +99,9 @@ public class SkywalkiesApplication {
             //CLIENTS ORDERS/
 
             //ADD//
-        //    Ordered_product ordered_product1= new Ordered_product();
-        //    bill1.addClient_order(clientOrder1);
-        //    clientOrder1.addOrder_products(ordered_product1);
+            Ordered_product ordered_product1= new Ordered_product(clientOrder1, 3, productShoe3);
+            bill1.addClient_order(clientOrder1);
+//            clientOrder1.addOrder_products(ordered_product1);
             //ADD//
 
 
@@ -161,7 +161,7 @@ public class SkywalkiesApplication {
             productRepository.save(productShoe46);
 
 
-
+            ordered_productRepository.save(ordered_product1);
 
         };
     }

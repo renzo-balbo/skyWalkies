@@ -16,7 +16,7 @@ public class BillDTO {
     private boolean payed;
     private double subTotal;
 
-    private Set<Client_order> client_orders;
+    private Set<Client_orderDTO> client_orders;
 
 
     public BillDTO() {
@@ -27,7 +27,7 @@ public class BillDTO {
         this.date = bill.getDate();
         this.payed = bill.isPayed();
         this.subTotal = bill.getSubTotal();
-        this.client_orders = bill.getClient_orders().stream().map(client_order -> new Client_order()).collect(Collectors.toSet());
+        this.client_orders = bill.getClient_orders().stream().map(client_order -> new Client_orderDTO(client_order)).collect(Collectors.toSet());
     }
 
     public long getId() {
@@ -38,15 +38,15 @@ public class BillDTO {
         return date;
     }
 
-    public Boolean getPayed() {
+    public boolean isPayed() {
         return payed;
     }
 
-    public double getTotalAmount() {
+    public double getSubTotal() {
         return subTotal;
     }
 
-    public Set<Client_order> getClient_orders() {
+    public Set<Client_orderDTO> getClient_orders() {
         return client_orders;
     }
 }

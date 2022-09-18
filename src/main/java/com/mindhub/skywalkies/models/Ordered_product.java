@@ -17,45 +17,36 @@ public class Ordered_product {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id")
+    private Product product;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_order_id")
     private Client_order client_order;
-    
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "product_id")
-    private  Product product;
 
 
-
+//    private long product_id;
     private int quantity;
 
     public Ordered_product() {
     }
 
-    public Ordered_product(Product product, Client_order client_order) {
-        this.client_order = client_order;
-        this.product = product;
-        this.quantity = quantity;
-        this.addProductos(product);
-
-    }
-    public Ordered_product(Product product) {
+    public Ordered_product(Client_order client_order, int quantity, Product product) {
         this.client_order = client_order;
         this.product = product;
         this.quantity = quantity;
 
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
 
     public long getId() {
         return id;
+    }
+
+    public void setProducts(Product product) {
+        this.product = product;
     }
 
     public Client_order getClient_order() {
@@ -66,13 +57,14 @@ public class Ordered_product {
         this.client_order = client_order;
     }
 
-    public Product getProduct() {
-        return product;
-    }
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
+//    public long getProduct_id() {
+//        return product;
+//    }
+//
+//    public void setProduct_id(long product_id) {
+//        this.product_id = product_id;
+//    }
 
     public int getQuantity() {
         return quantity;
@@ -82,10 +74,11 @@ public class Ordered_product {
         this.quantity = quantity;
     }
 
-    public List<Product> addProductos(Product product){
-        product.setOrdered_products(this);
-        return addProductos(product);
+
+    public Product getProduct() {
+        return product;
     }
+
 
 
 }
