@@ -18,23 +18,22 @@ public class Ordered_product {
 
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "productt_id")
-    private Product products;
+    @JoinColumn(name = "product_id")
+    private  Product product;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_order_id")
     private Client_order client_order;
 
     private long clientt_order;
-    private long product_id;
     private int quantity;
 
     public Ordered_product() {
     }
 
-    public Ordered_product(long client_order, long product_id, int quantity, Product productt) {
+    public Ordered_product(long client_order, long product_id, int quantity, Product product) {
         this.clientt_order = client_order;
-        this.product_id = product_id;
+        this.product = product;
         this.quantity = quantity;
 
     }
@@ -44,9 +43,7 @@ public class Ordered_product {
         return id;
     }
 
-    public void setProducts(Product products) {
-        this.products = products;
-    }
+
 
     public Client_order getClient_order() {
         return client_order;
@@ -64,13 +61,6 @@ public class Ordered_product {
         this.clientt_order = clientt_order;
     }
 
-    public long getProduct_id() {
-        return product_id;
-    }
-
-    public void setProduct_id(long product_id) {
-        this.product_id = product_id;
-    }
 
     public int getQuantity() {
         return quantity;
@@ -81,9 +71,7 @@ public class Ordered_product {
     }
 
 
-    public Product getProducts() {
-        return products;
-    }
+
 
 
 

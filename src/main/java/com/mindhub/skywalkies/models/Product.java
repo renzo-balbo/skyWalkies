@@ -15,8 +15,8 @@ public class Product {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
-   // @OneToMany(mappedBy = "product",fetch = FetchType.EAGER)
-    //private Set<Ordered_product> ordered_products = new HashSet<>();
+    @OneToMany(mappedBy = "product",fetch = FetchType.EAGER)
+    private Set<Ordered_product> ordered_products = new HashSet<>();
 
 
     @ElementCollection
@@ -112,5 +112,9 @@ public class Product {
     }
 
     public void add(Product product) {
+    }
+
+    public void setOrdered_products(Ordered_product ordered_product) {
+
     }
 }

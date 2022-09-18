@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import static com.mindhub.skywalkies.models.ShoeColors.*;
 
@@ -94,8 +95,9 @@ public class SkywalkiesApplication {
 
 
             //ORDENES//
-            Ordered_product ordered_product1= new Ordered_product(1,1,1,productShoe28);
+            Ordered_product ordered_product1= new Ordered_product(1,1,1, productShoe1);
             //ORDENES//
+
 
             //CLIENTS ORDERS//
             Client_order clientOrder1 = new Client_order(ordered_product1, bill1);
@@ -108,10 +110,11 @@ public class SkywalkiesApplication {
             avatarRepository.save(avatar1);
             billRepository.save(bill1);
             client_orderRepository.save(clientOrder1);
-            ordered_productRepository.save(ordered_product1);
+
+
+
+
             productRepository.save(productShoe28);
-
-
 
 
 
@@ -161,9 +164,7 @@ public class SkywalkiesApplication {
             productRepository.save(productShoe44);
             productRepository.save(productShoe45);
             productRepository.save(productShoe46);
-
-
-
+            ordered_productRepository.save(ordered_product1);
 
         };
     }
