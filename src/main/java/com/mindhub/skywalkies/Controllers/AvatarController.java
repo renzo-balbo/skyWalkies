@@ -53,5 +53,4 @@ public class AvatarController {
         avatarService.saveAvatar(avatar);
         return new ResponseEntity<>("si jaja", HttpStatus.ACCEPTED);
     }
-
 }
