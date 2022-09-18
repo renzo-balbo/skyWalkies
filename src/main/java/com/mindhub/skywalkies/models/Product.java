@@ -4,7 +4,9 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Product {
@@ -13,9 +15,8 @@ public class Product {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ordered_product_id")
-    private Ordered_product ordered_product;
+   // @OneToMany(mappedBy = "product",fetch = FetchType.EAGER)
+    //private Set<Ordered_product> ordered_products = new HashSet<>();
 
 
     @ElementCollection
@@ -25,9 +26,7 @@ public class Product {
     @Column(name = "colors")
     private List<ShoeColors> shoeColors;
 
-
-
-
+    
     private String name,type;
 
     private boolean active;
@@ -54,12 +53,14 @@ public class Product {
     }
 
 
-    public String getName() {
-        return name;
+
+
+    public List<Integer> getSize() {
+        return size;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSize(List<Integer> size) {
+        this.size = size;
     }
 
     public List<ShoeColors> getShoeColors() {
@@ -70,6 +71,14 @@ public class Product {
         this.shoeColors = shoeColors;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getType() {
         return type;
     }
@@ -78,20 +87,12 @@ public class Product {
         this.type = type;
     }
 
-    public Boolean getActive() {
+    public boolean isActive() {
         return active;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(boolean active) {
         this.active = active;
-    }
-
-    public List<Integer> getSize() {
-        return size;
-    }
-
-    public void setSize(List<Integer> size) {
-        this.size = size;
     }
 
     public int getStock() {
@@ -102,16 +103,6 @@ public class Product {
         this.stock = stock;
     }
 
-
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
     public double getPrice() {
         return price;
     }
@@ -120,7 +111,6 @@ public class Product {
         this.price = price;
     }
 
-    public void setOrdered_product(Ordered_product ordered_product) {
-        this.ordered_product = ordered_product;
+    public void add(Product product) {
     }
 }

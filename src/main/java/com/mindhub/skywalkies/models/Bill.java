@@ -34,10 +34,11 @@ public class Bill {
         this.payed = payed;
         this.subTotal = subTotal;
     }
-    public Bill(LocalDateTime date, boolean payed, double subTotal, Client client) {
+    public Bill(LocalDateTime date, boolean payed, double subTotal, Client client, Client_order client_order) {
         this.date = date;
         this.payed = payed;
         this.subTotal = subTotal;
+        this.addClient_order(client_order);
     }
 
 

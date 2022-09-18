@@ -94,18 +94,24 @@ public class SkywalkiesApplication {
 
 
             //ORDENES//
-            Ordered_product ordered_product1= new Ordered_product(1,1,productShoe1);
+            Ordered_product ordered_product1= new Ordered_product(1,1,1,productShoe28);
             //ORDENES//
-            Client_order order1 = new Client_order(ordered_product1, bill1);
+
+            //CLIENTS ORDERS//
+            Client_order clientOrder1 = new Client_order(ordered_product1, bill1);
+            //CLIENTS ORDERS/
+
+            bill1.addClient_order(clientOrder1);
 
 
             clientRepository.save(client1);
             avatarRepository.save(avatar1);
             billRepository.save(bill1);
-
+            client_orderRepository.save(clientOrder1);
             ordered_productRepository.save(ordered_product1);
+            productRepository.save(productShoe28);
 
-            client_orderRepository.save(order1);
+
 
 
 
@@ -156,11 +162,6 @@ public class SkywalkiesApplication {
             productRepository.save(productShoe45);
             productRepository.save(productShoe46);
 
-
-
-
-            //bill1.addClient_order(order1);
-            client_orderRepository.save(order1);
 
 
 

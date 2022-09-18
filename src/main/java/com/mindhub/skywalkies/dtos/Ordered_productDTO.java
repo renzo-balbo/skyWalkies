@@ -6,27 +6,21 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Ordered_productDTO {
-    private long id, product_id;
+    private long product_id, client_order_id;
     private int quantity;
 
-    private Set<ProductDTO> products;
+    private Set<ProductDTO> productS;
 
-    private Set<Ordered_productDTO> ordered_productDTOs;
     public Ordered_productDTO() {
     }
 
     public Ordered_productDTO(Ordered_product ordered_product) {
-        this.id = id;
-        this.product_id = product_id;
-        this.quantity = quantity;
-        this.products = getProducts().stream().map(product -> new ProductDTO(product)).collect(Collectors.toSet());
-        this.ordered_productDTOs = ordered_product.getProducts().stream().map(order -> new Ordered_productDTO(ordered_product)).collect(Collectors.toSet());
-
+        this.product_id = ordered_product.getProduct_id();
+        this.client_order_id = ordered_product.getClientt_order();
+        this.quantity = ordered_product.getQuantity();
+        this.productS = getProductS().stream().map(productDTO -> new ProductDTO()).collect(Collectors.toSet());
     }
 
-    public long getId() {
-        return id;
-    }
 
     public long getProduct_id() {
         return product_id;
@@ -36,7 +30,7 @@ public class Ordered_productDTO {
         return quantity;
     }
 
-    public Set<ProductDTO> getProducts() {
-        return products;
+    public Set<ProductDTO> getProductS() {
+        return productS;
     }
 }

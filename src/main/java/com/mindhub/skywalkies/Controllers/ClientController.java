@@ -61,7 +61,6 @@ public class ClientController {
         clientService.saveClient(client);
         avatarService.saveAvatar(avatar);
         return new ResponseEntity<>(HttpStatus.CREATED);
-
     }
 
     @GetMapping("/clients/current")
@@ -69,10 +68,10 @@ public class ClientController {
         return new ClientDTO(clientService.findClientByEmail(authentication.getName()));
     }
 
-
     @GetMapping("/clients/clientOrder")
-    public List<Client_orderDTO> getClientOrderDTO(){
+    public List<Client_orderDTO> getClientOrders(){
         return client_orderService.getAllClientsOrders().stream().map(client_order -> new Client_orderDTO(client_order)).collect(Collectors.toList());
+
     }
 
 
