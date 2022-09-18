@@ -13,7 +13,7 @@ header {
 }
 
 main {
-    min-height: 80vh;
+    height: 80vh;
 }
 
 nav {
@@ -40,7 +40,6 @@ nav>img {
 footer {
     height: 13vh;
     z-index: 3;
-
 }
 
 td>img {
@@ -123,7 +122,7 @@ body {
 
 @media(min-width: 992px) {
     footer {
-        height: 5vh;
+        height: 10vh;
         background-color: white;
         box-shadow: 0px -2px 70px -17px rgba(0, 0, 0, 0.78);
     }
@@ -133,7 +132,7 @@ body {
     }
 
     main {
-        height: 85vh;
+        height: 80vh;
     }
 
 
