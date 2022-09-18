@@ -9,7 +9,7 @@ public class Ordered_productDTO {
     private long product_id, client_order_id;
     private int quantity;
 
-    private Set<ProductDTO> productS;
+    private Set<ProductDTO> products;
 
     public Ordered_productDTO() {
     }
@@ -18,7 +18,7 @@ public class Ordered_productDTO {
         this.product_id = ordered_product.getProduct_id();
         this.client_order_id = ordered_product.getClientt_order();
         this.quantity = ordered_product.getQuantity();
-        this.productS = getProductS().stream().map(productDTO -> new ProductDTO()).collect(Collectors.toSet());
+        this.products = getProductS().stream().map(productDTO -> new ProductDTO()).collect(Collectors.toSet());
     }
 
 
@@ -31,6 +31,6 @@ public class Ordered_productDTO {
     }
 
     public Set<ProductDTO> getProductS() {
-        return productS;
+        return products;
     }
 }

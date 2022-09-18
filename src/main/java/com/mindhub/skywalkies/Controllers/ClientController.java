@@ -48,13 +48,17 @@ public class ClientController {
     @PostMapping("/clients")
     public ResponseEntity<Object> register(
             @RequestParam String firstName, @RequestParam String lastName,
-            @RequestParam String email, @RequestParam String password) {
-        if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            @RequestParam String email, @RequestParam String password, @RequestParam String confirmPassword) {
+        if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             return new ResponseEntity<>(
                     "you must fill in the fields", HttpStatus.FORBIDDEN);
         }
         if (clientService.findClientByEmail(email) != null) {
             return new ResponseEntity<>("Email already in use", HttpStatus.FORBIDDEN);
+        }
+        if(!confirmPassword.equals(password)){
+            return new ResponseEntity<>("nonono manito", HttpStatus.FORBIDDEN);
+
         }
         Avatar avatar = new Avatar(1, 1, 1, 1, 1);
         Client client = new Client(firstName, lastName, email, passwordEncoder.encode(password), false, new Bill(), avatar);
