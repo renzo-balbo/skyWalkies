@@ -35,8 +35,11 @@ public class AvatarController {
         return new AvatarDTO(avatarService.getAvatarById(id));
     }
 
-    @PatchMapping("/client/avatar/current")
-    public ResponseEntity<Object> editAvatar(@RequestParam int head, @RequestParam int face, @RequestParam int body, @RequestParam int bodyColor, @RequestParam int shoes, Authentication authentication) {
+    @PatchMapping("/client/avatar/current/")
+    public ResponseEntity<Object> editAvatar(
+            @RequestParam int head, @RequestParam int face,
+            @RequestParam int body, @RequestParam int bodyColor,
+            @RequestParam int shoes, Authentication authentication) {
         Client client = clientService.findClientByEmail(authentication.getName());
         Avatar avatar = avatarService.getAvatarById(client.getId());
         if (!client.isVerificated()) {
