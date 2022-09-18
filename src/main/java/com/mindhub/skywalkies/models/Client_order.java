@@ -31,6 +31,10 @@ public class Client_order {
         this.billId =  getBillId();
         this.addOrder_products(ordered_product);
     }
+    public Client_order(Bill Bill) {
+        this.id = getId();
+        this.billId =  getBillId();
+    }
 
     public long getId() {
         return id;

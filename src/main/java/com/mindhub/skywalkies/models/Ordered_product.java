@@ -6,6 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -16,23 +17,30 @@ public class Ordered_product {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
-
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "client_order_id")
+    private Client_order client_order;
+    
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id")
     private  Product product;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "client_order_id")
-    private Client_order client_order;
 
-    private long clientt_order;
+
     private int quantity;
 
     public Ordered_product() {
     }
 
-    public Ordered_product(long client_order, long product_id, int quantity, Product product) {
-        this.clientt_order = client_order;
+    public Ordered_product(Product product, Client_order client_order) {
+        this.client_order = client_order;
+        this.product = product;
+        this.quantity = quantity;
+        this.addProductos(product);
+
+    }
+    public Ordered_product(Product product) {
+        this.client_order = client_order;
         this.product = product;
         this.quantity = quantity;
 
@@ -58,14 +66,13 @@ public class Ordered_product {
         this.client_order = client_order;
     }
 
-    public long getClientt_order() {
-        return clientt_order;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setClientt_order(long clientt_order) {
-        this.clientt_order = clientt_order;
+    public void setProduct(Product product) {
+        this.product = product;
     }
-
 
     public int getQuantity() {
         return quantity;
@@ -75,9 +82,10 @@ public class Ordered_product {
         this.quantity = quantity;
     }
 
-
-
-
+    public List<Product> addProductos(Product product){
+        product.setOrdered_products(this);
+        return addProductos(product);
+    }
 
 
 }

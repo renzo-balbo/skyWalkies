@@ -83,27 +83,26 @@ public class SkywalkiesApplication {
             //BILLS//
             Bill bill1 = new Bill( LocalDateTime.now(), true, 992.23);
             //BILLS//
-
-
             Avatar avatar1 = new Avatar(1,2,1,5,3);
-
             //CLIENTES//
-
             Client client1 = new Client("renzo", "balbo", "renzobalbo@skywalkies.com.ar", passwordEncoder.encode("skywalkies"), true, bill1, avatar1);
-
             //CLIENTES//
 
 
             //ORDENES//
-            Ordered_product ordered_product1= new Ordered_product(1,1,1, productShoe1);
+
             //ORDENES//
 
 
             //CLIENTS ORDERS//
-            Client_order clientOrder1 = new Client_order(ordered_product1, bill1);
+            Client_order clientOrder1 = new Client_order(bill1);
             //CLIENTS ORDERS/
 
-            bill1.addClient_order(clientOrder1);
+            //ADD//
+        //    Ordered_product ordered_product1= new Ordered_product();
+        //    bill1.addClient_order(clientOrder1);
+        //    clientOrder1.addOrder_products(ordered_product1);
+            //ADD//
 
 
             clientRepository.save(client1);
@@ -111,10 +110,6 @@ public class SkywalkiesApplication {
             billRepository.save(bill1);
             client_orderRepository.save(clientOrder1);
 
-
-
-
-            productRepository.save(productShoe28);
 
 
 
@@ -164,7 +159,9 @@ public class SkywalkiesApplication {
             productRepository.save(productShoe44);
             productRepository.save(productShoe45);
             productRepository.save(productShoe46);
-            ordered_productRepository.save(ordered_product1);
+
+
+
 
         };
     }
