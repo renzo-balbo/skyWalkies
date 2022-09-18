@@ -1,13 +1,17 @@
 package com.mindhub.skywalkies.Controllers;
 
 import com.mindhub.skywalkies.Service.AvatarService;
+import com.mindhub.skywalkies.Service.ClientService;
 import com.mindhub.skywalkies.dtos.AvatarDTO;
+import com.mindhub.skywalkies.models.Avatar;
+import com.mindhub.skywalkies.models.Client;
 import com.mindhub.skywalkies.repositories.AvatarRepository;
 import com.mindhub.skywalkies.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,8 +22,33 @@ public class AvatarController {
     @Autowired
     private AvatarService avatarService;
 
+    @Autowired
+    private ClientService clientService;
+
     @GetMapping("/avatars")
-    public List<AvatarDTO> getClients(){
+    public List<AvatarDTO> getClients() {
         return avatarService.getAllAvatars().stream().map(AvatarDTO::new).collect(Collectors.toList());
     }
+
+    @RequestMapping("/accounts/{id}")
+    public AvatarDTO getAvatar(@PathVariable long id) {
+        return new AvatarDTO(avatarService.getAvatarById(id));
+    }
+
+    @PatchMapping("/client/avatar/current")
+    public ResponseEntity<Object> editAvatar(@RequestParam int head, @RequestParam int face, @RequestParam int body, @RequestParam int bodyColor, @RequestParam int shoes, Authentication authentication) {
+        Client client = clientService.findClientByEmail(authentication.getName());
+        Avatar avatar = avatarService.getAvatarById(client.getId());
+        if (!client.isVerificated()) {
+            return new ResponseEntity<>("no jaja", HttpStatus.FORBIDDEN);
+        }
+        avatar.setHead(head);
+        avatar.setFace(face);
+        avatar.setBody(body);
+        avatar.setBodyColor(bodyColor);
+        avatar.setShoes(shoes);
+        avatarService.saveAvatar(avatar);
+        return new ResponseEntity<>("si jaja", HttpStatus.ACCEPTED);
+    }
+
 }

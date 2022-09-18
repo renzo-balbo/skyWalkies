@@ -19,7 +19,6 @@ public class Client {
     private Set<Bill> bills = new HashSet<>();
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "client_id", referencedColumnName = "id")
     private Avatar avatar;
 
     private String firstName, lastName, email, password;

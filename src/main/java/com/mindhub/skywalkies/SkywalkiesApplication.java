@@ -82,8 +82,12 @@ public class SkywalkiesApplication {
             //BILLS//
             Bill bill1 = new Bill( LocalDateTime.now(), true, 992.23);
             //BILLS//
+
+
             Avatar avatar1 = new Avatar(1,2,1,5,3);
+
             //CLIENTES//
+
             Client client1 = new Client("renzo", "balbo", "renzobalbo@skywalkies.com.ar", passwordEncoder.encode("skywalkies"), true, bill1, avatar1);
 
             //CLIENTES//

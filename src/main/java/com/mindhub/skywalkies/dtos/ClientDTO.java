@@ -28,6 +28,7 @@ public class ClientDTO {
        this.verificated = client.isVerificated();
        this.avatar = client.getAvatar();
        this.bills = client.getBills().stream().map(bill -> new BillDTO(bill)).collect(Collectors.toSet());
+
     }
 
     public long getId() {
@@ -61,4 +62,5 @@ public class ClientDTO {
     public Avatar getAvatar() {
         return avatar;
     }
+
 }
