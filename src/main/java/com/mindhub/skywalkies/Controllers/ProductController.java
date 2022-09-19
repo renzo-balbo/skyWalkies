@@ -113,7 +113,8 @@ public class ProductController {
 
         Client client = clientService.findClientByEmail(authentication.getName());
         Bill bill = client.getBills().stream().filter(bill1 -> !bill1.isPayed()).findFirst().orElse(null);
-        bill.setClient_orders(new HashSet<>());
+        bill.setClient_orders(null);
+
         bill.setClient(client);
         bill.setSubTotal(0);
         bill.setDate(LocalDateTime.now());
