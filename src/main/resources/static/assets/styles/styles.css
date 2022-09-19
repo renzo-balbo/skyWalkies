@@ -139,7 +139,7 @@ video {
 /* Acá estan los carrouseles de zapas mobile */
 
 .carouselZapas{
-  width: 18rem;
+  width: 80vw;
   height: 5rem;
   overflow-y: hidden;
   overflow-x: auto;
