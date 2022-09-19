@@ -35,7 +35,7 @@ public class AvatarController {
         return new AvatarDTO(avatarService.getAvatarById(id));
     }
 
-    @PatchMapping("/client/avatar/current/")
+    @PatchMapping("/clients/current/avatar")
     public ResponseEntity<Object> editAvatar(
             @RequestBody AvatarDTO avatarDTO, Authentication authentication) {
         Client client = clientService.findClientByEmail(authentication.getName());
