@@ -13,7 +13,10 @@ public class BillServiceImplements implements BillService {
     public BillRepository billRepository;
     @Override
     public List<Bill> getAllBills(){return billRepository.findAll();}
-
+    @Override
+    public void deleteBill(Bill bill){
+        billRepository.delete(bill);
+    }
     @Override
     public void saveBill(Bill bill){billRepository.save(bill);}
 

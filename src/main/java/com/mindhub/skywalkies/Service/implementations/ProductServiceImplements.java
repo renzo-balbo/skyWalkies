@@ -19,7 +19,6 @@ public class ProductServiceImplements implements ProductService {
     public Product getProductById(long id){return productRepository.findById(id).get();}
     @Override
     public void saveProduct(Product product){productRepository.save(product);}
-
     @Override
     public Product findByName(String name) {
         return productRepository.findByName(name);

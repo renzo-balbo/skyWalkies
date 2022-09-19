@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -109,12 +110,16 @@ public class ProductController {
     }
     @PatchMapping("/products/deleteCart")
     public ResponseEntity<Object> emptyCart(Authentication authentication){
+
         Client client = clientService.findClientByEmail(authentication.getName());
         Bill bill = client.getBills().stream().filter(bill1 -> !bill1.isPayed()).findFirst().orElse(null);
         bill.setClient_orders(null);
+        billService.deleteBill(bill);
 
-        billService.saveBill(bill);
-        return new ResponseEntity<>("delete pana",HttpStatus.CREATED);
+        Bill bill1 = new Bill(LocalDateTime.now(), false,0);
+
+        billService.saveBill(bill1);
+        return new ResponseEntity<>("delete pana",HttpStatus.ACCEPTED);
     }
 
 }
