@@ -81,9 +81,9 @@ public class ProductController {
         Client client = clientService.findClientByEmail(authentication.getName());
         Product product = productService.getProductById(addProductDTO.getId());
 
-     //   if (addProductDTO.getProductName().isEmpty() || addProductDTO.getQuantity() < product.getStock() || !addProductDTO.getSize().equals(product.getSize())) {
-       //     return new ResponseEntity<>("no jaja", HttpStatus.FORBIDDEN);
-        //}
+        if (addProductDTO.getProductName().isEmpty() || addProductDTO.getQuantity() > product.getStock() || !product.getSize().contains(addProductDTO.getSize())) {
+            return new ResponseEntity<>("no jaja", HttpStatus.FORBIDDEN);
+        }
 
 
         Bill bill = new Bill(LocalDateTime.now(), false, product.getPrice()* addProductDTO.getQuantity());
