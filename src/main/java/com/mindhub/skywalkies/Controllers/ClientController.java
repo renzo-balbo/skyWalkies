@@ -4,6 +4,7 @@ import com.mindhub.skywalkies.Service.AvatarService;
 import com.mindhub.skywalkies.Service.ClientService;
 import com.mindhub.skywalkies.Service.Client_orderService;
 import com.mindhub.skywalkies.Service.Ordered_productService;
+import com.mindhub.skywalkies.Utilities.AvatarUtilities;
 import com.mindhub.skywalkies.dtos.ClientDTO;
 import com.mindhub.skywalkies.dtos.Client_orderDTO;
 import com.mindhub.skywalkies.dtos.Ordered_productDTO;
@@ -51,16 +52,16 @@ public class ClientController {
             @RequestParam String email, @RequestParam String password, @RequestParam String confirmPassword) {
         if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             return new ResponseEntity<>(
-                    "you must fill in the fields", HttpStatus.FORBIDDEN);
+                    "Please complete all the fields", HttpStatus.FORBIDDEN);
         }
         if (clientService.findClientByEmail(email) != null) {
             return new ResponseEntity<>("Email already in use", HttpStatus.FORBIDDEN);
         }
         if(!confirmPassword.equals(password)){
-            return new ResponseEntity<>("nonono manito", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Passwords do not match", HttpStatus.FORBIDDEN);
 
         }
-        Avatar avatar = new Avatar(1, 1, 1, 1, 1);
+        Avatar avatar = new Avatar(AvatarUtilities.randomHeadAvatar(),AvatarUtilities.randomFaceAvatar(), AvatarUtilities.randomBodyAvatar(), AvatarUtilities.randomBodyColorAvatar(), AvatarUtilities.randomShoesAvatar());
         Client client = new Client(firstName, lastName, email, passwordEncoder.encode(password), false, new Bill(), avatar);
         clientService.saveClient(client);
         avatarService.saveAvatar(avatar);
@@ -75,7 +76,6 @@ public class ClientController {
     @GetMapping("/clients/clientOrder")
     public List<Client_orderDTO> getClientOrders(){
         return client_orderService.getAllClientsOrders().stream().map(client_order -> new Client_orderDTO(client_order)).collect(Collectors.toList());
-
     }
 
 
