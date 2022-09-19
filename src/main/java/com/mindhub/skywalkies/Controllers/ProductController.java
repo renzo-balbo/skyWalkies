@@ -76,23 +76,29 @@ public class ProductController {
     }
 
     @Transactional
-    @PostMapping("/products/addCart")
+    @PostMapping("/products/addProduct")
     public ResponseEntity<Object> addProduct(@RequestBody AddProductDTO addProductDTO, Authentication authentication) {
         Client client = clientService.findClientByEmail(authentication.getName());
         Product product = productService.getProductById(addProductDTO.getId());
 
-        if (addProductDTO.getProductName().isEmpty() || addProductDTO.getQuantity() < product.getStock() || !addProductDTO.getSize().equals(product.getSize())) {
-            return new ResponseEntity<>("no jaja", HttpStatus.FORBIDDEN);
-        }
+     //   if (addProductDTO.getProductName().isEmpty() || addProductDTO.getQuantity() < product.getStock() || !addProductDTO.getSize().equals(product.getSize())) {
+       //     return new ResponseEntity<>("no jaja", HttpStatus.FORBIDDEN);
+        //}
 
 
-        Bill bill = new Bill(LocalDateTime.now(), false, 0);
+        Bill bill = new Bill(LocalDateTime.now(), false, product.getPrice()* addProductDTO.getQuantity());
         Client_order client_order = new Client_order(bill);
         Ordered_product ordered_product = new Ordered_product(client_order, addProductDTO.getQuantity(), addProductDTO.getSize(), addProductDTO.getQuantity() * product.getPrice(), product);
+
+        client.addBill(bill);
+        client_order.addOrder_products(ordered_product);
+        bill.addClient_order(client_order);
+        product.setStock(product.getStock()-addProductDTO.getQuantity());
+        clientService.saveClient(client);
         billService.saveBill(bill);
         client_orderService.saveClientOrders(client_order);
         ordered_productService.saveOrderProduct(ordered_product);
-
+        productService.saveProduct(product);
         return new ResponseEntity<>("claro que si crack", HttpStatus.CREATED);
     }
 
