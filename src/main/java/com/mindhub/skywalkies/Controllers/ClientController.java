@@ -69,7 +69,7 @@ public class ClientController {
     }
 
     @GetMapping("/clients/current")
-    public ClientDTO getAll(Authentication authentication) {
+    public ClientDTO getClient(Authentication authentication) {
         return new ClientDTO(clientService.findClientByEmail(authentication.getName()));
     }
 

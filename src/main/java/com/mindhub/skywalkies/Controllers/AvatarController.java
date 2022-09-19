@@ -56,5 +56,6 @@ public class AvatarController {
         avatar.setShoes(avatarDTO.getShoes());
         avatarService.saveAvatar(avatar);
         return new ResponseEntity<>("si jaja", HttpStatus.ACCEPTED);
+
     }
 }

@@ -13,7 +13,7 @@ public class AddProductDTO {
     public AddProductDTO() {
     }
 
-    public AddProductDTO(Ordered_product ordered_product, Product product) {
+    public AddProductDTO(Ordered_product ordered_product, Product product){
         this.id = product.getId();
         this.productName = product.getName();
         this.size = ordered_product.getSize();

@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class ClientDTO {
     private long id;
-    private String firstName,lastName,email,password;
+    private String firstName,lastName,email;
     private boolean verificated;
     private Avatar avatar;
 
@@ -24,7 +24,6 @@ public class ClientDTO {
        this.firstName = client.getFirstName();
        this.lastName = client.getLastName();
        this.email = client.getEmail();
-       this.password = client.getPassword();
        this.verificated = client.isVerificated();
        this.avatar = client.getAvatar();
        this.bills = client.getBills().stream().map(bill -> new BillDTO(bill)).collect(Collectors.toSet());
@@ -45,10 +44,6 @@ public class ClientDTO {
 
     public String getEmail() {
         return email;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public boolean isVerificated() {
