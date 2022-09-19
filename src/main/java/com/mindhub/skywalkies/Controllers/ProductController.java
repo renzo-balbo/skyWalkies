@@ -1,8 +1,6 @@
 package com.mindhub.skywalkies.Controllers;
 
-import com.mindhub.skywalkies.Service.BillService;
-import com.mindhub.skywalkies.Service.ClientService;
-import com.mindhub.skywalkies.Service.ProductService;
+import com.mindhub.skywalkies.Service.*;
 import com.mindhub.skywalkies.dtos.AddProductDTO;
 import com.mindhub.skywalkies.dtos.NewProductDTO;
 import com.mindhub.skywalkies.dtos.ProductDTO;
@@ -29,6 +27,11 @@ public class ProductController {
 
     @Autowired
     private BillService billService;
+    @Autowired
+    private Client_orderService client_orderService;
+
+    @Autowired
+    private Ordered_productService ordered_productService;
 
     @GetMapping("/products")
     public List<ProductDTO> getAllProducts() {
@@ -82,24 +85,19 @@ public class ProductController {
             return new ResponseEntity<>("no jaja", HttpStatus.FORBIDDEN);
         }
 
-        if (client.getBills().stream().anyMatch(bill -> !bill.isPayed())){
-            Bill bill = client.getBills().stream().filter(bill1 -> !bill1.isPayed()).reduce();
-        }
 
+        Bill bill = new Bill(LocalDateTime.now(), false, 0);
+        Client_order client_order = new Client_order(bill);
+        Ordered_product ordered_product = new Ordered_product(client_order, addProductDTO.getQuantity(), addProductDTO.getSize(), addProductDTO.getQuantity() * product.getPrice(), product);
+        billService.saveBill(bill);
+        client_orderService.saveClientOrders(client_order);
+        ordered_productService.saveOrderProduct(ordered_product);
 
-
-
-
-
-
-            Bill bill = new Bill(LocalDateTime.now(), false, 0);
-            Client_order client_order = new Client_order(bill);
-            Ordered_product ordered_product = new Ordered_product(client_order, addProductDTO.getQuantity(), addProductDTO.getSize(), ,product);
-
+        return new ResponseEntity<>("claro que si crack", HttpStatus.CREATED);
     }
 
-    public void priceXquantity(Integer price, Integer quantity){
 
-
-    }
 }
+// if (client.getBills().stream().anyMatch(bill -> !bill.isPayed())){
+//   Bill bill = client.getBills().stream().filter(bill1 -> !bill1.isPayed()).reduce();
+//}
