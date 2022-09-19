@@ -5,7 +5,7 @@ createApp({
     data() {
         return {
             clientAvatar: {},
-            customAvatar:{},
+            customAvatar: {},
             avatarHead: new Image(),
             avatarBody: new Image(),
             avatarBodyColor: new Image(),
@@ -14,50 +14,54 @@ createApp({
             avatarArtLine: new Image(),
         }
     },
-    beforeCreate(){
-        console.log("before create")
-    },
-    created() {
-        console.log("created")
-        this.loadClientData()
+    beforeCreate() {
     },
 
-    beforeMount(){
-        console.log("before mount")
+    created() {
+        this.login()
+    },
+
+    beforeMount() {
     },
 
     mounted() {
         this.prepareAvatarParts();
         this.drawAvatar();
-        console.log("mounted")
     },
 
-    beforeUpdate(){
-        this.avatarHead.src="../assets/img/avatarCollection/head"+this.customAvatar.head+".png";
-        this.avatarBody.src="../assets/img/avatarCollection/body"+this.customAvatar.body+".png";
-        this.avatarBodyColor.src="../assets/img/avatarCollection/bodyColor"+this.customAvatar.bodyColor+".png";
-        this.avatarFace.src="../assets/img/avatarCollection/face"+this.customAvatar.face+".png";
-        this.avatarShoes.src="../assets/img/avatarCollection/shoes"+this.customAvatar.shoes+".png";
-        this.avatarArtLine.src="../assets/img/avatarCollection/lineArtObligatory.png";
-        console.log("before update")
+    beforeUpdate() {
+        this.avatarHead.src = "../assets/img/avatarCollection/head" + this.customAvatar.head + ".png";
+        this.avatarBody.src = "../assets/img/avatarCollection/body" + this.customAvatar.body + ".png";
+        this.avatarBodyColor.src = "../assets/img/avatarCollection/bodyColor" + this.customAvatar.bodyColor + ".png";
+        this.avatarFace.src = "../assets/img/avatarCollection/face" + this.customAvatar.face + ".png";
+        this.avatarShoes.src = "../assets/img/avatarCollection/shoes" + this.customAvatar.shoes + ".png";
+        this.avatarArtLine.src = "../assets/img/avatarCollection/lineArtObligatory.png";
+        
     },
 
-    updated(){
-        console.log("updated")
+    updated() {
+        
         this.drawCustomAvatar()
     },
 
     methods: {
-        loadClientData() {
-            this.clientAvatar = {
-                head: 3,
-                body: 4,
-                bodyColor: 2,
-                face: 2,
-                shoes: 1
-            }
-            this.customAvatar = this.clientAvatar;
 
+
+        login() {
+            axios.post('/api/login', "email=renzobalbo@skywalkies.com.ar&password=skywalkies")
+            .then(this.loadClientData())
+        },
+
+
+
+
+        loadClientData() {
+            axios.get('/api/clients/current')
+                .then(response => {
+                    
+                    this.clientAvatar = response.data.avatar
+                    this.customAvatar = this.clientAvatar;
+                })
 
         },
 
@@ -79,8 +83,8 @@ createApp({
             let canvas = document.getElementById("myCanvas");
             let ctx = canvas.getContext("2d");
 
-            ctx.clearRect(0,0, canvas.width, canvas.height);
-            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
             ctx.drawImage(this.avatarBodyColor, 0, 0);
             ctx.drawImage(this.avatarFace, 0, 0);
             ctx.drawImage(this.avatarShoes, 0, 0);
@@ -90,30 +94,30 @@ createApp({
         },
 
 
-        prepareAvatarParts(){
-            this.avatarHead.src="../assets/img/avatarCollection/head"+this.clientAvatar.head+".png";
-            this.avatarBody.src="../assets/img/avatarCollection/body"+this.clientAvatar.body+".png";
-            this.avatarBodyColor.src="../assets/img/avatarCollection/bodyColor"+this.clientAvatar.bodyColor+".png";
-            this.avatarFace.src="../assets/img/avatarCollection/face"+this.clientAvatar.face+".png";
-            this.avatarShoes.src="../assets/img/avatarCollection/shoes"+this.clientAvatar.shoes+".png";
-            this.avatarArtLine.src="../assets/img/avatarCollection/lineArtObligatory.png";
+        prepareAvatarParts() {
+            this.avatarHead.src = "../assets/img/avatarCollection/head" + this.clientAvatar.head + ".png";
+            this.avatarBody.src = "../assets/img/avatarCollection/body" + this.clientAvatar.body + ".png";
+            this.avatarBodyColor.src = "../assets/img/avatarCollection/bodyColor" + this.clientAvatar.bodyColor + ".png";
+            this.avatarFace.src = "../assets/img/avatarCollection/face" + this.clientAvatar.face + ".png";
+            this.avatarShoes.src = "../assets/img/avatarCollection/shoes" + this.clientAvatar.shoes + ".png";
+            this.avatarArtLine.src = "../assets/img/avatarCollection/lineArtObligatory.png";
         },
 
-        updateAvatarParts(){
-            this.avatarHead.src="../assets/img/avatarCollection/head"+this.customAvatar.head+".png";
-            this.avatarBody.src="../assets/img/avatarCollection/body"+this.customAvatar.body+".png";
-            this.avatarBodyColor.src="../assets/img/avatarCollection/bodyColor"+this.customAvatar.bodyColor+".png";
-            this.avatarFace.src="../assets/img/avatarCollection/face"+this.customAvatar.face+".png";
-            this.avatarShoes.src="../assets/img/avatarCollection/shoes"+this.customAvatar.shoes+".png";
-            this.avatarArtLine.src="../assets/img/avatarCollection/lineArtObligatory.png";
+        updateAvatarParts() {
+            this.avatarHead.src = "../assets/img/avatarCollection/head" + this.customAvatar.head + ".png";
+            this.avatarBody.src = "../assets/img/avatarCollection/body" + this.customAvatar.body + ".png";
+            this.avatarBodyColor.src = "../assets/img/avatarCollection/bodyColor" + this.customAvatar.bodyColor + ".png";
+            this.avatarFace.src = "../assets/img/avatarCollection/face" + this.customAvatar.face + ".png";
+            this.avatarShoes.src = "../assets/img/avatarCollection/shoes" + this.customAvatar.shoes + ".png";
+            this.avatarArtLine.src = "../assets/img/avatarCollection/lineArtObligatory.png";
         },
 
-        saveNewAvatar(){
-            axios.patch('/api/clients/current/avatar',{head:this.customAvatar.head, body:this.customAvatar.body, bodyColor:this.customAvatar.bodyColor, face:this.customAvatar.face,shoes:this.customAvatar.shoes})
-            .then(()=>{
-                console.log("Your avatar has been updated!")
-            })
-            .catch(error => console.log(error))
+        saveNewAvatar() {
+            axios.patch('/api/clients/current/avatar', { head: this.customAvatar.head, body: this.customAvatar.body, bodyColor: this.customAvatar.bodyColor, face: this.customAvatar.face, shoes: this.customAvatar.shoes })
+                .then(() => {
+                    console.log("Your avatar has been updated!")
+                })
+                .catch(error => console.log(error))
         },
 
 

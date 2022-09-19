@@ -82,9 +82,13 @@ public class ProductController {
             return new ResponseEntity<>("no jaja", HttpStatus.FORBIDDEN);
         }
 
-        if(client.getBills().stream().filter(bill -> bill.isPayed()==false).count()>0){
-            Bill bill = client.getBills().stream().findFirst(billService)
+        if (client.getBills().stream().anyMatch(bill -> !bill.isPayed())){
+            Bill bill = client.getBills().stream().filter(bill1 -> !bill1.isPayed()).reduce();
         }
+
+
+
+
 
 
 

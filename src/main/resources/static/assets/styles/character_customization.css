@@ -23,11 +23,7 @@ footer {
     height: 13vh;
     background-color: white !important;
 }
-footer>p{
-    height: 100%;
-    background-color: white !important;
 
-}
 
 /* para la imagen de prueba de logo */
 
@@ -169,7 +165,7 @@ h5 {
         height: 38rem;
     }
     main {
-        height: 87vh !important;
+        min-height: 87vh !important;
         width: 100%;
         background: none !important;
     }
@@ -178,8 +174,10 @@ h5 {
         height: 100%;
         width: 4rem !important;
     }
+
+    /* ESTO ROMPE UN TOQUE POR EL TEMA DE QUE NO SE VE EL FOOTER Y SI QUEREMOS PROBAR SCROLLEAR PARA VERLO NOS LLEVA CON EL RESTO DE LAS ESTRELLAS */
     html{
-        overflow: hidden;
+        overflow:hidden;
     }
     h5{
         font-size: larger;
