@@ -51,7 +51,7 @@ body {
 }
 
 .alturaWardrobe {
-    height: 60vh;
+    height: 55vh;
 }
 
 .prices {
@@ -92,6 +92,14 @@ body {
 
 .cardImageAndTitle {
     height: 15rem
+}
+
+.formInputsModal {
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    border-radius: 0.375rem;
+    padding: 0.375rem 0.75rem;
 }
 
 /*  */
