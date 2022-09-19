@@ -5,6 +5,7 @@ import com.mindhub.skywalkies.dtos.AddProductDTO;
 import com.mindhub.skywalkies.dtos.NewProductDTO;
 import com.mindhub.skywalkies.dtos.ProductDTO;
 import com.mindhub.skywalkies.models.*;
+import com.mindhub.skywalkies.repositories.Client_OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +36,9 @@ public class ProductController {
 
     @Autowired
     private Ordered_productService ordered_productService;
+
+    @Autowired
+    private Client_OrderRepository client_orderRepository;
 
     @GetMapping("/products")
     public List<ProductDTO> getAllProducts() {
@@ -113,8 +117,11 @@ public class ProductController {
 
         Client client = clientService.findClientByEmail(authentication.getName());
         Bill bill = client.getBills().stream().filter(bill1 -> !bill1.isPayed()).findFirst().orElse(null);
-        bill.setClient_orders(null);
+        bill.getClient_orders().forEach(client_order -> {
+            client_orderRepository.delete(client_order);
+        });
 
+        bill.setClient_orders(new HashSet<>());
         bill.setClient(client);
         bill.setSubTotal(0);
         bill.setDate(LocalDateTime.now());
