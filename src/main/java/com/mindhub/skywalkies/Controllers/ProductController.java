@@ -13,7 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestController
@@ -77,28 +79,54 @@ public class ProductController {
 
     @Transactional
     @PostMapping("/products/addProduct")
-    public ResponseEntity<Object> addProduct(@RequestBody AddProductDTO addProductDTO, Authentication authentication) {
+    public ResponseEntity<Object> addProduct(@RequestBody Set<AddProductDTO> addProductDTO, Authentication authentication) {
         Client client = clientService.findClientByEmail(authentication.getName());
-        Product product = productService.getProductById(addProductDTO.getId());
-
-        if (addProductDTO.getProductName().isEmpty() || addProductDTO.getQuantity() > product.getStock() || !product.getSize().contains(addProductDTO.getSize())) {
-            return new ResponseEntity<>("no jaja", HttpStatus.FORBIDDEN);
+        Bill bill;
+        if (client.getBills().stream().anyMatch(billToCheck -> !billToCheck.isPayed())){
+            bill = client.getBills().stream().filter(bill1 -> !bill1.isPayed()).findFirst().orElse(null);
+        } else {
+            bill = new Bill();
         }
 
 
-        Bill bill = new Bill(LocalDateTime.now(), false, product.getPrice()* addProductDTO.getQuantity());
         Client_order client_order = new Client_order(bill);
-        Ordered_product ordered_product = new Ordered_product(client_order, addProductDTO.getQuantity(), addProductDTO.getSize(), addProductDTO.getQuantity() * product.getPrice(), product);
-
-        client.addBill(bill);
-        client_order.addOrder_products(ordered_product);
         bill.addClient_order(client_order);
-        product.setStock(product.getStock()-addProductDTO.getQuantity());
-        clientService.saveClient(client);
+        List<Product> productList = new ArrayList<>();
+        addProductDTO.forEach(product ->{
+            Product product1 = productService.getProductById(product.getId());
+            Ordered_product ordered_product = new Ordered_product(client_order, product.getQuantity(), product.getSize(), product1.getPrice(), product1);
+            for (int i = 0; i < product.getQuantity(); i++){
+                productList.add(product1);
+                product1.setStock(product1.getStock()-1);
+                productService.saveProduct(product1);
+                ordered_productService.saveOrderProduct(ordered_product);
+            }
+        });
         billService.saveBill(bill);
         client_orderService.saveClientOrders(client_order);
-        ordered_productService.saveOrderProduct(ordered_product);
-        productService.saveProduct(product);
+
+
+
+        //        Product product = productService.getProductById(addProductDTO.getId());
+
+//        if (addProductDTO.getProductName().isEmpty() || addProductDTO.getQuantity() > product.getStock() || !product.getSize().contains(addProductDTO.getSize())) {
+//            return new ResponseEntity<>("no jaja", HttpStatus.FORBIDDEN);
+//        }
+
+
+//        Bill bill = new Bill(LocalDateTime.now(), false, product.getPrice()* addProductDTO.getQuantity());
+//        Client_order client_order = new Client_order(bill);
+//        Ordered_product ordered_product = new Ordered_product(client_order, addProductDTO.getQuantity(), addProductDTO.getSize(), addProductDTO.getQuantity() * product.getPrice(), product);
+
+//        client.addBill(bill);
+//        client_order.addOrder_products(ordered_product);
+//        bill.addClient_order(client_order);
+//        product.setStock(product.getStock()-addProductDTO.getQuantity());
+//        clientService.saveClient(client);
+//        billService.saveBill(bill);
+//        client_orderService.saveClientOrders(client_order);
+//        ordered_productService.saveOrderProduct(ordered_product);
+//        productService.saveProduct(product);
         return new ResponseEntity<>("claro que si crack", HttpStatus.CREATED);
     }
 
