@@ -29,17 +29,18 @@ public class Ordered_product {
 
 //    private long product_id;
     private int quantity;
-
+    private Integer size;
+    private double productsAmount;
     public Ordered_product() {
     }
 
-    public Ordered_product(Client_order client_order, int quantity, Product product) {
+    public Ordered_product(Client_order client_order, int quantity,Integer size, double productsAmount ,Product product) {
         this.client_order = client_order;
         this.product = product;
         this.quantity = quantity;
-
+        this.size = size;
+        this.productsAmount = productsAmount;
     }
-
 
     public long getId() {
         return id;
@@ -57,14 +58,25 @@ public class Ordered_product {
         this.client_order = client_order;
     }
 
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 
-//    public long getProduct_id() {
-//        return product;
-//    }
-//
-//    public void setProduct_id(long product_id) {
-//        this.product_id = product_id;
-//    }
+    public Integer getSize() {
+        return size;
+    }
+
+    public void setSize(Integer size) {
+        this.size = size;
+    }
+
+    public double getProductsAmount() {
+        return productsAmount;
+    }
+
+    public void setProductsAmount(double productsAmount) {
+        this.productsAmount = productsAmount;
+    }
 
     public int getQuantity() {
         return quantity;

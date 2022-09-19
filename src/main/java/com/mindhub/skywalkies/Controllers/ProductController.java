@@ -1,16 +1,13 @@
 package com.mindhub.skywalkies.Controllers;
 
-import com.mindhub.skywalkies.Service.AvatarService;
 import com.mindhub.skywalkies.Service.BillService;
 import com.mindhub.skywalkies.Service.ClientService;
 import com.mindhub.skywalkies.Service.ProductService;
-import com.mindhub.skywalkies.dtos.AddProductDTO;
-import com.mindhub.skywalkies.dtos.AvatarDTO;
+import com.mindhub.skywalkies.dtos.NewProductDTO;
 import com.mindhub.skywalkies.dtos.ProductDTO;
 import com.mindhub.skywalkies.models.Client;
 import com.mindhub.skywalkies.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -38,14 +35,14 @@ public class ProductController {
     public  ProductDTO getProduct(@PathVariable long id){return new ProductDTO(productService.getProductById(id));}
 
     @PostMapping("/products/add")
-    public ResponseEntity<Object> addProduct(@RequestBody AddProductDTO AddProductDTO, Authentication authentication){
+    public ResponseEntity<Object> newProduct(@RequestBody NewProductDTO NewProductDTO, Authentication authentication){
             Client client = clientService.findClientByEmail(authentication.getName());
 //        Product productName = productService.findByName(AddProductDTO.getName());
-        if (AddProductDTO.getSizes().isEmpty() || AddProductDTO.getPrice() < 0 || AddProductDTO.getShoeColors().isEmpty() || AddProductDTO.getType().isEmpty() || AddProductDTO.getName().isEmpty()){
+        if (NewProductDTO.getSizes().isEmpty() || NewProductDTO.getPrice() < 0 || NewProductDTO.getShoeColors().isEmpty() || NewProductDTO.getType().isEmpty() || NewProductDTO.getName().isEmpty()){
             return new ResponseEntity<>("Please fill all the fields", HttpStatus.FORBIDDEN);
         }
         else {
-            Product productPrueba1 = new Product(AddProductDTO.getName(), AddProductDTO.getShoeColors(), AddProductDTO.getType(), AddProductDTO.getActive(),AddProductDTO.getSizes(), AddProductDTO.getStock(), AddProductDTO.getPrice());
+            Product productPrueba1 = new Product(NewProductDTO.getName(), NewProductDTO.getShoeColors(), NewProductDTO.getType(), NewProductDTO.getActive(), NewProductDTO.getSizes(), NewProductDTO.getStock(), NewProductDTO.getPrice());
             productService.saveProduct(productPrueba1);
             return new ResponseEntity<>("Product loaded successfully", HttpStatus.CREATED);
         }

@@ -1,57 +1,38 @@
 package com.mindhub.skywalkies.dtos;
 
+import com.mindhub.skywalkies.models.Client_order;
+import com.mindhub.skywalkies.models.Ordered_product;
 import com.mindhub.skywalkies.models.Product;
-import com.mindhub.skywalkies.models.ShoeColors;
-
-import java.util.List;
 
 public class AddProductDTO {
-  private  String name;
-  private List<ShoeColors> shoeColors;
-  private  String type;
-  private  boolean active;
+    private long id;
+    private String productName;
+    private Integer size;
+    private Integer quantity;
 
-  private  List<Integer> sizes;
-  private  int stock;
-  private  double price;
+    public AddProductDTO() {
+    }
 
-  public AddProductDTO() {
-  }
+    public AddProductDTO(Ordered_product ordered_product, Product product) {
+        this.id = product.getId();
+        this.productName = product.getName();
+        this.size = ordered_product.getSize();
+        this.quantity = ordered_product.getQuantity();
+    }
 
-  public AddProductDTO(Product product) {
-    this.name = product.getName();
-    this.active = product.isActive();
-    this.sizes = product.getSize();
-    this.stock = product.getStock();
-    this.type = product.getType();
-    this.price = product.getPrice();
-  }
+    public long getId() {
+        return id;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public String getProductName() {
+        return productName;
+    }
 
-  public List<ShoeColors> getShoeColors() {
-    return shoeColors;
-  }
+    public Integer getSize() {
+        return size;
+    }
 
-  public String getType() {
-    return type;
-  }
-
-  public Boolean getActive() {
-    return active;
-  }
-
-  public List<Integer> getSizes() {
-    return sizes;
-  }
-
-  public int getStock() {
-    return stock;
-  }
-
-  public double getPrice() {
-    return price;
-  }
+    public Integer getQuantity() {
+        return quantity;
+    }
 }
