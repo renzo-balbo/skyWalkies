@@ -85,10 +85,8 @@ public class ProductController {
         if (client.getBills().stream().anyMatch(billToCheck -> !billToCheck.isPayed())){
             bill = client.getBills().stream().filter(bill1 -> !bill1.isPayed()).findFirst().orElse(null);
         } else {
-            bill = new Bill();
+            bill = new Bill(LocalDateTime.now(),false,0);
         }
-
-
         Client_order client_order = new Client_order(bill);
         bill.addClient_order(client_order);
         List<Product> productList = new ArrayList<>();
@@ -97,41 +95,25 @@ public class ProductController {
             Ordered_product ordered_product = new Ordered_product(client_order, product.getQuantity(), product.getSize(), product1.getPrice(), product1);
             for (int i = 0; i < product.getQuantity(); i++){
                 productList.add(product1);
-                product1.setStock(product1.getStock()-1);
                 productService.saveProduct(product1);
                 ordered_productService.saveOrderProduct(ordered_product);
+                bill.setSubTotal(bill.getSubTotal()+product1.getPrice());
             }
         });
         billService.saveBill(bill);
         client_orderService.saveClientOrders(client_order);
+        client.addBill(bill);
+        clientService.saveClient(client);
 
-
-
-        //        Product product = productService.getProductById(addProductDTO.getId());
-
-//        if (addProductDTO.getProductName().isEmpty() || addProductDTO.getQuantity() > product.getStock() || !product.getSize().contains(addProductDTO.getSize())) {
-//            return new ResponseEntity<>("no jaja", HttpStatus.FORBIDDEN);
-//        }
-
-
-//        Bill bill = new Bill(LocalDateTime.now(), false, product.getPrice()* addProductDTO.getQuantity());
-//        Client_order client_order = new Client_order(bill);
-//        Ordered_product ordered_product = new Ordered_product(client_order, addProductDTO.getQuantity(), addProductDTO.getSize(), addProductDTO.getQuantity() * product.getPrice(), product);
-
-//        client.addBill(bill);
-//        client_order.addOrder_products(ordered_product);
-//        bill.addClient_order(client_order);
-//        product.setStock(product.getStock()-addProductDTO.getQuantity());
-//        clientService.saveClient(client);
-//        billService.saveBill(bill);
-//        client_orderService.saveClientOrders(client_order);
-//        ordered_productService.saveOrderProduct(ordered_product);
-//        productService.saveProduct(product);
         return new ResponseEntity<>("claro que si crack", HttpStatus.CREATED);
     }
+    @PatchMapping("/products/deleteCart")
+    public ResponseEntity<Object> emptyCart(Authentication authentication){
+        Client client = clientService.findClientByEmail(authentication.getName());
+        Bill bill = client.getBills().stream().filter(bill1 -> !bill1.isPayed()).findFirst().orElse(null);
+        bill.setClient_orders(null);
 
-
+        billService.saveBill(bill);
+        return new ResponseEntity<>("delete pana",HttpStatus.CREATED);
+    }
 }
-// if (client.getBills().stream().anyMatch(bill -> !bill.isPayed())){
-//   Bill bill = client.getBills().stream().filter(bill1 -> !bill1.isPayed()).reduce();
-//}
