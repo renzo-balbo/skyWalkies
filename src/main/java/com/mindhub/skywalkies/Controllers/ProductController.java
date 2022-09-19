@@ -113,12 +113,14 @@ public class ProductController {
 
         Client client = clientService.findClientByEmail(authentication.getName());
         Bill bill = client.getBills().stream().filter(bill1 -> !bill1.isPayed()).findFirst().orElse(null);
-        bill.setClient_orders(null);
-        billService.deleteBill(bill);
+        bill.setClient_orders(new HashSet<>());
+        bill.setClient(client);
+        bill.setSubTotal(0);
+        bill.setDate(LocalDateTime.now());
+        bill.setPayed(false);
 
-        Bill bill1 = new Bill(LocalDateTime.now(), false,0);
 
-        billService.saveBill(bill1);
+        billService.saveBill(bill);
         return new ResponseEntity<>("delete pana",HttpStatus.ACCEPTED);
     }
 
