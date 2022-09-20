@@ -23,33 +23,24 @@
             <nav class="d-flex justify-content-between align-items-center">
                 <!-- OFF CANVAS LEFT PARA EL NAV -->
 
+                <a href="./cart.html">
                 <button class="btn btn-solid" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-                    <i class="bi bi-grid-fill icono"></i>
-                </button>
-                <div class="offcanvas offcanvas-start " data-bs-scroll="true" tabindex="-1"
-                    id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Aca va el nav</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body p-0">
-                        <div class="list-group m-0">
-                            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Nav
-                                items</a>
-                            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Nav
-                                items</a>
-                            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Nav
-                                items</a>
-                            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Nav
-                                items</a>
-                        </div>
-                    </div>
-                </div>
+                        
+                        <i class="bi bi-bag-fill"></i>
+
+                        <i class="bi bi-bag-heart-fill"></i>
+
+                        <i class="bi bi-cart4"></i>
+
+                    </button>
+                </a>
+                    
 
                 <!-- ACA TERMINA EL OFF CANVAS DE  NAV -->
 
                 <img src="../assets/img/skyWalkiesIsoLogo.png" height="100%" alt="">
+                
 
                 <!-- OFF CANVAS RIGHT REGISTRO -->
 
@@ -184,11 +175,6 @@
                                 </a>
                             </div>
                             
-                            <div class="d-flex justify-content-center col-12 my-2">
-                                <a href="" class="col-6">
-                                    <button class="btn btn-dark col-12">Check your cart!</button>
-                                </a>
-                            </div>
 
                             <div class="d-flex justify-content-center col-12 my-2">
                                 <button @click="logout" class="btn btn-dark col-6">
