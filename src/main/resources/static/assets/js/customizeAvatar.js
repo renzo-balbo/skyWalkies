@@ -47,10 +47,10 @@ createApp({
     methods: {
 
 
-        login() {
-            axios.post('/api/login', "email=renzobalbo@skywalkies.com.ar&password=skywalkies")
-            .then(this.loadClientData())
-        },
+        // login() {
+        //     axios.post('/api/login', "email=renzobalbo@skywalkies.com.ar&password=skywalkies")
+        //     .then(this.loadClientData())
+        // },
 
 
 

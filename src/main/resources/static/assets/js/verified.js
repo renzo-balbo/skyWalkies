@@ -19,8 +19,6 @@ createApp({
         this.params = new URLSearchParams(this.queryString)
         this.id = this.params.get("id")
         this.verify()
-
-
     },
 
     mounted() { },
