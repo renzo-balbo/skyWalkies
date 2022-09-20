@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.WebAttributes;
+import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,18 +29,25 @@ public class WebAuthorization extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.PATCH, "client/avatar/current").hasAuthority("CLIENT")
                 .antMatchers("/assets/**", "/assets/js/**", "/assets/img/**,", "/assets/styles/**", "/assets/vid/**").permitAll()
                 .antMatchers("/web/**").permitAll();
-
         http.formLogin()
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .loginPage("/api/login");
 
+
         http.logout().logoutUrl("/api/logout");
+
         http.csrf().disable();
-        http.headers().frameOptions().disable();
+
+        http.headers().frameOptions();
+
         http.exceptionHandling().authenticationEntryPoint((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));
+
         http.formLogin().successHandler((req, res, auth) -> clearAuthenticationAttributes(req));
+
         http.formLogin().failureHandler((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));
+
+        http.logout().logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler());
     }
 
     private void clearAuthenticationAttributes(HttpServletRequest req) {
