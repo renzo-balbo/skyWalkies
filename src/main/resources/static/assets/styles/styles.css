@@ -179,7 +179,13 @@ display: inline-block;
 }
 
 
+/* AVATAR */
 
+.contenedorCanvas {
+  height: 21rem;
+  width: fit-content;
+  background-color: white;
+}
 
 
 

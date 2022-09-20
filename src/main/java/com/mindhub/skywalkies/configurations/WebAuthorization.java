@@ -20,6 +20,7 @@ public class WebAuthorization extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/h2-console").permitAll()
+                .antMatchers("/api/login").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/clients").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/products/add").permitAll()
                 .antMatchers(HttpMethod.POST, "/products/addCart").permitAll()

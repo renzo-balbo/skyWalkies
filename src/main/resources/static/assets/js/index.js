@@ -4,33 +4,99 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            clientEmail:"",
-            clientPassword:"",
-            newClientFirstName:"",
-            newClientLastName:"",
-            newClientEmail:"",
-            newClientPassword:"",
+            clientEmail: "",
+            clientPassword: "",
+            newClientFirstName: "",
+            newClientLastName: "",
+            newClientEmail: "",
+            newClientPassword: "",
+            confirmNewClientPassword: "",
             productsArray: [],
-            upperShelf:[],
-            middleShelf:[],
-            bottomShelf:[],
+            upperShelf: [],
+            middleShelf: [],
+            bottomShelf: [],
             renderForModal: "",
             priceToDisplay: "",
             stockToDisplay: "",
             productToDisplay: {},
-            shoeColors:[],
-            selectedColor:[],
-
+            shoeColors: [],
+            selectedColor: [],
+            currentClient: {},
+            // AVATAR
+            avatar:{},
+            avatarHead: new Image(),
+            avatarBody: new Image(),
+            avatarBodyColor: new Image(),
+            avatarFace: new Image(),
+            avatarShoes: new Image(),
+            avatarArtLine: new Image(),
         }
     },
     created() {
-        // this.arrayZapatillas.push("NIKE-LV-LOW_04", "LV-NIKE-AFONE-HIGH-PLUS-A3")
-        this.loadProducts()
+        this.loadData()
     },
+
+    beforeMount() {
+    },
+
     mounted() {
+    },
+
+    beforeUpdate(){
+    },
+
+    updated(){
 
     },
     methods: {
+
+        loadData() {
+            this.loadProducts()
+            this.loadClientData()
+        },
+
+        loadClientData() {
+            axios.get("/api/clients/current")
+                .then(response => {
+                    this.currentClient = response.data
+                    this.avatar = this.currentClient.avatar
+                    console.log(this.currentClient.avatar)
+                })
+        },
+
+        // AVATAR
+
+        prepareAvatarParts(){
+            this.avatarHead.src = "../assets/img/avatarCollection/head" + this.currentClient.avatar.head + ".png";
+            this.avatarBody.src = "../assets/img/avatarCollection/body" + this.currentClient.avatar.body + ".png";
+            this.avatarBodyColor.src = "../assets/img/avatarCollection/bodyColor" + this.currentClient.avatar.bodyColor + ".png";
+            this.avatarFace.src = "../assets/img/avatarCollection/face" + this.currentClient.avatar.face + ".png";
+            this.avatarShoes.src = "../assets/img/avatarCollection/shoes" + this.currentClient.avatar.shoes + ".png";
+            this.avatarArtLine.src = "../assets/img/avatarCollection/lineArtObligatory.png";
+        },
+
+        drawAvatar(){
+            let canvas = document.getElementById("myCanvas");
+            let ctx = canvas.getContext("2d");
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(this.avatarBodyColor, 0, 0);
+            ctx.drawImage(this.avatarFace, 0, 0);
+            ctx.drawImage(this.avatarShoes, 0, 0);
+            ctx.drawImage(this.avatarBody, 0, 0);
+            ctx.drawImage(this.avatarArtLine, 0, 0);
+            ctx.drawImage(this.avatarHead, 0, 0);
+        },
+
+        renderAvatar(){
+            this.prepareAvatarParts()
+            this.drawAvatar()
+        },
+
+
+        // FIN DEL AVATAR
+
+
+
         changeRender(productName) {
             this.renderForModal = productName;
             this.productToDisplay = this.productsArray.find(product => product.name == productName)
@@ -52,60 +118,55 @@ createApp({
             axios.get('/api/products')
                 .then(response => {
                     this.productsArray = response.data
-                    console.log(this.productsArray);
                     this.productsArray.forEach(product => product.price = this.moneyFormatter(product.price))
                     this.priceSortedMaxToMin()
                     this.priceSortedMinToMax()
                     this.shelvesFiller()
                     this.loadShoeColors(this.productsArray)
-                    console.log(this.shoeColors);
-                    console.log(this.selectedColor)
-                    // console.log(this.upperShelf);
-                    // console.log(this.middleShelf);
-                    // console.log(this.bottomShelf);
-
                 })
         },
-        shelvesFiller(){
-            this.upperShelf = this.productsArray.slice(0,14)
-            this.middleShelf = this.productsArray.slice(14,32)
-            this.bottomShelf = this.productsArray.slice(32,47)
+        shelvesFiller() {
+            this.upperShelf = this.productsArray.slice(0, 14)
+            this.middleShelf = this.productsArray.slice(14, 32)
+            this.bottomShelf = this.productsArray.slice(32, 47)
         },
-        priceSortedMaxToMin(){
-            this.productsArray = this.productsArray.sort((a,b)=>a.price-b.price)
-            this.upperShelf = this.upperShelf.sort((a,b)=>a.price-b.price)
-            this.middleShelf = this.middleShelf.sort((a,b)=>a.price-b.price)
-            this.bottomShelf = this.bottomShelf.sort((a,b)=>a.price-b.price)
+        priceSortedMaxToMin() {
+            this.productsArray = this.productsArray.sort((a, b) => a.price - b.price)
+            this.upperShelf = this.upperShelf.sort((a, b) => a.price - b.price)
+            this.middleShelf = this.middleShelf.sort((a, b) => a.price - b.price)
+            this.bottomShelf = this.bottomShelf.sort((a, b) => a.price - b.price)
             // console.log(this.upperShelf);
 
 
         },
-        priceSortedMinToMax(){
-            this.productsArray = this.productsArray.sort((a,b)=>b.price-a.price)
-            this.upperShelf = this.upperShelf.sort((a,b)=>b.price-a.price)
-            this.middleShelf = this.middleShelf.sort((a,b)=>b.price-a.price)
-            this.bottomShelf = this.bottomShelf.sort((a,b)=>b.price-a.price)
+        priceSortedMinToMax() {
+            this.productsArray = this.productsArray.sort((a, b) => b.price - a.price)
+            this.upperShelf = this.upperShelf.sort((a, b) => b.price - a.price)
+            this.middleShelf = this.middleShelf.sort((a, b) => b.price - a.price)
+            this.bottomShelf = this.bottomShelf.sort((a, b) => b.price - a.price)
 
         },
 
-        loadShoeColors(shoeArray){
+        loadShoeColors(shoeArray) {
             this.shoeColors
-            shoeArray.forEach(shoe =>{
-                shoe.shoeColors.forEach(color=>{
-                    if(!this.shoeColors.includes(color)){
+            shoeArray.forEach(shoe => {
+                shoe.shoeColors.forEach(color => {
+                    if (!this.shoeColors.includes(color)) {
                         this.shoeColors.push(color)
                     }
                 })
-        })},
-
-        filterByColor(){
-            if (this.selectedColor!=[]){
-                this.upperShelf = this.upperShelf.filter(shoe => shoe.color == this.selectedColor)
-            this.middleShelf = this.middleShelf.filter(shoe => shoe.color == this.selectedColor)
-            this.bottomShelf = this.bottomShelf.filter(shoe => shoe.color == this.selectedColor)}
+            })
         },
 
-        changeSelectedColors(color){
+        filterByColor() {
+            if (this.selectedColor != []) {
+                this.upperShelf = this.upperShelf.filter(shoe => shoe.color == this.selectedColor)
+                this.middleShelf = this.middleShelf.filter(shoe => shoe.color == this.selectedColor)
+                this.bottomShelf = this.bottomShelf.filter(shoe => shoe.color == this.selectedColor)
+            }
+        },
+
+        changeSelectedColors(color) {
             this.selectedColor.toggle(color)
         },
 
@@ -116,46 +177,50 @@ createApp({
         // },
 
         login() {
-            axios.post("/api/logout")
-            .then(()=>{
-                axios.post("/api/login", `email=${this.clientEmail}&password=${this.clientPassword}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+
+            axios.post("/api/login", `email=${this.clientEmail}&password=${this.clientPassword}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
                 .then(response => {
                     console.log(response)
-                    // window.location.href = ""
+                    window.location.reload();
                 })
                 .catch(error => {
-                    swal("There was an error with your email or password. Please try again.",{
-                        dangerMode:true
+                    swal("There was an error with your email or password. Please try again.", {
+                        dangerMode: true
                     });
-                    console.log("Error:",error.response.status,"Code:",error.code)
+                    console.log("Error:", error.response.status, "Code:", error.code)
                 })
-            })
+            // })
 
         },
 
         signUp() {
-            axios.post('/api/clients', `firstName=${this.newClientFirstName}&lastName=${this.newClientLastName}&email=${this.newClientEmail}&password=${this.newClientPassword}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
-            .then(response => console.log(response))
-            .catch(error =>{
-                console.log(error)
-                console.log("Error:",error.response.status,"Code:", error.code, error.response.data)
-                if(error.response.data == "This email belongs to an existing client"){
-                    swal(error.response.data,".",{
-                        dangerMode:true
-                    })
-                } else {
-                    swal("Please fill all the required fields.",{
-                        dangerMode:true
-                    });
-                }
-            })
+            axios.post('/api/clients', `firstName=${this.newClientFirstName}&lastName=${this.newClientLastName}&email=${this.newClientEmail}&password=${this.newClientPassword}&confirmPassword=${this.confirmNewClientPassword}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+                .then(response => console.log(response))
+                .catch(error => {
+                    console.log(error)
+                    console.log("Error:", error.response.status, "Code:", error.code, error.response.data)
+                    if (error.response.data == "This email belongs to an existing client") {
+                        swal(error.response.data, ".", {
+                            dangerMode: true
+                        })
+                    } else {
+                        swal("Please fill all the required fields.", {
+                            dangerMode: true
+                        });
+                    }
+                })
         },
+
+        logout() {
+            axios.post("/api/logout")
+                .then(console.log("logued out"))
+        }
 
 
 
     },
     computed: {
-        
-        },
-    }).mount('#app')
+
+    },
+}).mount('#app')
 
