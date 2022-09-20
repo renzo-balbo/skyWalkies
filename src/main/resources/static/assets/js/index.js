@@ -33,6 +33,7 @@ createApp({
             shoeColors: [],
             //FILTERS
             selectedColor: [],
+            // newUpperShelf:[],
         }
     },
     created() {
@@ -167,11 +168,13 @@ createApp({
         },
 
         filterByColor() {
-            let newUpperShelf =[];
+             let newUpperShelf=[]
             this.selectedColor.forEach(color=>{
                 this.upperShelf.forEach(shoe =>{
                     if(shoe.shoeColors.includes(color)){
-                        newUpperShelf.push(shoe);
+                        if(!newUpperShelf.includes(shoe)){
+                            newUpperShelf.push(shoe);
+                        }
                     }
                 })
                 
@@ -267,6 +270,7 @@ createApp({
                 this.bottomShelf = this.productsArray.slice(32, 47)
             } else if (this.selectedColor.length > 0) {
                 this.filterByColor()
+                console.log('filtering')
             }
         }
     },
