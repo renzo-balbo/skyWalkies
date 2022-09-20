@@ -1,5 +1,6 @@
 package com.mindhub.skywalkies.Service;
 
+import com.mindhub.skywalkies.models.Client_order;
 import com.mindhub.skywalkies.models.Ordered_product;
 
 import java.util.List;
@@ -10,4 +11,6 @@ public interface Ordered_productService {
     Ordered_product getProdutById(long id);
 
     void saveOrderProduct(Ordered_product ordered_product);
+
+
 }

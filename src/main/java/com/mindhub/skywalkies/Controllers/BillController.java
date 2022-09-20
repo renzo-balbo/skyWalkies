@@ -38,9 +38,13 @@ public class BillController {
     private ProductService productService;
     @Autowired
     private BillRepository billRepository;
-    @GetMapping("/bills")
-    public List<BillDTO> getBills(){
-    return billService.getAllBills().stream().map(BillDTO::new).collect(Collectors.toList());
-    }
 
+    @GetMapping("/bills")
+    public List<BillDTO> getBills() {
+        return billService.getAllBills().stream().map(BillDTO::new).collect(Collectors.toList());
+    }
+    @GetMapping("/bills/{id}")
+    public BillDTO getbill(@PathVariable long id) {
+        return new BillDTO(billService.getBillByid(id));
+    }
 }

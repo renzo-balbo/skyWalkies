@@ -42,11 +42,11 @@ public class ClientController {
     private ClientService clientService;
 
 
-    @RequestMapping("/clients")
+    @GetMapping("/clients")
     public List<ClientDTO> getClients() {
         return clientService.getAllClients().stream().map(ClientDTO::new).collect(Collectors.toList());
     }
-    @RequestMapping("/clients/{id}")
+    @GetMapping("/clients/{id}")
     public ClientDTO getClients (@PathVariable long id) {return  new ClientDTO(clientService.getClientById(id));}
 
     @PostMapping("/clients")
