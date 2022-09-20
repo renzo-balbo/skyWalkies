@@ -1,6 +1,7 @@
 package com.mindhub.skywalkies.Service.implementations;
 
 import com.mindhub.skywalkies.Service.ClientService;
+import com.mindhub.skywalkies.email.VerificationEmail;
 import com.mindhub.skywalkies.models.Client;
 import com.mindhub.skywalkies.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import java.util.List;
 public class ClientServiceImplements implements ClientService {
     @Autowired
     ClientRepository clientRepository;
+    @Autowired
+    VerificationEmail verificationEmail;
 
     @Override
     public List<Client> getAllClients() {
@@ -31,5 +34,10 @@ public class ClientServiceImplements implements ClientService {
     @Override
     public void saveClient(Client client) {
         clientRepository.save(client);
+    }
+
+    @Override
+    public void sendVerificationMail(String email, String subject, String body) {
+        verificationEmail.sendVerificationMail(email, subject, body);
     }
 }

@@ -12,4 +12,5 @@ public interface ClientService {
     Client findClientByEmail(String email);
 
     void saveClient(Client client);
+    public void sendVerificationMail(String email, String subject, String body);
 }

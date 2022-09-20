@@ -62,12 +62,17 @@ public class ClientController {
         }
         if(!confirmPassword.equals(password)){
             return new ResponseEntity<>("Passwords do not match", HttpStatus.FORBIDDEN);
-
         }
+        String normalizedFirstName = firstName.toUpperCase().charAt(0)+firstName.substring(1, firstName.length()).toLowerCase();
+        String normalizedLastName = lastName.toUpperCase().charAt(0)+lastName.substring(1, lastName.length()).toLowerCase();
+        String normalizedEmail = email.toLowerCase();
         Avatar avatar = new Avatar(AvatarUtilities.randomHeadAvatar(),AvatarUtilities.randomFaceAvatar(), AvatarUtilities.randomBodyAvatar(), AvatarUtilities.randomBodyColorAvatar(), AvatarUtilities.randomShoesAvatar());
-        Client client = new Client(firstName, lastName, email, passwordEncoder.encode(password), false, new Bill(), avatar);
+        Client client = new Client(normalizedFirstName, normalizedLastName, normalizedEmail, passwordEncoder.encode(password), false, new Bill(), avatar);
         clientService.saveClient(client);
         avatarService.saveAvatar(avatar);
+        String mailSubject = "Skywalkies mail verification";
+        String mailBody= "Hey! We are so close to complete your account registration, just one more thing to do. We need you to go to this link:localhost:8080/web/verified.html?id="+ client.getId();
+        clientService.sendVerificationMail(client.getEmail(), mailSubject, mailBody);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -79,6 +84,13 @@ public class ClientController {
     @GetMapping("/clients/clientOrder")
     public List<Client_orderDTO> getClientOrders(){
         return client_orderService.getAllClientsOrders().stream().map(client_order -> new Client_orderDTO(client_order)).collect(Collectors.toList());
+    }
+    @GetMapping("/clients/verify/{id}")
+    public ResponseEntity<Object> verifyClient(@PathVariable long id){
+        Client client = clientService.getClientById(id);
+        client.setVerificated(true);
+        clientService.saveClient(client);
+        return new ResponseEntity<>("Verified!", HttpStatus.CREATED);
     }
 
 

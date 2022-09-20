@@ -20,7 +20,7 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'com.itextpdf.maven:itextdoc:2.0.0'
-
+	implementation 'org.springframework.boot:spring-boot-starter-mail:2.7.3'
 	//implementation 'org.jetbrains:annotations:20.1.0'
 	//implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml'
 	// implementation 'org.postgresql:postgresql'
