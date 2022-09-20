@@ -47,6 +47,13 @@ nav>img {
   border-radius: 0 !important;
 }
 
+.displayedShoe{
+  transition: 300ms;
+}
+
+.displayedShoe:hover{
+  transform: translateY(-1.2rem);
+}
 
 
 /* PRUEBA "CARRUSEL" DE ZAPAS */
@@ -142,7 +149,7 @@ video {
   width: 80vw;
   height: 5rem;
   overflow-y: hidden;
-  overflow-x: auto;
+  overflow-x: hidden;
   white-space: nowrap;
   border-bottom: 15px ridge #FFFFFF;
   border-radius: 0px 0px 11px 11px;
@@ -262,7 +269,7 @@ display: inline-block;
 @media(min-width:1200px){
   .shoesCarrousel{
     width: 80vw;
-    height: 6rem;
+    height: 8rem;
     /* overflow-x: hidden; */
   }
 }

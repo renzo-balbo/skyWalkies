@@ -1,39 +1,41 @@
 const slider = document.getElementById("slider");
-const scrollContainer = document.getElementsByClassName("sliderForGallery")
-let isDown = false;
-let startX;
-let scrollLeft;
+const scrollModal = document.querySelector("#carruselModal")
 
+dragSlider(slider)
+dragSlider(scrollModal)
 
+function dragSlider(dom) {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    dom.addEventListener('mousedown', (e) => {
+        isDown = true;
+        dom.classList.add('active');
+        startX = e.pageX - dom.offsetLeft;
+        scrollLeft = dom.scrollLeft;
+    });
 
-slider.addEventListener('mousedown', (e) => {
-    isDown = true;
-    slider.classList.add('active');
-    startX = e.pageX - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
-});
+    dom.addEventListener('mouseleave', () => {
+        isDown = false;
+        dom.classList.remove('active');
+    });
+    dom.addEventListener('mouseup', () => {
+        isDown = false;
+        dom.classList.remove('active');
+    });
+    dom.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - dom.offsetLeft;
+        const walk = (x - startX) * 3; //scroll-fast
+        dom.scrollLeft = scrollLeft - walk;
 
-slider.addEventListener('mouseleave', () => {
-    isDown = false;
-    slider.classList.remove('active');
-});
-slider.addEventListener('mouseup', () => {
-    isDown = false;
-    slider.classList.remove('active');
-});
-slider.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 3; //scroll-fast
-    slider.scrollLeft = scrollLeft - walk;
-    
-});
-
-window.addEventListener("wheel", (e) => {
-    if (e.deltaY > 0) {
-        slider.scrollLeft += 100
-    } else {
-        slider.scrollLeft -= 100
-    }
-});
+    });
+    window.addEventListener("wheel", (e) => {
+        if (e.deltaY > 0) {
+            dom.scrollLeft += 100
+        } else {
+            dom.scrollLeft -= 100
+        }
+    });
+}
