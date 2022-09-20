@@ -22,6 +22,7 @@ public class Client_orderDTO {
         this.ordered_productDTOS = client_order.getOrdered_products().stream().map(ordered_product -> new Ordered_productDTO(ordered_product)).collect(Collectors.toSet());
     }
 
+
     public long getId() {
         return id;
     }

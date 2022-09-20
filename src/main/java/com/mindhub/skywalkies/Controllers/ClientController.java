@@ -5,6 +5,7 @@ import com.mindhub.skywalkies.Service.ClientService;
 import com.mindhub.skywalkies.Service.Client_orderService;
 import com.mindhub.skywalkies.Service.Ordered_productService;
 import com.mindhub.skywalkies.Utilities.AvatarUtilities;
+import com.mindhub.skywalkies.dtos.AvatarDTO;
 import com.mindhub.skywalkies.dtos.ClientDTO;
 import com.mindhub.skywalkies.dtos.Client_orderDTO;
 import com.mindhub.skywalkies.dtos.Ordered_productDTO;
@@ -45,6 +46,8 @@ public class ClientController {
     public List<ClientDTO> getClients() {
         return clientService.getAllClients().stream().map(ClientDTO::new).collect(Collectors.toList());
     }
+    @RequestMapping("/clients/{id}")
+    public ClientDTO getClients (@PathVariable long id) {return  new ClientDTO(clientService.getClientById(id));}
 
     @PostMapping("/clients")
     public ResponseEntity<Object> register(
