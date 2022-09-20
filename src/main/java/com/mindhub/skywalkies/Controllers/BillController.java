@@ -47,7 +47,7 @@ public class BillController {
         if (cardHolder.isEmpty() || thruDate.isEmpty() || cardNumber.isEmpty() || cvv <= 99){
             return new ResponseEntity<>("Please complete all the fields", HttpStatus.FORBIDDEN);
         }else {
-            return new ResponseEntity<>("Pagaste, pero anda a saber a donde fue la plata", HttpStatus.CREATED);
+            return new ResponseEntity<>("Payment completed", HttpStatus.CREATED);
         }
     }
 }

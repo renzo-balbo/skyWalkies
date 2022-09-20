@@ -30,9 +30,14 @@ public class WebAuthentication extends GlobalAuthenticationConfigurerAdapter {
                 if (client.getEmail().contains("@skywalkies")) {
                     return new User(client.getEmail(), client.getPassword(),
                             AuthorityUtils.createAuthorityList("ADMIN"));
-                } else {
+                }
+                if (!client.isVerificated()){
                     return new User(client.getEmail(), client.getPassword(),
-                            AuthorityUtils.createAuthorityList("CLIENT"));}
+                            AuthorityUtils.createAuthorityList("NOT VERIFIED"));
+                }else {
+                    return new User(client.getEmail(), client.getPassword(),
+                            AuthorityUtils.createAuthorityList("CLIENT"));
+                }
             } else {
                 throw new UsernameNotFoundException("Unknown email: " + clientEmail);
             }
