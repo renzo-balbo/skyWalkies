@@ -23,5 +23,12 @@ public class ProductServiceImplements implements ProductService {
     public Product findByName(String name) {
         return productRepository.findByName(name);
     }
+    @Override
+    public void delete(Product product) {
+        product.setDeleted(true);this.saveProduct(product);}
+
+
+
+
 
 }

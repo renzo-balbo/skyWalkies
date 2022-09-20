@@ -118,24 +118,39 @@ public class ProductController {
         clientService.saveClient(client);
         return new ResponseEntity<>("claro que si crack", HttpStatus.CREATED);
     }
-    @PatchMapping("/products/deleteCart")
-    public ResponseEntity<Object> emptyCart(Authentication authentication){
+//    @PatchMapping  ("/products/deleteCart")
+//    public ResponseEntity<Object> emptyCart(Authentication authentication){
+//
+//        Client client = clientService.findClientByEmail(authentication.getName());
+//        Bill bill = client.getBills().stream().filter(bill1 -> !bill1.isPayed()).findFirst().orElse(null);
+//        bill.getClient_orders().forEach(client_order -> {
+//            client_orderRepository.delete(client_order);
+//        });
+//
+//        bill.setClient_orders(new HashSet<>());
+//        bill.setClient(client);
+//        bill.setSubTotal(0);
+//        bill.setDate(LocalDateTime.now());
+//        bill.setPayed(false);
+//
+//
+//        billService.saveBill(bill);
+//        return new ResponseEntity<>("delete pana",HttpStatus.ACCEPTED);
+//    }
 
-        Client client = clientService.findClientByEmail(authentication.getName());
-        Bill bill = client.getBills().stream().filter(bill1 -> !bill1.isPayed()).findFirst().orElse(null);
-        bill.getClient_orders().forEach(client_order -> {
-            client_orderRepository.delete(client_order);
-        });
+    @PatchMapping ("/products/delete")
+    public ResponseEntity<?> delete (@RequestParam String id){
+        if(id.isEmpty()){
+            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
+        }
 
-        bill.setClient_orders(new HashSet<>());
-        bill.setClient(client);
-        bill.setSubTotal(0);
-        bill.setDate(LocalDateTime.now());
-        bill.setPayed(false);
-
-
-        billService.saveBill(bill);
-        return new ResponseEntity<>("delete pana",HttpStatus.ACCEPTED);
+        Long longId= Long.valueOf(id);
+        Product product = productService.getProductById(longId);
+        if(product == null){
+            return new ResponseEntity<>("Product does not exist", HttpStatus.FORBIDDEN);
+        }
+        productService.delete(product);
+        return new ResponseEntity<>("product has been deleted successfully", HttpStatus.OK);
     }
 
 }

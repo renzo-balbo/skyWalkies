@@ -31,14 +31,14 @@ public class Product {
 
     private boolean active;
 
-
+    private boolean deleted;
     private int stock;
     private double price;
 
     public Product() {
     }
 
-    public Product(String name, List<ShoeColors> shoeColors, String type, Boolean active, List<Integer> size, int stock, double price) {
+    public Product(String name, List<ShoeColors> shoeColors, String type, Boolean active, List<Integer> size, int stock, double price ) {
         this.name = name;
         this.shoeColors = shoeColors;
         this.type = type;
@@ -46,6 +46,7 @@ public class Product {
         this.size = size;
         this.stock = stock;
         this.price = price;
+        this.deleted = false;
     }
 
     public long getId() {
@@ -66,6 +67,14 @@ public class Product {
 
     public void setShoeColors(List<ShoeColors> shoeColors) {
         this.shoeColors = shoeColors;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 
     public String getName() {

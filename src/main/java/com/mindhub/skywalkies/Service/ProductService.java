@@ -12,4 +12,6 @@ public interface ProductService {
 
     public void saveProduct(Product product);
     public Product findByName(String name);
+
+    void delete(Product product);
 }
