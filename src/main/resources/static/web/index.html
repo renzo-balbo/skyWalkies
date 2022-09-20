@@ -53,8 +53,10 @@
 
                 <!-- OFF CANVAS RIGHT REGISTRO -->
 
-                <button class="btn btn-solid" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                    aria-controls="offcanvasRight" @click="renderAvatar">
+                <button class="btn btn-solid d-flex align-items-center" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" @click="renderAvatar">
+                    <p v-if="currentClient == null" class="mt-2 me-2 fw-bold">Log In / Sign Up</p>
+                    <p v-else class="mt-2 me-2 fw-bold">User Panel</p>
                     <i class="bi bi-person-circle fs-2"></i>
                 </button>
 
@@ -165,7 +167,7 @@
                         </div>
 
 
-                        <div v-else class="d-flex justify-content-center flex-wrap">
+                        <div v-else class="d-flex justify-content-center flex-wrap align-items-between">
 
                             <h2>Glad to have you back {{currentClient.firstName}}!</h2>
 
@@ -174,19 +176,22 @@
                                     style="border: 5px solid black;"></canvas>
                             </div>
 
-                            <div class="d-flex justify-content-center">
-                                <a href="../web/character_customization.html">
-                                    <button>
+                            <div class="d-flex justify-content-center col-12 my-2">
+                                <a href="../web/character_customization.html" class="col-6">
+                                    <button class="btn btn-dark col-12">
                                         Customize your avatar
                                     </button>
                                 </a>
                             </div>
-
-                            <div class="d-flex justify-content-center">
-                                <a href="">
-                                    <button>Check your cart!</button>
+                            
+                            <div class="d-flex justify-content-center col-12 my-2">
+                                <a href="" class="col-6">
+                                    <button class="btn btn-dark col-12">Check your cart!</button>
                                 </a>
-                                <button @click="logout">
+                            </div>
+
+                            <div class="d-flex justify-content-center col-12 my-2">
+                                <button @click="logout" class="btn btn-dark col-6">
                                     Logout
                                 </button>
                             </div>
@@ -524,15 +529,16 @@
                             <div class="col-12 d-flex flex-wrap justify-content-center">
 
                                 <div v-for="color in shoeColors" class="d-flex mx-2">
-                                    <input type="checkbox" @change="changeSelectedColors(color)"
-                                        :id="color" :value="color">
+                                    <input type="checkbox" @change="changeSelectedColors(color)" :id="color"
+                                        :value="color">
                                     <label :for="color">{{color}}</label>
                                 </div>
 
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center justify-content-around estanteZapatillas col-10"> {{filtering}}
+                    <div class="d-flex align-items-center justify-content-around estanteZapatillas col-10">
+                        {{filtering}}
 
 
                         <button class="noBGnoBorder mx-2 displayedShoe" v-for="product in upperShelf"

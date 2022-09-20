@@ -168,28 +168,28 @@ createApp({
         },
 
         filterByColor() {
-             let newUpperShelf=[]
-            this.selectedColor.forEach(color=>{
-                this.upperShelf.forEach(shoe =>{
-                    if(shoe.shoeColors.includes(color)){
-                        if(!newUpperShelf.includes(shoe)){
+            let newUpperShelf = []
+            this.selectedColor.forEach(color => {
+                this.upperShelf.forEach(shoe => {
+                    if (shoe.shoeColors.includes(color)) {
+                        if (!newUpperShelf.includes(shoe)) {
                             newUpperShelf.push(shoe);
                         }
                     }
                 })
-                
+
             })
             console.log(newUpperShelf)
             this.upperShelf = newUpperShelf;
-            
 
 
 
 
 
 
-                // this.middleShelf = this.middleShelf.filter(shoe => shoe.color == this.selectedColor)
-                // this.bottomShelf = this.bottomShelf.filter(shoe => shoe.color == this.selectedColor)
+
+            // this.middleShelf = this.middleShelf.filter(shoe => shoe.color == this.selectedColor)
+            // this.bottomShelf = this.bottomShelf.filter(shoe => shoe.color == this.selectedColor)
         },
 
         changeSelectedColors(selectedColor) {
