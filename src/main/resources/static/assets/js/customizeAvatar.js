@@ -18,7 +18,7 @@ createApp({
     },
 
     created() {
-        this.login()
+        this.loadClientData()
     },
 
     beforeMount() {
@@ -45,15 +45,6 @@ createApp({
     },
 
     methods: {
-
-
-        // login() {
-        //     axios.post('/api/login', "email=renzobalbo@skywalkies.com.ar&password=skywalkies")
-        //     .then(this.loadClientData())
-        // },
-
-
-
 
         loadClientData() {
             axios.get('/api/clients/current')
