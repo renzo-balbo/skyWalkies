@@ -138,7 +138,7 @@ video {
 
 /* Acá estan los carrouseles de zapas mobile */
 
-.carouselZapas{
+.shoesCarrousel{
   width: 80vw;
   height: 5rem;
   overflow-y: hidden;
@@ -148,7 +148,7 @@ video {
   border-radius: 0px 0px 11px 11px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
 }
-.carouselZapas>a{
+.shoesCarrousel>a{
   width: 100px;
 height: 50px;
 margin: 0 10px 0 0;
@@ -260,7 +260,7 @@ display: inline-block;
 }
 
 @media(min-width:1200px){
-  .carouselZapas{
+  .shoesCarrousel{
     width: 80vw;
     height: 6rem;
     /* overflow-x: hidden; */

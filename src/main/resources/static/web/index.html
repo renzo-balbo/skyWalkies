@@ -54,9 +54,9 @@
                 <!-- OFF CANVAS RIGHT REGISTRO -->
 
                 <button class="btn btn-solid" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                aria-controls="offcanvasRight" @click="renderAvatar">
-                <i class="bi bi-person-circle"></i>
-            </button>
+                    aria-controls="offcanvasRight" @click="renderAvatar">
+                    <i class="bi bi-person-circle"></i>
+                </button>
 
                 <div class="offcanvas offcanvas-end" tabindex="-1" data-bs-scroll="true" id="offcanvasRight"
                     aria-labelledby="offcanvasRightLabel">
@@ -69,7 +69,7 @@
 
 
 
-                        <div v-if="currentClient == {}" class="accordion accordion-flush" id="accordionFlushExample">
+                        <div v-if="currentClient == null" class="accordion accordion-flush" id="accordionFlushExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -107,15 +107,16 @@
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="newClientPassword" class="form-label"
-                                                    v-model="newClientPassword">Password</label>
-                                                <input type="password" class="formInputs" id="newClientPassword">
+                                                <label for="newClientPassword" class="form-label">Password</label>
+                                                <input v-model="newClientPassword" type="password" class="formInputs"
+                                                    id="newClientPassword">
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="confirmNewClientPassword" class="form-label"
-                                                    v-model="confirmNewClientPassword">Confirm Password</label>
-                                                <input type="password" class="formInputs" id="confirmNewClientPassword">
+                                                <label for="confirmNewClientPassword" class="form-label">Confirm
+                                                    Password</label>
+                                                <input v-model="confirmNewClientPassword" type="password"
+                                                    class="formInputs" id="confirmNewClientPassword">
                                             </div>
 
                                             <button type="submit" class="btn btn-dark" @click="signUp">Submit</button>
@@ -166,32 +167,33 @@
 
                         <div v-else class="d-flex justify-content-center flex-wrap">
 
-                                <h2>Glad to have you back {{currentClient.firstName}}!</h2>
-                                
-                                <div class="d-flex col-12 col-lg-2 m-3 justify-content-center  contenedorCanvas">
-                                    <canvas id="myCanvas" width="400" height="680" style="border: 5px solid black;"></canvas>
-                                </div>
-                                
-                                <div class="d-flex justify-content-center">
-                                    <a href="../web/character_customization.html">
-                                        <button>
-                                            Customize your avatar
-                                        </button>
-                                    </a>
-                                </div>
+                            <h2>Glad to have you back {{currentClient.firstName}}!</h2>
+
+                            <div class="d-flex col-12 col-lg-2 m-3 justify-content-center  contenedorCanvas">
+                                <canvas id="myCanvas" width="400" height="680"
+                                    style="border: 5px solid black;"></canvas>
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <a href="../web/character_customization.html">
+                                    <button>
+                                        Customize your avatar
+                                    </button>
+                                </a>
+                            </div>
 
                             <div class="d-flex justify-content-center">
                                 <a href="">
                                     <button>Check your cart!</button>
                                 </a>
-                                <button>
+                                <button @click="logout">
                                     Logout
                                 </button>
                             </div>
 
                             <div id="invisibleDiv" class="d-none">
                             </div>
-                            
+
 
 
 
@@ -270,7 +272,7 @@
 
                         <!-- CARRUSEL DE BOOTSTRAP, VER MAS TARDE -->
                         <div class="d-flex flex-wrap ocultar justify-content-center gap-3">
-                            <div class="carouselZapas squares col-10">
+                            <div class="shoesCarrousel squares col-10">
 
                                 <button class="noBGnoBorder mx-2" v-for="product in upperShelf"
                                     @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
@@ -282,7 +284,7 @@
 
                             </div>
 
-                            <div class="carouselZapas squares col-10 ">
+                            <div class="shoesCarrousel squares col-10 ">
                                 <button class="noBGnoBorder mx-2" v-for="product in middleShelf"
                                     @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop">
@@ -292,7 +294,7 @@
                                 </button>
                             </div>
 
-                            <div class="carouselZapas squares col-10 ">
+                            <div class="shoesCarrousel squares col-10 ">
                                 <button class="noBGnoBorder mx-2" v-for="product in bottomShelf"
                                     @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop">
@@ -423,7 +425,7 @@
 
                         <div class="modal-footer d-flex justify-content-center container">
 
-                            <div class="carouselZapas d-flex col-10 col-md-12 ">
+                            <div class="shoesCarrousel d-flex col-10 col-md-12 ">
                                 <button v-for="product in productsArray" @click="changeRender(product.name)"
                                     class="mx-2 noBGnoBorder">
                                     <img :src="'/assets/img/'+product.name+'.png'" style="width: 100px;" alt="">
@@ -458,10 +460,13 @@
                     <div class=" history d-flex justify-content-center align-items-center">
                         <div class="divs overflow-auto">
                             <h2 class="text-center">"Air Force 1", by "Sky Walkies</h2>
-                            <p class="m-3">Originally designed by Nike in 1982, the Sky Walkies "Airforce 1" marks the first
+                            <p class="m-3">Originally designed by Nike in 1982, the Sky Walkies "Airforce 1" marks the
+                                first
                                 time the shoe has been made outside of a Nike factory. An emblem of the street style
-                                community that sapwned it, Men's Artistic Director Renzo Balbo considered the Nike Air Force
-                                1 a cultural symbol in its own right. Now two icons join forces to create the mos authentic
+                                community that sapwned it, Men's Artistic Director Renzo Balbo considered the Nike Air
+                                Force
+                                1 a cultural symbol in its own right. Now two icons join forces to create the mos
+                                authentic
                                 high-end sports shoe. Fasion transcends to become an art object symbol of the subculture
                                 with a bit of magic and innovation.</p>
                         </div>
@@ -487,7 +492,8 @@
                         <img src="../assets/img/handcrafted/handcrafted_2.webp" alt="">
                     </div>
                     <div class=" c5 d-flex justify-content-center align-items-center">
-                        <p class="m-3 divs p-2">A true craftsmanship is based on a skillful hand and precision. Patterns in
+                        <p class="m-3 divs p-2">A true craftsmanship is based on a skillful hand and precision. Patterns
+                            in
                             luxury
                             materials are cut, arranged and prepared for construction.
                         </p>
@@ -518,7 +524,7 @@
                             <div class="col-12 d-flex flex-wrap justify-content-center">
 
                                 <div v-for="color in shoeColors" class="d-flex mx-2">
-                                    <input type="checkbox" @change="changeSelectedColors(color)" v-model="selectedColor"
+                                    <input type="checkbox" @change="changeSelectedColors(color)"
                                         :id="color" :value="color">
                                     <label :for="color">{{color}}</label>
                                 </div>
@@ -526,10 +532,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center justify-content-around estanteZapatillas col-10">
+                    <div class="d-flex align-items-center justify-content-around estanteZapatillas col-10"> {{filtering}}
 
 
-                        <button class="noBGnoBorder mx-2" v-for="product in upperShelf"
+                        <button class="noBGnoBorder mx-2 " v-for="product in upperShelf"
                             @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop">
                             <img :src="'../assets/img/'+product.name+'.png'" class="card-img-top widthZapaCarrusel"
@@ -540,7 +546,7 @@
                     </div>
                     <div class=" d-flex align-items-center justify-content-around estanteZapatillas col-12">
 
-                        <button class="noBGnoBorder mx-2" v-for="product in middleShelf"
+                        <button class="noBGnoBorder mx-2 " v-for="product in middleShelf"
                             @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop">
                             <img :src="'../assets/img/'+product.name+'.png'" class="card-img-top widthZapaCarrusel"
@@ -550,7 +556,7 @@
                     </div>
                     <div class=" d-flex align-items-center justify-content-around estanteZapatillas col-10">
 
-                        <button class="noBGnoBorder mx-2" v-for="product in bottomShelf"
+                        <button class="noBGnoBorder mx-2 " v-for="product in bottomShelf"
                             @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop">
                             <img :src="'../assets/img/'+product.name+'.png'" class="card-img-top widthZapaCarrusel"
@@ -568,7 +574,8 @@
                         <video autoplay loop src="../assets/vid/zapatillaArmandose.webm"></video>
                     </div>
                     <div class=" boxInspiration d-flex justify-content-start align-items-center">
-                        <p class="fw-light divs text-center p-2">For Spring-Summer 2022/23, Renzo Balbo staged a collaboration between
+                        <p class="fw-light divs text-center p-2">For Spring-Summer 2022/23, Renzo Balbo staged a
+                            collaboration between
                             Sky Walkies and Nike, creating 47 bespoke "Air Force 1" editions. Each of them was expertly
                             crafted, fusing the classic codes of the sneaker with the House's own insignials and
                             materials, such as leather, cocodrile, synthetic leather and PVC among others.</p>
@@ -609,31 +616,31 @@
                         <a href="#" class="fs-6 text-black">Employment</a>
                     </div>
                 </div>
-    
+
                 <div class="d-flex col-12 col-md justify-content-center mt-lg-3">
                     <a href="#" class="fs-1 mx-4 text-black">
                         <i class="bi bi-instagram"></i>
                     </a>
-    
+
                     <a href="#" class="fs-1 mx-4 text-black">
                         <i class="bi bi-facebook"></i>
                     </a>
-    
+
                     <a href="#" class="fs-1 mx-4 text-black">
                         <i class="bi bi-twitter"></i>
                     </a>
-    
-                </div>    
-    
+
+                </div>
+
                 <div class="d-flex flex-column col-12 col-md text-center justify-content-end pt-4">
                     <p>&copy; 2022 SKYWALKIES SRL. All rights reserved</p>
                     <a href="#" class="text-black">Terms and privacy policy</a>
                 </div>
-                </div>
-                <!-- FIN FOOTER MOBILE -->
+            </div>
+            <!-- FIN FOOTER MOBILE -->
 
 
-                
+
             <!-- FOOTER DESKTOP -->
             <ul class="d-lg-flex justify-content-around align-items-center d-none" id="footerLg">
                 <li class="mt-4">

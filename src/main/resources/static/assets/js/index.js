@@ -4,6 +4,7 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            //CLIENT DATA
             clientEmail: "",
             clientPassword: "",
             newClientFirstName: "",
@@ -11,6 +12,16 @@ createApp({
             newClientEmail: "",
             newClientPassword: "",
             confirmNewClientPassword: "",
+            currentClient: null,
+            // AVATAR
+            avatar: {},
+            avatarHead: new Image(),
+            avatarBody: new Image(),
+            avatarBodyColor: new Image(),
+            avatarFace: new Image(),
+            avatarShoes: new Image(),
+            avatarArtLine: new Image(),
+            //PRODUCTS DATA
             productsArray: [],
             upperShelf: [],
             middleShelf: [],
@@ -20,16 +31,8 @@ createApp({
             stockToDisplay: "",
             productToDisplay: {},
             shoeColors: [],
+            //FILTERS
             selectedColor: [],
-            currentClient: {},
-            // AVATAR
-            avatar:{},
-            avatarHead: new Image(),
-            avatarBody: new Image(),
-            avatarBodyColor: new Image(),
-            avatarFace: new Image(),
-            avatarShoes: new Image(),
-            avatarArtLine: new Image(),
         }
     },
     created() {
@@ -42,10 +45,10 @@ createApp({
     mounted() {
     },
 
-    beforeUpdate(){
+    beforeUpdate() {
     },
 
-    updated(){
+    updated() {
 
     },
     methods: {
@@ -62,11 +65,15 @@ createApp({
                     this.avatar = this.currentClient.avatar
                     console.log(this.currentClient.avatar)
                 })
+                .catch(error => {
+                    console.log(error)
+                    this.currentClient = null
+                })
         },
 
         // AVATAR
 
-        prepareAvatarParts(){
+        prepareAvatarParts() {
             this.avatarHead.src = "../assets/img/avatarCollection/head" + this.currentClient.avatar.head + ".png";
             this.avatarBody.src = "../assets/img/avatarCollection/body" + this.currentClient.avatar.body + ".png";
             this.avatarBodyColor.src = "../assets/img/avatarCollection/bodyColor" + this.currentClient.avatar.bodyColor + ".png";
@@ -75,7 +82,7 @@ createApp({
             this.avatarArtLine.src = "../assets/img/avatarCollection/lineArtObligatory.png";
         },
 
-        drawAvatar(){
+        drawAvatar() {
             let canvas = document.getElementById("myCanvas");
             let ctx = canvas.getContext("2d");
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -87,7 +94,7 @@ createApp({
             ctx.drawImage(this.avatarHead, 0, 0);
         },
 
-        renderAvatar(){
+        renderAvatar() {
             this.prepareAvatarParts()
             this.drawAvatar()
         },
@@ -130,21 +137,22 @@ createApp({
             this.middleShelf = this.productsArray.slice(14, 32)
             this.bottomShelf = this.productsArray.slice(32, 47)
         },
+        // FILTERS 
+
+
+
         priceSortedMaxToMin() {
             this.productsArray = this.productsArray.sort((a, b) => a.price - b.price)
             this.upperShelf = this.upperShelf.sort((a, b) => a.price - b.price)
             this.middleShelf = this.middleShelf.sort((a, b) => a.price - b.price)
             this.bottomShelf = this.bottomShelf.sort((a, b) => a.price - b.price)
-            // console.log(this.upperShelf);
-
-
         },
+
         priceSortedMinToMax() {
             this.productsArray = this.productsArray.sort((a, b) => b.price - a.price)
             this.upperShelf = this.upperShelf.sort((a, b) => b.price - a.price)
             this.middleShelf = this.middleShelf.sort((a, b) => b.price - a.price)
             this.bottomShelf = this.bottomShelf.sort((a, b) => b.price - a.price)
-
         },
 
         loadShoeColors(shoeArray) {
@@ -159,16 +167,46 @@ createApp({
         },
 
         filterByColor() {
-            if (this.selectedColor != []) {
-                this.upperShelf = this.upperShelf.filter(shoe => shoe.color == this.selectedColor)
-                this.middleShelf = this.middleShelf.filter(shoe => shoe.color == this.selectedColor)
-                this.bottomShelf = this.bottomShelf.filter(shoe => shoe.color == this.selectedColor)
-            }
+            let newUpperShelf =[];
+            this.selectedColor.forEach(color=>{
+                this.upperShelf.forEach(shoe =>{
+                    if(shoe.shoeColors.includes(color)){
+                        newUpperShelf.push(shoe);
+                    }
+                })
+                
+            })
+            console.log(newUpperShelf)
+            this.upperShelf = newUpperShelf;
+            
+
+
+
+
+
+
+                // this.middleShelf = this.middleShelf.filter(shoe => shoe.color == this.selectedColor)
+                // this.bottomShelf = this.bottomShelf.filter(shoe => shoe.color == this.selectedColor)
         },
 
-        changeSelectedColors(color) {
-            this.selectedColor.toggle(color)
+        changeSelectedColors(selectedColor) {
+            if (this.selectedColor.filter(color => color == selectedColor).length > 0) {
+                let indexToRemove = this.selectedColor.indexOf(selectedColor)
+                this.selectedColor.splice(indexToRemove, 1)
+                console.log(this.selectedColor, 'sacando')
+            } else if (this.selectedColor.filter(color => color == selectedColor).length == 0) {
+                this.selectedColor.push(selectedColor)
+                console.log(this.selectedColor)
+            }
+            console.log('ejecutando funcion')
         },
+
+
+        // END FILTERS
+
+
+
+
 
         // Esperar endpoints y hacer el addToCart
         // addToCart() {
@@ -213,14 +251,24 @@ createApp({
 
         logout() {
             axios.post("/api/logout")
-                .then(console.log("logued out"))
+                .then(() => {
+                    window.location.reload()
+                })
         }
 
 
 
     },
     computed: {
-
+        filtering() {
+            if (this.selectedColor.length == 0) {
+                this.upperShelf = this.productsArray.slice(0, 14)
+                this.middleShelf = this.productsArray.slice(14, 32)
+                this.bottomShelf = this.productsArray.slice(32, 47)
+            } else if (this.selectedColor.length > 0) {
+                this.filterByColor()
+            }
+        }
     },
 }).mount('#app')
 

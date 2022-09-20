@@ -152,15 +152,15 @@
         <!-- ---- -->
         <main class="d-flex flex-wrap justify-content-center">
 
-            <div class="col-12 d-flex flex-wrap justify-content-evenly">
+            <div class="col-12 d-flex flex-wrap justify-content-evenly align-items-center">
 
                 <!-- PERSONALIZAR EL AVATAR  -->
 
-                <div class="d-flex flex-wrap col-12 col-lg-9  justify-content-start align-items-center m-0">
+                <div class="d-flex flex-wrap col-12 col-lg-6  justify-content-start align-items-center m-0">
 
                     <h2 class="col-12 text-center fw-bold bg-white m-0">Select Your Style</h2>
 
-                    <div class="d-flex flex-wrap justify-content-center align-items-center col-12 m-0">
+                    <div class="container overflow-auto alturaSelectYourStyle d-md-flex flex-column align-items-center col-12 m-3 scrollBar">
 
                         <img src="../assets/img/avatarCollection/lineArtObligatory.png" alt="" class="d-none">
 
@@ -472,9 +472,6 @@
                             </div>
 
                         </div>
-                        <div class="col-12 col-lg-4 d-flex justify-content-center">
-                            <button class="mt-2" id="keepItButton" @click="saveNewAvatar">Keep It!</button>
-                        </div>
 
                     </div>
 
@@ -484,6 +481,9 @@
 
                 <div class="d-flex col-12 col-lg-2 m-3 justify-content-center  contenedorCanvas">
                     <canvas id="myCanvas" width="400" height="680" style="border: 5px solid black;"></canvas>
+                </div>
+                <div class="col-12 col-lg-4 d-flex justify-content-center">
+                    <button class="mt-2" id="keepItButton" @click="saveNewAvatar">Keep It!</button>
                 </div>
 
             </div>
