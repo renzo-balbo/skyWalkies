@@ -4,7 +4,6 @@ import com.mindhub.skywalkies.Service.ClientService;
 import com.mindhub.skywalkies.models.Client;
 import com.mindhub.skywalkies.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,10 +31,5 @@ public class ClientServiceImplements implements ClientService {
     @Override
     public void saveClient(Client client) {
         clientRepository.save(client);
-    }
-
-    @Override
-    public Client getClientCurrent(Authentication authentication) {
-        return clientRepository.findByEmail(authentication.getName());
     }
 }
