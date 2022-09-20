@@ -21,7 +21,6 @@ public class Bill {
      @ManyToOne(fetch = FetchType.EAGER)
      @JoinColumn(name = "client_id")
      private Client client;
-
     private LocalDateTime date;
     private boolean payed;
     private double subTotal;

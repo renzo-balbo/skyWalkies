@@ -79,7 +79,6 @@ public class SkywalkiesApplication {
 
 
 
-
             //BILLS//
             Bill bill1 = new Bill( LocalDateTime.now(), true, 992.23);
             //BILLS//

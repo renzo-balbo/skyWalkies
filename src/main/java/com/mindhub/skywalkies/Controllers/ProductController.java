@@ -87,6 +87,9 @@ public class ProductController {
     public ResponseEntity<Object> addProduct(@RequestBody Set<AddProductDTO> addProductDTO, Authentication authentication) {
         Client client = clientService.findClientByEmail(authentication.getName());
         Bill bill;
+//        if (addProductDTO == null){
+//            return new ResponseEntity<>("That product no exist", HttpStatus.FORBIDDEN);
+//        }
         if (client.getBills().stream().anyMatch(billToCheck -> !billToCheck.isPayed())){
             bill = client.getBills().stream().filter(bill1 -> !bill1.isPayed()).findFirst().orElse(null);
         } else {
@@ -109,7 +112,6 @@ public class ProductController {
         client_orderService.saveClientOrders(client_order);
         client.addBill(bill);
         clientService.saveClient(client);
-
         return new ResponseEntity<>("claro que si crack", HttpStatus.CREATED);
     }
     @PatchMapping("/products/deleteCart")
