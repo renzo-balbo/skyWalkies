@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -24,6 +25,7 @@ public class Bill {
     private LocalDateTime date;
     private boolean payed;
     private double subTotal;
+    private int ticketNumber;
 
     public Bill() {
     }
@@ -40,6 +42,12 @@ public class Bill {
         this.addClient_order(client_order);
     }
 
+    public Bill(LocalDateTime date, boolean payed, double subTotal, int ticketNumber) {
+        this.date = date;
+        this.payed = payed;
+        this.subTotal = subTotal;
+        this.ticketNumber = ticketNumber;
+    }
 
     public long getId() {
         return id;
@@ -87,9 +95,19 @@ public class Bill {
         this.client_orders = client_orders;
     }
 
+    public int getTicketNumber() {
+        return ticketNumber;
+    }
+
+    public void setTicketNumber(int ticketNumber) {
+        this.ticketNumber = ticketNumber;
+    }
+
     public void addClient_order(Client_order client_order){
         client_order.setBillId(this);
         client_orders.add(client_order);
     }
-
+    public void addTicketNumber(int number){
+        setTicketNumber(number);
+    }
 }

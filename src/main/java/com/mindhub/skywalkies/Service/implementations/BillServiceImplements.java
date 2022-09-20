@@ -22,4 +22,9 @@ public class BillServiceImplements implements BillService {
     @Override
     public void saveBill(Bill bill){billRepository.save(bill);}
 
+    @Override
+    public Bill findByTicketNumber(int number) {
+        return billRepository.findByTicketNumber(number);
+    }
+
 }

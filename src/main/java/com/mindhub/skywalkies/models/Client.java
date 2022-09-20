@@ -102,18 +102,17 @@ public class Client {
     public void setBills(Set<Bill> bills) {
         this.bills = bills;
     }
-
-    public void addBill(Bill bill) {
-        bill.setClient(this);
-        bills.add(bill);
-    }
-
     public Avatar getAvatar() {
         return avatar;
     }
 
     public void setAvatar(Avatar avatar) {
         this.avatar = avatar;
+    }
+
+    public void addBill(Bill bill) {
+        bill.setClient(this);
+        bills.add(bill);
     }
 }
 

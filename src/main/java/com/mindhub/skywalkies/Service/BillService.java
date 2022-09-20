@@ -9,11 +9,12 @@ import java.util.List;
 
 public interface BillService {
 
-    List<Bill> getAllBills();
+    public List<Bill> getAllBills();
 
-    Bill getBillByid(long id);
+    public Bill getBillByid(long id);
 
-    void deleteBill(Bill bill);
+    public void deleteBill(Bill bill);
 
-    void saveBill(Bill bill);
+    public void saveBill(Bill bill);
+    public Bill findByTicketNumber(int number);
 }

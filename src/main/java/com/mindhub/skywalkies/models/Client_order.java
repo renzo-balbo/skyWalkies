@@ -21,8 +21,6 @@ public class Client_order {
      @OneToMany(mappedBy = "client_order",fetch = FetchType.EAGER)
      private Set<Ordered_product> ordered_products = new HashSet<>();
 
-
-
     public Client_order() {
     }
 

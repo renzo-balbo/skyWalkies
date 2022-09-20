@@ -5,9 +5,9 @@ import com.mindhub.skywalkies.models.Client_order;
 import java.util.List;
 
 public interface Client_orderService {
-    List<Client_order> getAllClientsOrders();
+    public List<Client_order> getAllClientsOrders();
 
-    Client_order getClientOrdersById(long id);
+    public Client_order getClientOrdersById(long id);
 
-    void saveClientOrders(Client_order client_order);
+    public void saveClientOrders(Client_order client_order);
 }

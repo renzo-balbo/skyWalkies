@@ -5,9 +5,9 @@ import com.mindhub.skywalkies.models.Avatar;
 import java.util.List;
 
 public interface AvatarService {
-    List<Avatar> getAllAvatars();
+    public List<Avatar> getAllAvatars();
 
-    Avatar getAvatarById(long id);
+    public Avatar getAvatarById(long id);
 
-    void saveAvatar(Avatar avatar);
+    public void saveAvatar(Avatar avatar);
 }

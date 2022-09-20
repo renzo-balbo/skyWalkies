@@ -92,6 +92,4 @@ public class ClientController {
         clientService.saveClient(client);
         return new ResponseEntity<>("Verified!", HttpStatus.CREATED);
     }
-
-
 }

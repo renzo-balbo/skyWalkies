@@ -37,8 +37,6 @@ public class Avatar {
         return id;
     }
 
-
-
     public Integer getHead() {
         return head;
     }

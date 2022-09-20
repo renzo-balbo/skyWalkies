@@ -10,12 +10,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
+import static com.mindhub.skywalkies.Utilities.BillUtilities.randomNumberTicket;
 import static com.mindhub.skywalkies.models.ShoeColors.*;
 
 
@@ -29,58 +27,59 @@ public class SkywalkiesApplication {
         return (args) -> {
 
             //PRODUCTOS//
-            Product productShoe1  = new Product("LV_NIKE_LOW_SOTHEBYS",List.of(BROWN, WITHE), "Sneaker", true, List.of(8,9,10,11), 15, 299);
-            Product productShoe2  = new Product("LV-NIKE-AFONE-HIGH-PLUS-A3", List.of(WITHE), "Sneaker", true, List.of(7,8,10,11), 15, 350);
-            Product productShoe3  = new Product("LV-NIKE-AFONE-HIGH-PLUS-E", List.of(BROWN, WITHE), "Sneaker", true, List.of(8,9,10,11), 15, 299);
+            Product productShoe1  = new Product("LV_NIKE_LOW_SOTHEBYS",List.of(BROWN, WHITE), "Sneaker", true, List.of(8,9,10,11), 15, 299);
+            Product productShoe2  = new Product("LV-NIKE-AFONE-HIGH-PLUS-A3", List.of(WHITE), "Sneaker", true, List.of(7,8,10,11), 15, 350);
+            Product productShoe3  = new Product("LV-NIKE-AFONE-HIGH-PLUS-E", List.of(BROWN, WHITE), "Sneaker", true, List.of(8,9,10,11), 15, 299);
             Product productShoe4  = new Product("LV-NIKE-AFONE-HIGH-PLUS-R", List.of(PURPLE, YELLOW), "Sneaker", true, List.of(9,10,11), 10, 399);
             Product productShoe5  = new Product("NIKE-LV-AFONE-HIGH-D", List.of(BLACK), "Sneaker", true, List.of(7,8,9,10,11), 25, 199);
-            Product productShoe6  = new Product("NIKE-LV-HIGH_03", List.of(WITHE), "Sneaker", true, List.of(7,8,9,10), 25, 230);
-            Product productShoe7  = new Product("NIKE-LV-HIGH_06", List.of(WITHE, WITHDRAWS), "Sneaker", true, List.of(8,9,11), 12, 499);
+            Product productShoe6  = new Product("NIKE-LV-HIGH_03", List.of(WHITE), "Sneaker", true, List.of(7,8,9,10), 25, 230);
+            Product productShoe7  = new Product("NIKE-LV-HIGH_06", List.of(WHITE, WITHDRAWS), "Sneaker", true, List.of(8,9,11), 12, 499);
             Product productShoe8  = new Product("NIKE-LV-LOW_01", List.of(BLACK), "Sneaker", true, List.of(7,8,9,10,11), 30, 150);
-            Product productShoe9  = new Product("NIKE-LV-LOW_02", List.of(WITHE), "Sneaker", true, List.of(7,9,10,11), 27, 199);
+            Product productShoe9  = new Product("NIKE-LV-LOW_02", List.of(WHITE), "Sneaker", true, List.of(7,9,10,11), 27, 199);
             Product productShoe10 = new Product("NIKE-LV-LOW_04", List.of(GOLD), "Sneaker", true, List.of(9,10), 3, 1299);
-            Product productShoe11 = new Product("NIKE-LV-LOW_07", List.of(RED, WITHE), "Sneaker", true, List.of(7,8,9,10,11), 20, 250);
-            Product productShoe12 = new Product("NIKE-LV-LOW_08", List.of(GREEN, WITHE), "Sneaker", true, List.of(8,10,11), 20, 250);
-            Product productShoe13 = new Product("NIKE-LV-LOW_09", List.of(BLUE, WITHE), "Sneaker", true, List.of(8,9,10,11), 20, 250);
-            Product productShoe14 = new Product("NIKE-LV-LOW_10", List.of(BLACK, WITHE), "Sneaker", true, List.of(7,9,10,11), 20, 250);
-            Product productShoe15 = new Product("NIKE-LV-LOW_11", List.of(ORANGE, WITHE), "Sneaker", true, List.of(8,9,10,11), 18, 250);
-            Product productShoe16 = new Product("NIKE-LV-LOW_12", List.of(PURPLE, WITHE), "Sneaker", true, List.of(8,10,11), 14, 250);
-            Product productShoe17 = new Product("NIKE-LV-LOW_13", List.of(YELLOW, WITHE), "Sneaker", true, List.of(8,9,10), 16, 250);
-            Product productShoe18 = new Product("NIKE-LV-LOW_20", List.of(LIGHTBLUE, WITHE), "Sneaker", true, List.of(7,8,9,10,11), 15, 299);
-            Product productShoe19 = new Product("NIKE-LV-LOW_21", List.of(RED, WITHE), "Sneaker", true, List.of(7,8,9,11), 16, 299);
-            Product productShoe20 = new Product("NIKE-LV-LOW_22", List.of(GREEN, WITHE), "Sneaker", true, List.of(8,9,10,11), 15, 299);
-            Product productShoe21 = new Product("NIKE-LV-LOW_23", List.of(BLUE, WITHE), "Sneaker", true, List.of(7,8,10,11), 17, 299);
-            Product productShoe22 = new Product("NIKE-LV-LOW_24", List.of(BLACK, WITHE), "Sneaker", true, List.of(7,9,10,11), 19, 299);
-            Product productShoe23 = new Product("NIKE-LV-LOW_25", List.of(ORANGE, WITHE), "Sneaker", true, List.of(7,8,9,10), 11, 299);
-            Product productShoe24 = new Product("NIKE-LV-LOW_26", List.of(PURPLE, WITHE), "Sneaker", true, List.of(7,8,9,10,11), 13, 299);
-            Product productShoe25 = new Product("NIKE-LV-LOW_27", List.of(YELLOW, WITHE), "Sneaker", true, List.of(7,8,9,10,11), 12, 299);
-            Product productShoe26 = new Product("NIKE-LV-LOW_A", List.of(BROWN, WITHE), "Sneaker", true, List.of(8,9,10,11), 13, 250);
-            Product productShoe27 = new Product("NIKE-LV-LOW_B", List.of(BROWN, WITHE, BLACK), "Sneaker", true, List.of(9,10,11), 15, 269);
-            Product productShoe28 = new Product("NIKE-LV-LOW_C", List.of(BROWN, WITHE, PINK), "Sneaker", true, List.of(8,10,11), 15, 300);
+            Product productShoe11 = new Product("NIKE-LV-LOW_07", List.of(RED, WHITE), "Sneaker", true, List.of(7,8,9,10,11), 20, 250);
+            Product productShoe12 = new Product("NIKE-LV-LOW_08", List.of(GREEN, WHITE), "Sneaker", true, List.of(8,10,11), 20, 250);
+            Product productShoe13 = new Product("NIKE-LV-LOW_09", List.of(BLUE, WHITE), "Sneaker", true, List.of(8,9,10,11), 20, 250);
+            Product productShoe14 = new Product("NIKE-LV-LOW_10", List.of(BLACK, WHITE), "Sneaker", true, List.of(7,9,10,11), 20, 250);
+            Product productShoe15 = new Product("NIKE-LV-LOW_11", List.of(ORANGE, WHITE), "Sneaker", true, List.of(8,9,10,11), 18, 250);
+            Product productShoe16 = new Product("NIKE-LV-LOW_12", List.of(PURPLE, WHITE), "Sneaker", true, List.of(8,10,11), 14, 250);
+            Product productShoe17 = new Product("NIKE-LV-LOW_13", List.of(YELLOW, WHITE), "Sneaker", true, List.of(8,9,10), 16, 250);
+            Product productShoe18 = new Product("NIKE-LV-LOW_20", List.of(LIGHTBLUE, WHITE), "Sneaker", true, List.of(7,8,9,10,11), 15, 299);
+            Product productShoe19 = new Product("NIKE-LV-LOW_21", List.of(RED, WHITE), "Sneaker", true, List.of(7,8,9,11), 16, 299);
+            Product productShoe20 = new Product("NIKE-LV-LOW_22", List.of(GREEN, WHITE), "Sneaker", true, List.of(8,9,10,11), 15, 299);
+            Product productShoe21 = new Product("NIKE-LV-LOW_23", List.of(BLUE, WHITE), "Sneaker", true, List.of(7,8,10,11), 17, 299);
+            Product productShoe22 = new Product("NIKE-LV-LOW_24", List.of(BLACK, WHITE), "Sneaker", true, List.of(7,9,10,11), 19, 299);
+            Product productShoe23 = new Product("NIKE-LV-LOW_25", List.of(ORANGE, WHITE), "Sneaker", true, List.of(7,8,9,10), 11, 299);
+            Product productShoe24 = new Product("NIKE-LV-LOW_26", List.of(PURPLE, WHITE), "Sneaker", true, List.of(7,8,9,10,11), 13, 299);
+            Product productShoe25 = new Product("NIKE-LV-LOW_27", List.of(YELLOW, WHITE), "Sneaker", true, List.of(7,8,9,10,11), 12, 299);
+            Product productShoe26 = new Product("NIKE-LV-LOW_A", List.of(BROWN, WHITE), "Sneaker", true, List.of(8,9,10,11), 13, 250);
+            Product productShoe27 = new Product("NIKE-LV-LOW_B", List.of(BROWN, WHITE, BLACK), "Sneaker", true, List.of(9,10,11), 15, 269);
+            Product productShoe28 = new Product("NIKE-LV-LOW_C", List.of(BROWN, WHITE, PINK), "Sneaker", true, List.of(8,10,11), 15, 300);
             Product productShoe29 = new Product("NIKE-LV-LOW_F", List.of(BROWN, BLACK), "Sneaker", true, List.of(8,9,11), 12, 279);
-            Product productShoe30 = new Product("NIKE-LV-LOW_G", List.of(WITHE, WITHDRAWS), "Sneaker", true, List.of(8,9,10), 10, 499);
-            Product productShoe31 = new Product("NIKE-LV-LOW_H", List.of(WITHE, BLACK), "Sneaker", true, List.of(8,9,10,11), 20, 250);
+            Product productShoe30 = new Product("NIKE-LV-LOW_G", List.of(WHITE, WITHDRAWS), "Sneaker", true, List.of(8,9,10), 10, 499);
+            Product productShoe31 = new Product("NIKE-LV-LOW_H", List.of(WHITE, BLACK), "Sneaker", true, List.of(8,9,10,11), 20, 250);
             Product productShoe32 = new Product("NIKE-LV-LOW_I", List.of(BLACK, BROWN), "Sneaker", true, List.of(9,10,11), 11, 320);
             Product productShoe33 = new Product("NIKE-LV-LOW_J", List.of(BLUE,YELLOW, BLACK), "Sneaker", true, List.of(8,10,11), 10, 420);
             Product productShoe34 = new Product("NIKE-LV-LOW_K", List.of(YELLOW,GREEN, BLACK), "Sneaker", true, List.of(8,9,10), 13, 330);
             Product productShoe35 = new Product("NIKE-LV-LOW_L", List.of(RED,BLUE,YELLOW, BLACK), "Sneaker", true, List.of(8,9,10,11), 15, 310);
-            Product productShoe36 = new Product("NIKE-LV-LOW_P",  List.of(WITHE, RED), "Sneaker", true, List.of(8,9,10,11), 20, 399);
-            Product productShoe37 = new Product("NIKE-LV-LOW_Q",  List.of(BLUE, WITHE), "Sneaker", true, List.of(8,9,10,11), 15, 189);
-            Product productShoe38 = new Product("NIKE-LV-LOW_S",  List.of(RED,WITHE,BLUE), "Sneaker", true, List.of(9,10,11), 14, 350);
+            Product productShoe36 = new Product("NIKE-LV-LOW_P",  List.of(WHITE, RED), "Sneaker", true, List.of(8,9,10,11), 20, 399);
+            Product productShoe37 = new Product("NIKE-LV-LOW_Q",  List.of(BLUE, WHITE), "Sneaker", true, List.of(8,9,10,11), 15, 189);
+            Product productShoe38 = new Product("NIKE-LV-LOW_S",  List.of(RED,WHITE,BLUE), "Sneaker", true, List.of(9,10,11), 14, 350);
             Product productShoe39 = new Product("NIKE-LV-LOW_T2",  List.of(BLUE,YELLOW, BLACK), "Sneaker", true, List.of(10,11), 12, 229);
-            Product productShoe40 = new Product("NIKE-LV-LOW_tricolor",  List.of(BLACK, WITHE, YELLOW), "Sneaker", true, List.of(8,10), 7, 899);
+            Product productShoe40 = new Product("NIKE-LV-LOW_tricolor",  List.of(BLACK, WHITE, YELLOW), "Sneaker", true, List.of(8,10), 7, 899);
             Product productShoe41 = new Product("NIKE-LV-LOW_U", List.of(YELLOW,GREEN, BLACK), "Sneaker", true, List.of(8,9,10,11), 13, 350);
             Product productShoe42 = new Product("NIKE-LV-LOW_V", List.of(RED,BLACK,YELLOW, BLUE), "Sneaker", true, List.of(8,9,10,11), 15, 310);
             Product productShoe43 = new Product("NIKE-LV-LOW_W", List.of(GREEN, BLACK), "Sneaker", true, List.of(9,10,11), 17, 199);
-            Product productShoe44 = new Product("NIKE-LV-LOW_X", List.of(GREEN, BLACK, WITHE), "Sneaker", true, List.of(8,9,10), 15, 240);
-            Product productShoe45 = new Product("NIKE-LV-LOW_Y", List.of(WITHE), "Sneaker", true, List.of(7,8,9,10,11), 15, 299);
-            Product productShoe46 = new Product("NIKE-LV-LOW_Z", List.of(WITHE, PINK), "Sneaker", true, List.of(8,9,10,11), 15, 170);
+            Product productShoe44 = new Product("NIKE-LV-LOW_X", List.of(GREEN, BLACK, WHITE), "Sneaker", true, List.of(8,9,10), 15, 240);
+            Product productShoe45 = new Product("NIKE-LV-LOW_Y", List.of(WHITE), "Sneaker", true, List.of(7,8,9,10,11), 15, 299);
+            Product productShoe46 = new Product("NIKE-LV-LOW_Z", List.of(WHITE, PINK), "Sneaker", true, List.of(8,9,10,11), 15, 170);
             //PRODUCTOS//
 
 
 
             //BILLS//
             Bill bill1 = new Bill( LocalDateTime.now(), true, 992.23);
+            bill1.addTicketNumber(randomNumberTicket(1, 999999999));
             //BILLS//
             Avatar avatar1 = new Avatar(1,2,1,4,3);
             //CLIENTES//

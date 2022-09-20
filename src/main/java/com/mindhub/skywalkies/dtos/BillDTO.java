@@ -17,6 +17,7 @@ public class BillDTO {
     private double subTotal;
 
     private Set<Client_orderDTO> client_orders;
+    private int numberTicket;
 
 
     public BillDTO() {
@@ -28,6 +29,7 @@ public class BillDTO {
         this.payed = bill.isPayed();
         this.subTotal = bill.getSubTotal();
         this.client_orders = bill.getClient_orders().stream().map(client_order -> new Client_orderDTO(client_order)).collect(Collectors.toSet());
+        this.numberTicket = bill.getTicketNumber();
     }
 
     public long getId() {
@@ -48,5 +50,9 @@ public class BillDTO {
 
     public Set<Client_orderDTO> getClient_orders() {
         return client_orders;
+    }
+
+    public int getNumberTicket() {
+        return numberTicket;
     }
 }

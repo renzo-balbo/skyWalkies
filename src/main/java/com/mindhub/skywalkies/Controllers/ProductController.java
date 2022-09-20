@@ -20,6 +20,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static com.mindhub.skywalkies.Utilities.BillUtilities.randomNumberTicket;
+
 @RestController
 @RequestMapping("/api")
 public class ProductController {
@@ -108,6 +110,11 @@ public class ProductController {
                 bill.setSubTotal(bill.getSubTotal()+product1.getPrice());
             }
         });
+        int ticketNumber =randomNumberTicket(1, 999999999);
+        bill.addTicketNumber(ticketNumber);
+        while (billService.findByTicketNumber(ticketNumber) != null){
+            ticketNumber = randomNumberTicket(1, 999999999);
+        }
         billService.saveBill(bill);
         client_orderService.saveClientOrders(client_order);
         client.addBill(bill);
