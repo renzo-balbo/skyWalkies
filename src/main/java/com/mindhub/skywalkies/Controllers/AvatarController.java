@@ -30,7 +30,7 @@ public class AvatarController {
         return avatarService.getAllAvatars().stream().map(AvatarDTO::new).collect(Collectors.toList());
     }
 
-    @RequestMapping("/avatar/{id}")
+    @GetMapping("/avatar/{id}")
     public AvatarDTO getAvatar(@PathVariable long id) {
         return new AvatarDTO(avatarService.getAvatarById(id));
     }
