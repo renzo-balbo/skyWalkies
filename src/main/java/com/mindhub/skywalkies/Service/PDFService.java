@@ -12,4 +12,5 @@ import java.util.List;
 
 public interface PDFService {
     public void generatePDF(HttpServletResponse response, List<Client_order> client_orders, Bill bill);
+    //hola
 }
