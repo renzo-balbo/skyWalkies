@@ -37,7 +37,7 @@ createApp({
             newProductColor: "",
             newProductPrice: "",
             newStatus: false,
-            newProductSizes: "",
+            newProductSizes: {},
             newStock: "",
 
 
