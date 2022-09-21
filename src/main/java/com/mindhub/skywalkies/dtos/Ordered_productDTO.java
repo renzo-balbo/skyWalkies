@@ -24,7 +24,7 @@ public class Ordered_productDTO {
         this.client_order_id = ordered_product.getClient_order().getId();
         this.quantity = ordered_product.getQuantity();
         this.size = ordered_product.getSize();
-        this.productsAmount = ordered_product.getProductsAmount();
+        this.productsAmount = (ordered_product.getProductsAmount()*ordered_product.getQuantity());
         this.productDTO = new ProductDTO(ordered_product.getProduct());
     }
 
