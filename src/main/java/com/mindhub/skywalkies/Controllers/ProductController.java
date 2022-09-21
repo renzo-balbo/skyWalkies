@@ -135,13 +135,19 @@ public class ProductController {
     }
 
     @PatchMapping("/products/delete/{id}")
-   public ResponseEntity<Object> deleteProducts(@PathVariable long id, Authentication authentication){
+    public ResponseEntity<Object> togleProductActive(@PathVariable long id, Authentication authentication){
         Client client = clientService.findClientByEmail(authentication.getName());
         Product product = productService.getProductById(id);
-        product.setDeleted(false);
+        if(product.isActive()){
+            product.setActive(false);
+            productService.saveProduct(product);
+            return new ResponseEntity<>("Product was disabled.",HttpStatus.CREATED);
+        } else if (!product.isActive()){
+            product.setActive(true);
+        }
         productService.saveProduct(product);
-        return new ResponseEntity<>("products was deleted", HttpStatus.FORBIDDEN);
-   }
+        return new ResponseEntity<>("Products was enabled.", HttpStatus.CREATED);
+    }
 
 
 
