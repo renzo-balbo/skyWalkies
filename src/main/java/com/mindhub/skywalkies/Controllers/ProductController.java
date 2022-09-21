@@ -171,7 +171,7 @@ public class ProductController {
 
     @Transactional
     @PatchMapping("/ordered_product/remove")
-    public ResponseEntity<Object> removeItemFromBill (@RequestParam long orderedProductId, long billId,Authentication authentication){
+    public ResponseEntity<Object> removeItemFromBill (@RequestParam long orderedProductId, @RequestParam long billId,Authentication authentication){
         Client client = clientService.findClientByEmail(authentication.getName());
         Ordered_product ordered_product = ordered_productService.getProdutById(orderedProductId);
         Bill bill = billService.getBillByid(billId);
