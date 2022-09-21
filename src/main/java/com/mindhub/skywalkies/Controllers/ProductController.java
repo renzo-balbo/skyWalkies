@@ -179,6 +179,8 @@ public class ProductController {
 
         Product productToRestore = ordered_product.getProduct();
         productToRestore.setStock(productToRestore.getStock()+ordered_product.getQuantity());
+        ordered_product.setClient_order(null);
+        ordered_productService.saveOrderProduct(ordered_product);
         productService.saveProduct(productToRestore);
         client_order.setOrdered_products(client_order.getOrdered_products().stream().filter(ordered_product1 -> ordered_product1 != ordered_product).collect(Collectors.toSet()));
         client_orderService.saveClientOrders(client_order);
