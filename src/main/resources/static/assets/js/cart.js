@@ -3,62 +3,73 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            queryString: "",
-            params: "",
-            id: "",
-            account: {},
-            transactions: [],
-            client: {},
-            fromDate: "",
-            toDate: "",
-            //PRUEBAS ADRI//
-            client: [],
-            bills: {},
-            clientOrder: [],
-            products: [],
 
-            productsActives:[],
+            client: {},
+            bills: {},
+            currentBill:{},
+            productsToDisplay:[],
         }
     },
 
     created() {
-        this.queryString = location.search;
-        this.params = new URLSearchParams(this.queryString);
-        this.id = this.params.get("id");
-        this.loadClient();
-        this.loadClientOrders();
-        this.loadProductsActive();
+
+        this.loadClientData();
+
     },
 
     mounted() { },
 
     methods: {
-        loadClient() {
+        loadClientData() {
             axios.get('/api/clients/current')
-                .then(res => {
-                    this.client = res.data;
+                .then(response => {
+                    this.client = response.data;
                     this.bills = this.client.bills;
-                    console.log(this.productsInCart)
-                    console.log(this.client);
-                    console.log(this.bills);
-
-
+                    this.currentBill = this.bills.find(bill => bill.payed == false)
+                    console.log(this.currentBill);
+                    this.loadProductsToDisplay()
+                    console.log(this.productsToDisplay)
                 })
-        }, loadClientOrders() {
-            axios.get('/api/clientOrder')
-                .then(res => {
-                    this.clientOrder = res.data;
-  //                  this.clientOrderActive = this.clientOrder.filter(a=> a.delete);
-                    console.log(this.clientOrder);
-                })
-        },loadProductsActive(){
-            axios.get('/api/products/')
-            .then(res => {
-                this.products = res.data;
-                this.productsActives = this.products.filter(a=> a.delete);
-                console.log(this.productsActives);
-            })
         },
+
+        loadProductsToDisplay(){
+            this.currentBill.client_orders.forEach(clientOrder => {
+                clientOrder.ordered_productDTOS.forEach(ordered_productDTO =>{
+                    this.productsToDisplay.push(ordered_productDTO)
+                })
+            });
+        },
+
+        nameFormater(productName) {
+            productName = productName.replace(/-/g, " ")
+            productName = productName.replace(/_/g, " ")
+            return productName;
+        },
+
+        moneyFormatter(numberToFormat) {
+            let formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            })
+            return formatter.format(numberToFormat)
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         logout() {
             axios.post('/api/logout')
                 .then(response => window.location.href = "./index.html")
