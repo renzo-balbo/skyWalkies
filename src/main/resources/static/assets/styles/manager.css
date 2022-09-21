@@ -193,6 +193,18 @@ video {
 
 /* ---- */
 
+/* PARA SACAR LAS FLECHITAS DEL INPUT NUMBER */
+input[type="number"] {
+    -moz-appearance: textfield;
+    outline: none;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+/* PARA SACAR LAS FLECHITAS DEL INPUT NUMBER */
+
 
 .accordion-button:not(.collapsed) {
     background-color: #FFFFFF;

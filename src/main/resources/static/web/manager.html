@@ -211,7 +211,8 @@
                     <div class="col-12 table-responsive scrollBar">
                         <div class="d-flex justify-content-center align-items-center">
                             <h2 class="text-center mx-3">Product Manager</h2>
-                            <button class="btn btn-dark mx-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product</button>
+                            <button class="btn btn-dark mx-3" data-bs-toggle="modal"
+                                data-bs-target="#modalAddProduct">Add Product</button>
                         </div>
 
                         <div>
@@ -242,16 +243,20 @@
                                             </svg>
                                         </td>
                                         <td>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
-                                                <path
-                                                    d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z" />
-                                                <path
-                                                    d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z" />
-                                            </svg>
+                                            <button @click="toggleProductActive(product)" class="btn">
+
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-eye-slash-fill"
+                                                    viewBox="0 0 16 16">
+                                                    <path
+                                                        d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z" />
+                                                    <path
+                                                        d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z" />
+                                                </svg>
+                                            </button>
 
                                             <!-- <input type="checkbox" id="_checkbox">
-                                            <label for="_checkbox" class="labelCheckbox">
+                                                <label for="_checkbox" class="labelCheckbox">
                                                 <div id="tick_mark"></div>
                                             </label> -->
                                         </td>
@@ -268,8 +273,8 @@
             </div>
 
 
-            <!-- Modal -->
-            <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <!-- Modal Agregar Producto -->
+            <div class="modal fade " id="modalAddProduct" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -280,11 +285,14 @@
                         <div class="modal-body">
                             <form class="d-flex flex-wrap">
                                 <label for="newProductName">Product Name:</label>
-                                <input class="col-10 formInputsModal" type="text" name="newProductName" id="newProductName" v-model="newProductName">
+                                <input class="col-10 formInputsModal" type="text" name="newProductName"
+                                    id="newProductName" v-model="newProductName">
                                 <label for="newProductColor" class="mt-2">Product Color:</label>
-                                <input class="col-10 formInputsModal" type="text" name="newProductColor" id="newProductColor" v-model="newProductColor">
+                                <input class="col-10 formInputsModal" type="text" name="newProductColor"
+                                    id="newProductColor" v-model="newProductColor">
                                 <label for="newProductPrice" class="col-4 mt-2">Product Price:</label>
-                                <input class="col-10 formInputsModal" type="number" name="newProductPrice" id="newProductPrice" v-model="newProductPrice">
+                                <input class="col-10 formInputsModal" type="number" name="newProductPrice"
+                                    id="newProductPrice" v-model="newProductPrice">
 
 
                                 <p class="col-12 mt-2 text-center">Sizes Available:</p>
@@ -300,13 +308,15 @@
                                     <label class="mx-2" for="size12">12</label>
                                     <input @change="addNewSizes(12)" type="checkbox" name="newProductSizes" id="size12">
                                 </div>
-                                
+
 
 
                                 <label for="newStock" class="col-12 mt-2">Stock:</label>
-                                <input class="col-6 formInputsModal" type="number" name="newStock" id="newStock" v-model="newStock">
+                                <input class="col-6 formInputsModal" type="number" name="newStock" id="newStock"
+                                    v-model="newStock">
                                 <label for="newStatus" class="col-7 mt-2">Status (unchecked for disabled):</label>
-                                <input class="mt-2" type="checkbox" name="newStatus" @change="changeNewStatus" id="newStatus">
+                                <input class="mt-2" type="checkbox" name="newStatus" @change="changeNewStatus"
+                                    id="newStatus">
                             </form>
                         </div>
                         <div class="modal-footer d-flex justify-content-around">
@@ -316,6 +326,10 @@
                     </div>
                 </div>
             </div>
+
+
+
+
         </main>
 
 

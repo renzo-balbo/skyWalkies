@@ -137,6 +137,22 @@ createApp({
                 })
         },
 
+
+
+        toggleProductActive(product) {
+            switch (product.active) {
+                case true:
+                    product.active = false;
+                    break;
+                case false:
+                    product.active = true;
+                    break;
+                default:
+                    product.active=true
+            }
+            console.log(product.active);
+        },
+
         //Productos nuevos
 
         changeNewStatus() {
@@ -153,31 +169,31 @@ createApp({
             console.log(this.newStatus);
         },
 
-        addNewSizes(newSize){
-            if(this.newProductSizes.includes(newSize)){
+        addNewSizes(newSize) {
+            if (this.newProductSizes.includes(newSize)) {
                 let indexToRemove = this.newProductSizes.indexOf(newSize)
                 this.newProductSizes.splice(indexToRemove, 1)
-            }else if(!this.newProductSizes.includes(newSize)){
+            } else if (!this.newProductSizes.includes(newSize)) {
                 this.newProductSizes.push(newSize)
             }
             console.log(this.newProductSizes);
         },
 
-        stringToArray(stringToConvert){
+        stringToArray(stringToConvert) {
             let string = stringToConvert;
             let array = string.split(',');
             return array
         },
 
         addNewProduct() {
-            axios.post('/api/products/add', {name:this.newProductName,shoeColors:this.stringToArray(this.newProductColor),type: 'Sneaker',active: this.newStatus,sizes:this.newProductSizes,stock:this.newStock,price:this.newProductPrice })
+            axios.post('/api/products/add', { name: this.newProductName, shoeColors: this.stringToArray(this.newProductColor), type: 'Sneaker', active: this.newStatus, sizes: this.newProductSizes, stock: this.newStock, price: this.newProductPrice })
                 .then(response => {
                     swal(response.data)
                     window.location.reload()
 
                     console.log("Product added")
                 })
-                .catch(error=>console.log(error))
+                .catch(error => console.log(error))
         },
 
 
