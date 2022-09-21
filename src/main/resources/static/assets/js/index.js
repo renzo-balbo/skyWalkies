@@ -74,7 +74,7 @@ createApp({
                     console.log(this.currentClient.avatar)
                 })
                 .catch(error => {
-                    console.log(error)
+                    console.log("Please log in")
                     this.currentClient = null
                 })
         },
@@ -135,10 +135,9 @@ createApp({
             axios.get('/api/products')
                 .then(response => {
                     this.productsArray = response.data.filter(product=>product.active==true)
-                    console.log(response.data);
                     this.productsArray.forEach(product => product.price = this.moneyFormatter(product.price))
-                    this.priceSortedMaxToMin()
-                    this.priceSortedMinToMax()
+                    // this.priceSortedMaxToMin()
+                    // this.priceSortedMinToMax()
                     this.shelvesFiller()
                     this.loadShoeColors(this.productsArray)
                 })
@@ -148,23 +147,25 @@ createApp({
             this.middleShelf = this.productsArray.slice(14, 32)
             this.bottomShelf = this.productsArray.slice(32, 47)
         },
+
+
         // FILTERS 
 
 
 
-        priceSortedMaxToMin() {
-            this.productsArray = this.productsArray.sort((a, b) => a.price - b.price)
-            this.upperShelf = this.upperShelf.sort((a, b) => a.price - b.price)
-            this.middleShelf = this.middleShelf.sort((a, b) => a.price - b.price)
-            this.bottomShelf = this.bottomShelf.sort((a, b) => a.price - b.price)
-        },
+        // priceSortedMaxToMin() {
+        //     this.productsArray = this.productsArray.sort((a, b) => a.price - b.price)
+        //     this.upperShelf = this.upperShelf.sort((a, b) => a.price - b.price)
+        //     this.middleShelf = this.middleShelf.sort((a, b) => a.price - b.price)
+        //     this.bottomShelf = this.bottomShelf.sort((a, b) => a.price - b.price)
+        // },
 
-        priceSortedMinToMax() {
-            this.productsArray = this.productsArray.sort((a, b) => b.price - a.price)
-            this.upperShelf = this.upperShelf.sort((a, b) => b.price - a.price)
-            this.middleShelf = this.middleShelf.sort((a, b) => b.price - a.price)
-            this.bottomShelf = this.bottomShelf.sort((a, b) => b.price - a.price)
-        },
+        // priceSortedMinToMax() {
+        //     this.productsArray = this.productsArray.sort((a, b) => b.price - a.price)
+        //     this.upperShelf = this.upperShelf.sort((a, b) => b.price - a.price)
+        //     this.middleShelf = this.middleShelf.sort((a, b) => b.price - a.price)
+        //     this.bottomShelf = this.bottomShelf.sort((a, b) => b.price - a.price)
+        // },
 
         loadShoeColors(shoeArray) {
             this.shoeColors
@@ -178,35 +179,54 @@ createApp({
         },
 
         filterByColor() {
-            let newUpperShelf = []
+            let newUpperShelf = [];
+            let newMiddleShelf = [];
+            let newBottomShelf = [];
+
             this.selectedColor.forEach(color => {
-                this.upperShelf.forEach(shoe => {
+                this.productsArray.slice(0, 14).forEach(shoe => {
                     if (shoe.shoeColors.includes(color)) {
                         if (!newUpperShelf.includes(shoe)) {
                             newUpperShelf.push(shoe);
                         }
                     }
                 })
-
             })
-            console.log(newUpperShelf)
+
+            this.selectedColor.forEach(color => {
+                this.productsArray.slice(14, 32).forEach(shoe => {
+                    if (shoe.shoeColors.includes(color)) {
+                        if (!newUpperShelf.includes(shoe)) {
+                            newUpperShelf.push(shoe);
+                        }
+                    }
+                })
+            })
+
+            this.selectedColor.forEach(color => {
+                this.productsArray.slice(32, 47).forEach(shoe => {
+                    if (shoe.shoeColors.includes(color)) {
+                        if (!newUpperShelf.includes(shoe)) {
+                            newUpperShelf.push(shoe);
+                        }
+                    }
+                })
+            })
+
             this.upperShelf = newUpperShelf;
-
-
-
-
-
-
-
-            // this.middleShelf = this.middleShelf.filter(shoe => shoe.color == this.selectedColor)
-            // this.bottomShelf = this.bottomShelf.filter(shoe => shoe.color == this.selectedColor)
+            this.middleShelf = newMiddleShelf;
+            this.bottomShelf = newBottomShelf;
         },
+
 
         changeSelectedColors(selectedColor) {
             if (this.selectedColor.filter(color => color == selectedColor).length > 0) {
+
                 let indexToRemove = this.selectedColor.indexOf(selectedColor)
                 this.selectedColor.splice(indexToRemove, 1)
                 console.log(this.selectedColor, 'sacando')
+
+
             } else if (this.selectedColor.filter(color => color == selectedColor).length == 0) {
                 this.selectedColor.push(selectedColor)
                 console.log(this.selectedColor)
@@ -280,12 +300,10 @@ createApp({
     computed: {
         filtering() {
             if (this.selectedColor.length == 0) {
-                this.upperShelf = this.productsArray.slice(0, 14)
-                this.middleShelf = this.productsArray.slice(14, 32)
-                this.bottomShelf = this.productsArray.slice(32, 47)
+                this.shelvesFiller()
             } else if (this.selectedColor.length > 0) {
                 this.filterByColor()
-                console.log('filtering')
+                // console.log('filtering')
             }
         }
 
