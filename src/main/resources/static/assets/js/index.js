@@ -32,7 +32,7 @@ createApp({
             productToDisplay: {},
             shoeColors: [],
             productToDisplaySizes: [],
-            shoeSize: 0,
+            shoeSize: "",
             //FILTERS
             selectedColor: [],
             // newUpperShelf:[],
@@ -116,6 +116,7 @@ createApp({
             this.renderForModal = productName;
             this.productToDisplay = this.productsArray.find(product => product.name == productName)
             this.productToDisplaySizes = this.productToDisplay.sizes
+            console.log(this.productToDisplay.name)
 
         },
         nameFormater(productName) {
@@ -266,16 +267,10 @@ createApp({
                     window.location.reload()
                 })
         },
-
-        selectSize() {
-            let inputs = this.$refs.input
-            let selectedInput = inputs.indexOf(this.shoeSize)
-            console.log(this.$refs.input)
-
-        },
         addToCart() {
-            axios.post("/api/products/addProduct", { id: this.productToDisplay.id, size: this.shoeSize, quantity: this.quantity }, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
-            .then(console.log("funciona"))
+            axios.post("/api/products/addProduct", { id: this.productToDisplay.id, productName: this.productToDisplay.name, size: this.shoeSize, quantity: this.quantity })
+            .then(response => console.log(error.response))
+            
         }
 
 
