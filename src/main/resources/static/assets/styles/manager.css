@@ -15,6 +15,9 @@ main {
     min-height: 93vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.7) .1em, transparent .1em), linear-gradient(90deg, rgba(0, 0, 0, .7) .1em, transparent .1em);
     background-size: 3em 3em;
+    overflow: hidden;
+    width: 100vw;
+
 }
 
 nav {
@@ -30,6 +33,17 @@ li {
 
 nav>img {
     height: 75%;
+}
+
+.fondoManager {
+    background-color: white;
+    z-index: 10;
+    width: 50vw;
+    height: 80vh;
+    border-radius: 1rem;
+    border-color: black;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
 }
 
 /* -- */
@@ -98,6 +112,7 @@ nav>img {
 /* estilos para las scroll bars */
 .scrollBar::-webkit-scrollbar {
     width: 10px;
+    overflow-x: hidden;
 }
 
 .scrollBar::-webkit-scrollbar-track {
@@ -196,8 +211,3 @@ video {
     width: fit-content;
     background-color: white;
 }
-
-
-
-
-
