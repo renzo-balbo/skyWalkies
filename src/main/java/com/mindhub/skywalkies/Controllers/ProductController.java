@@ -139,4 +139,48 @@ public class ProductController {
         return new ResponseEntity<>("products was deleted", HttpStatus.FORBIDDEN);
    }
 
+
+
+
+    @PatchMapping("/bill/empty")
+    public ResponseEntity<Object> emptyBill(@RequestParam long billId, Authentication authentication){
+        Client client = clientService.findClientByEmail(authentication.getName());
+        Bill bill = client.getBills().stream().filter(bill1 -> bill1.getId()==billId).findFirst().orElse(null);
+        if(bill.getClient_orders()!=null){
+        bill.getClient_orders().forEach(client_order -> {
+            client_order.getOrdered_products().forEach(ordered_product -> {
+                Product productToRestore = ordered_product.getProduct();
+                productToRestore.setStock(productToRestore.getStock()+ordered_product.getQuantity());
+                productService.saveProduct(productToRestore);
+            });
+            client_order.setBillId(null);
+            client_orderService.saveClientOrders(client_order);
+        });
+        }
+        bill.setClient_orders(null);
+        bill.setPayed(false);
+        bill.setClient(client);
+        bill.setDate(LocalDateTime.now());
+        bill.setSubTotal(0);
+        bill.setIva(0);
+        bill.setTicketNumber(bill.getTicketNumber());
+        bill.setTotal(0);
+        billService.saveBill(bill);
+        return new ResponseEntity<>("Cart successfully empty!", HttpStatus.CREATED);
+    }
+
+//    @PatchMapping("/ordered_product/remove")
+//    public ResponseEntity<Object> removeItemFromBill (@RequestParam long id,Authentication authentication){
+//        Client client = clientService.findClientByEmail(authentication.getName());
+//        Bill bill = client.getBills().stream().filter(bill1 -> !bill1.isPayed()).findFirst().orElse(null);
+//        bill.getClient_orders().forEach(client_order -> {
+//            client_order.getOrdered_products().stream().filter(ordered_product -> ordered_product.getProduct().getId() == id);
+//        });
+//
+//
+//
+//
+//
+//    }
+
 }
