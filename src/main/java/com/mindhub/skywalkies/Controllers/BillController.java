@@ -7,6 +7,7 @@ import com.mindhub.skywalkies.dtos.BillDTO;
 import com.mindhub.skywalkies.models.Bill;
 import com.mindhub.skywalkies.models.Client;
 import com.mindhub.skywalkies.repositories.BillRepository;
+import org.hibernate.engine.profile.Fetch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import javax.print.DocFlavor;
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;

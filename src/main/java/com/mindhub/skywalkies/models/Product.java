@@ -35,6 +35,7 @@ public class Product {
     private int stock;
     private double price;
 
+
     public Product() {
     }
 
@@ -126,9 +127,5 @@ public class Product {
     }
 
     public void add(Product product) {
-    }
-
-    public void setOrdered_products(Ordered_product ordered_product) {
-
     }
 }

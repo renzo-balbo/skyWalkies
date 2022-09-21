@@ -65,4 +65,5 @@ public class ProductDTO {
     public double getPrice() {
         return price;
     }
+
 }

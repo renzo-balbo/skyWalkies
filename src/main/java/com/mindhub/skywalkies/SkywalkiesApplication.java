@@ -86,7 +86,6 @@ public class SkywalkiesApplication {
             Client client1 = new Client("renzo", "balbo", "renzobalbo@skywalkies.com.ar", passwordEncoder.encode("skywalkies"), true, bill1, avatar1);
             //CLIENTES//
 
-
             //ORDENES//
 
             //ORDENES//
@@ -107,10 +106,6 @@ public class SkywalkiesApplication {
             avatarRepository.save(avatar1);
             billRepository.save(bill1);
             client_orderRepository.save(clientOrder1);
-
-
-
-
             productRepository.save(productShoe1);
             productRepository.save(productShoe2);
             productRepository.save(productShoe3);
