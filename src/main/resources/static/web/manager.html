@@ -236,7 +236,7 @@
                                         <td>{{product.price}}</td>
                                         <td>{{product.stock}}</td>
                                         <td>
-                                            <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn">
+                                            <button data-bs-toggle="modal" data-bs-target="#exampleModal" @click="changeRender(product.name)" class="btn">
 
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
@@ -339,15 +339,15 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Editing {{product}}</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Editing {{nameFormater(renderForModal)}}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form class="d-flex flex-wrap">
 
-                                <label for="newProductPrice" class="col-4 mt-2">Product Price:</label>
+                                <label for="newProductPrice" class="col-6 mt-2">Product Price(Actually {{productToDisplay.price}}):</label>
                                 <input class="col-10 formInputsModal" type="number" name="newProductPrice"
-                                    id="newProductPrice" v-model="newProductPrice">
+                                    id="newProductPrice" v-model="editedPrice">
 
 
                                 <!-- <p class="col-12 mt-2 text-center">Sizes Available:</p>
@@ -366,15 +366,15 @@
 
 
 
-                                <label for="newStock" class="col-12 mt-2">Stock:</label>
+                                <label for="newStock" class="col-12 mt-2">Stock(Actually {{productToDisplay.stock}}):</label>
                                 <input class="col-6 formInputsModal" type="number" name="newStock" id="newStock"
-                                    v-model="newStock">
+                                    v-model="editedStock">
 
                             </form>
                         </div>
                         <div class="modal-footer d-flex justify-content-around">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-dark" @click="addNewProduct">Add Product</button>
+                            <button type="button" class="btn btn-dark" @click="editProduct">Edit Product</button>
                         </div>
                     </div>
                 </div>

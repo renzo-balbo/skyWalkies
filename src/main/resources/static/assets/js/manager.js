@@ -40,6 +40,10 @@ createApp({
             newProductSizes: [],
             newStock: "",
 
+            //EDITING PRODUCT DATA
+            editedPrice:"",
+            editedStock:"",
+
         }
     },
     created() {
@@ -115,6 +119,11 @@ createApp({
         changeRender(productName) {
             this.renderForModal = productName;
             this.productToDisplay = this.productsArray.find(product => product.name == productName)
+        },
+        nameFormater(productName) {
+            productName = productName.replace(/-/g, " ")
+            productName = productName.replace(/_/g, " ")
+            return productName;
         },
 
         moneyFormatter(numberToFormat) {
@@ -198,7 +207,18 @@ createApp({
 
                     console.log("Product added")
                 })
-                .catch(error => console.log(error))
+                .catch(swal("Please complete all the fields."))
+                // .catch(error => swal(error.response.data))
+                // LA LINEA DE ARRIBA TIRA ERROR PORQUE NOS PIDE UN ENUM
+        },
+
+        //Editar productos:
+        editProduct(){
+            axios.patch('/api/products/edit',{id:this.productToDisplay.id,name:this.productToDisplay.name,shoeColors:this.productToDisplay.shoeColors,type:'Sneaker',active:this.productToDisplay.active,sizes:this.productToDisplay.sizes,stock:this.editedStock,price:this.editedPrice})
+            .then(()=>
+            window.location.reload())
+            .catch(error=>swal(error.response.data))
+            
         },
 
 
