@@ -13,6 +13,7 @@ createApp({
             newClientPassword: "",
             confirmNewClientPassword: "",
             currentClient: null,
+            currentBill:null,
             // AVATAR
             avatar: {},
             avatarHead: new Image(),
@@ -71,6 +72,8 @@ createApp({
                 .then(response => {
                     this.currentClient = response.data
                     this.avatar = this.currentClient.avatar
+                    this.currentBill = this.currentClient.bills.filter(bill => bill.payed == false)
+                    console.log(this.currentBill)
                     console.log(this.currentClient.avatar)
                 })
                 .catch(error => {
@@ -289,8 +292,8 @@ createApp({
                 })
         },
         addToCart() {
-            axios.post("/api/products/addProduct", { id: this.productToDisplay.id, productName: this.productToDisplay.name, size: this.shoeSize, quantity: this.quantity })
-            .then(response => console.log(error.response))
+            axios.post("/api/products/addProduct", [{ id: this.productToDisplay.id, productName: this.productToDisplay.name, size: this.shoeSize, quantity: this.quantity }])
+            .then(response => console.log(response))
             
         }
 
