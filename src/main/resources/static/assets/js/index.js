@@ -31,6 +31,7 @@ createApp({
             stockToDisplay: "",
             productToDisplay: {},
             shoeColors: [],
+            productToDisplaySizes:[],
             //FILTERS
             selectedColor: [],
             // newUpperShelf:[],
@@ -108,6 +109,7 @@ createApp({
         changeRender(productName) {
             this.renderForModal = productName;
             this.productToDisplay = this.productsArray.find(product => product.name == productName)
+            this.productToDisplaySizes = this.productToDisplay.sizes
 
         },
         nameFormater(productName) {
@@ -257,7 +259,16 @@ createApp({
                 .then(() => {
                     window.location.reload()
                 })
-        }
+        },
+
+    // funcion para radios de size
+    // selectSize(){
+    //     let inputs = this.$refs.input
+    //     let selectedInput = inputs.filter(enput =>enput.checked)
+    //     let label = selectedInput[0].labels
+    //   
+    // NO TERMINE TODAVIA PERO ME TENIA QUE IR (ALU <3)
+    // },
 
 
 
@@ -273,6 +284,7 @@ createApp({
                 console.log('filtering')
             }
         }
+        
     },
 }).mount('#app')
 

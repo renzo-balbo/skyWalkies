@@ -23,17 +23,16 @@
             <nav class="d-flex justify-content-between align-items-center">
                 <!-- OFF CANVAS LEFT PARA EL NAV -->
 
-                <a href="./cart.html">
-                <button class="btn btn-solid" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+                <a href="./cart.html" class="text-black mx-2">
                         
-                        <i class="bi bi-bag-fill"></i>
+                        <!-- <i class="bi bi-bag-fill" style="font-size: 2.2rem;"></i> -->
 
-                        <i class="bi bi-bag-heart-fill"></i>
+                        <i class="bi bi-bag-heart-fill" style="font-size: 2.2rem;"></i>
 
-                        <i class="bi bi-cart4"></i>
-
-                    </button>
+                        <!-- <i class="bi bi-cart4" style="font-size: 2.2rem;"></i> -->
+                        <span class="position-absolute translate-middle badge rounded-pill bg-dark">
+                            4
+                        </span>
                 </a>
                     
 
@@ -407,8 +406,18 @@
                                 <h2 class="fw-bolder">{{nameFormater(renderForModal)}}</h2>
                                 <h3 class="fw-bold">{{productToDisplay.price}}</h3>
                                 <h5>Stock: {{productToDisplay.stock}}</h5>
-                                <button class="btn btn-dark col-md-6">Add to Cart</button>
+                                <button class="btn btn-dark col-md-6" @click="selectSize">Add to Cart</button>
+                                <div class="mt-2 d-flex justify-content-start align-items-center gap-3">
+                                    <div v-for="size in productToDisplaySizes">
+                                        <input class="form-check-input d-none" type="radio" name="shoeSize" :id="size" ref="input">
+                                        <label class="form-check-label sizes" :for="size" ref="label">
+                                         {{size}}
+                                        </label>
+                                        
+                                    </div>
+                                </div>
                             </div>
+                            
                         </div>
 
                         <div class="modal-footer d-flex justify-content-center container">
