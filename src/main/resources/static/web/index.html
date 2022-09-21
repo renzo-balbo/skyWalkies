@@ -153,6 +153,12 @@
 
                                     </div>
                                 </div>
+                                <div class="mt-1">
+                                    <label for="quantity"  class="p-1"> Quantity </label>
+                                    <input type="number"id="quantity" v-model="quantity" class="text-center" :value="quantity" style="width: 3rem;">
+                                </div>
+                                <button @submit.prevent="" :value="" class="btn btn-dark col-md-6 mt-1" @click="addToCart()">Add
+                                    to Cart</button>
                             </div>
                         </div>
 
