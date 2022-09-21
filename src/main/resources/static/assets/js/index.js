@@ -134,7 +134,8 @@ createApp({
         loadProducts() {
             axios.get('/api/products')
                 .then(response => {
-                    this.productsArray = response.data
+                    this.productsArray = response.data.filter(product=>product.active==true)
+                    console.log(response.data);
                     this.productsArray.forEach(product => product.price = this.moneyFormatter(product.price))
                     this.priceSortedMaxToMin()
                     this.priceSortedMinToMax()

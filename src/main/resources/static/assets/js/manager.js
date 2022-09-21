@@ -40,11 +40,11 @@ createApp({
             newProductSizes: [],
             newStock: "",
 
-
         }
     },
     created() {
         this.loadData()
+
     },
 
     beforeMount() {
@@ -140,17 +140,22 @@ createApp({
 
 
         toggleProductActive(product) {
-            switch (product.active) {
-                case true:
-                    product.active = false;
-                    break;
-                case false:
-                    product.active = true;
-                    break;
-                default:
-                    product.active=true
-            }
-            console.log(product.active);
+            axios.patch('/api/products/delete/' + product.id)
+                .then(response =>
+                    swal(response.data))
+            // switch (product.active) {
+            //     case true:
+            //         product.active = false;
+            //         break;
+            //     case false:
+            //         product.active = true;
+            //         break;
+            //     default:
+            //         product.active=true
+            // }
+            // console.log(product.active);
+
+
         },
 
         //Productos nuevos
