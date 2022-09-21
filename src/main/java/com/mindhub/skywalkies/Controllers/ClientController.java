@@ -81,10 +81,7 @@ public class ClientController {
         return new ClientDTO(clientService.findClientByEmail(authentication.getName()));
     }
 
-    @GetMapping("/clients/clientOrder")
-    public List<Client_orderDTO> getClientOrders(){
-        return client_orderService.getAllClientsOrders().stream().map(client_order -> new Client_orderDTO(client_order)).collect(Collectors.toList());
-    }
+
     @GetMapping("/clients/verify/{id}")
     public ResponseEntity<Object> verifyClient(@PathVariable long id){
         Client client = clientService.getClientById(id);

@@ -39,4 +39,8 @@ public class Client_OrderController {
     public Client_orderDTO getClientOrder(@PathVariable long id) {
         return new Client_orderDTO(client_orderService.getClientOrdersById(id));
     }
+    @GetMapping("/clients/clientOrder")
+    public List<Client_orderDTO> getClientOrders(){
+        return client_orderService.getAllClientsOrders().stream().map(client_order -> new Client_orderDTO(client_order)).collect(Collectors.toList());
+    }
 }

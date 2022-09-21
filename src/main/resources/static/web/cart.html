@@ -20,295 +20,311 @@
 </head>
 
 <body>
-    <header>
-        <nav class="d-flex justify-content-between align-items-center">
-            <!-- OFF CANVAS LEFT PARA EL NAV -->
+    <div id="app">
+        <header>
+            <nav class="d-flex justify-content-between align-items-center">
+                <!-- OFF CANVAS LEFT PARA EL NAV -->
 
-            <button class="btn btn-solid" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-                <i class="bi bi-grid-fill"></i>
-            </button>
-            <div class="offcanvas offcanvas-start " data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
-                aria-labelledby="offcanvasWithBothOptionsLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Aca va el nav</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body p-0">
-                    <div class="list-group m-0">
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-light">Nav
-                            items</a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-light">Nav
-                            items</a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-light">Nav
-                            items</a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-light">Nav
-                            items</a>
+                <button class="btn btn-solid" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+                    <i class="bi bi-grid-fill"></i>
+                </button>
+                <div class="offcanvas offcanvas-start " data-bs-scroll="true" tabindex="-1"
+                    id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Aca va el nav</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body p-0">
+                        <div class="list-group m-0">
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Nav
+                                items</a>
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Nav
+                                items</a>
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Nav
+                                items</a>
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Nav
+                                items</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- ACA TERMINA EL OFF CANVAS DE  NAV -->
+                <!-- ACA TERMINA EL OFF CANVAS DE  NAV -->
 
-            <img src="../assets/img/skyWalkiesIsoLogo.png" alt="">
+                <img src="../assets/img/skyWalkiesIsoLogo.png" alt="">
 
-            <!-- OFF CANVAS RIGHT REGISTRO -->
+                <!-- OFF CANVAS RIGHT REGISTRO -->
 
-            <button class="btn btn-solid" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                aria-controls="offcanvasRight">
-                <i class="bi bi-person-circle"></i>
-            </button>
+                <button class="btn btn-solid" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight">
+                    <i class="bi bi-person-circle"></i>
+                </button>
 
-            <div class="offcanvas offcanvas-end" tabindex="-1" data-bs-scroll="true" id="offcanvasRight"
-                aria-labelledby="offcanvasRightLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasRightLabel">Aca va el register</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <div class="accordion accordion-flush" id="accordionFlushExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapseOne" aria-expanded="false"
-                                    aria-controls="flush-collapseOne">
-                                    REGISTRO
-                                </button>
-                            </h2>
-                            <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
+                <div class="offcanvas offcanvas-end" tabindex="-1" data-bs-scroll="true" id="offcanvasRight"
+                    aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasRightLabel">Aca va el register</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                        aria-controls="flush-collapseOne">
+                                        REGISTRO
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                    aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
 
-                                    <!-- FORM DE REGISTRO -->
+                                        <!-- FORM DE REGISTRO -->
 
-                                    <form>
-                                        <div class="mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                            <input type="email" class="form-control" id="" aria-describedby="emailHelp">
-                                            <div id="emailHelp" class="form-text">We'll never share your email with
-                                                anyone else.</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="exampleInputPassword1" class="form-label">Password</label>
-                                            <input type="password" class="form-control" id="">
-                                        </div>
-                                        <button type="submit" class="btn btn-dark">Submit</button>
-                                    </form>
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                                <input type="email" class="form-control" id=""
+                                                    aria-describedby="emailHelp">
+                                                <div id="emailHelp" class="form-text">We'll never share your email with
+                                                    anyone else.</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleInputPassword1" class="form-label">Password</label>
+                                                <input type="password" class="form-control" id="">
+                                            </div>
+                                            <button type="submit" class="btn btn-dark">Submit</button>
+                                        </form>
 
-                                    <!-- TERMINA FORM -->
+                                        <!-- TERMINA FORM -->
 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                        aria-controls="flush-collapseTwo">
+                                        LOG IN
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                    aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+
+                                        <!-- FORM DE LOGIN -->
+
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                                <input type="email" class="form-control" id=""
+                                                    aria-describedby="emailHelp">
+                                                <div id="emailHelp" class="form-text">We'll never share your email with
+                                                    anyone else.</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleInputPassword1" class="form-label">Password</label>
+                                                <input type="password" class="form-control" id="">
+                                            </div>
+                                            <button type="submit" class="btn btn-dark">Submit</button>
+                                        </form>
+
+                                        <!-- TERMINA FORM -->
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapseTwo" aria-expanded="false"
-                                    aria-controls="flush-collapseTwo">
-                                    LOG IN
-                                </button>
-                            </h2>
-                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                                aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
+                    </div>
+                </div>
 
-                                    <!-- FORM DE LOGIN -->
+                <!-- ACA TERMINA EL OFF CANVAS DE REGISTRO -->
+            </nav>
 
-                                    <form>
-                                        <div class="mb-3">
-                                            <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                            <input type="email" class="form-control" id="" aria-describedby="emailHelp">
-                                            <div id="emailHelp" class="form-text">We'll never share your email with
-                                                anyone else.</div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="exampleInputPassword1" class="form-label">Password</label>
-                                            <input type="password" class="form-control" id="">
-                                        </div>
-                                        <button type="submit" class="btn btn-dark">Submit</button>
-                                    </form>
+        </header>
+        <!-- estrellas del fondo -->
+        <div id='stars' class="estrellas"></div>
+        <div id='stars2' class="estrellas"></div>
+        <div id='stars3' class="estrellas"></div>
+        <!-- ---- -->
 
-                                    <!-- TERMINA FORM -->
 
-                                </div>
+        <main class="d-flex flex-column flex-lg-row justify-content-lg-around container align-items-center">
+            <div class="d-flex justify-content-center flex-wrap col-lg-7">
+
+                <h1 class="text-center fw-bolder">Your Wardrobe</h1>
+
+                <div
+                    class="container overflow-auto alturaWardrobe d-lg-flex flex-lg-wrap justify-content-lg-around scrollBar">
+                    <div v-for="product in  clientOrder" class="card d-flex my-5 my-lg-2 col-lg-5 sombra productInWardrobe">
+                        
+                        <div class="d-flex flex-column cardImageAndTitle">
+                            <h3  class="p-1 text-center fw-bolder">{{product.name}}</h3>
+                            <img :src="'../assets/img/'+product.name+'.png'" class="pb-4" alt="">
+                        </div>
+                        <div class="d-flex align-items-center justify-content-around cardBody">
+                            <div>
+                                <h3 >$1,099.00</h3>
+                                <p>2 units: $2,198.00</p>
                             </div>
+                            <i class="bi bi-x-circle-fill"></i>
+                        </div>
+                    </div>
+                  <!--   <div class="card d-flex my-5 my-lg-2 col-lg-5 sombra productInWardrobe">
+                        <div class="d-flex flex-column cardImageAndTitle">
+                            <h3 class="p-1 text-center fw-bolder">Air Force Re Piola</h3>
+                            <img src="../assets/img/NIKE-LV-LOW_13.png" class="pb-4" alt="">
+                        </div>
+                        <div class="d-flex align-items-center justify-content-around cardBody">
+                            <div>
+                                <h3>$1,099.00</h3>
+                                <p>2 units: $2,198.00</p>
+                            </div>
+                            <i class="bi bi-x-circle-fill"></i>
+                        </div>
+                    </div> -->
+                    <!-- <div class="card d-flex my-5 my-lg-2 col-lg-5 sombra productInWardrobe">
+                        <div class="d-flex flex-column cardImageAndTitle">
+                            <h3 class="p-1 text-center fw-bolder">Air Force Re Piola</h3>
+                            <img src="../assets/img/NIKE-LV-LOW_T2.png" class="pb-4" alt="">
+                        </div>
+                        <div class="d-flex align-items-center justify-content-around cardBody">
+                            <div>
+                                <h3>$1,099.00</h3>
+                                <p>2 units: $2,198.00</p>
+                            </div>
+                            <i class="bi bi-x-circle-fill"></i>
+                        </div>
+                    </div>
+                    <div class="card d-flex my-5 my-lg-2 col-lg-5 sombra productInWardrobe">
+                        <div class="d-flex flex-column cardImageAndTitle">
+                            <h3 class="p-1 text-center fw-bolder">Air Force Re Piola</h3>
+                            <img src="../assets/img/NIKE-LV-LOW_Z.png" class="pb-4" alt="">
+                        </div>
+                        <div class="d-flex align-items-center justify-content-around cardBody">
+                            <div>
+                                <h3>$1,099.00</h3>
+                                <p>2 units: $2,198.00</p>
+                            </div>
+                            <i class="bi bi-x-circle-fill"></i>
+                        </div>
+                    </div>
+                    <div class="card d-flex my-5 my-lg-2 col-lg-5 sombra productInWardrobe">
+                        <div class="d-flex flex-column cardImageAndTitle">
+                            <h3 class="p-1 text-center fw-bolder">Air Force Re Piola</h3>
+                            <img src="../assets/img/NIKE-LV-LOW_C.png" class="pb-4" alt="">
+                        </div>
+                        <div class="d-flex align-items-center justify-content-around cardBody">
+                            <div>
+                                <h3>$1,099.00</h3>
+                                <p>2 units: $2,198.00</p>
+                            </div>
+                            <i class="bi bi-x-circle-fill"></i>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="d-flex flex-column col-11 mt-3 m-lg-0 col-lg-4 prices">
+                <div class="d-flex justify-content-between">
+                    <h5 class="fw-bold">Subtotal:</h5>
+                    <h6 v-for="bill in bills"  class="fw-bold">${{bill.subTotal}}</h6>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <h5>IVA:</h5>
+                    <h6 v-for="bill in bills" >${{bill.iva}}</h6>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <h3 class="fw-bolder">Total:</h3>
+                    <h3 v-for="bill in bills" class="fw-bolder">${{bill.total}}</h3>
+                </div>
+                <button class="btn btn-dark mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Proceed to
+                    pay</button>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Payment</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="d-flex flex-wrap">
+                                <label for="cardHolder">Card Holder:</label>
+                                <input class="col-10 formInputsModal" type="text" name="cardHolder" id="cardHolder">
+                                <label for="cardNumber">Card Number:</label>
+                                <input class="col-10 formInputsModal" type="number" name="cardNumber" id="cardNumber">
+                                <label for="thruDate" class="col-4">Expiration:</label>
+                                <input class="col-6 formInputsModal" type="date" name="trhuDate" id="trhuDate">
+                                <label for="cvv" class="col-4">CVV:</label>
+                                <input class="col-6 formInputsModal" type="number" name="cvv" id="cvv">
+                            </form>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-around">
+                            <h5>Total: $5,292.16</h5>
+                            <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                            <button type="button" class="btn btn-dark">Purchase</button>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- ACA TERMINA EL OFF CANVAS DE REGISTRO -->
-        </nav>
-
-    </header>
-    <!-- estrellas del fondo -->
-    <div id='stars' class="estrellas"></div>
-    <div id='stars2' class="estrellas"></div>
-    <div id='stars3' class="estrellas"></div>
-    <!-- ---- -->
+        </main>
 
 
-    <main class="d-flex flex-column flex-lg-row justify-content-lg-around container align-items-center">
-        <div class="d-flex justify-content-center flex-wrap col-lg-7">
+        <footer class="d-flex align-items-center justify-content-evenly border-top flex-wrap">
 
-
-            <h1 class="text-center fw-bolder">Your Wardrobe</h1>
-
-            <div
-                class="container overflow-auto alturaWardrobe d-lg-flex flex-lg-wrap justify-content-lg-around scrollBar">
-                <div class="card d-flex my-5 my-lg-2 col-lg-5 sombra productInWardrobe">
-                    <div class="d-flex flex-column cardImageAndTitle">
-                        <h3 class="p-1 text-center fw-bolder">Air Force Re Piola</h3>
-                        <img src="../assets/img/NIKE-LV-LOW_13.png" class="pb-4" alt="">
-                    </div>
-                    <div class="d-flex align-items-center justify-content-around cardBody">
-                        <div>
-                            <h3>$1,099.00</h3>
-                            <p>2 units: $2,198.00</p>
-                        </div>
-                        <i class="bi bi-x-circle-fill"></i>
-                    </div>
+            <div class="d-flex justify-content-evenly col-12 col-md pt-3">
+                <div class="d-flex flex-column">
+                    <a href="#" class="fs-5 text-black">ABOUT US</a>
+                    <a href="#" class="fs-6 text-black">News</a>
                 </div>
-                <div class="card d-flex my-5 my-lg-2 col-lg-5 sombra productInWardrobe">
-                    <div class="d-flex flex-column cardImageAndTitle">
-                        <h3 class="p-1 text-center fw-bolder">Air Force Re Piola</h3>
-                        <img src="../assets/img/NIKE-LV-LOW_T2.png" class="pb-4" alt="">
-                    </div>
-                    <div class="d-flex align-items-center justify-content-around cardBody">
-                        <div>
-                            <h3>$1,099.00</h3>
-                            <p>2 units: $2,198.00</p>
-                        </div>
-                        <i class="bi bi-x-circle-fill"></i>
-                    </div>
-                </div>
-                <div class="card d-flex my-5 my-lg-2 col-lg-5 sombra productInWardrobe">
-                    <div class="d-flex flex-column cardImageAndTitle">
-                        <h3 class="p-1 text-center fw-bolder">Air Force Re Piola</h3>
-                        <img src="../assets/img/NIKE-LV-LOW_Z.png" class="pb-4" alt="">
-                    </div>
-                    <div class="d-flex align-items-center justify-content-around cardBody">
-                        <div>
-                            <h3>$1,099.00</h3>
-                            <p>2 units: $2,198.00</p>
-                        </div>
-                        <i class="bi bi-x-circle-fill"></i>
-                    </div>
-                </div>
-                <div class="card d-flex my-5 my-lg-2 col-lg-5 sombra productInWardrobe">
-                    <div class="d-flex flex-column cardImageAndTitle">
-                        <h3 class="p-1 text-center fw-bolder">Air Force Re Piola</h3>
-                        <img src="../assets/img/NIKE-LV-LOW_C.png" class="pb-4" alt="">
-                    </div>
-                    <div class="d-flex align-items-center justify-content-around cardBody">
-                        <div>
-                            <h3>$1,099.00</h3>
-                            <p>2 units: $2,198.00</p>
-                        </div>
-                        <i class="bi bi-x-circle-fill"></i>
-                    </div>
-                </div>
-
-            </div>
-
-
-        </div>
-        <div class="d-flex flex-column col-11 mt-3 m-lg-0 col-lg-4 prices">
-            <div class="d-flex justify-content-between">
-                <h5 class="fw-bold">Subtotal:</h5>
-                <h6 class="fw-bold">$4,436</h6>
-            </div>
-            <div class="d-flex justify-content-between">
-                <h5>IVA:</h5>
-                <h6>$923.16</h6>
-            </div>
-            <div class="d-flex justify-content-between">
-                <h3 class="fw-bolder">Total:</h3>
-                <h3 class="fw-bolder">$5,292.16</h3>
-            </div>
-            <button class="btn btn-dark mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Proceed to pay</button>
-        </div>
-
-        <!-- Modal -->
-        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Payment</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="d-flex flex-wrap">
-                            <label for="cardHolder">Card Holder:</label>
-                            <input class="col-10 formInputsModal" type="text" name="cardHolder" id="cardHolder">
-                            <label for="cardNumber">Card Number:</label>
-                            <input class="col-10 formInputsModal" type="number" name="cardNumber" id="cardNumber">
-                            <label for="thruDate" class="col-4">Expiration:</label>
-                            <input class="col-6 formInputsModal" type="date" name="trhuDate" id="trhuDate">
-                            <label for="cvv" class="col-4">CVV:</label>
-                            <input class="col-6 formInputsModal" type="number" name="cvv" id="cvv">
-                        </form>
-                    </div>
-                    <div class="modal-footer d-flex justify-content-around">
-                        <h5>Total: $5,292.16</h5>
-                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                        <button type="button" class="btn btn-dark">Purchase</button>
-                    </div>
+                <div class="d-flex flex-column">
+                    <a href="#" class="fs-6 text-black">Influence</a>
+                    <a href="#" class="fs-6 text-black">Employment</a>
                 </div>
             </div>
-        </div>
-    </main>
 
 
-    <footer class="d-flex align-items-center justify-content-evenly border-top flex-wrap">
 
-        <div class="d-flex justify-content-evenly col-12 col-md pt-3">
-            <div class="d-flex flex-column">
-                <a href="#" class="fs-5 text-black">ABOUT US</a>
-                <a href="#" class="fs-6 text-black">News</a>
+
+
+            <div class="d-flex col-12 col-md justify-content-center mt-lg-3">
+                <a href="#" class="fs-1 mx-4 text-black">
+                    <i class="bi bi-instagram"></i>
+                </a>
+
+                <a href="#" class="fs-1 mx-4 text-black">
+                    <i class="bi bi-facebook"></i>
+                </a>
+
+                <a href="#" class="fs-1 mx-4 text-black">
+                    <i class="bi bi-twitter"></i>
+                </a>
+
             </div>
-            <div class="d-flex flex-column">
-                <a href="#" class="fs-6 text-black">Influence</a>
-                <a href="#" class="fs-6 text-black">Employment</a>
+
+
+
+
+
+
+            <div class="d-flex flex-column col-12 col-md text-center justify-content-end pt-4">
+                <p>&copy; 2022 SKYWALKIES SRL. All rights reserved</p>
+                <a href="#" class="text-black">Terms and privacy policy</a>
             </div>
-        </div>
+
+        </footer>
 
 
 
 
 
-        <div class="d-flex col-12 col-md justify-content-center mt-lg-3">
-            <a href="#" class="fs-1 mx-4 text-black">
-                <i class="bi bi-instagram"></i>
-            </a>
-
-            <a href="#" class="fs-1 mx-4 text-black">
-                <i class="bi bi-facebook"></i>
-            </a>
-
-            <a href="#" class="fs-1 mx-4 text-black">
-                <i class="bi bi-twitter"></i>
-            </a>
-
-        </div>
-
-
-
-
-
-
-        <div class="d-flex flex-column col-12 col-md text-center justify-content-end pt-4">
-            <p>&copy; 2022 SKYWALKIES SRL. All rights reserved</p>
-            <a href="#" class="text-black">Terms and privacy policy</a>
-        </div>
-
-    </footer>
-
-
-
-
-
-
+    </div>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
@@ -318,6 +334,7 @@
     <script src="https://unpkg.com/vue@3"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../assets/js/cart.js"></script>
 </body>
 
 </html>

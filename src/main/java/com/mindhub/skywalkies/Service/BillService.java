@@ -16,5 +16,5 @@ public interface BillService {
     public void deleteBill(Bill bill);
 
     public void saveBill(Bill bill);
-    public Bill findByTicketNumber(int number);
+    public Bill findByTicketNumber(Integer number);
 }

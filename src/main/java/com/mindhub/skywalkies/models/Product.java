@@ -46,7 +46,7 @@ public class Product {
         this.size = size;
         this.stock = stock;
         this.price = price;
-        this.deleted = false;
+        this.deleted = true;
     }
 
     public long getId() {

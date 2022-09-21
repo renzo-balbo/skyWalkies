@@ -1,19 +1,24 @@
 package com.mindhub.skywalkies.dtos;
 
-import com.mindhub.skywalkies.models.Bill;
-import com.mindhub.skywalkies.models.Client;
-import com.mindhub.skywalkies.models.Client_order;
-import com.mindhub.skywalkies.models.Ordered_product;
+import com.mindhub.skywalkies.models.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class BillDTO {
+
+    @Autowired
+    private Product product;
+
     private long id;
+
 
     private LocalDateTime date;
     private boolean payed;
+    private double iva;
+    private double total;
     private double subTotal;
 
     private Set<Client_orderDTO> client_orders;
@@ -27,9 +32,20 @@ public class BillDTO {
         this.id = bill.getId();
         this.date = bill.getDate();
         this.payed = bill.isPayed();
-        this.subTotal = bill.getSubTotal();
         this.client_orders = bill.getClient_orders().stream().map(client_order -> new Client_orderDTO(client_order)).collect(Collectors.toSet());
         this.numberTicket = bill.getTicketNumber();
+        this.subTotal = bill.getSubTotal();
+        this.iva = bill.getIva();
+        this.total = bill.getTotal();
+
+    }
+
+    public double getIva() {
+        return iva;
+    }
+
+    public double getTotal() {
+        return total;
     }
 
     public long getId() {

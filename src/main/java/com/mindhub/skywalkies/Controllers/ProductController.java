@@ -70,7 +70,7 @@ public class ProductController {
         Client client = clientService.findClientByEmail(authentication.getName());
         Product product = productService.getProductById(productDTO.getId());
         if (productDTO.getName().isEmpty() || productDTO.getType().isEmpty() || productDTO.getShoeColors().isEmpty() || productDTO.getSizes().isEmpty() || productDTO.getStock() < 0 || productDTO.getPrice() < 0) {
-            return new ResponseEntity<>("no jaja", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Please complete all fields.", HttpStatus.FORBIDDEN);
         } else {
             product.setName(productDTO.getName());
             product.setType(productDTO.getType());
@@ -80,7 +80,7 @@ public class ProductController {
             product.setPrice(productDTO.getPrice());
 
             productService.saveProduct(product);
-            return new ResponseEntity<>("si jejox", HttpStatus.ACCEPTED);
+            return new ResponseEntity<>("Product edited successfully", HttpStatus.ACCEPTED);
         }
     }
 
@@ -89,6 +89,8 @@ public class ProductController {
     public ResponseEntity<Object> addProduct(@RequestBody Set<AddProductDTO> addProductDTO, Authentication authentication) {
         Client client = clientService.findClientByEmail(authentication.getName());
         Bill bill;
+        List<Product> productActive1 = productService.getAllProducts().stream().filter(product -> product.isActive()).collect(Collectors.toList());
+
 //        if (addProductDTO == null){
 //            return new ResponseEntity<>("That product no exist", HttpStatus.FORBIDDEN);
 //        }
@@ -99,12 +101,12 @@ public class ProductController {
         }
         Client_order client_order = new Client_order(bill);
         bill.addClient_order(client_order);
-        List<Product> productList = new ArrayList<>();
+        List<Product> productActive = new ArrayList<>();
         addProductDTO.forEach(product ->{
             Product product1 = productService.getProductById(product.getId());
             Ordered_product ordered_product = new Ordered_product(client_order, product.getQuantity(), product.getSize(), product1.getPrice(), product1);
             for (int i = 0; i < product.getQuantity(); i++){
-                productList.add(product1);
+                productActive.add(product1);
                 productService.saveProduct(product1);
                 ordered_productService.saveOrderProduct(ordered_product);
                 bill.setSubTotal(bill.getSubTotal()+product1.getPrice());
@@ -116,41 +118,21 @@ public class ProductController {
         client_orderService.saveClientOrders(client_order);
         client.addBill(bill);
         clientService.saveClient(client);
-        return new ResponseEntity<>("claro que si crack", HttpStatus.CREATED);
+        return new ResponseEntity<>("Product added successfully.", HttpStatus.CREATED);
     }
-//    @PatchMapping  ("/products/deleteCart")
-//    public ResponseEntity<Object> emptyCart(Authentication authentication){
-//
-//        Client client = clientService.findClientByEmail(authentication.getName());
-//        Bill bill = client.getBills().stream().filter(bill1 -> !bill1.isPayed()).findFirst().orElse(null);
-//        bill.getClient_orders().forEach(client_order -> {
-//            client_orderRepository.delete(client_order);
-//        });
-//
-//        bill.setClient_orders(new HashSet<>());
-//        bill.setClient(client);
-//        bill.setSubTotal(0);
-//        bill.setDate(LocalDateTime.now());
-//        bill.setPayed(false);
-//
-//
-//        billService.saveBill(bill);
-//        return new ResponseEntity<>("delete pana",HttpStatus.ACCEPTED);
-//    }
 
     @PatchMapping ("/products/delete")
     public ResponseEntity<?> delete (@RequestParam String id){
         if(id.isEmpty()){
-            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Please complete all fields.", HttpStatus.FORBIDDEN);
         }
-
         Long longId= Long.valueOf(id);
         Product product = productService.getProductById(longId);
         if(product == null){
-            return new ResponseEntity<>("Product does not exist", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Product does not exist.", HttpStatus.FORBIDDEN);
         }
         productService.delete(product);
-        return new ResponseEntity<>("product has been deleted successfully", HttpStatus.OK);
+        return new ResponseEntity<>("product has been deleted successfully.", HttpStatus.OK);
     }
 
 }

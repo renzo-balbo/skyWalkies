@@ -42,12 +42,28 @@ public class BillController {
     }
     @Transactional
     @PostMapping("/bills/payment")
-    public ResponseEntity<Object> payment(@RequestParam String cardHolder, @RequestParam String thruDate, @RequestParam String cardNumber, @RequestParam int cvv, Authentication authentication){
+    public ResponseEntity<Object> payment(@RequestParam String cardHolder, @RequestParam String thruDate, @RequestParam String cardNumber, @RequestParam int cvv, @RequestParam  Integer numberTicket ,Authentication authentication){
         Client client = clientService.findClientByEmail(authentication.getName());
-        if (cardHolder.isEmpty() || thruDate.isEmpty() || cardNumber.isEmpty() || cvv <= 99){
+        Bill bill = billService.findByTicketNumber(numberTicket);
+        if (cardHolder.isEmpty() || thruDate.isEmpty() || cardNumber.isEmpty() || cvv <= 99 || numberTicket<=0){
             return new ResponseEntity<>("Please complete all the fields", HttpStatus.FORBIDDEN);
         }else {
-            return new ResponseEntity<>("Payment completed", HttpStatus.CREATED);
+            try{
+                bill.setPayed(true);
+                billService.saveBill(bill);
+                return new ResponseEntity<>("Payment completed", HttpStatus.CREATED);
+            } catch (Exception e )
+            {return new ResponseEntity<>("anashe",HttpStatus.FORBIDDEN);}
+
         }
+
+     //   Bill bill1 = new Bill(client,LocalDateTime.now(), true, getIvaTocaacamaster(bill.getSubTotal(), 1.21), bill.getIva()+ bill.getSubTotal(), bill.getTicketNumber());
+
+
     }
+
+    public double getIvaTocaacamaster(double subtotal, double porcentaje){
+        return subtotal *  porcentaje / 100;
+    }
+
 }

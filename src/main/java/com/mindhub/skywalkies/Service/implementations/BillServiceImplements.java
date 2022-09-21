@@ -15,6 +15,8 @@ public class BillServiceImplements implements BillService {
     public List<Bill> getAllBills(){return billRepository.findAll();}
     @Override
     public Bill getBillByid(long id){return billRepository.findById(id).get();}
+
+
     @Override
     public void deleteBill(Bill bill){
         billRepository.delete(bill);
@@ -23,7 +25,7 @@ public class BillServiceImplements implements BillService {
     public void saveBill(Bill bill){billRepository.save(bill);}
 
     @Override
-    public Bill findByTicketNumber(int number) {
+    public Bill findByTicketNumber(Integer number) {
         return billRepository.findByTicketNumber(number);
     }
 

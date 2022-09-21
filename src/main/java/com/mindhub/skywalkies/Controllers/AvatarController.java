@@ -55,7 +55,7 @@ public class AvatarController {
         avatar.setBodyColor(avatarDTO.getBodyColor());
         avatar.setShoes(avatarDTO.getShoes());
         avatarService.saveAvatar(avatar);
-        return new ResponseEntity<>("si jaja", HttpStatus.ACCEPTED);
+        return new ResponseEntity<>("Avatar edited successfully", HttpStatus.ACCEPTED);
 
     }
 }

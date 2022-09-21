@@ -25,7 +25,11 @@ public class Bill {
     private LocalDateTime date;
     private boolean payed;
     private double subTotal;
+    private double iva;
+    private double total;
+
     private int ticketNumber;
+
 
     public Bill() {
     }
@@ -47,6 +51,44 @@ public class Bill {
         this.payed = payed;
         this.subTotal = subTotal;
         this.ticketNumber = ticketNumber;
+    }
+
+
+    public Bill(Client client, LocalDateTime date, boolean payed, double subTotal, double iva, double total, int ticketNumber) {
+        this.client = client;
+        this.date = date;
+        this.payed = isPayed();
+        this.subTotal = subTotal;
+        this.iva = iva;
+        this.total = total;
+        this.ticketNumber = ticketNumber;
+    }
+
+    public Bill(Client client, LocalDateTime now, boolean setPayed, double ivaTocaacamaster, double iva, int ticketNumber) {
+        this.client = client;
+        this.date = date;
+        this.payed = isPayed();
+        this.subTotal = subTotal;
+        this.iva = iva;
+        this.total = total;
+        this.ticketNumber = ticketNumber;
+    }
+
+
+    public double getIva() {
+        return iva;
+    }
+
+    public void setIva(double iva) {
+        this.iva = iva;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 
     public long getId() {
@@ -110,4 +152,6 @@ public class Bill {
     public void addTicketNumber(int number){
         setTicketNumber(number);
     }
+
+
 }

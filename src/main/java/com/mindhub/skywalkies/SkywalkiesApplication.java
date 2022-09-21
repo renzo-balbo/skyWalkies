@@ -78,7 +78,7 @@ public class SkywalkiesApplication {
 
 
             //BILLS//
-            Bill bill1 = new Bill( LocalDateTime.now(), true, 992.23);
+            Bill bill1 = new Bill( LocalDateTime.now(), false, 992.23);
             bill1.addTicketNumber(randomNumberTicket(1, 999999999));
             //BILLS//
             Avatar avatar1 = new Avatar(1,2,1,4,3);
