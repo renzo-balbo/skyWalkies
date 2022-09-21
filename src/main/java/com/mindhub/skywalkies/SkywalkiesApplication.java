@@ -78,7 +78,7 @@ public class SkywalkiesApplication {
 
 
             //BILLS//
-            Bill bill1 = new Bill( LocalDateTime.now(), false, 992.23);
+            Bill bill1 = new Bill( LocalDateTime.now(), false, productShoe3.getPrice());
             bill1.addTicketNumber(randomNumberTicket(1, 999999999));
             //BILLS//
             Avatar avatar1 = new Avatar(1,2,1,4,3);
@@ -97,7 +97,7 @@ public class SkywalkiesApplication {
             //CLIENTS ORDERS/
 
             //ADD//
-            Ordered_product ordered_product1= new Ordered_product(clientOrder1, 3, 8, 420.0, productShoe3);
+            Ordered_product ordered_product1= new Ordered_product(clientOrder1, 3, 8,  productShoe3.getPrice(), productShoe3);
             bill1.addClient_order(clientOrder1);
 //            clientOrder1.addOrder_products(ordered_product1);
             //ADD//
