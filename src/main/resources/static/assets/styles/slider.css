@@ -144,6 +144,19 @@
 .extra{
   grid-area: 4 / 3 / 6 / 5;
 }
+
+/* news */
+#news{
+  display: grid;
+  grid-template-columns: 25% 20% 30% 10%;
+  grid-template-rows: 20% 30% 30% 10%;
+}
+.boxShoes{
+  grid-area: 2 / 3 / 5 / 5;
+}
+.boxNewsletter{
+  grid-area: 2 / 2 / 4 / 3;
+}
 /* TERMINA GRID */
 
 /* TERMINA SLIDER */
