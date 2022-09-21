@@ -290,15 +290,15 @@
                                 <p class="col-12 mt-2 text-center">Sizes Available:</p>
                                 <div class="d-flex justify-content-center col-12">
                                     <label class="mx-2" for="size8">8</label>
-                                    <input type="checkbox" name="newProductSizes" id="size8" v-model="newProductSizes">
+                                    <input @change="addNewSizes(8)" type="checkbox" name="newProductSizes" id="size8">
                                     <label class="mx-2" for="size9">9</label>
-                                    <input type="checkbox" name="newProductSizes" id="size9">
+                                    <input @change="addNewSizes(9)" type="checkbox" name="newProductSizes" id="size9">
                                     <label class="mx-2" for="size10">10</label>
-                                    <input type="checkbox" name="newProductSizes" id="size10">
+                                    <input @change="addNewSizes(10)" type="checkbox" name="newProductSizes" id="size10">
                                     <label class="mx-2" for="size11">11</label>
-                                    <input type="checkbox" name="newProductSizes" id="size11">
+                                    <input @change="addNewSizes(11)" type="checkbox" name="newProductSizes" id="size11">
                                     <label class="mx-2" for="size12">12</label>
-                                    <input type="checkbox" name="newProductSizes" id="size12">
+                                    <input @change="addNewSizes(12)" type="checkbox" name="newProductSizes" id="size12">
                                 </div>
                                 
 

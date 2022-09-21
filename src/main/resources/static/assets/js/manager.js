@@ -37,7 +37,7 @@ createApp({
             newProductColor: "",
             newProductPrice: "",
             newStatus: false,
-            newProductSizes: {},
+            newProductSizes: [],
             newStock: "",
 
 
@@ -153,9 +153,27 @@ createApp({
             console.log(this.newStatus);
         },
 
+        addNewSizes(newSize){
+            if(this.newProductSizes.includes(newSize)){
+                let indexToRemove = this.newProductSizes.indexOf(newSize)
+                this.newProductSizes.splice(indexToRemove, 1)
+            }else if(!this.newProductSizes.includes(newSize)){
+                this.newProductSizes.push(newSize)
+            }
+            console.log(this.newProductSizes);
+        },
+
+        stringToArray(stringToConvert){
+            let string = stringToConvert;
+            let array = string.split(',');
+            return array
+        },
+
         addNewProduct() {
-            axios.post('/api/products/add', { name:this.newProductName,shoeColors:this.newProductColor,type: 'Sneaker',active: this.newStatus,sizes:this.newProductSizes,stock:this.newStock,price:this.newProductPrice })
-                .then(() => {
+            axios.post('/api/products/add', {name:this.newProductName,shoeColors:this.stringToArray(this.newProductColor),type: 'Sneaker',active: this.newStatus,sizes:this.newProductSizes,stock:this.newStock,price:this.newProductPrice })
+                .then(response => {
+                    swal(response.data)
+                    window.location.reload()
 
                     console.log("Product added")
                 })
