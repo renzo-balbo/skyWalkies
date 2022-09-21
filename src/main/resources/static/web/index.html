@@ -301,7 +301,7 @@
 
                         <!-- CARRUSEL DE BOOTSTRAP, VER MAS TARDE -->
                         <div class="d-flex flex-wrap ocultar justify-content-center gap-3">
-                            <div class="shoesCarrousel squares col-10">
+                            <div class="shoesCarrouselMobile squares col-10">
 
                                 <button class="noBGnoBorder mx-2" v-for="product in upperShelf"
                                     @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
@@ -313,7 +313,7 @@
 
                             </div>
 
-                            <div class="shoesCarrousel squares col-10 ">
+                            <div class="shoesCarrouselMobile squares col-10 ">
                                 <button class="noBGnoBorder mx-2" v-for="product in middleShelf"
                                     @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop">
@@ -323,7 +323,7 @@
                                 </button>
                             </div>
 
-                            <div class="shoesCarrousel squares col-10 ">
+                            <div class="shoesCarrouselMobile squares col-10 ">
                                 <button class="noBGnoBorder mx-2" v-for="product in bottomShelf"
                                     @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop">
@@ -445,11 +445,11 @@
                                 <h2 class="fw-bolder">{{nameFormater(renderForModal)}}</h2>
                                 <h3 class="fw-bold">{{productToDisplay.price}}</h3>
                                 <h5>Stock: {{productToDisplay.stock}}</h5>
-                                <button class="btn btn-dark col-md-6" @click="selectSize">Add to Cart</button>
+                                <button class="btn btn-dark col-md-6">Add to Cart</button>
                                 <div class="mt-2 d-flex justify-content-start align-items-center gap-3">
-                                    <div v-for="size in productToDisplaySizes">
-                                        <input class="form-check-input d-none" type="radio" name="shoeSize" :id="size" ref="input">
-                                        <label class="form-check-label sizes" :for="size" ref="label">
+                                    <div v-for="size in productToDisplaySizes" >
+                                        <input class="form-check-input d-none" type="radio" name="shoeSize" :id="size" ref="input" :value="size" v-model="shoeSize">
+                                        <label class="form-check-label" :class="'input' ? 'sizesDark' : 'sizes'" :for="size" @click="selectSize">
                                          {{size}}
                                         </label>
                                         
