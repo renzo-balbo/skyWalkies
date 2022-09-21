@@ -34,41 +34,30 @@ public class Bill {
         this.date = date;
         this.payed = payed;
         this.subTotal = subTotal;
+        this.iva = subTotal*0.21;
+        this.total = subTotal*1.21;
     }
     public Bill(LocalDateTime date, boolean payed, double subTotal, Client client, Client_order client_order) {
         this.date = date;
         this.payed = payed;
         this.subTotal = subTotal;
         this.addClient_order(client_order);
+        this.iva = subTotal*0.21;
+        this.total = subTotal*1.21;
     }
 
     public Bill(LocalDateTime date, boolean payed, double subTotal, int ticketNumber) {
         this.date = date;
         this.payed = payed;
         this.subTotal = subTotal;
+        this.iva = subTotal*0.21;
+        this.total = subTotal*1.21;
         this.ticketNumber = ticketNumber;
     }
 
 
-    public Bill(Client client, LocalDateTime date, boolean payed, double subTotal, double iva, double total, int ticketNumber) {
-        this.client = client;
-        this.date = date;
-        this.payed = isPayed();
-        this.subTotal = subTotal;
-        this.iva = iva;
-        this.total = total;
-        this.ticketNumber = ticketNumber;
-    }
 
-    public Bill(Client client, LocalDateTime now, boolean setPayed, double ivaTocaacamaster, double iva, int ticketNumber) {
-        this.client = client;
-        this.date = date;
-        this.payed = isPayed();
-        this.subTotal = subTotal;
-        this.iva = iva;
-        this.total = total;
-        this.ticketNumber = ticketNumber;
-    }
+
 
 
     public double getIva() {
