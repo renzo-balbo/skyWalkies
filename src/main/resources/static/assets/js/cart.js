@@ -7,16 +7,10 @@ createApp({
             bills: {},
             currentBill: {},
             productsToDisplay: [],
-            queryString: "",
-            params: "",
-            id: "",
         }
     },
 
     created() {
-        this.queryString = location.search
-        this.params = new URLSearchParams(this.queryString)
-        this.id = this.params.get("id")
         this.loadClientData();
 
     },
@@ -58,15 +52,9 @@ createApp({
             return formatter.format(numberToFormat)
         },
         emptyCart() {
-            axios.patch('/bill/empty/'+this.id,{ headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+            axios.patch('/api/bill/empty/',`billId=${this.currentBill.id}`)
                 .then(() => console.log("funciona"))
         },
-
-
-
-
-
-
 
 
 
