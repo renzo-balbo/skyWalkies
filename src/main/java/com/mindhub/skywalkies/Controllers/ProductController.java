@@ -57,7 +57,7 @@ public class ProductController {
     public ResponseEntity<Object> newProduct(@RequestBody NewProductDTO NewProductDTO, Authentication authentication) {
         Client client = clientService.findClientByEmail(authentication.getName());
 //        Product productName = productService.findByName(AddProductDTO.getName());
-        if (NewProductDTO.getSizes().isEmpty() || NewProductDTO.getPrice() < 0 || NewProductDTO.getShoeColors().isEmpty() || NewProductDTO.getType().isEmpty() || NewProductDTO.getName().isEmpty()) {
+        if (NewProductDTO.getSizes().isEmpty() || NewProductDTO.getPrice() <= 0 || NewProductDTO.getStock()<=0 ||NewProductDTO.getShoeColors().isEmpty() || NewProductDTO.getType().isEmpty() || NewProductDTO.getName().isEmpty()) {
             return new ResponseEntity<>("Please fill all the fields.", HttpStatus.FORBIDDEN);
         }
         if (!client.getEmail().contains("@skywalkies")){

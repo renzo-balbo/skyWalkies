@@ -58,7 +58,7 @@ createApp({
             return formatter.format(numberToFormat)
         },
         emptyCart() {
-            axios.patch('/bill/empty/'+this.id , +{ billId: this.id }, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+            axios.patch('/bill/empty/'+this.id,{ headers: { 'content-type': 'application/x-www-form-urlencoded' } })
                 .then(() => console.log("funciona"))
         },
 
