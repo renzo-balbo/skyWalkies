@@ -188,7 +188,11 @@ public class ProductController {
         ordered_productService.saveOrderProduct(ordered_product);
         productService.saveProduct(productToRestore);
         client_order.setOrdered_products(client_order.getOrdered_products().stream().filter(ordered_product1 -> ordered_product1 != ordered_product).collect(Collectors.toSet()));
+        if(client_order.getOrdered_products().isEmpty()){
+            client_order.setBillId(null);
+        }
         client_orderService.saveClientOrders(client_order);
+        bill.setSubTotal(bill.getSubTotal()-ordered_product.getProductsAmount());
         billService.saveBill(bill);
 
         return  new ResponseEntity<>("Item removed successfully!", HttpStatus.CREATED);
