@@ -31,6 +31,7 @@ public class WebAuthorization extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.PATCH, "/products/edit").hasAuthority("ADMIN")
                 .antMatchers(HttpMethod.PATCH, "client/avatar/current").hasAnyAuthority("CLIENT", "ADMIN")
                 .antMatchers("/assets/**", "/assets/js/**", "/assets/img/**,", "/assets/styles/**", "/assets/vid/**").permitAll()
+                .antMatchers("/web/manager.html").hasAuthority("ADMIN")
                 .antMatchers("/web/**").permitAll();
         http.formLogin()
                 .usernameParameter("email")

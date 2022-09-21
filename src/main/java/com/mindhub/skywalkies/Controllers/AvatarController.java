@@ -41,13 +41,13 @@ public class AvatarController {
         Client client = clientService.findClientByEmail(authentication.getName());
         Avatar avatar = avatarService.getAvatarById(client.getId());
         if (!client.isVerificated()) {
-            return new ResponseEntity<>("Please login before edit your avatar", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Please verify your account before editing your avatar.", HttpStatus.FORBIDDEN);
         }
         if (avatarDTO.getBody() < 0 || avatarDTO.getBodyColor() < 0 || avatarDTO.getFace() < 0 || avatarDTO.getHead() < 0 || avatarDTO.getShoes() < 0){
-            return new ResponseEntity<>("Please select all the options", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Please select one of each options.", HttpStatus.FORBIDDEN);
         }
         if(avatarDTO.getBody() > 5 || avatarDTO.getBodyColor() > 4 || avatarDTO.getFace() > 5 || avatarDTO.getHead() > 9 || avatarDTO.getShoes() > 5){
-            return new ResponseEntity<>("This option doesn't exist", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("This option doesn't exist.", HttpStatus.FORBIDDEN);
         }
         avatar.setHead(avatarDTO.getHead());
         avatar.setFace(avatarDTO.getFace());
@@ -55,7 +55,7 @@ public class AvatarController {
         avatar.setBodyColor(avatarDTO.getBodyColor());
         avatar.setShoes(avatarDTO.getShoes());
         avatarService.saveAvatar(avatar);
-        return new ResponseEntity<>("Avatar edited successfully", HttpStatus.ACCEPTED);
+        return new ResponseEntity<>("Avatar edited successfully.", HttpStatus.ACCEPTED);
 
     }
 }

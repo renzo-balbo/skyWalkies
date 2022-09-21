@@ -8,6 +8,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.mindhub.skywalkies.Service.PDFService;
 import com.mindhub.skywalkies.models.Bill;
 import com.mindhub.skywalkies.models.Client_order;
+import com.mindhub.skywalkies.models.Product;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletResponse;
@@ -25,7 +26,7 @@ public class PDFServiceImplement implements PDFService {
             Font.NORMAL);
 
     @Override
-    public void generatePDF(HttpServletResponse response, List<Client_order> client_orders, Bill bill) {
+    public void generatePDF(HttpServletResponse response, List<Client_order> client_orders, Bill bill, Product product) {
         try {
             Document document = new Document(PageSize.A4);
 
@@ -38,16 +39,16 @@ public class PDFServiceImplement implements PDFService {
 
             /*TITLES*/
 
-            Paragraph title = new Paragraph("Skywalkies - Resumen de cuenta", titleFont);
+            Paragraph title = new Paragraph("Skywalkies - payment summary", titleFont);
             title.setSpacingAfter(3);
             title.setAlignment(Element.ALIGN_CENTER);
             title.setSpacingBefore(-2);
 
-            Paragraph subTitle = new Paragraph("Factura número: " + bill.getId(), subFont);
+            Paragraph subTitle = new Paragraph("Bill number: " + bill.getId(), subFont);
             subTitle.setAlignment(Element.ALIGN_CENTER);
             subTitle.setSpacingAfter(1);
 
-            Paragraph date = new Paragraph("Fecha de emisión: " + LocalDate.now(), subFont);
+            Paragraph date = new Paragraph("Date: " + LocalDate.now(), subFont);
             date.setSpacingAfter(6);
             date.setAlignment(Element.ALIGN_CENTER);
 
@@ -64,10 +65,10 @@ public class PDFServiceImplement implements PDFService {
             /*HEADERS*/
 
             PdfPTable pdfPTable = new PdfPTable(4);
-            PdfPCell pdfPCell1 = new PdfPCell(new Paragraph("Descripcion", headerFont));
-            PdfPCell pdfPCell2 = new PdfPCell(new Paragraph("Fecha", headerFont));
-            PdfPCell pdfPCell3 = new PdfPCell(new Paragraph("Tipo", headerFont));
-            PdfPCell pdfPCell4 = new PdfPCell(new Paragraph("Monto", headerFont));
+            PdfPCell pdfPCell1 = new PdfPCell(new Paragraph("Type", headerFont));
+            PdfPCell pdfPCell2 = new PdfPCell(new Paragraph("Date", headerFont));
+            PdfPCell pdfPCell3 = new PdfPCell(new Paragraph("Client", headerFont));
+            PdfPCell pdfPCell4 = new PdfPCell(new Paragraph("Total", headerFont));
             pdfPCell1.setBackgroundColor(new BaseColor(220, 7, 253));
             pdfPCell2.setBackgroundColor(new BaseColor(220, 7, 253));
             pdfPCell3.setBackgroundColor(new BaseColor(220, 7, 253));
@@ -85,16 +86,16 @@ public class PDFServiceImplement implements PDFService {
 
             client_orders.forEach(client_order -> {
 
-                //PdfPCell pdfPCell5 = new PdfPCell(new Paragraph(bill.getDescription(), subFont));
+                PdfPCell pdfPCell5 = new PdfPCell(new Paragraph(String.valueOf(product.getType()), subFont));
                 PdfPCell pdfPCell6 = new PdfPCell(new Paragraph(bill.getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")), subFont));
                 PdfPCell pdfPCell7 = new PdfPCell(new Paragraph(String.valueOf(bill.getClient()), subFont));
-                PdfPCell pdfPCell8 = new PdfPCell(new Paragraph("$" + String.valueOf(bill.getSubTotal()), subFont));
-                //pdfPCell5.setBorder(0);
+                PdfPCell pdfPCell8 = new PdfPCell(new Paragraph("$" + String.valueOf(bill.getTotal()), subFont));
+                pdfPCell5.setBorder(0);
                 pdfPCell6.setBorder(0);
                 pdfPCell7.setBorder(0);
                 pdfPCell8.setBorder(0);
 
-                //pdfPTable.addCell(pdfPCell5);
+                pdfPTable.addCell(pdfPCell5);
                 pdfPTable.addCell(pdfPCell6);
                 pdfPTable.addCell(pdfPCell7);
                 pdfPTable.addCell(pdfPCell8);

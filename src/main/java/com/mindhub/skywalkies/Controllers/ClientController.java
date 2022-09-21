@@ -55,13 +55,13 @@ public class ClientController {
             @RequestParam String email, @RequestParam String password, @RequestParam String confirmPassword) {
         if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             return new ResponseEntity<>(
-                    "Please complete all the fields", HttpStatus.FORBIDDEN);
+                    "Please complete all the fields.", HttpStatus.FORBIDDEN);
         }
         if (clientService.findClientByEmail(email) != null) {
-            return new ResponseEntity<>("Email already in use", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Email already in use.", HttpStatus.FORBIDDEN);
         }
         if(!confirmPassword.equals(password)){
-            return new ResponseEntity<>("Passwords do not match", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Passwords do not match.", HttpStatus.FORBIDDEN);
         }
         String normalizedFirstName = firstName.toUpperCase().charAt(0)+firstName.substring(1, firstName.length()).toLowerCase();
         String normalizedLastName = lastName.toUpperCase().charAt(0)+lastName.substring(1, lastName.length()).toLowerCase();
@@ -71,7 +71,7 @@ public class ClientController {
         clientService.saveClient(client);
         avatarService.saveAvatar(avatar);
         String mailSubject = "Skywalkies mail verification";
-        String mailBody= "Hey! We are so close to complete your account registration, just one more thing to do. We need you to go to this link:localhost:8080/web/verified.html?id="+ client.getId();
+        String mailBody= "Hey! We are so close to complete your account registration, just one more thing to do. We need you to verify your email visiting this link:localhost:8080/web/verified.html?id="+ client.getId();
         clientService.sendVerificationMail(client.getEmail(), mailSubject, mailBody);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

@@ -58,11 +58,15 @@ public class ProductController {
         Client client = clientService.findClientByEmail(authentication.getName());
 //        Product productName = productService.findByName(AddProductDTO.getName());
         if (NewProductDTO.getSizes().isEmpty() || NewProductDTO.getPrice() < 0 || NewProductDTO.getShoeColors().isEmpty() || NewProductDTO.getType().isEmpty() || NewProductDTO.getName().isEmpty()) {
-            return new ResponseEntity<>("Please fill all the fields", HttpStatus.FORBIDDEN);
-        } else {
+            return new ResponseEntity<>("Please fill all the fields.", HttpStatus.FORBIDDEN);
+        }
+        if (!client.getEmail().contains("@skywalkies")){
+            return new ResponseEntity<>("Your not allowed to add products.", HttpStatus.METHOD_NOT_ALLOWED);}
+
+        else {
             Product productPrueba1 = new Product(NewProductDTO.getName(), NewProductDTO.getShoeColors(), NewProductDTO.getType(), NewProductDTO.getActive(), NewProductDTO.getSizes(), NewProductDTO.getStock(), NewProductDTO.getPrice());
             productService.saveProduct(productPrueba1);
-            return new ResponseEntity<>("Product loaded successfully", HttpStatus.CREATED);
+            return new ResponseEntity<>("Product loaded successfully.", HttpStatus.CREATED);
         }
     }
 
@@ -71,7 +75,7 @@ public class ProductController {
         Client client = clientService.findClientByEmail(authentication.getName());
         Product product = productService.getProductById(productDTO.getId());
         if (!client.getEmail().contains("@skywalkies")){
-            return new ResponseEntity<>("Your not allowed to edit objects", HttpStatus.METHOD_NOT_ALLOWED);
+            return new ResponseEntity<>("Your not allowed to edit products.", HttpStatus.METHOD_NOT_ALLOWED);
         }
         if (productDTO.getName().isEmpty() || productDTO.getType().isEmpty() || productDTO.getShoeColors().isEmpty() || productDTO.getSizes().isEmpty() || productDTO.getStock() < 0 || productDTO.getPrice() < 0) {
             return new ResponseEntity<>("Please complete all fields.", HttpStatus.FORBIDDEN);
