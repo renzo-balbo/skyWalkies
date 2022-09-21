@@ -77,7 +77,7 @@ public class ProductController {
         if (!client.getEmail().contains("@skywalkies")){
             return new ResponseEntity<>("Your not allowed to edit products.", HttpStatus.METHOD_NOT_ALLOWED);
         }
-        if (productDTO.getName().isEmpty() || productDTO.getType().isEmpty() || productDTO.getShoeColors().isEmpty() || productDTO.getSizes().isEmpty() || productDTO.getStock() < 0 || productDTO.getPrice() < 0) {
+        if (productDTO.getName().isEmpty() || productDTO.getType().isEmpty() || productDTO.getShoeColors().isEmpty() || productDTO.getSizes().isEmpty() || productDTO.getStock() <= 0 || productDTO.getPrice() <= 0) {
             return new ResponseEntity<>("Please complete all fields.", HttpStatus.FORBIDDEN);
         } else {
             product.setName(productDTO.getName());
@@ -148,9 +148,6 @@ public class ProductController {
         productService.saveProduct(product);
         return new ResponseEntity<>("Products was enabled.", HttpStatus.CREATED);
     }
-
-
-
     @Transactional
     @PatchMapping("/bill/empty")
     public ResponseEntity<Object> emptyBill(@RequestParam long billId, Authentication authentication){
