@@ -31,9 +31,16 @@ createApp({
             stockToDisplay: "",
             productToDisplay: {},
             shoeColors: [],
-            //FILTERS
-            selectedColor: [],
-            // newUpperShelf:[],
+
+            //NEW PRODUCTS DATA
+            newProductName: "",
+            newProductColor: "",
+            newProductPrice: "",
+            newStatus: false,
+            newProductSizes: {},
+            newStock: "",
+
+
         }
     },
     created() {
@@ -108,13 +115,8 @@ createApp({
         changeRender(productName) {
             this.renderForModal = productName;
             this.productToDisplay = this.productsArray.find(product => product.name == productName)
+        },
 
-        },
-        nameFormater(productName) {
-            productName = productName.replace(/-/g, " ")
-            productName = productName.replace(/_/g, " ")
-            return productName;
-        },
         moneyFormatter(numberToFormat) {
             let formatter = new Intl.NumberFormat('en-US', {
                 style: 'currency',
@@ -122,6 +124,7 @@ createApp({
             })
             return formatter.format(numberToFormat)
         },
+
         loadProducts() {
             axios.get('/api/products')
                 .then(response => {
@@ -133,116 +136,32 @@ createApp({
                     this.loadShoeColors(this.productsArray)
                 })
         },
-        shelvesFiller() {
-            this.upperShelf = this.productsArray.slice(0, 14)
-            this.middleShelf = this.productsArray.slice(14, 32)
-            this.bottomShelf = this.productsArray.slice(32, 47)
-        },
-        // FILTERS 
 
+        //Productos nuevos
 
-
-        priceSortedMaxToMin() {
-            this.productsArray = this.productsArray.sort((a, b) => a.price - b.price)
-            this.upperShelf = this.upperShelf.sort((a, b) => a.price - b.price)
-            this.middleShelf = this.middleShelf.sort((a, b) => a.price - b.price)
-            this.bottomShelf = this.bottomShelf.sort((a, b) => a.price - b.price)
-        },
-
-        priceSortedMinToMax() {
-            this.productsArray = this.productsArray.sort((a, b) => b.price - a.price)
-            this.upperShelf = this.upperShelf.sort((a, b) => b.price - a.price)
-            this.middleShelf = this.middleShelf.sort((a, b) => b.price - a.price)
-            this.bottomShelf = this.bottomShelf.sort((a, b) => b.price - a.price)
-        },
-
-        loadShoeColors(shoeArray) {
-            this.shoeColors
-            shoeArray.forEach(shoe => {
-                shoe.shoeColors.forEach(color => {
-                    if (!this.shoeColors.includes(color)) {
-                        this.shoeColors.push(color)
-                    }
-                })
-            })
-        },
-
-        filterByColor() {
-            let newUpperShelf = []
-            this.selectedColor.forEach(color => {
-                this.upperShelf.forEach(shoe => {
-                    if (shoe.shoeColors.includes(color)) {
-                        if (!newUpperShelf.includes(shoe)) {
-                            newUpperShelf.push(shoe);
-                        }
-                    }
-                })
-
-            })
-            console.log(newUpperShelf)
-            this.upperShelf = newUpperShelf;
-
-
-
-
-
-
-
-            // this.middleShelf = this.middleShelf.filter(shoe => shoe.color == this.selectedColor)
-            // this.bottomShelf = this.bottomShelf.filter(shoe => shoe.color == this.selectedColor)
-        },
-
-        changeSelectedColors(selectedColor) {
-            if (this.selectedColor.filter(color => color == selectedColor).length > 0) {
-                let indexToRemove = this.selectedColor.indexOf(selectedColor)
-                this.selectedColor.splice(indexToRemove, 1)
-                console.log(this.selectedColor, 'sacando')
-            } else if (this.selectedColor.filter(color => color == selectedColor).length == 0) {
-                this.selectedColor.push(selectedColor)
-                console.log(this.selectedColor)
+        changeNewStatus() {
+            switch (this.newStatus) {
+                case true:
+                    this.newStatus = false;
+                    break;
+                case false:
+                    this.newStatus = true;
+                    break;
+                default:
+                    this.newStatus = false;
             }
-            console.log('ejecutando funcion')
+            console.log(this.newStatus);
         },
 
+        addNewProduct() {
+            axios.post('/api/products/add', { name:this.newProductName,shoeColors:this.newProductColor,type: 'Sneaker',active: this.newStatus,sizes:this.newProductSizes,stock:this.newStock,price:this.newProductPrice })
+                .then(() => {
 
-        // END FILTERS
-
-
-
-
-
-        // Esperar endpoints y hacer el addToCart
-        // addToCart() {
-        //     axios.post('/api/producsts/add', { name: this.renderForModal, color, type,active,stock,price,})
-
-        // },
-
-        login() {
-
-            axios.post("/api/login", `email=${this.clientEmail}&password=${this.clientPassword}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
-                .then(response => {
-                    console.log(response)
-                    window.location.reload();
+                    console.log("Product added")
                 })
-                .catch(error => {
-                    swal("There was an error with your email or password. Please try again.", {
-                        dangerMode: true
-                    });
-                    console.log("Error:", error.response.status, "Code:", error.code)
-                })
-            // })
-
+                .catch(error=>console.log(error))
         },
 
-        signUp() {
-            axios.post('/api/clients', `firstName=${this.newClientFirstName}&lastName=${this.newClientLastName}&email=${this.newClientEmail}&password=${this.newClientPassword}&confirmPassword=${this.confirmNewClientPassword}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
-                .then(response => console.log(response))
-                .catch(error => {
-                        swal(error.response.data +".", {
-                            dangerMode: true
-                        })
-                })
-        },
 
         logout() {
             axios.post("/api/logout")
@@ -255,16 +174,6 @@ createApp({
 
     },
     computed: {
-        filtering() {
-            if (this.selectedColor.length == 0) {
-                this.upperShelf = this.productsArray.slice(0, 14)
-                this.middleShelf = this.productsArray.slice(14, 32)
-                this.bottomShelf = this.productsArray.slice(32, 47)
-            } else if (this.selectedColor.length > 0) {
-                this.filterByColor()
-                console.log('filtering')
-            }
-        }
     },
 }).mount('#app')
 

@@ -141,7 +141,7 @@ public class ProductController {
 
 
 
-
+    @Transactional
     @PatchMapping("/bill/empty")
     public ResponseEntity<Object> emptyBill(@RequestParam long billId, Authentication authentication){
         Client client = clientService.findClientByEmail(authentication.getName());
@@ -169,18 +169,22 @@ public class ProductController {
         return new ResponseEntity<>("Cart successfully empty!", HttpStatus.CREATED);
     }
 
-//    @PatchMapping("/ordered_product/remove")
-//    public ResponseEntity<Object> removeItemFromBill (@RequestParam long id,Authentication authentication){
-//        Client client = clientService.findClientByEmail(authentication.getName());
-//        Bill bill = client.getBills().stream().filter(bill1 -> !bill1.isPayed()).findFirst().orElse(null);
-//        bill.getClient_orders().forEach(client_order -> {
-//            client_order.getOrdered_products().stream().filter(ordered_product -> ordered_product.getProduct().getId() == id);
-//        });
-//
-//
-//
-//
-//
-//    }
+    @Transactional
+    @PatchMapping("/ordered_product/remove")
+    public ResponseEntity<Object> removeItemFromBill (@RequestParam long orderedProductId, long billId,Authentication authentication){
+        Client client = clientService.findClientByEmail(authentication.getName());
+        Ordered_product ordered_product = ordered_productService.getProdutById(orderedProductId);
+        Bill bill = billService.getBillByid(billId);
+        Client_order client_order = bill.getClient_orders().stream().filter(client_order1 -> client_order1.getOrdered_products().contains(ordered_product)).findFirst().orElse(null);
+
+        Product productToRestore = ordered_product.getProduct();
+        productToRestore.setStock(productToRestore.getStock()+ordered_product.getQuantity());
+        productService.saveProduct(productToRestore);
+        client_order.setOrdered_products(client_order.getOrdered_products().stream().filter(ordered_product1 -> ordered_product1 != ordered_product).collect(Collectors.toSet()));
+        client_orderService.saveClientOrders(client_order);
+        billService.saveBill(bill);
+
+        return  new ResponseEntity<>("Item removed successfully!", HttpStatus.CREATED);
+    }
 
 }
