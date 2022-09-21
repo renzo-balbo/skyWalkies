@@ -121,18 +121,13 @@ public class ProductController {
         return new ResponseEntity<>("Product added successfully.", HttpStatus.CREATED);
     }
 
-    @PatchMapping ("/products/delete")
-    public ResponseEntity<?> delete (@RequestParam String id){
-        if(id.isEmpty()){
-            return new ResponseEntity<>("Please complete all fields.", HttpStatus.FORBIDDEN);
-        }
-        Long longId= Long.valueOf(id);
-        Product product = productService.getProductById(longId);
-        if(product == null){
-            return new ResponseEntity<>("Product does not exist.", HttpStatus.FORBIDDEN);
-        }
-        productService.delete(product);
-        return new ResponseEntity<>("product has been deleted successfully.", HttpStatus.OK);
-    }
+    @PatchMapping("/products/delete/{id}")
+   public ResponseEntity<Object> deleteProducts(@PathVariable long id, Authentication authentication){
+        Client client = clientService.findClientByEmail(authentication.getName());
+        Product product = productService.getProductById(id);
+        product.setDeleted(false);
+        productService.saveProduct(product);
+        return new ResponseEntity<>("products was deleted", HttpStatus.FORBIDDEN);
+   }
 
 }

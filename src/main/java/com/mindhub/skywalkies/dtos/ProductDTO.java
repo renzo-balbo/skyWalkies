@@ -18,6 +18,7 @@ public class ProductDTO {
 
     private int stock;
     private double price;
+    private boolean deleted;
 
     public ProductDTO() {
     }
@@ -31,6 +32,7 @@ public class ProductDTO {
         this.stock = product.getStock();
         this.type = product.getType();
         this.price = product.getPrice();
+        this.deleted = product.isDeleted();
     }
 
 
@@ -56,6 +58,10 @@ public class ProductDTO {
 
     public List<Integer> getSizes() {
         return sizes;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
     }
 
     public int getStock() {
