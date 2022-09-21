@@ -154,8 +154,8 @@
         <main class="d-flex flex-column flex-lg-row justify-content-lg-around container align-items-center">
             <div class="d-flex justify-content-center flex-wrap col-lg-7">
 
-                <h1 class="text-center fw-bolder">Your Wardrobe</h1>
-
+                <h1 class="text-center fw-bolder">Your Wardrobe <button class="btn btn-dark" @click="emptyCart()">Empty Cart</button></h1>
+             
                 <div
                     class="container overflow-auto alturaWardrobe d-lg-flex flex-lg-wrap justify-content-lg-around scrollBar">
                     <div v-for="product in  productsToDisplay" class="card d-flex my-5 my-lg-2 col-lg-5 sombra productInWardrobe">
@@ -166,8 +166,8 @@
                         </div>
                         <div class="d-flex align-items-center justify-content-around cardBody">
                             <div>
-                                <h3 >{{moneyFormatter(product.productsAmount)}}</h3>
-                                <p>{{product.quantity}} units: $</p>
+                                <h3 >{{moneyFormatter(product.productDTO.price)}}</h3>
+                                <p>{{product.quantity}} units: ${{product.productsAmount}}</p>
                             </div>
                             <i class="bi bi-x-circle-fill"></i>
                         </div>

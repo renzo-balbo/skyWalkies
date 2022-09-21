@@ -24,22 +24,22 @@
                 <!-- OFF CANVAS LEFT PARA EL NAV -->
 
                 <a href="./cart.html" class="text-black mx-2">
-                        
-                        <!-- <i class="bi bi-bag-fill" style="font-size: 2.2rem;"></i> -->
 
-                        <i class="bi bi-bag-heart-fill" style="font-size: 2.2rem;"></i>
+                    <!-- <i class="bi bi-bag-fill" style="font-size: 2.2rem;"></i> -->
 
-                        <!-- <i class="bi bi-cart4" style="font-size: 2.2rem;"></i> -->
-                        <span class="position-absolute translate-middle badge rounded-pill bg-dark">
-                            4
-                        </span>
+                    <i class="bi bi-bag-heart-fill" style="font-size: 2.2rem;"></i>
+
+                    <!-- <i class="bi bi-cart4" style="font-size: 2.2rem;"></i> -->
+                    <span class="position-absolute translate-middle badge rounded-pill bg-dark">
+                        4
+                    </span>
                 </a>
-                    
+
 
                 <!-- ACA TERMINA EL OFF CANVAS DE  NAV -->
 
                 <img src="../assets/img/skyWalkiesIsoLogo.png" height="100%" alt="">
-                
+
 
                 <!-- OFF CANVAS RIGHT REGISTRO -->
 
@@ -160,7 +160,7 @@
                         <div v-else class="d-flex justify-content-center flex-wrap align-items-between">
 
                             <!-- ESTE DIV NO SE VE -->
-                            <div class="d-none"> 
+                            <div class="d-none">
                                 <!-- LOAD HEADS -->
                                 <img src="../assets/img/avatarCollection/head1.png" alt="">
                                 <img src="../assets/img/avatarCollection/head2.png" alt="">
@@ -212,7 +212,7 @@
                                     </button>
                                 </a>
                             </div>
-                            
+
 
                             <div class="d-flex justify-content-center col-12 my-2">
                                 <button @click="logout" class="btn btn-dark col-6">
@@ -381,37 +381,38 @@
                 <div class="ocultar my-4">
                     <div class="d-flex flex-wrap justify-content-center card mx-3 mb-2">
                         <h2 class="text-center">News</h2>
-                        <p class="m-3">Suscribe to out newsletter to keep in touch with the lastest news from SKYWALKIES.</p>
+                        <p class="m-3">Suscribe to out newsletter to keep in touch with the lastest news from
+                            SKYWALKIES.</p>
                         <a href="#" class="text-black text-center mb-2">Suscribe</a>
                     </div>
 
                     <div class="d-flex mt-5 flex-column align-items-center justify-content-center">
                         <div class="d-flex my-2 gap-2">
-                            <img src="../assets/img/NIKE-LV-LOW_02.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
-                            <img src="../assets/img/NIKE-LV-LOW_01.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
-                            <img src="../assets/img/NIKE-LV-LOW_04.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
+                            <img src="../assets/img/NIKE-LV-LOW_02.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-LOW_01.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-LOW_04.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
 
 
                         </div>
                         <div class="d-flex my-2 gap-2">
-                            <img src="../assets/img/NIKE-LV-LOW_13.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
-                            <img src="../assets/img/NIKE-LV-LOW_25.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
-                            <img src="../assets/img/NIKE-LV-LOW_12.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
+                            <img src="../assets/img/NIKE-LV-LOW_13.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-LOW_25.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-LOW_12.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
 
                         </div>
                         <div class="d-flex my-2 gap-2">
-                            <img src="../assets/img/NIKE-LV-LOW_tricolor.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
-                            <img src="../assets/img/NIKE-LV-HIGH_03.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
-                            <img src="../assets/img/NIKE-LV-HIGH_06.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
+                            <img src="../assets/img/NIKE-LV-LOW_tricolor.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-HIGH_03.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-HIGH_06.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
 
                         </div>
                     </div>
@@ -442,21 +443,31 @@
                                     style="width: 100%;"></video>
                             </div>
                             <div class="d-flex flex-column col-10 col-md-5">
-                                <h2 class="fw-bolder">{{nameFormater(renderForModal)}}</h2>
-                                <h3 class="fw-bold">{{productToDisplay.price}}</h3>
-                                <h5>Stock: {{productToDisplay.stock}}</h5>
-                                <button class="btn btn-dark col-md-6">Add to Cart</button>
-                                <div class="mt-2 d-flex justify-content-start align-items-center gap-3">
-                                    <div v-for="size in productToDisplaySizes" >
-                                        <input class="form-check-input d-none" type="radio" name="shoeSize" :id="size" ref="input" :value="size" v-model="shoeSize">
-                                        <label class="form-check-label" :class="'input' ? 'sizesDark' : 'sizes'" :for="size" @click="selectSize">
-                                         {{size}}
+                            
+                                    <h2 class="fw-bolder">
+                                        {{nameFormater(renderForModal)}}</h2>
+                                    <h3 class="fw-bold">{{productToDisplay.price}}</h3>
+                                    <h5>Stock: {{productToDisplay.stock}}</h5>
+                               
+
+                                <div class="mt-2 d-flex justify-content-start align-items-center gap-3 ">
+                                    <div v-for="size in productToDisplaySizes" class="d-flex bg-danger">
+                                        <input class="form-check-input d-none" type="radio" name="shoeSize" :id="size"
+                                            ref="input" :value="size" v-model="shoeSize">
+                                        <label class="form-check-label" :class="'input' ? 'sizesDark' : 'sizes'"
+                                            :for="size" @click="selectSize">
+                                            {{size}}
                                         </label>
-                                        
                                     </div>
                                 </div>
+                                <div class="mt-1">
+                                    <label for="quantity"  class="p-1"> Quantity </label>
+                                    <input type="number"id="quantity" v-model="quantity" class="text-center" :value="quantity" style="width: 3rem;">
+                                </div>
+                                <button @submit.prevent="" :value="" class="btn btn-dark col-md-6 mt-1" @click="addToCart()">Add
+                                    to Cart</button>
                             </div>
-                            
+
                         </div>
 
                         <div class="modal-footer d-flex justify-content-center container">
@@ -634,105 +645,106 @@
                     </div>
                     <div class=" boxNewsletter d-flex justify-content-start align-items-center">
                         <div class="divs d-flex flex-column align-items-center">
-                            <p class="m-3 text-center fs-3">Suscribe to our newsletter to keep in touch with the lastest news from SKYWALKIES.</p>
-                            <a href="#" class="text-black text-center mb-2 fs-4">Suscribe</a>    
+                            <p class="m-3 text-center fs-3">Suscribe to our newsletter to keep in touch with the lastest
+                                news from SKYWALKIES.</p>
+                            <a href="#" class="text-black text-center mb-2 fs-4">Suscribe</a>
                         </div>
                     </div>
                     <div class=" boxShoes d-flex flex-column align-items-center justify-content-center">
                         <div class="d-flex my-2 gap-2 estanteZapatillas">
-                            <img src="../assets/img/NIKE-LV-LOW_02.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
-                            <img src="../assets/img/NIKE-LV-LOW_01.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
-                            <img src="../assets/img/NIKE-LV-LOW_04.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
+                            <img src="../assets/img/NIKE-LV-LOW_02.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-LOW_01.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-LOW_04.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
                         </div>
                         <div class="d-flex my-2 gap-2 estanteZapatillas">
-                            <img src="../assets/img/NIKE-LV-LOW_13.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
-                            <img src="../assets/img/NIKE-LV-LOW_25.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
-                            <img src="../assets/img/NIKE-LV-LOW_12.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
+                            <img src="../assets/img/NIKE-LV-LOW_13.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-LOW_25.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-LOW_12.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
                         </div>
                         <div class="d-flex my-2 gap-2 estanteZapatillas">
-                            <img src="../assets/img/NIKE-LV-LOW_tricolor.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
-                            <img src="../assets/img/NIKE-LV-HIGH_03.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
-                            <img src="../assets/img/NIKE-LV-HIGH_06.png"
-                                class="card-img-top widthZapaCarrusel" alt="...">
+                            <img src="../assets/img/NIKE-LV-LOW_tricolor.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-HIGH_03.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
+                            <img src="../assets/img/NIKE-LV-HIGH_06.png" class="card-img-top widthZapaCarrusel"
+                                alt="...">
                         </div>
                     </div>
                 </div>
+            </div>
+    </div>
+    <!-- TERMINA SLIDER -->
+    </main>
+
+
+    <footer class="d-flex align-items-center justify-content-evenly justify-content-lg-start">
+        <!-- FOOTER MOBILE -->
+        <div class="mt-5 d-flex d-lg-none align-items-center justify-content-evenly border-top flex-wrap">
+            <div class="d-flex justify-content-evenly col-12 col-md pt-3">
+                <div class="d-flex flex-column">
+                    <a href="#" class="fs-5 text-black">ABOUT US</a>
+                    <a href="#" class="fs-6 text-black">News</a>
+                </div>
+                <div class="d-flex flex-column">
+                    <a href="#" class="fs-6 text-black">Influence</a>
+                    <a href="#" class="fs-6 text-black">Employment</a>
                 </div>
             </div>
-            <!-- TERMINA SLIDER -->
-        </main>
 
+            <div class="d-flex col-12 col-md justify-content-center mt-lg-3">
+                <a href="#" class="fs-1 mx-4 text-black">
+                    <i class="bi bi-instagram"></i>
+                </a>
 
-        <footer class="d-flex align-items-center justify-content-evenly justify-content-lg-start">
-            <!-- FOOTER MOBILE -->
-            <div class="mt-5 d-flex d-lg-none align-items-center justify-content-evenly border-top flex-wrap">
-                <div class="d-flex justify-content-evenly col-12 col-md pt-3">
-                    <div class="d-flex flex-column">
-                        <a href="#" class="fs-5 text-black">ABOUT US</a>
-                        <a href="#" class="fs-6 text-black">News</a>
-                    </div>
-                    <div class="d-flex flex-column">
-                        <a href="#" class="fs-6 text-black">Influence</a>
-                        <a href="#" class="fs-6 text-black">Employment</a>
-                    </div>
-                </div>
+                <a href="#" class="fs-1 mx-4 text-black">
+                    <i class="bi bi-facebook"></i>
+                </a>
 
-                <div class="d-flex col-12 col-md justify-content-center mt-lg-3">
-                    <a href="#" class="fs-1 mx-4 text-black">
-                        <i class="bi bi-instagram"></i>
-                    </a>
+                <a href="#" class="fs-1 mx-4 text-black">
+                    <i class="bi bi-twitter"></i>
+                </a>
 
-                    <a href="#" class="fs-1 mx-4 text-black">
-                        <i class="bi bi-facebook"></i>
-                    </a>
-
-                    <a href="#" class="fs-1 mx-4 text-black">
-                        <i class="bi bi-twitter"></i>
-                    </a>
-
-                </div>
-
-                <div class="d-flex flex-column col-12 col-md text-center justify-content-end pt-4">
-                    <p>&copy; 2022 SKYWALKIES SRL. All rights reserved</p>
-                    <a href="#" class="text-black">Terms and privacy policy</a>
-                </div>
             </div>
-            <!-- FIN FOOTER MOBILE -->
+
+            <div class="d-flex flex-column col-12 col-md text-center justify-content-end pt-4">
+                <p>&copy; 2022 SKYWALKIES SRL. All rights reserved</p>
+                <a href="#" class="text-black">Terms and privacy policy</a>
+            </div>
+        </div>
+        <!-- FIN FOOTER MOBILE -->
 
 
 
-            <!-- FOOTER DESKTOP -->
-            <ul class="d-lg-flex justify-content-around align-items-center d-none" id="footerLg">
-                <li class="mt-4">
-                    <a href="#newCollection">Nike newest collection</a>
-                </li>
-                <li class="mt-4">
-                    <a href="#handcrafted">Handcrafted</a>
-                </li>
-                <li class="mt-4">
-                    <a href="#gallery">Gallery</a>
-                </li>
-                <li class="mt-4">
-                    <a href="#inspiration">Inspiration</a>
-                </li>
-                <li class="mt-4">
-                    <a href="#exposition">Exposition</a>
-                </li>
-                <li class="mt-4">
-                    <a href="#news">News</a>
-                </li>
-                <li class="mt-4">Sky Walkies &reg;</li>
-            </ul>
-            <!-- FIN FOOTER DESKTOP -->
-        </footer>
+        <!-- FOOTER DESKTOP -->
+        <ul class="d-lg-flex justify-content-around align-items-center d-none" id="footerLg">
+            <li class="mt-4">
+                <a href="#newCollection">Nike newest collection</a>
+            </li>
+            <li class="mt-4">
+                <a href="#handcrafted">Handcrafted</a>
+            </li>
+            <li class="mt-4">
+                <a href="#gallery">Gallery</a>
+            </li>
+            <li class="mt-4">
+                <a href="#inspiration">Inspiration</a>
+            </li>
+            <li class="mt-4">
+                <a href="#exposition">Exposition</a>
+            </li>
+            <li class="mt-4">
+                <a href="#news">News</a>
+            </li>
+            <li class="mt-4">Sky Walkies &reg;</li>
+        </ul>
+        <!-- FIN FOOTER DESKTOP -->
+    </footer>
     </div>
 
 

@@ -3,16 +3,20 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-
             client: {},
             bills: {},
-            currentBill:{},
-            productsToDisplay:[],
+            currentBill: {},
+            productsToDisplay: [],
+            queryString: "",
+            params: "",
+            id: "",
         }
     },
 
     created() {
-
+        this.queryString = location.search
+        this.params = new URLSearchParams(this.queryString)
+        this.id = this.params.get("id")
         this.loadClientData();
 
     },
@@ -32,9 +36,9 @@ createApp({
                 })
         },
 
-        loadProductsToDisplay(){
+        loadProductsToDisplay() {
             this.currentBill.client_orders.forEach(clientOrder => {
-                clientOrder.ordered_productDTOS.forEach(ordered_productDTO =>{
+                clientOrder.ordered_productDTOS.forEach(ordered_productDTO => {
                     this.productsToDisplay.push(ordered_productDTO)
                 })
             });
@@ -52,6 +56,10 @@ createApp({
                 currency: 'USD',
             })
             return formatter.format(numberToFormat)
+        },
+        emptyCart() {
+            axios.patch('/bill/empty/'+this.id , +{ billId: this.id }, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+                .then(() => console.log("funciona"))
         },
 
 
