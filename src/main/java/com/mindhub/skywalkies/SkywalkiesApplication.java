@@ -79,11 +79,15 @@ public class SkywalkiesApplication {
 
             //BILLS//
             Bill bill1 = new Bill( LocalDateTime.now(), false, (productShoe3.getPrice()*3));
+            Bill bill2 = new Bill(LocalDateTime.now(), false,(productShoe5.getPrice()*2));
             bill1.addTicketNumber(randomNumberTicket(1, 999999999));
+            bill2.addTicketNumber(randomNumberTicket(1, 999999999));
             //BILLS//
             Avatar avatar1 = new Avatar(1,2,1,4,3);
+            Avatar avatar2 = new Avatar(2,1,3,1,2);
             //CLIENTES//
             Client client1 = new Client("renzo", "balbo", "renzobalbo@skywalkies.com.ar", passwordEncoder.encode("skywalkies"), true, bill1, avatar1);
+            Client cliente2 = new Client("Franco", "Puto", "franco@hotmail.com", passwordEncoder.encode("123"), true, bill2, avatar2);
             //CLIENTES//
 
             //ORDENES//
@@ -93,19 +97,26 @@ public class SkywalkiesApplication {
 
             //CLIENTS ORDERS//
             Client_order clientOrder1 = new Client_order(bill1);
+            Client_order clientOrder2 = new Client_order(bill2);
             //CLIENTS ORDERS/
 
             //ADD//
             Ordered_product ordered_product1= new Ordered_product(clientOrder1, 3, 8,  productShoe3.getPrice(), productShoe3);
+            Ordered_product ordered_product2= new Ordered_product(clientOrder2, 2, 8,  productShoe5.getPrice(), productShoe5);
             bill1.addClient_order(clientOrder1);
+            bill2.addClient_order(clientOrder2);
 //            clientOrder1.addOrder_products(ordered_product1);
             //ADD//
 
 
             clientRepository.save(client1);
+            clientRepository.save(cliente2);
             avatarRepository.save(avatar1);
+            avatarRepository.save(avatar2);
             billRepository.save(bill1);
+            billRepository.save(bill2);
             client_orderRepository.save(clientOrder1);
+            client_orderRepository.save(clientOrder2);
             productRepository.save(productShoe1);
             productRepository.save(productShoe2);
             productRepository.save(productShoe3);
@@ -155,6 +166,7 @@ public class SkywalkiesApplication {
 
 
             ordered_productRepository.save(ordered_product1);
+            ordered_productRepository.save(ordered_product2);
 
         };
     }
