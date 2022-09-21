@@ -32,6 +32,7 @@ createApp({
             productToDisplay: {},
             shoeColors: [],
             productToDisplaySizes:[],
+            shoeSize: 0,
             //FILTERS
             selectedColor: [],
             // newUpperShelf:[],
@@ -261,14 +262,12 @@ createApp({
                 })
         },
 
-    // funcion para radios de size
-    // selectSize(){
-    //     let inputs = this.$refs.input
-    //     let selectedInput = inputs.filter(enput =>enput.checked)
-    //     let label = selectedInput[0].labels
-    //   
-    // NO TERMINE TODAVIA PERO ME TENIA QUE IR (ALU <3)
-    // },
+    selectSize(){
+        let inputs = this.$refs.input
+        let selectedInput = inputs.indexOf(this.shoeSize)
+        console.log(this.$refs.input)
+      
+    },
 
 
 

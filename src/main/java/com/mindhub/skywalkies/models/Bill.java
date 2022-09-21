@@ -1,13 +1,9 @@
 package com.mindhub.skywalkies.models;
-
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.Random;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Entity
 public class Bill {
@@ -152,6 +148,4 @@ public class Bill {
     public void addTicketNumber(int number){
         setTicketNumber(number);
     }
-
-
 }

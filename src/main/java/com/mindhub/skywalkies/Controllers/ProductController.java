@@ -7,6 +7,7 @@ import com.mindhub.skywalkies.dtos.ProductDTO;
 import com.mindhub.skywalkies.models.*;
 import com.mindhub.skywalkies.repositories.Client_OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -69,6 +70,9 @@ public class ProductController {
     public ResponseEntity<Object> editProduct(@RequestBody ProductDTO productDTO, Authentication authentication) {
         Client client = clientService.findClientByEmail(authentication.getName());
         Product product = productService.getProductById(productDTO.getId());
+        if (!client.getEmail().contains("@skywalkies")){
+            return new ResponseEntity<>("Your not allowed to edit objects", HttpStatus.METHOD_NOT_ALLOWED);
+        }
         if (productDTO.getName().isEmpty() || productDTO.getType().isEmpty() || productDTO.getShoeColors().isEmpty() || productDTO.getSizes().isEmpty() || productDTO.getStock() < 0 || productDTO.getPrice() < 0) {
             return new ResponseEntity<>("Please complete all fields.", HttpStatus.FORBIDDEN);
         } else {
@@ -78,7 +82,6 @@ public class ProductController {
             product.setSize(productDTO.getSizes());
             product.setStock(productDTO.getStock());
             product.setPrice(productDTO.getPrice());
-
             productService.saveProduct(product);
             return new ResponseEntity<>("Product edited successfully", HttpStatus.ACCEPTED);
         }
@@ -90,10 +93,15 @@ public class ProductController {
         Client client = clientService.findClientByEmail(authentication.getName());
         Bill bill;
         List<Product> productActive1 = productService.getAllProducts().stream().filter(product -> product.isActive()).collect(Collectors.toList());
-
-//        if (addProductDTO == null){
-//            return new ResponseEntity<>("That product no exist", HttpStatus.FORBIDDEN);
-//        }
+        if (!clientService.getAllClients().contains(client)){
+            return new ResponseEntity<>("Please first Login", HttpStatus.FORBIDDEN);
+        }
+        if (!client.isVerificated()){
+            return new ResponseEntity<>("Please first verified", HttpStatus.FORBIDDEN);
+        }
+        if (!addProductDTO.contains(productActive1)){
+            return new ResponseEntity<>("That product no exist", HttpStatus.FORBIDDEN);
+        }
         if (client.getBills().stream().anyMatch(billToCheck -> !billToCheck.isPayed())){
             bill = client.getBills().stream().filter(bill1 -> !bill1.isPayed()).findFirst().orElse(null);
         } else {
@@ -113,6 +121,7 @@ public class ProductController {
             }
         });
         int ticketNumber = randomNumberTicket(1, 999999999);
+        bill.setTicketNumber(ticketNumber);
         bill.addTicketNumber(ticketNumber);
         billService.saveBill(bill);
         client_orderService.saveClientOrders(client_order);
