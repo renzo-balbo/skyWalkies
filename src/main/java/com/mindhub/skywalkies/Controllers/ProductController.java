@@ -99,7 +99,7 @@ public class ProductController {
         if (!client.isVerificated()){
             return new ResponseEntity<>("Please first verified", HttpStatus.FORBIDDEN);
         }
-        if (!addProductDTO.contains(productActive1)){
+        if (addProductDTO.contains(productActive1)){
             return new ResponseEntity<>("That product no exist", HttpStatus.FORBIDDEN);
         }
         if (client.getBills().stream().anyMatch(billToCheck -> !billToCheck.isPayed())){
@@ -178,6 +178,7 @@ public class ProductController {
         Client_order client_order = bill.getClient_orders().stream().filter(client_order1 -> client_order1.getOrdered_products().contains(ordered_product)).findFirst().orElse(null);
 
         Product productToRestore = ordered_product.getProduct();
+        bill.setSubTotal(bill.getSubTotal()-(ordered_product.getProductsAmount()*ordered_product.getQuantity()));
         productToRestore.setStock(productToRestore.getStock()+ordered_product.getQuantity());
         ordered_product.setClient_order(null);
         ordered_productService.saveOrderProduct(ordered_product);
@@ -187,7 +188,7 @@ public class ProductController {
             client_order.setBillId(null);
         }
         client_orderService.saveClientOrders(client_order);
-        bill.setSubTotal(bill.getSubTotal()-ordered_product.getProductsAmount());
+
         billService.saveBill(bill);
 
         return  new ResponseEntity<>("Item removed successfully!", HttpStatus.CREATED);
