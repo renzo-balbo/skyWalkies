@@ -56,6 +56,12 @@ createApp({
                 .then(() => window.location.reload())
         },
 
+        remoteItemFromCart(itemToRemove){
+            axios.patch('/api/ordered_product/remove',`orderedProductId=${itemToRemove.id}&billId=${this.currentBill.id}`)
+            .then(response => console.log(response))
+            .catch(error => console.log(error.response))
+        },
+
 
 
 

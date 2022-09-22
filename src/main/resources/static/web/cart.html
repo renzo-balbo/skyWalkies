@@ -187,7 +187,9 @@
                                 <h3>{{moneyFormatter(product.productDTO.price)}}</h3>
                                 <p>{{product.quantity}} units: ${{product.productsAmount}}</p>
                             </div>
-                            <i class="bi bi-x-circle-fill"></i>
+                            <button @click="remoteItemFromCart(product)">
+                                <i class="bi bi-x-circle-fill"></i>
+                            </button>
                         </div>
                     </div>
 
