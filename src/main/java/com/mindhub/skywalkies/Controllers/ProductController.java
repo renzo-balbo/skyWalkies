@@ -190,6 +190,8 @@ public class ProductController {
         }
         Product productToRestore = ordered_product.getProduct();
         bill.setSubTotal(bill.getSubTotal()-(ordered_product.getProductsAmount()*ordered_product.getQuantity()));
+        bill.setIva(bill.getIva()-((ordered_product.getProductsAmount()*ordered_product.getQuantity())*0.21));
+        bill.setTotal(bill.getTotal()-((ordered_product.getProductsAmount()*ordered_product.getQuantity())*1.21));
         productToRestore.setStock(productToRestore.getStock()+ordered_product.getQuantity());
         ordered_product.setClient_order(null);
         ordered_productService.saveOrderProduct(ordered_product);
