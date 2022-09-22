@@ -7,7 +7,6 @@ import com.mindhub.skywalkies.dtos.ProductDTO;
 import com.mindhub.skywalkies.models.*;
 import com.mindhub.skywalkies.repositories.Client_OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -16,9 +15,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
 import static com.mindhub.skywalkies.Utilities.BillUtilities.randomNumberTicket;
@@ -96,16 +95,35 @@ public class ProductController {
     public ResponseEntity<Object> addProduct(@RequestBody Set<AddProductDTO> addProductDTO, Authentication authentication) {
         Client client = clientService.findClientByEmail(authentication.getName());
         Bill bill;
-        List<Product> productActive1 = productService.getAllProducts().stream().filter(product -> product.isActive()).collect(Collectors.toList());
+        List<Product> activeProducts = productService.getAllProducts().stream().filter(product -> product.isActive()).collect(Collectors.toList());
         if (!clientService.getAllClients().contains(client)){
             return new ResponseEntity<>("Please first Login", HttpStatus.FORBIDDEN);
         }
         if (!client.isVerificated()){
             return new ResponseEntity<>("Please first verified", HttpStatus.FORBIDDEN);
         }
-        if (addProductDTO.contains(productActive1)){
-            return new ResponseEntity<>("That product no exist", HttpStatus.FORBIDDEN);
+
+        List<Integer> productQuantity =  addProductDTO.stream().map(addProductDTO1 -> addProductDTO1.getQuantity()).collect(Collectors.toList());
+        if(productQuantity.contains(0)){
+            return new ResponseEntity<>("Please specify how many pairs you want to purchase.", HttpStatus.FORBIDDEN);
         }
+
+
+         AtomicBoolean enoughStock = new AtomicBoolean(true);
+         addProductDTO.forEach(addProductDTO1 -> {
+             if(addProductDTO1.getQuantity()>productService.getProductById(addProductDTO1.getId()).getStock()){
+                 enoughStock.set(false);
+             }
+         });
+         if(!enoughStock.get()){
+             return new ResponseEntity<>("There's not enough stock of one of these products.", HttpStatus.FORBIDDEN);
+         }
+
+
+
+
+
+
         if (client.getBills().stream().anyMatch(billToCheck -> !billToCheck.isPayed())){
             bill = client.getBills().stream().filter(bill1 -> !bill1.isPayed()).findFirst().orElse(null);
         } else {
