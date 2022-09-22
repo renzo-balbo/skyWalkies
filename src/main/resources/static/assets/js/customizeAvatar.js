@@ -3,6 +3,7 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            currentClient: null,
             clientAvatar: {},
             customAvatar: {},
             avatarHead: new Image(),
@@ -48,7 +49,7 @@ createApp({
         loadClientData() {
             axios.get('/api/clients/current')
                 .then(response => {
-                    
+                    this.currentClient = response.data
                     this.clientAvatar = response.data.avatar
                     this.customAvatar = this.clientAvatar;
                 })
@@ -114,6 +115,44 @@ createApp({
                     timer: 1500
                 }))
                 .catch(error => console.log(error))
+        },
+
+
+        areYouSure() {
+            let swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-light m-2',
+                    cancelButton: 'btn btn-light m-2'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: '¡Yes!',
+                cancelButtonText: '¡Cancel!',
+                color: 'white',
+                background: 'black',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.logout()
+                } else if (
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire({
+                        title: 'Great!',
+                        text: "Let's keep walking in the sky",
+                        icon: 'success',
+                        color: 'white',
+                        background: 'black',
+                        showConfirmButton: false
+                    })
+
+                }
+            })
         },
 
 

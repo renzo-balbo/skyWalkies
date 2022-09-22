@@ -157,22 +157,6 @@ createApp({
 
         // FILTERS 
 
-
-
-        // priceSortedMaxToMin() {
-        //     this.productsArray = this.productsArray.sort((a, b) => a.price - b.price)
-        //     this.upperShelf = this.upperShelf.sort((a, b) => a.price - b.price)
-        //     this.middleShelf = this.middleShelf.sort((a, b) => a.price - b.price)
-        //     this.bottomShelf = this.bottomShelf.sort((a, b) => a.price - b.price)
-        // },
-
-        // priceSortedMinToMax() {
-        //     this.productsArray = this.productsArray.sort((a, b) => b.price - a.price)
-        //     this.upperShelf = this.upperShelf.sort((a, b) => b.price - a.price)
-        //     this.middleShelf = this.middleShelf.sort((a, b) => b.price - a.price)
-        //     this.bottomShelf = this.bottomShelf.sort((a, b) => b.price - a.price)
-        // },
-
         loadShoeColors(shoeArray) {
             this.shoeColors
             shoeArray.forEach(shoe => {
@@ -244,17 +228,6 @@ createApp({
         // END FILTERS
 
 
-
-
-
-
-
-        // Esperar endpoints y hacer el addToCart
-        // addToCart() {
-        //     axios.post('/api/producsts/add', { name: this.renderForModal, color, type,active,stock,price,})
-
-        // },
-
         login() {
 
             axios.post("/api/login", `email=${this.clientEmail}&password=${this.clientPassword}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
@@ -314,8 +287,8 @@ createApp({
                         background: 'black',        
                         timer: 1500
                     }))
-
         },
+
         areYouSure() {
             let swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
