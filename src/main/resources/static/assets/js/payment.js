@@ -4,9 +4,16 @@ createApp({
     data() {
         return {
             client: {},
-            bills: {},
+            bills: [],
             currentBill: {},
-            productsToDisplay: [],
+            cardholder: "",
+            cardNumber: "",
+            thruDate: new Date(),
+            cvv: 0,
+            fromAccount: "",
+            destinyAccount: "VIN7070"
+
+
         }
     },
 
@@ -25,18 +32,10 @@ createApp({
                     this.bills = this.client.bills;
                     this.currentBill = this.bills.find(bill => bill.payed == false)
                     console.log(this.currentBill);
-                    this.loadProductsToDisplay()
-                    console.log(this.productsToDisplay)
                 })
         },
 
-        loadProductsToDisplay() {
-            this.currentBill.client_orders.forEach(clientOrder => {
-                clientOrder.ordered_productDTOS.forEach(ordered_productDTO => {
-                    this.productsToDisplay.push(ordered_productDTO)
-                })
-            });
-        },
+
 
         nameFormater(productName) {
             productName = productName.replace(/-/g, " ")
@@ -51,20 +50,17 @@ createApp({
             })
             return formatter.format(numberToFormat)
         },
-        emptyCart() {
-            axios.patch('/api/bill/empty/',`billId=${this.currentBill.id}`)
-                .then(() => window.location.reload())
-        },
 
-        remoteItemFromCart(itemToRemove){
-            axios.patch('/api/ordered_product/remove',`orderedProductId=${itemToRemove.id}&billId=${this.currentBill.id}`)
-            .then(response => {
-                console.log(response)
-                window.location.reload();
-            }
-            )
-            .catch(error => console.log(error.response))
-        },
+
+
+
+
+
+
+
+
+
+
 
         logout() {
             axios.post('/api/logout')
@@ -142,6 +138,62 @@ createApp({
                 }
             })
         },
+
+        areYouSurePay() {
+            let swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-light m-2',
+                    cancelButton: 'btn btn-light m-2'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: '¡Yes!',
+                cancelButtonText: '¡Cancel!',
+                color: 'white',
+                background: 'black',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.pay()
+                } else if (
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire({
+                        title: 'Great!',
+                        text: "Let's buy it then!",
+                        icon: 'success',
+                        color: 'white',
+                        background: 'black',
+                        showConfirmButton: false
+                    })
+
+                }
+            })
+        },
+
+        pay() {
+            axios.post("https://homebankingvrubank.herokuapp.com/api/transactions/payment", {
+                cardNumber: this.cardNumber,
+                cardCvv: this.cvv,
+                amount: this.currentBill.total,
+                description: 'Purchase in SKYWALKIES',
+                thruDate: this.thruDate,
+                cardHolder: this.cardHolder,
+                accountNumber: this.fromAccount,
+                accountNumberTo: this.destinyAccount
+            })
+                .then(response => {
+                    console.log(response)
+                    axios.patch('/api/bills/payment', `idBill=${this.currentBill.id}`)
+                    .then(console.log('Purchase completed successfully!'))
+                    .catch(error => console.log(error))
+                })
+        }
 
     },
 

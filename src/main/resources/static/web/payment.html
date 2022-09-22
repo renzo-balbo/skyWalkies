@@ -17,7 +17,7 @@
     <!-- <link rel="stylesheet" href="../assets/styles/styles.css"> -->
 </head>
 
-<body>
+<body id="app">
     <header>
         <nav class="d-flex justify-content-between align-items-center">
             <!-- OFF CANVAS LEFT PARA EL NAV -->
@@ -162,10 +162,13 @@
                     <label for="cvv">CVV:</label>
                     <input type="number" class="form-control" id="cvv" placeholder="" value="" v-model="cvv">
 
+                    <label for="fromAccount">Account of origin:</label>
+                    <input type="text" class="form-control" id="fromAccount" placeholder="" value="" v-model="fromAccount">
+
                     <div class="m-1">
-                        <h5 class="fw-bold fs-3">Total: $5,292.16</h5>
+                        <h5 class="fw-bold fs-3">Total: {{moneyFormatter(currentBill.total)}}</h5>
                     </div>
-                    <input type="submit" class="btn btn-dark" id="submit" placeholder="" value="Purchase">
+                    <input type="submit" class="btn btn-dark" id="submit" placeholder="" value="Purchase" @click="areYouSurePay">
             </form>
         </div>
     </main>
@@ -212,6 +215,7 @@
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../assets/js/payment.js"></script>
 </body>
 
 </html>
