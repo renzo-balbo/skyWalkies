@@ -127,6 +127,8 @@ public class ProductController {
         int ticketNumber = randomNumberTicket(1, 999999999);
         bill.setTicketNumber(ticketNumber);
         bill.addTicketNumber(ticketNumber);
+        bill.setIva(bill.getSubTotal()*0.21);
+        bill.setTotal(bill.getSubTotal()*1.21);
         billService.saveBill(bill);
         client_orderService.saveClientOrders(client_order);
         client.addBill(bill);
