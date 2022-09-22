@@ -31,7 +31,7 @@
                         <i class="bi bi-bag-heart-fill" style="font-size: 2.2rem;">
                             <span class="position-absolute translate-middle badge rounded-pill"
                                 style="font-size: 0.5rem; top: 15px; color: white; background-color: red;">
-                                    <!-- {{checkBadgeNumber}} -->
+                                <!-- {{checkBadgeNumber}} -->
                             </span>
                         </i>
 
@@ -256,7 +256,7 @@
                 <!-- PRESENTACION DEL PRODUCTO -->
                 <div class="ocultar mt-1">
                     <div class="d-flex flex-wrap justify-content-center">
-                        <h1 class="card">Nike newest collection...</h1>
+                        <h2 class="card text-center fw-bolder bgTitlesMobile sombra col-12">Nike newest collection...</h2>
                         <div class="d-flex justify-content-center ms-5 my-4">
                             <video src="../assets/vid/zapatillaRotando.webm" autoplay loop muted></video>
                         </div>
@@ -275,8 +275,8 @@
 
                 <!-- SECCION HANDCRAFTED  -->
                 <div class="ocultar my-5">
+                    <h2 class="card text-center fw-bolder bgTitlesMobile sombra col-12">Handcrafted</h2>
                     <div class="d-flex flex-wrap justify-content-center card mx-3">
-                        <h2 class="text-center">Handcrafted</h2>
                         <p class="m-3">Travel to Fiesso d'Artico and enter the Maison's atelier to discover the
                             unrivaled craftsmanship the most authentic high-end sports shoe ever.</p>
                         <h3 class="text-center">"A PATTERN TAKES SHAPE"</h3>
@@ -296,9 +296,24 @@
                 <!-- SECCION GALERIA DE ZAPAS      -->
                 <div class="d-flex flex-wrap justify-content-center ocultar">
                     <div class="d-flex justify-content-around align-items-center flex-wrap">
-                        <h2 class="card">Designs Gallery</h2>
+                        <h2 class="card text-center fw-bolder bgTitlesMobile sombra col-12">Designs Gallery</h2>
 
-                        <!-- CARRUSEL DE BOOTSTRAP, VER MAS TARDE -->
+
+                        <div class="d-flex flex-wrap justify-content-around filtersMobile p-2 col-12 mb-5 mt-2">
+                            <div class="col-12 d-flex flex-wrap justify-content-center">
+
+                                <div v-for="color in shoeColors" class="d-flex mx-2">
+                                    <input type="checkbox" @change="changeSelectedColors(color)" :id="color"
+                                        :value="color">
+                                    <label :for="color">{{color}}</label>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                        <!-- CARRUSEL DE BOOTSTRAP-->
                         <div class="d-flex flex-wrap ocultar justify-content-center gap-3">
                             <div class="shoesCarrouselMobile squares col-10">
 
@@ -312,7 +327,7 @@
 
                             </div>
 
-                            <div class="shoesCarrouselMobile squares col-10 ">
+                            <div v-if="selectedColor.length == 0" class="shoesCarrouselMobile squares col-10 ">
                                 <button class="noBGnoBorder mx-2" v-for="product in middleShelf"
                                     @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop">
@@ -322,7 +337,7 @@
                                 </button>
                             </div>
 
-                            <div class="shoesCarrouselMobile squares col-10 ">
+                            <div v-if="selectedColor.length == 0" class="shoesCarrouselMobile squares col-10 ">
                                 <button class="noBGnoBorder mx-2" v-for="product in bottomShelf"
                                     @click="changeRender(product.name)" href="#staticBackdrop" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop">
@@ -343,8 +358,8 @@
                 <!-- SECCION INSPIRACION -->
                 <div class="ocultar my-3">
 
+                    <h2 class="card text-center fw-bolder bgTitlesMobile sombra col-12">Inspiration</h2>
                     <div class="d-flex flex-wrap justify-content-center card mx-3">
-                        <h2 class="text-center">Inspiration</h2>
                         <p class="m-3">Trip around the word. Explore Renzo Balbo's creative investigation through spaces
                             and motifs inherent in his work.</p>
                     </div>
@@ -359,27 +374,27 @@
 
 
                 <!-- SECCION EXPOSITION  -->
-                <div class="ocultar my-2">
-                    <div class="d-flex flex-wrap justify-content-center card mx-3 mb-3">
-                        <h2 class="text-center">Exposition</h2>
-                        <p class="m-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis atque hic placeat
-                            exercitationem
-                            blanditiis pariatur adipisci, repellendus aut provident. Quia.</p>
-                    </div>
-
-                    <div class="d-flex justify-content-center">
-                        <!-- CAMBIAR VIDEO POR OBJETO 3D -->
-                        <video autoplay muted loop width="300px">
-                            <source src="../assets/vid/handcrafted/handcrafted_2.mp4" type="video/mp4">
-                        </video>
-                    </div>
+                <div class="ocultar d-flex flex-column align-items-center my-2">
+                        <h2 class="card text-center fw-bolder bgTitlesMobile sombra col-12">Exposition</h2>
+                        <div class="d-flex justify-content-center">
+                            <p class="col-9 bgSubtitles">Join us on our travel around the world, be part of our
+                                family. Visit our facilities in Venice, Italy, and immerse yourself in the
+                                exhibition. </p>
+                        </div>
+                        <img class="venice col-12 mb-3" src="../assets/img/venice.jpg" alt="">
+                        <div class="cajaVideo d-flex flex-column justify-content-center align-items-center col-12 mb-4">
+                            <a href="https://www.instagram.com/skywalkies_/" >
+                                <img src="../assets/img/skywalkiesInstagram.jpeg" alt="" class="sombra my-1">
+                            </a>
+                            <h4 class="bgSubtitles fw-light sombra mt-1">Scan to join us on Instagram</h4>
+                        </div>
                 </div>
 
 
                 <!-- SECCION NEWS  -->
                 <div class="ocultar my-4">
+                    <h2 class="card text-center fw-bolder bgTitlesMobile sombra col-12">News</h2>
                     <div class="d-flex flex-wrap justify-content-center card mx-3 mb-2">
-                        <h2 class="text-center">News</h2>
                         <p class="m-3">Suscribe to out newsletter to keep in touch with the lastest news from
                             SKYWALKIES.</p>
                         <a href="#" class="text-black text-center mb-2">Suscribe</a>
@@ -554,17 +569,6 @@
                     <div class="col-12 d-flex flex-column align-items-center justify-content-center gap-1">
                         <h2 class="text-center fw-bolder bgTitles">Design Gallery</h2>
                         <div class="d-flex align-items-center flex-wrap justify-content-around filters p-2">
-                            <!-- <div class="input-group col-6">
-                                <input @change="priceSortedMaxToMin" type="radio" name="priceSorter"
-                                    id="maxToMinSorter">
-                                <label for="maxToMinSorter">Order price from Higher to Lower</label>
-                            </div>
-                            <div class="input-group col-6">
-                                <input type="radio" name="priceSorter" id="minToMaxSorter">
-                                <label for="minToMaxSorter">Order price from Lower to Higher</label>
-                            </div> -->
-
-
                             <div class="col-12 d-flex flex-wrap justify-content-center">
 
                                 <div v-for="color in shoeColors" class="d-flex mx-2">
@@ -647,7 +651,9 @@
                         </div>
                         <img class="venice col-6 mx-5" src="../assets/img/venice.jpg" alt="">
                         <div class="cajaVideo d-flex flex-column justify-content-center align-items-center col-3">
-                            <img src="../assets/img/skywalkiesInstagram.jpeg" alt="" class="sombra">
+                            <a href="https://www.instagram.com/skywalkies_/" >
+                                <img src="../assets/img/skywalkiesInstagram.jpeg" alt="" class="sombra">
+                            </a>
                             <h4 class="bgSubtitles fw-light sombra mt-5">Scan to join us on Instagram</h4>
                         </div>
                     </div>
