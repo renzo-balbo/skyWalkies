@@ -185,7 +185,9 @@ public class ProductController {
         Ordered_product ordered_product = ordered_productService.getProdutById(orderedProductId);
         Bill bill = billService.getBillByid(billId);
         Client_order client_order = bill.getClient_orders().stream().filter(client_order1 -> client_order1.getOrdered_products().contains(ordered_product)).findFirst().orElse(null);
-
+        if (!client.getBills().contains(bill)){
+            return new ResponseEntity<>("This bill isn't yours", HttpStatus.FORBIDDEN);
+        }
         Product productToRestore = ordered_product.getProduct();
         bill.setSubTotal(bill.getSubTotal()-(ordered_product.getProductsAmount()*ordered_product.getQuantity()));
         productToRestore.setStock(productToRestore.getStock()+ordered_product.getQuantity());
@@ -197,10 +199,7 @@ public class ProductController {
             client_order.setBillId(null);
         }
         client_orderService.saveClientOrders(client_order);
-
         billService.saveBill(bill);
-
         return  new ResponseEntity<>("Item removed successfully!", HttpStatus.CREATED);
     }
-
 }

@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 public class AvatarController {
     @Autowired
     private AvatarService avatarService;
-
     @Autowired
     private ClientService clientService;
 
@@ -29,7 +28,6 @@ public class AvatarController {
     public List<AvatarDTO> getClients() {
         return avatarService.getAllAvatars().stream().map(AvatarDTO::new).collect(Collectors.toList());
     }
-
     @GetMapping("/avatar/{id}")
     public AvatarDTO getAvatar(@PathVariable long id) {
         return new AvatarDTO(avatarService.getAvatarById(id));
