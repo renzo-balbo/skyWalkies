@@ -198,7 +198,12 @@ createApp({
                 .then(response => {
                     console.log(response)
                     axios.patch('/api/bills/payment', `idBill=${this.currentBill.id}`)
-                        .then(console.log('Purchase completed successfully!'))
+                        .then(response =>{
+                            console.log(response,'Purchase completed successfully!')
+                            axios.post('/api/bills/pdf/download',`billId=${this.currentBill.id}`)
+                            .then(response => console.log(response))
+                            .catch(errpr => console.log(error))
+                        })
                         .catch(error => console.log(error))
                 })
         }, 
