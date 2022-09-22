@@ -232,8 +232,17 @@ createApp({
 
             axios.post("/api/login", `email=${this.clientEmail}&password=${this.clientPassword}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
                 .then(response => {
-                    console.log(response)
-                    window.location.reload();
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Welcome!',
+                        color: 'white',
+                        background: 'black',    
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    setTimeout(()=> {
+                        window.location.reload();}
+                        , 1500);
                 })
                 .catch(error => {
                     swal("There was an error with your email or password. Please try again.", {
@@ -248,8 +257,9 @@ createApp({
         signUp() {
             axios.post('/api/clients', `firstName=${this.newClientFirstName}&lastName=${this.newClientLastName}&email=${this.newClientEmail}&password=${this.newClientPassword}&confirmPassword=${this.confirmNewClientPassword}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
                 .then(response => Swal.fire({
-                    icon: 'success',
-                    title: 'Welcome back!',
+                    icon: 'question',
+                    title: 'One more step!',
+                    text:'Check your email inbox and verify your account',
                     color: 'white',
                     background: 'black',    
                     showConfirmButton: false,
@@ -319,6 +329,7 @@ createApp({
                         icon: 'success',
                         color: 'white',
                         background: 'black',
+                        timer: 1500,
                         showConfirmButton: false
                     })
 
