@@ -16,18 +16,13 @@ public class Ordered_product {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
-
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id")
     private Product product;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_order_id")
     private Client_order client_order;
 
-
-//    private long product_id;
     private int quantity;
     private Integer size;
     private double productsAmount;

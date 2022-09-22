@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class Ordered_productDTO {
 
-    private long product_id, client_order_id;
+    private long product_id, client_order_id, id;
 
     private int quantity;
     private Integer size;
@@ -20,6 +20,7 @@ public class Ordered_productDTO {
     }
 
     public Ordered_productDTO(Ordered_product ordered_product) {
+        this.id= ordered_product.getId();
         this.product_id = ordered_product.getProduct().getId();
         this.client_order_id = ordered_product.getClient_order().getId();
         this.quantity = ordered_product.getQuantity();
@@ -45,6 +46,10 @@ public class Ordered_productDTO {
     }
 
     public Integer getSize() {return size;}
+
+    public long getId() {
+        return id;
+    }
 
     public double getProductsAmount() {return productsAmount;}
 }

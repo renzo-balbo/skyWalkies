@@ -34,14 +34,10 @@ public class ClientController {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private AvatarService avatarService;
-
     @Autowired
     private Client_orderService client_orderService;
-
     @Autowired
     private ClientService clientService;
-
-
     @GetMapping("/clients")
     public List<ClientDTO> getClients() {
         return clientService.getAllClients().stream().map(ClientDTO::new).collect(Collectors.toList());
