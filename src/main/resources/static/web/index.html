@@ -19,7 +19,7 @@
 
 <body>
     <div id="app">
-        <header class=" sticky-top bg-white">
+        <header class="sticky-top bg-white">
             <nav class="d-flex justify-content-between align-items-center">
                 <!-- OFF CANVAS LEFT PARA EL NAV -->
 
@@ -28,19 +28,23 @@
 
                         <!-- <i class="bi bi-bag-fill" style="font-size: 2.2rem;"></i> -->
 
-                        <i class="bi bi-bag-heart-fill" style="font-size: 2.2rem;"></i>
+                        <i class="bi bi-bag-heart-fill" style="font-size: 2.2rem;">
+                            <span class="position-absolute translate-middle badge rounded-pill"
+                                style="font-size: 0.5rem; top: 15px; color: white; background-color: red;">
+                                    <!-- {{checkBadgeNumber}} -->
+                            </span>
+                        </i>
 
                         <!-- <i class="bi bi-cart4" style="font-size: 2.2rem;"></i> -->
-                        <span v-if="currentBill!=null"
-                            class="position-absolute translate-middle badge rounded-pill bg-dark">
-                            !
-                        </span>
                     </a>
                 </div>
 
 
-                <a href="#">
+                <a class="d-none d-md-flex" href="#">
                     <img src="../assets/img/skyWalkiesIsoLogo.png" height="80" alt="Skywalkies logo">
+                </a>
+                <a class="d-md-none d-flex" href="#">
+                    <img src="../assets/img/skyWalkiesIsoLogoTxt.png" height="80" alt="Skywalkies logo">
                 </a>
 
 
@@ -48,8 +52,8 @@
 
                 <button class="btn btn-solid d-flex align-items-center me-md-3" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" @click="renderAvatar">
-                    <p v-if="currentClient == null" class="mt-2 me-2 fw-bold">Log In / Sign Up</p>
-                    <p v-else class="mt-2 me-2 fw-bold">User Panel</p>
+                    <p v-if="currentClient == null" class="mt-2 me-2 fw-bold d-none d-md-flex">Log In / Sign Up</p>
+                    <p v-else class="mt-2 me-2 fw-bold d-none d-md-flex">User Panel</p>
                     <i class="bi bi-person-circle fs-2"></i>
                 </button>
 
@@ -632,15 +636,21 @@
 
 
                 <div class="bloques" id="exposition">
-                    <div class=" c1 d-flex justify-content-center align-items-center">
-                        <h2 class="text-center fw-bolder bgTitles">Exposition</h2>
+                    <div class="d-flex">
+                        <div class="d-flex flex-column justify-content-center align-items-center col-3">
+                            <h2 class="text-center fw-bolder bgTitles sombra">Exposition</h2>
+                            <div class="d-flex justify-content-center">
+                                <p class="col-9 bgSubtitles">Join us on our travel around the world, be part of our
+                                    family. Visit our facilities in Venicen, Italy, and immerse yourself in the
+                                    exhibition. </p>
+                            </div>
+                        </div>
+                        <img class="venice col-6 mx-5" src="../assets/img/venice.jpg" alt="">
+                        <div class="cajaVideo d-flex flex-column justify-content-center align-items-center col-3">
+                            <img src="../assets/img/skywalkiesInstagram.jpeg" alt="" class="sombra">
+                            <h4 class="bgSubtitles fw-light sombra mt-5">Scan to join us on Instagram</h4>
+                        </div>
                     </div>
-                    <div class="cajaVideo d-flex flex-column justify-content-center align-items-center col-6">
-                        <h4 class="bgSubtitles fw-bold sombra">Follow us on Instagram</h4>
-                        <img src="../assets/img/skywalkiesInstagram.jpeg" alt="" class="sombra">
-                    </div>
-                    <div class="divs"></div>
-                    <div class="divs"></div>
                 </div>
 
 

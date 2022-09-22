@@ -42,6 +42,9 @@ createApp({
             size: 0,
             quantity: 0,
 
+            //BADGE
+            badgeNumber:0,
+
         }
     },
     created() {
@@ -244,6 +247,8 @@ createApp({
 
 
 
+
+
         // Esperar endpoints y hacer el addToCart
         // addToCart() {
         //     axios.post('/api/producsts/add', { name: this.renderForModal, color, type,active,stock,price,})
@@ -359,7 +364,18 @@ createApp({
                 this.filterByColor()
                 // console.log('filtering')
             }
-        }
+        },
+        
+        // checkBadgeNumber(){
+        //     if(this.currentBill!=null){
+        //         this.currentBill.client_orders.forEach(clientOrder=>{
+        //             clientOrder.ordered_productDTOS.forEach(ordered_productDTOS=>{
+        //                 this.badgeNumber = this.badgeNumber+1
+        //             })
+        //         })
+        //     }
+        //     return(this.badgeNumber)
+        // },
 
     },
 }).mount('#app')
