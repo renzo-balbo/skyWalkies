@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../assets/styles/styles.css">
+    <link rel="stylesheet" href="../assets/styles/verified.css">
     <link rel="stylesheet" href="../assets/styles/slider.css">
     <link rel="shortcut icon" href="../assets/img/skyWalkiesLogo.png" type="image/x-icon">
 </head>
@@ -20,171 +20,32 @@
 <body>
     <div id="app">
         <header class=" sticky-top bg-white border-bottom">
-            <nav class="d-flex justify-content-between align-items-center">
-                <!-- OFF CANVAS LEFT PARA EL NAV -->
+            <nav class="d-flex justify-content-center align-items-center">
 
-                <button class="btn btn-solid" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-                    <i class="bi bi-grid-fill icono"></i>
-                </button>
-                <div class="offcanvas offcanvas-start " data-bs-scroll="true" tabindex="-1"
-                    id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Aca va el nav</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body p-0">
-                        <div class="list-group m-0">
-                            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Nav
-                                items</a>
-                            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Nav
-                                items</a>
-                            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Nav
-                                items</a>
-                            <a href="#" class="list-group-item list-group-item-action list-group-item-light">Nav
-                                items</a>
-                        </div>
-                    </div>
-                </div>
+                <a href="./index.html" class="col-6 col-md-2 col-lg-1">
+                    <img src="../assets/img/skyWalkiesIsoLogoTxt.png"  width="100%" alt="">
+                </a>
 
-                <!-- ACA TERMINA EL OFF CANVAS DE  NAV -->
-
-                <img src="../assets/img/skyWalkiesIsoLogo.png" height="100%" alt="">
-
-                <!-- OFF CANVAS RIGHT REGISTRO -->
-
-                <button class="btn btn-solid" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                    aria-controls="offcanvasRight">
-                    <i class="bi bi-person-circle"></i>
-                </button>
-
-                <div class="offcanvas offcanvas-end" tabindex="-1" data-bs-scroll="true" id="offcanvasRight"
-                    aria-labelledby="offcanvasRightLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasRightLabel">Aca va el register</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <div class="accordion accordion-flush" id="accordionFlushExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapseOne" aria-expanded="false"
-                                        aria-controls="flush-collapseOne">
-                                        REGISTER
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                    aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">
-
-                                        <!-- FORM DE REGISTRO -->
-
-                                        <form>
-                                            <div class="mb-3">
-                                                <label for="newClientFirstName" class="form-label">First Name</label>
-                                                <input type="text" class="form-control" id="newClientFirstName"
-                                                    v-model="newClientFirstName">
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label for="newClientLastName" class="form-label">Last Name</label>
-                                                <input type="text" class="form-control" id="newClientLastName"
-                                                    v-model="newClientLastName">
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label for="newClientEmail" class="form-label">Email address</label>
-                                                <input type="email" class="form-control" id="newClientEmail"
-                                                    aria-describedby="emailHelp" v-model="newClientEmail">
-                                                <div id="emailHelp" class="form-text">We'll never share your email with
-                                                    anyone else.</div>
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                                <input type="password" class="form-control" id="">
-                                            </div>
-
-                                            <button type="submit" class="btn btn-dark">Submit</button>
-                                        </form>
-
-                                        <!-- TERMINA FORM -->
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapseTwo" aria-expanded="false"
-                                        aria-controls="flush-collapseTwo">
-                                        LOG IN
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                                    aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">
-
-                                        <!-- FORM DE LOGIN -->
-
-                                        <form>
-                                            <div class="mb-3">
-                                                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                                <input type="email" class="form-control" id=""
-                                                    aria-describedby="emailHelp">
-                                                <div id="emailHelp" class="form-text">We'll never share your email with
-                                                    anyone else.</div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                                <input type="password" class="form-control" id="">
-                                            </div>
-                                            <button type="submit" class="btn btn-dark">Submit</button>
-                                        </form>
-
-                                        <!-- TERMINA FORM -->
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ACA TERMINA EL OFF CANVAS DE REGISTRO -->
             </nav>
 
         </header>
 
 
-        <main class="d-flex flex-column flex-wrap justify-content-center align-items-center">
+        <main class="d-flex flex-column flex-wrap justify-content-center align-items-center bg-white">
 
-            <div class="d-flex flex-column">
-                <img src="../assets/img/skyWalkiesLogo.png" alt="SKYWALKIES Logo" class="img-fluid bg-white" width="350">
-                <img src="../assets/img/skyWalkiesIsoLogoTxt.png" alt="" class="img-fluid bg-white" width="350">
-            </div>
-
-            <div class="text-center bg-white">
-                <h4 class="fw-normal">Your account has been activated!</h4>
-                <h4 class="fw-normal">Please log in!</h4>
-
-                <a href="../web/index.html">
-                    <button>Go to site!</button>
-                </a>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
+                
+                <div class="d-flex flex-column">
+                    <img src="../assets/img/skyWalkiesLogo.png" alt="SKYWALKIES Logo" class="img-fluid bg-white" width="350">
+                </div>
+                
+                <div class="text-center bg-white">
+                    <h4 class="fw-normal">Your account has been activated!</h4>
+                    <h4 class="fw-normal">Please log in!</h4>
+                    
+                    <a href="../web/index.html">
+                        <button class="btn btn-dark mt-4">Go to site!</button>
+                    </a>
+                </div>
 
         </main>
 
@@ -207,15 +68,15 @@
 
 
             <div class="d-flex col-12 col-md justify-content-center mt-lg-3">
-                <a href="#" class="fs-1 mx-4 text-black">
+                <a href="https://www.instagram.com/skywalkies_/" class="fs-1 mx-4 text-black">
                     <i class="bi bi-instagram"></i>
                 </a>
 
-                <a href="#" class="fs-1 mx-4 text-black">
+                <a href="https://www.facebook.com/" class="fs-1 mx-4 text-black">
                     <i class="bi bi-facebook"></i>
                 </a>
 
-                <a href="#" class="fs-1 mx-4 text-black">
+                <a href="https://www.twitter.com/" class="fs-1 mx-4 text-black">
                     <i class="bi bi-twitter"></i>
                 </a>
 
