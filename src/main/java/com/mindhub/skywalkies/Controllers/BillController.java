@@ -7,6 +7,7 @@ import com.mindhub.skywalkies.Service.ProductService;
 import com.mindhub.skywalkies.dtos.BillDTO;
 import com.mindhub.skywalkies.models.Bill;
 import com.mindhub.skywalkies.models.Client;
+import com.mindhub.skywalkies.models.Client_order;
 import com.mindhub.skywalkies.models.Product;
 import com.mindhub.skywalkies.repositories.BillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,10 +48,11 @@ public class BillController {
         return new BillDTO(billService.getBillByid(id));
     }
     @PatchMapping("/bills/payment")
-    public ResponseEntity<Object> payment(@RequestParam long idBill){
+    public ResponseEntity<Object> payment(@RequestParam long idBill, Authentication authentication){
+        Client client = clientService.findClientByEmail(authentication.getName());
         Bill bill = billService.getBillByid(idBill);
         bill.setPayed(true);
-        Bill bill2 = new Bill(LocalDateTime.now(),false,0);
+        Bill bill2 = new Bill(client,LocalDateTime.now(), false, 0);
         billService.saveBill(bill);
         billService.saveBill(bill2);
         return new ResponseEntity<>("Payed successfully!", HttpStatus.CREATED);

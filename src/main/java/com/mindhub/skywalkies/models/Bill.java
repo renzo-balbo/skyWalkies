@@ -46,6 +46,13 @@ public class Bill {
         this.total = subTotal*1.21;
     }
 
+    public Bill(Client client, LocalDateTime date, boolean payed, double subTotal) {
+        this.client = client;
+        this.date = date;
+        this.payed = payed;
+        this.subTotal = subTotal;
+    }
+
     public Bill(LocalDateTime date, boolean payed, double subTotal, int ticketNumber) {
         this.date = date;
         this.payed = payed;
