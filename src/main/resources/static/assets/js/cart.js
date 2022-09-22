@@ -53,7 +53,7 @@ createApp({
         },
         emptyCart() {
             axios.patch('/api/bill/empty/',`billId=${this.currentBill.id}`)
-                .then(() => console.log("funciona"))
+                .then(() => window.location.reload())
         },
 
 
