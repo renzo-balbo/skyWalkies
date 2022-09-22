@@ -177,7 +177,7 @@
                     <div v-for="product in  productsToDisplay"
                         class="card d-flex my-5 my-lg-2 col-lg-5 sombra productInWardrobe">
 
-                        <div class="d-flex flex-column cardImageAndTitle">
+                        <div class="cardImageAndTitle">
                             <h3 class="p-1 text-center fw-bolder">{{nameFormater(product.productDTO.name)}}</h3>
                             <img :src="'../assets/img/'+product.productDTO.name+'.png'" class="pb-4"
                                 :alt="'Picture of'+product.productDTO.name ">
@@ -185,10 +185,11 @@
                         <div class="d-flex align-items-center justify-content-around cardBody">
                             <div>
                                 <h3>{{moneyFormatter(product.productDTO.price)}}</h3>
+                                <p>Size: {{product.size}}</p>
                                 <p>{{product.quantity}} units: ${{product.productsAmount}}</p>
                             </div>
-                            <button @click="remoteItemFromCart(product)">
-                                <i class="bi bi-x-circle-fill"></i>
+                            <button style="size: 16rem;" class="btn" @click="remoteItemFromCart(product)">
+                                <i  class="bi bi-x-circle-fill col-12 fs-3"></i>
                             </button>
                         </div>
                     </div>

@@ -95,7 +95,12 @@ body {
 }
 
 .cardImageAndTitle {
-    height: 16.5rem
+    height: 16.5rem;
+    padding: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
 }
 
 .formInputsModal {
@@ -223,11 +228,20 @@ body {
 }
 
 
-@media (min-width: 769px) {
+@media (min-width: 768px) and (max-width: 1000px) {
     td>img {
         width: 40%;
     }
+    .cardImageAndTitle{
+        flex-direction: row;
+        align-items: center;
+    }
+    .productInWardrobe>div>img{
+        width: 50%;
+    }
 }
+
+
 
 @media(min-width: 992px) {
     footer {
