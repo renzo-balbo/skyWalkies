@@ -128,7 +128,7 @@
                                                 <label for="exampleInputPassword1" class="form-label">Password</label>
                                                 <input type="password" class="form-control" id="">
                                             </div>
-                                            <button type="submit" class="btn btn-dark">Submit</button>
+                                            <button type="submit" class="btn btn-dark" @click="areYouSure">Submit</button>
                                         </form>
 
                                         <!-- TERMINA FORM -->
@@ -156,7 +156,7 @@
 
                 <div class="d-flex justify-content-around align-items-center col-7">
                     <h1 class="text-center fw-bolder al">Your Wardrobe </h1>
-                    <button v-if="currentBill.client_orders.length != 0" class="btn btn-dark" @click="emptyCart()">Empty It!</button>
+                    <button v-if="currentBill.client_orders.length != 0" class="btn btn-dark" @click="areYouSureEmpty()">Empty It!</button>
                 </div>
 
                 <div
@@ -360,6 +360,7 @@
     <script src="https://unpkg.com/vue@3"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../assets/js/cart.js"></script>
 </body>
 

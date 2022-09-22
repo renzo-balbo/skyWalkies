@@ -13,7 +13,7 @@ createApp({
             newClientPassword: "",
             confirmNewClientPassword: "",
             currentClient: null,
-            currentBill:null,
+            currentBill: null,
             // AVATAR
             avatar: {},
             avatarHead: new Image(),
@@ -137,7 +137,7 @@ createApp({
         loadProducts() {
             axios.get('/api/products')
                 .then(response => {
-                    this.productsArray = response.data.filter(product=>product.active==true)
+                    this.productsArray = response.data.filter(product => product.active == true)
                     this.productsArray.forEach(product => product.price = this.moneyFormatter(product.price))
                     // this.priceSortedMaxToMin()
                     // this.priceSortedMinToMax()
@@ -269,7 +269,14 @@ createApp({
 
         signUp() {
             axios.post('/api/clients', `firstName=${this.newClientFirstName}&lastName=${this.newClientLastName}&email=${this.newClientEmail}&password=${this.newClientPassword}&confirmPassword=${this.confirmNewClientPassword}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
-                .then(response => console.log(response))
+                .then(response => Swal.fire({
+                    icon: 'success',
+                    title: 'Welcome back!',
+                    color: 'white',
+                    background: 'black',    
+                    showConfirmButton: false,
+                    timer: 1500
+                }))
                 .catch(error => {
                     console.log(error)
                     console.log("Error:", error.response.status, "Code:", error.code, error.response.data)
@@ -293,9 +300,53 @@ createApp({
         },
         addToCart() {
             axios.post("/api/products/addProduct", [{ id: this.productToDisplay.id, productName: this.productToDisplay.name, size: this.shoeSize, quantity: this.quantity }])
-            .then(response => console.log(response))
-            
-        }
+                .then(response =>
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Shoe added to cart!',
+                        showConfirmButton: false,
+                        color: 'white',
+                        background: 'black',        
+                        timer: 1500
+                    }))
+
+        },
+        areYouSure() {
+            let swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-light m-2',
+                    cancelButton: 'btn btn-light m-2'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: '¡Yes!',
+                cancelButtonText: '¡Cancel!',
+                color: 'white',
+                background: 'black',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.logout()
+                } else if (
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire({
+                        title: 'Great!',
+                        text: "Let's keep walking in the sky",
+                        icon: 'success',
+                        color: 'white',
+                        background: 'black',
+                        showConfirmButton: false
+                    })
+
+                }
+            })
+        },
 
 
 

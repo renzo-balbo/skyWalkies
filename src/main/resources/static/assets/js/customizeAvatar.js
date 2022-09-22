@@ -105,9 +105,15 @@ createApp({
 
         saveNewAvatar() {
             axios.patch('/api/clients/current/avatar', { head: this.customAvatar.head, body: this.customAvatar.body, bodyColor: this.customAvatar.bodyColor, face: this.customAvatar.face, shoes: this.customAvatar.shoes })
-                .then(() => {
-                    console.log("Your avatar has been updated!")
-                })
+                .then(
+                    Swal.fire({
+                    icon: 'success',
+                    title: 'Your avatar has been updated!',
+                    showConfirmButton: false,
+                    color: 'white',
+                    background: 'black',        
+                    timer: 1500
+                }))
                 .catch(error => console.log(error))
         },
 

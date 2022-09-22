@@ -70,7 +70,78 @@ createApp({
             axios.post('/api/logout')
                 .then(response => window.location.href = "./index.html")
         },
+        areYouSure() {
+            let swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-light m-2',
+                    cancelButton: 'btn btn-light m-2'
+                },
+                buttonsStyling: false
+            })
 
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: '¡Yes!',
+                cancelButtonText: '¡Cancel!',
+                color: 'white',
+                background: 'black',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.logout()
+                } else if (
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire({
+                        title: 'Great!',
+                        text: "Let's keep walking in the sky",
+                        icon: 'success',
+                        color: 'white',
+                        background: 'black',
+                        showConfirmButton: false
+                    })
+
+                }
+            })
+        },
+        areYouSureEmpty() {
+            let swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-light m-2',
+                    cancelButton: 'btn btn-light m-2'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: '¡Yes!',
+                cancelButtonText: '¡Cancel!',
+                color: 'white',
+                background: 'black',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.emptyCart()
+                } else if (
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire({
+                        title: 'Great!',
+                        text: "Let's buy it then!",
+                        icon: 'success',
+                        color: 'white',
+                        background: 'black',
+                        showConfirmButton: false
+                    })
+
+                }
+            })
+        },
 
     },
 
