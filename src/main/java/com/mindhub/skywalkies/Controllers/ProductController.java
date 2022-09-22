@@ -111,7 +111,7 @@ public class ProductController {
 
          AtomicBoolean enoughStock = new AtomicBoolean(true);
          addProductDTO.forEach(addProductDTO1 -> {
-             if(addProductDTO1.getQuantity()>productService.getProductById(addProductDTO1.getId()).getStock()){
+             if(addProductDTO1.getQuantity()>productService.getProductById(addProductDTO1.getId()).getStock() || !productService.getProductById(addProductDTO1.getId()).getSize().contains(addProductDTO1.getSize())){
                  enoughStock.set(false);
              }
          });
