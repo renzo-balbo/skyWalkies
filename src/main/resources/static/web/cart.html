@@ -26,7 +26,7 @@
                 <!-- OFF CANVAS LEFT PARA EL NAV -->
 
                 <div>
-                    <a href="./cart.html" :class="currentClient==null?'d-none' : ' '" class="text-black mx-2 ms-3">
+                    <a href="./cart.html" class="text-black mx-2 ms-3">
 
                         <!-- <i class="bi bi-bag-fill" style="font-size: 2.2rem;"></i> -->
 
@@ -54,8 +54,7 @@
 
                 <button class="btn btn-solid d-flex align-items-center me-md-3" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" @click="renderAvatar">
-                    <p v-if="currentClient == null" class="mt-2 me-2 fw-bold d-none d-md-flex">Log In / Sign Up</p>
-                    <p v-else class="mt-2 me-2 fw-bold d-none d-md-flex">User Panel</p>
+                    <p class="mt-2 me-2 fw-bold d-none d-md-flex">User Panel</p>
                     <i class="bi bi-person-circle fs-2"></i>
                 </button>
 
@@ -68,105 +67,7 @@
                     <div class="offcanvas-body">
 
 
-
-
-                        <div v-if="currentClient == null" class="accordion accordion-flush" id="accordionFlushExample">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapseOne" aria-expanded="false"
-                                        aria-controls="flush-collapseOne">
-                                        REGISTER
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                    aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">
-
-                                        <!-- FORM DE REGISTRO -->
-
-                                        <form @submit.prevent="">
-                                            <div class="mb-3">
-                                                <label for="newClientFirstName" class="form-label">First Name</label>
-                                                <input type="text" class="formInputs" id="newClientFirstName"
-                                                    v-model="newClientFirstName">
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label for="newClientLastName" class="form-label">Last Name</label>
-                                                <input type="text" class="formInputs" id="newClientLastName"
-                                                    v-model="newClientLastName">
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label for="newClientEmail" class="form-label">Email address</label>
-                                                <input type="email" class="formInputs" id="newClientEmail"
-                                                    aria-describedby="emailHelp" v-model="newClientEmail">
-                                                <div id="newClientEmail" class="form-text">We'll never share your email
-                                                    with
-                                                    anyone else.</div>
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label for="newClientPassword" class="form-label">Password</label>
-                                                <input v-model="newClientPassword" type="password" class="formInputs"
-                                                    id="newClientPassword">
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label for="confirmNewClientPassword" class="form-label">Confirm
-                                                    Password</label>
-                                                <input v-model="confirmNewClientPassword" type="password"
-                                                    class="formInputs" id="confirmNewClientPassword">
-                                            </div>
-
-                                            <button type="submit" class="btn btn-dark" @click="signUp">Submit</button>
-                                        </form>
-
-                                        <!-- TERMINA FORM -->
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#flush-collapseTwo" aria-expanded="false"
-                                        aria-controls="flush-collapseTwo">
-                                        LOG IN
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                                    aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">
-
-                                        <!-- FORM DE LOGIN -->
-
-                                        <form @submit.prevent="">
-                                            <div class="mb-3">
-                                                <label for="clientEmail" class="form-label">Email address</label>
-                                                <input type="email" class="formInputs" id="clientEmail"
-                                                    v-model="clientEmail" aria-describedby="emailHelp">
-                                                <div id="emailHelp" class="form-text">We'll never share your email with
-                                                    anyone else.</div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="clientPassword" class="form-label">Password</label>
-                                                <input type="password" class="formInputs" id="clientPassword"
-                                                    v-model="clientPassword">
-                                            </div>
-                                            <button type="submit" @click="login" class="btn btn-dark">Submit</button>
-                                        </form>
-
-                                        <!-- TERMINA FORM -->
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div v-else class="d-flex justify-content-center flex-wrap align-items-between">
+                        <div class="d-flex justify-content-center flex-wrap align-items-between">
 
                             <!-- ESTE DIV NO SE VE -->
                             <div class="d-none">
@@ -207,7 +108,7 @@
                                 <img src="../assets/img/avatarCollection/lineArtObligatory.png" alt="">
                             </div>
 
-                            <h2>Glad to have you back {{currentClient.firstName}}!</h2>
+                            <h2>Glad to have you back {{client.firstName}}!</h2>
 
                             <div class="d-flex col-12 col-lg-2 m-3 justify-content-center  contenedorCanvas">
                                 <canvas id="myCanvas" width="400" height="680"

@@ -26,6 +26,13 @@ canvas {
     z-index: -5 !important;
 }
 
+.contenedorCanvas {
+    z-index: 1;
+    height: 21rem;
+    width: fit-content;
+    background-color: white;
+}
+
 li {
     list-style: none;
 }

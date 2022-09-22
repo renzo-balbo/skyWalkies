@@ -7,6 +7,14 @@ createApp({
             bills: {},
             currentBill: {},
             productsToDisplay: [],
+            // AVATAR 
+            avatar: {},
+            avatarHead: new Image(),
+            avatarBody: new Image(),
+            avatarBodyColor: new Image(),
+            avatarFace: new Image(),
+            avatarShoes: new Image(),
+            avatarArtLine: new Image(),
         }
     },
 
@@ -142,6 +150,36 @@ createApp({
                 }
             })
         },
+
+        // AVATAR 
+        prepareAvatarParts() {
+            this.avatarHead.src = "../assets/img/avatarCollection/head" + this.client.avatar.head + ".png";
+            this.avatarBody.src = "../assets/img/avatarCollection/body" + this.client.avatar.body + ".png";
+            this.avatarBodyColor.src = "../assets/img/avatarCollection/bodyColor" + this.client.avatar.bodyColor + ".png";
+            this.avatarFace.src = "../assets/img/avatarCollection/face" + this.client.avatar.face + ".png";
+            this.avatarShoes.src = "../assets/img/avatarCollection/shoes" + this.client.avatar.shoes + ".png";
+            this.avatarArtLine.src = "../assets/img/avatarCollection/lineArtObligatory.png";
+        },
+
+        drawAvatar() {
+            let canvas = document.getElementById("myCanvas");
+            let ctx = canvas.getContext("2d");
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(this.avatarBodyColor, 0, 0);
+            ctx.drawImage(this.avatarFace, 0, 0);
+            ctx.drawImage(this.avatarShoes, 0, 0);
+            ctx.drawImage(this.avatarBody, 0, 0);
+            ctx.drawImage(this.avatarArtLine, 0, 0);
+            ctx.drawImage(this.avatarHead, 0, 0);
+        },
+
+        renderAvatar() {
+            this.prepareAvatarParts()
+            this.drawAvatar()
+        },
+
+        // FIN DEL AVATAR 
+
 
     },
 
