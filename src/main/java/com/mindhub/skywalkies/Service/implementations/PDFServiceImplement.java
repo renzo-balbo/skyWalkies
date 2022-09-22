@@ -66,10 +66,10 @@ public class PDFServiceImplement implements PDFService {
 
             /*LOGO*/
 
-            Image img = Image.getInstance("./src/main/resources/static/public/img/logo-pdf.png");
-            img.scaleAbsoluteWidth(100);
-            img.scaleAbsoluteHeight(100);
-            img.setAlignment(Element.ALIGN_CENTER);
+   //         Image img = Image.getInstance("./src/main/resources/static/assets/img/skyWalkieslsoLogo.png");
+     //       img.scaleAbsoluteWidth(100);
+       //     img.scaleAbsoluteHeight(100);
+         //   img.setAlignment(Element.ALIGN_CENTER);
 
             /*HEADERS*/
 
@@ -116,7 +116,7 @@ public class PDFServiceImplement implements PDFService {
                Paragraph total = new Paragraph("Total:", titleFont);
                Paragraph footer = new Paragraph("$" +String.valueOf(bill.getTotal()), titleFont);
 
-            document.add(img);
+         //   document.add(img);
             document.add(title);
             document.add(subTitle);
             document.add(date);

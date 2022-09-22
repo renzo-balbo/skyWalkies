@@ -76,8 +76,6 @@ public class ClientController {
     public ClientDTO getClient(Authentication authentication) {
         return new ClientDTO(clientService.findClientByEmail(authentication.getName()));
     }
-
-
     @GetMapping("/clients/verify/{id}")
     public ResponseEntity<Object> verifyClient(@PathVariable long id){
         Client client = clientService.getClientById(id);

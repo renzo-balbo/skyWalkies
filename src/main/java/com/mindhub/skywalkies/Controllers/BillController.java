@@ -49,7 +49,7 @@ public class BillController {
         return new BillDTO(billService.getBillByid(id));
     }
     @PatchMapping("/bills/payment")
-    public ResponseEntity<Object> payment(@RequestParam long idBill, Authentication authentication, HttpServletResponse response){
+    public ResponseEntity<Object> payment(@RequestParam long idBill, Authentication authentication){
         Client client = clientService.findClientByEmail(authentication.getName());
         Bill bill = billService.getBillByid(idBill);
         bill.setPayed(true);
@@ -59,15 +59,33 @@ public class BillController {
         billService.saveBill(bill);
         billService.saveBill(bill2);
 
+
+        return new ResponseEntity<>("Payed successfully!", HttpStatus.CREATED);
+    }
+
+    @GetMapping("/bills/pdf/download")
+    private ResponseEntity<Object> downloadPDF(@RequestParam long billId, Authentication authentication, HttpServletResponse response){
+        Client client = clientService.findClientByEmail(authentication.getName());
+        Bill bill = billService.getBillByid(billId);
+    if(client==null){
+        return new ResponseEntity<>("bueno", HttpStatus.FORBIDDEN);
+    }
+    if(bill==null){
+        return new ResponseEntity<>("bueno no hay bill", HttpStatus.FORBIDDEN);
+    }
+    if (!client.getBills().contains(bill)){
+        return new ResponseEntity<>("bueno no hay bill in client", HttpStatus.FORBIDDEN);
+    }
+    if(!bill.isPayed()){
+        return new ResponseEntity<>("bueno no hay pago amiguito", HttpStatus.FORBIDDEN);
+    }
         response.setContentType("application/pdf");
         String headerKey = "Content-Disposition";
         String headerValue = "inline";
         response.setHeader(headerKey,headerValue);
         pdfService.generatePDF(response,  bill );
-        return new ResponseEntity<>("Payed successfully!", HttpStatus.CREATED);
+        return new ResponseEntity<>("", HttpStatus.ACCEPTED);
     }
-
-
 
 
 
