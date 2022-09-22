@@ -6,15 +6,19 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.mindhub.skywalkies.Service.PDFService;
+import com.mindhub.skywalkies.Service.ProductService;
 import com.mindhub.skywalkies.models.Bill;
 import com.mindhub.skywalkies.models.Client_order;
+import com.mindhub.skywalkies.models.Ordered_product;
 import com.mindhub.skywalkies.models.Product;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class PDFServiceImplement implements PDFService {
@@ -25,8 +29,10 @@ public class PDFServiceImplement implements PDFService {
     private static Font subFont = new Font(Font.FontFamily.HELVETICA, 12,
             Font.NORMAL);
 
+    @Autowired
+    private ProductService productService;
     @Override
-    public void generatePDF(HttpServletResponse response, List<Client_order> client_orders, Bill bill, Product product) {
+    public void generatePDF(HttpServletResponse response,  Bill bill) {
         try {
             Document document = new Document(PageSize.A4);
 
@@ -34,6 +40,9 @@ public class PDFServiceImplement implements PDFService {
 
             document.open();
             document.setMargins(2,2,2,2);
+
+           Set<Client_order> client_orders= bill.getClient_orders();
+
 
 
 
@@ -65,9 +74,9 @@ public class PDFServiceImplement implements PDFService {
             /*HEADERS*/
 
             PdfPTable pdfPTable = new PdfPTable(4);
-            PdfPCell pdfPCell1 = new PdfPCell(new Paragraph("Type", headerFont));
-            PdfPCell pdfPCell2 = new PdfPCell(new Paragraph("Date", headerFont));
-            PdfPCell pdfPCell3 = new PdfPCell(new Paragraph("Client", headerFont));
+            PdfPCell pdfPCell1 = new PdfPCell(new Paragraph("Name", headerFont));
+            PdfPCell pdfPCell2 = new PdfPCell(new Paragraph("Quantity", headerFont));
+            PdfPCell pdfPCell3 = new PdfPCell(new Paragraph("Price", headerFont));
             PdfPCell pdfPCell4 = new PdfPCell(new Paragraph("Total", headerFont));
             pdfPCell1.setBackgroundColor(new BaseColor(220, 7, 253));
             pdfPCell2.setBackgroundColor(new BaseColor(220, 7, 253));
@@ -83,13 +92,17 @@ public class PDFServiceImplement implements PDFService {
             pdfPTable.addCell(pdfPCell4);
 
             /*TABLE OF TRANSACTIONS*/
+            if(bill.getClient_orders()!=null){
+                bill.getClient_orders().forEach(client_order -> {
+                    client_order.getOrdered_products().forEach(ordered_product -> {
+                                Product product = ordered_product.getProduct();
 
-            client_orders.forEach(client_order -> {
 
-                PdfPCell pdfPCell5 = new PdfPCell(new Paragraph(String.valueOf(product.getType()), subFont));
-                PdfPCell pdfPCell6 = new PdfPCell(new Paragraph(bill.getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")), subFont));
-                PdfPCell pdfPCell7 = new PdfPCell(new Paragraph(String.valueOf(bill.getClient()), subFont));
-                PdfPCell pdfPCell8 = new PdfPCell(new Paragraph("$" + String.valueOf(bill.getTotal()), subFont));
+
+                PdfPCell pdfPCell5 = new PdfPCell(new Paragraph(String.valueOf(product.getName()), subFont));
+                PdfPCell pdfPCell6 = new PdfPCell(new Paragraph(String.valueOf(ordered_product.getQuantity()) , subFont));
+                PdfPCell pdfPCell7 = new PdfPCell(new Paragraph("$" + String.valueOf(product.getPrice()), subFont));
+                PdfPCell pdfPCell8 = new PdfPCell(new Paragraph("$" + String.valueOf(product.getPrice()*ordered_product.getQuantity()), subFont));
                 pdfPCell5.setBorder(0);
                 pdfPCell6.setBorder(0);
                 pdfPCell7.setBorder(0);
@@ -99,13 +112,17 @@ public class PDFServiceImplement implements PDFService {
                 pdfPTable.addCell(pdfPCell6);
                 pdfPTable.addCell(pdfPCell7);
                 pdfPTable.addCell(pdfPCell8);
-            });
+            });});};
+               Paragraph total = new Paragraph("Total:", titleFont);
+               Paragraph footer = new Paragraph("$" +String.valueOf(bill.getTotal()), titleFont);
 
             document.add(img);
             document.add(title);
             document.add(subTitle);
             document.add(date);
             document.add(pdfPTable);
+            document.add(total);
+            document.add(footer);
             document.close();
 
         } catch (Exception e) {

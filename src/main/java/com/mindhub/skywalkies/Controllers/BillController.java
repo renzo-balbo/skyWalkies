@@ -1,15 +1,13 @@
 package com.mindhub.skywalkies.Controllers;
 
-import com.mindhub.skywalkies.Service.BillService;
-import com.mindhub.skywalkies.Service.ClientService;
-import com.mindhub.skywalkies.Service.Client_orderService;
-import com.mindhub.skywalkies.Service.ProductService;
+import com.mindhub.skywalkies.Service.*;
 import com.mindhub.skywalkies.dtos.BillDTO;
 import com.mindhub.skywalkies.models.Bill;
 import com.mindhub.skywalkies.models.Client;
 import com.mindhub.skywalkies.models.Client_order;
 import com.mindhub.skywalkies.models.Product;
 import com.mindhub.skywalkies.repositories.BillRepository;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +15,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
@@ -38,6 +37,8 @@ public class BillController {
     private BillRepository billRepository;
     @Autowired
     private Client_orderService client_orderService;
+    @Autowired
+    private PDFService pdfService;
 
     @GetMapping("/bills")
     public List<BillDTO> getBills() {
@@ -48,20 +49,28 @@ public class BillController {
         return new BillDTO(billService.getBillByid(id));
     }
     @PatchMapping("/bills/payment")
-    public ResponseEntity<Object> payment(@RequestParam long idBill, Authentication authentication){
+    public ResponseEntity<Object> payment(@RequestParam long idBill, Authentication authentication, HttpServletResponse response){
         Client client = clientService.findClientByEmail(authentication.getName());
         Bill bill = billService.getBillByid(idBill);
         bill.setPayed(true);
+
+
         Bill bill2 = new Bill(client,LocalDateTime.now(), false, 0);
         billService.saveBill(bill);
         billService.saveBill(bill2);
+
+        response.setContentType("application/pdf");
+        String headerKey = "Content-Disposition";
+        String headerValue = "inline";
+        response.setHeader(headerKey,headerValue);
+        pdfService.generatePDF(response,  bill );
         return new ResponseEntity<>("Payed successfully!", HttpStatus.CREATED);
     }
 
-     //   Bill bill1 = new Bill(client,LocalDateTime.now(), true, getIvaTocaacamaster(bill.getSubTotal(), 1.21), bill.getIva()+ bill.getSubTotal(), bill.getTicketNumber());
 
-    public double getIvaTocaacamaster(double subtotal, double porcentaje){
-        return subtotal *  porcentaje / 100;
-    }
+
+
+
+
 
 }

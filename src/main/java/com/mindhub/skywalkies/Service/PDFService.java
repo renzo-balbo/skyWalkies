@@ -12,6 +12,6 @@ import java.io.IOException;
 import java.util.List;
 
 public interface PDFService {
-    public void generatePDF(HttpServletResponse response, List<Client_order> client_orders, Bill bill, Product product);
+    public void generatePDF(HttpServletResponse response,Bill bill);
 
 }
