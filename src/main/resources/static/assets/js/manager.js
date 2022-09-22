@@ -227,43 +227,7 @@ createApp({
                 .then(() => {
                     window.location.reload()
                 })
-        },
-        areYouSure() {
-            let swalWithBootstrapButtons = Swal.mixin({
-                customClass: {
-                    confirmButton: 'btn btn-light m-2',
-                    cancelButton: 'btn btn-light m-2'
-                },
-                buttonsStyling: false
-            })
-
-            swalWithBootstrapButtons.fire({
-                title: 'Are you sure?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: '¡Yes!',
-                cancelButtonText: '¡Cancel!',
-                color: 'white',
-                background: 'black',
-                reverseButtons: true
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    this.logout()
-                } else if (
-                    result.dismiss === Swal.DismissReason.cancel
-                ) {
-                    swalWithBootstrapButtons.fire({
-                        title: 'Great!',
-                        text: "Let's keep walking in the sky",
-                        icon: 'success',
-                        color: 'white',
-                        background: 'black',
-                        showConfirmButton: false
-                    })
-
-                }
-            })
-        },
+        }
 
 
 
