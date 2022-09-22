@@ -266,15 +266,15 @@
             <div class="d-flex flex-column col-11 mt-3 m-lg-0 col-lg-4 prices">
                 <div class="d-flex justify-content-between">
                     <h5 class="fw-bold">Subtotal:</h5>
-                    <h6 v-for="bill in bills" class="fw-bold">{{moneyFormatter(bill.subTotal)}}</h6>
+                    <h6 class="fw-bold">{{moneyFormatter(currentBill.subTotal)}}</h6>
                 </div>
                 <div class="d-flex justify-content-between">
                     <h5>IVA:</h5>
-                    <h6 v-for="bill in bills">{{moneyFormatter(bill.iva)}}</h6>
+                    <h6 >{{moneyFormatter(currentBill.iva)}}</h6>
                 </div>
                 <div class="d-flex justify-content-between">
                     <h3 class="fw-bolder">Total:</h3>
-                    <h3 v-for="bill in bills" class="fw-bolder">{{moneyFormatter(bill.total)}}</h3>
+                    <h3 class="fw-bolder">{{moneyFormatter(currentBill.total)}}</h3>
                 </div>
                 <a href="../web/payment.html"><button class="btn btn-dark mb-3">Proceed to
                     pay</button></a>
