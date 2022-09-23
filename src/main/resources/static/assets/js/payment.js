@@ -200,9 +200,8 @@ createApp({
                     axios.patch('/api/bills/payment', `idBill=${this.currentBill.id}`)
                         .then(response =>{
                             console.log(response,'Purchase completed successfully!')
-                            axios.post('/api/bills/pdf/download',`billId=${this.currentBill.id}`)
-                            .then(response => console.log(response))
-                            .catch(errpr => console.log(error))
+                            window.location.href=`/api/bills/pdf/download?billId=${this.currentBill.id}`
+                            
                         })
                         .catch(error => console.log(error))
                 })
