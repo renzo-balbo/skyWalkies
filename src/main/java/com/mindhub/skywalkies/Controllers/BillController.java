@@ -67,22 +67,22 @@ public class BillController {
     private ResponseEntity<Object> downloadPDF(@RequestParam long billId, Authentication authentication, HttpServletResponse response){
         Client client = clientService.findClientByEmail(authentication.getName());
         Bill bill = billService.getBillByid(billId);
-    if(client==null){
-        return new ResponseEntity<>("bueno", HttpStatus.FORBIDDEN);
+    if(client == null){
+        return new ResponseEntity<>("Client doesn't exist", HttpStatus.FORBIDDEN);
     }
-    if(bill==null){
-        return new ResponseEntity<>("bueno no hay bill", HttpStatus.FORBIDDEN);
+    if(bill == null){
+        return new ResponseEntity<>("Bill doesn't exist", HttpStatus.FORBIDDEN);
     }
     if (!client.getBills().contains(bill)){
-        return new ResponseEntity<>("bueno no hay bill in client", HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>("The bill doesn't belong to this client", HttpStatus.FORBIDDEN);
     }
     if(!bill.isPayed()){
-        return new ResponseEntity<>("bueno no hay pago amiguito", HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>("The bill in not payed yet", HttpStatus.FORBIDDEN);
     }
         response.setContentType("application/pdf");
         String headerKey = "Content-Disposition";
-        String headerValue = "inline";
-        response.setHeader(headerKey,headerValue);
+        String headerValue = "attachment; filename=SkyWalkies.pdf";
+        response.setHeader(headerKey, headerValue);
         pdfService.generatePDF(response,  bill );
         return new ResponseEntity<>("", HttpStatus.ACCEPTED);
     }
