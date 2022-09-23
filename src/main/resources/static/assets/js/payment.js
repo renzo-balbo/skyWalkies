@@ -173,7 +173,7 @@ createApp({
                 ) {
                     swalWithBootstrapButtons.fire({
                         title: 'Great!',
-                        text: "Let's buy it then!",
+                        text: "Payment cancelled",
                         icon: 'success',
                         color: 'white',
                         background: 'black',
@@ -200,8 +200,18 @@ createApp({
                     axios.patch('/api/bills/payment', `idBill=${this.currentBill.id}`)
                         .then(response =>{
                             console.log(response,'Purchase completed successfully!')
-                            window.location.href=`/api/bills/pdf/download?billId=${this.currentBill.id}`
                             
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Purchase completed!',
+                                color: 'white',
+                                background: 'black',    
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                            setTimeout(()=> {
+                                window.location.href=`/api/bills/pdf/download?billId=${this.currentBill.id}`;}
+                                , 1500);
                         })
                         .catch(error => console.log(error))
                 })

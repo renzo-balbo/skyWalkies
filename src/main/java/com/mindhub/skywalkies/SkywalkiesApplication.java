@@ -83,11 +83,11 @@ public class SkywalkiesApplication {
             bill1.addTicketNumber(randomNumberTicket(1, 999999999));
             bill2.addTicketNumber(randomNumberTicket(1, 999999999));
             //BILLS//
-            Avatar avatar1 = new Avatar(1,2,1,4,3);
+            Avatar avatar1 = new Avatar(5,2,1,2,3);
             Avatar avatar2 = new Avatar(2,1,3,1,2);
             //CLIENTES//
-            Client client1 = new Client("renzo", "balbo", "renzobalbo@skywalkies.com.ar", passwordEncoder.encode("skywalkies"), true, bill1, avatar1);
-            Client cliente2 = new Client("Franco", "Puto", "franco@hotmail.com", passwordEncoder.encode("123"), true, bill2, avatar2);
+            Client client1 = new Client("Renzo", "Balbo", "renzobalbo@skywalkies.com.ar", passwordEncoder.encode("skywalkies"), true, bill1, avatar1);
+            Client cliente2 = new Client("Franco", "Novoa", "franco@hotmail.com", passwordEncoder.encode("123"), true, bill2, avatar2);
             //CLIENTES//
 
             //ORDENES//
