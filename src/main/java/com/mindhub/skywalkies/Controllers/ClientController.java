@@ -67,7 +67,7 @@ public class ClientController {
         clientService.saveClient(client);
         avatarService.saveAvatar(avatar);
         String mailSubject = "Skywalkies mail verification";
-        String mailBody= "Hey! We are so close to complete your account registration, just one more thing to do. We need you to verify your email visiting this link:localhost:8080/web/verified.html?id="+ client.getId();
+        String mailBody= "Hey! We are so close to complete your account registration, just one more thing to do. We need you to verify your email visiting this link: https://skywalkies.herokuapp.com/web//verified.html?id="+ client.getId();
         clientService.sendVerificationMail(client.getEmail(), mailSubject, mailBody);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
