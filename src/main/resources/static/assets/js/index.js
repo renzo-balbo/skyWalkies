@@ -230,7 +230,7 @@ createApp({
 
         login() {
 
-            axios.post("/api/login", `email=${this.clientEmail}&password=${this.clientPassword}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+            axios.post("/api/login", `email=${this.clientEmail}&password=${this.clientPassword}`)
                 .then(response => {
                     Swal.fire({
                         icon: 'success',
@@ -255,7 +255,7 @@ createApp({
         },
 
         signUp() {
-            axios.post('/api/clients', `firstName=${this.newClientFirstName}&lastName=${this.newClientLastName}&email=${this.newClientEmail}&password=${this.newClientPassword}&confirmPassword=${this.confirmNewClientPassword}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+            axios.post('/api/clients', `firstName=${this.newClientFirstName}&lastName=${this.newClientLastName}&email=${this.newClientEmail}&password=${this.newClientPassword}&confirmPassword=${this.confirmNewClientPassword}`)
                 .then(response => Swal.fire({
                     icon: 'question',
                     title: 'One more step!',
